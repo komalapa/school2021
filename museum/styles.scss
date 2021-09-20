@@ -129,14 +129,20 @@ header{
     padding-bottom: 26px;
     border-bottom: 3px solid var(--red-background);
 }
-.logo{
+
+.header-navigation{
     align-items: center;
-    height: 50px;
+    height: 0;
+}
+.logo{
+    align-items: baseline;
+    // height: 50px;
     cursor: pointer;
+    gap:25px;
     &-img{
-        width: 50px;
-        height: 34px;
-        margin-right: 20px;
+        position: relative;
+        width: 49px;
+        height: 26px;
         background: url("assets/svg/logo.svg") no-repeat;
     }
     &-text{
@@ -144,8 +150,7 @@ header{
         margin: 0;
         text-transform: uppercase;
         font-family: var(--font-forum);
-        font-weight: 400;
-        line-height: 50px;
+        font-weight:400;
         letter-spacing: 5px;
         font-size: 28px;
     }
@@ -160,20 +165,22 @@ header{
 }
 
 
-.main-menu{
-    margin-left: 525px;
-}
+// .main-menu{
+//     margin-left: 525px;
+// }
 .menu{
     margin: 0;
     padding: 0;
     list-style: none;
+    justify-content: flex-end;
+    gap: 55px;
     &-item{
-        margin-right: 76px;
         &-link{
             font-weight: 200;
-            font-size: 22px;
-            line-height: 50px;
-            letter-spacing: 2px;
+            // font-size: 22px;
+            // letter-spacing: 2px;
+            font-size: 23px;
+            letter-spacing: 1.65px;
             color: var(--white-text);
         }
         &-link:hover,&-link:active{
@@ -181,9 +188,7 @@ header{
             transition:color 0.2s ease-in;
         }
     }
-    &-item:last-child{
-        margin-left: 0;
-    }
+    
 }
 
 .welcome{

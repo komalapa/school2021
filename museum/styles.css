@@ -161,18 +161,25 @@ header {
   border-bottom: 3px solid var(--red-background);
 }
 
-.logo {
+.header-navigation {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 50px;
+  height: 0;
+}
+
+.logo {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   cursor: pointer;
+  gap: 25px;
 }
 
 .logo-img {
-  width: 50px;
-  height: 34px;
-  margin-right: 20px;
+  position: relative;
+  width: 49px;
+  height: 26px;
   background: url("assets/svg/logo.svg") no-repeat;
 }
 
@@ -182,7 +189,6 @@ header {
   text-transform: uppercase;
   font-family: var(--font-forum);
   font-weight: 400;
-  line-height: 50px;
   letter-spacing: 5px;
   font-size: 28px;
 }
@@ -202,25 +208,20 @@ header {
   transition: color 0.2s ease-in;
 }
 
-.main-menu {
-  margin-left: 525px;
-}
-
 .menu {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.menu-item {
-  margin-right: 76px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 55px;
 }
 
 .menu-item-link {
   font-weight: 200;
-  font-size: 22px;
-  line-height: 50px;
-  letter-spacing: 2px;
+  font-size: 23px;
+  letter-spacing: 1.65px;
   color: var(--white-text);
 }
 
@@ -228,10 +229,6 @@ header {
   color: var(--golden-text);
   -webkit-transition: color 0.2s ease-in;
   transition: color 0.2s ease-in;
-}
-
-.menu-item:last-child {
-  margin-left: 0;
 }
 
 .welcome {
