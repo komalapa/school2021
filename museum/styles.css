@@ -6,8 +6,11 @@
   --white-text:#ffffff;
   --black-text:#000000;
   --golden-text:#9d8665;
+  --golden-light:#D2B183;
   --font-roboto: 'Roboto', sans-serif;
   --font-forum: 'Forum', cursive;
+  --golden-filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
+  --welcome-slider-offset: 0px;
 }
 
 html {
@@ -194,8 +197,8 @@ header {
 }
 
 .logo:hover .logo-img {
-  -webkit-filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
-          filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+  -webkit-filter: var(--golden-filter);
+          filter: var(--golden-filter);
   -webkit-transition: -webkit-filter 0.2s ease-in;
   transition: -webkit-filter 0.2s ease-in;
   transition: filter 0.2s ease-in;
@@ -240,10 +243,6 @@ header {
   padding: 116px 0 246px 240px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-image: url("assets/img/night-louvre.jpg");
-  background-size: 1215px 750px;
-  background-position: calc(50% + 352px) bottom;
-  background-repeat: no-repeat;
 }
 
 .welcome-content-wrp {
@@ -261,6 +260,108 @@ header {
 
 .welcome-button {
   font-weight: 200;
+}
+
+.welcome-slider {
+  position: relative;
+  width: 1000px;
+  height: 750px;
+  overflow-x: hidden;
+}
+
+.welcome-slider-controls {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 55px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 600px;
+  height: 120px;
+  background-color: var(--dark-background);
+}
+
+.welcome-slider-controls-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 25px;
+}
+
+.welcome-slider-controls-btn {
+  width: 16px;
+  height: 16px;
+  background-color: var(--white-text);
+}
+
+.welcome-slider-controls-btn.active {
+  width: 16px;
+  height: 16px;
+  background-color: var(--golden-light);
+}
+
+.welcome-slider-controls-btn:hover {
+  background-color: var(--golden-text);
+}
+
+.welcome-slider-controls-arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 20px;
+}
+
+.welcome-slider-controls-arrows div {
+  width: 30px;
+  height: 8px;
+}
+
+.welcome-slider-controls-arrows div:hover {
+  -webkit-filter: var(--golden-filter);
+          filter: var(--golden-filter);
+}
+
+.welcome-slider-controls .arrow-left {
+  background-image: url("/assets/svg/arrow-left.svg");
+}
+
+.welcome-slider-controls .arrow-right {
+  background-image: url("/assets/svg/arrow-right.svg");
+}
+
+.welcome-slider-content {
+  position: absolute;
+  left: var(--welcome-slider-offset);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-transition: left ease-in 0.3s;
+  transition: left ease-in 0.3s;
+}
+
+.welcome-slider-content-item {
+  width: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .visiting {
@@ -382,8 +483,8 @@ header {
 }
 
 .video-player-controls-btn:hover {
-  -webkit-filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
-          filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
+  -webkit-filter: var(--golden-filter);
+          filter: var(--golden-filter);
   -webkit-transition: -webkit-filter 0.2s ease-in;
   transition: -webkit-filter 0.2s ease-in;
   transition: filter 0.2s ease-in;
@@ -697,8 +798,8 @@ header {
 }
 
 .footer-socials-item-link:hover {
-  -webkit-filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
-          filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+  -webkit-filter: var(--golden-filter);
+          filter: var(--golden-filter);
   -webkit-transition: -webkit-filter 0.2s ease-in;
   transition: -webkit-filter 0.2s ease-in;
   transition: filter 0.2s ease-in;
