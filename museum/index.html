@@ -66,7 +66,8 @@
             </section>
 
             <section class="section visiting" id="visiting">
-                <div class="section-container">                <h2 class="section-header golden-font">Virtual tour</h2>
+                <div class="section-container">                
+                    <h2 class="section-header golden-font">Virtual tour</h2>
                     <div class="visiting-cards-wrp flex-row flex-space-between flex-wrap">
                         <figure class="card">
                             <img src="assets/img/royal-palace.jpg" alt="royal palace interior" class="card-img" width="440" height="285">
@@ -124,13 +125,20 @@
             <section class="section explore dark" id="explore">
                 <div class="section-container">
                     <figure class="flex-row">
-                        <figcaption>
+                        <figcaption class="explore-caption">
                             <h2 class="section-header">Picture explore</h2>
                             <p class="explore-text">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
                             <p class="explore-text">It was cleaned in 1984 to remove a <a href="" class="golden-font">"yellow veil"</a>  of dust that had gathered since the previous restoration in the 19th century.</p>
                             <p class="explore-text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
                         </figcaption>
-                        <img src="assets/img/meninas.jpg" alt="Las Meninas" class="explore-img">
+                        <div class="explore-img">
+                            <div class="compare">
+                                <img src="assets/img/explore-slider/before.jpg" alt="example of restauration before">
+                            </div>
+                            <div class="compare overlay">
+                                <img src="assets/img/explore-slider/after.jpg" alt="example of restauration before">
+                            </div>
+                        </div>
                     </figure>
                 </div>
             </section>
@@ -256,5 +264,6 @@
     </div>
     <script src="js/script.js" defer></script>
     <script src="js/welcomeSlider.js" defer></script>
+    <script src="js/comparer.js"></script>
 </body>
 </html>
