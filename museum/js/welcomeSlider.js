@@ -3,7 +3,7 @@
 function initSlider(){
     const welcomeSliderContent = document.querySelector('.welcome-slider');
     const welcomeSliderControls = document.querySelector('.welcome-slider-controls');
-    console.log(welcomeSliderControls)
+    const slides = welcomeSliderContent.querySelectorAll('img');
     const controlsButtonsList = welcomeSliderControls.querySelector('.welcome-slider-controls-buttons')
 
     const arrowLeft = welcomeSliderControls.querySelector('.arrow-left');
@@ -13,6 +13,11 @@ function initSlider(){
     let activeSlide = 0;
     
 
+    const slidesWrp = welcomeSliderContent.querySelector('div');
+    slidesWrp.prepend(slides[slides.length -1].cloneNode());
+    slidesWrp.append(slides[0].cloneNode());
+
+    let inTransition = false;
     
     for (let i = 0; i< sliderLength; i++){
         const sliderBtn = document.createElement('div');
@@ -32,20 +37,46 @@ function initSlider(){
     console.log(sliderWidth)
 
     function changeSlide(number = activeSlide, direction = null){
-        controlsButtons[activeSlide].classList.remove('active');
-        if (direction === null) activeSlide = number;
-        if (direction === 'r'){
-            activeSlide = activeSlide+1 < sliderLength ? activeSlide + 1 : 0
+        if (!inTransition){
+            console.log('>>',number)
+            controlsButtons[activeSlide].classList.remove('active');
+            if (direction === null) activeSlide = +number;
+            if (direction === 'r'){
+                activeSlide = activeSlide+1 //< sliderLength ? activeSlide + 1 : 0
+            }
+            if (direction === 'l'){
+                activeSlide = activeSlide-1  //>= 0 ? activeSlide - 1 : sliderLength -1;
+            }
+            console.log(activeSlide);
+            document.documentElement.style.setProperty('--welcome-slider-offset', -((activeSlide+1)*sliderWidth)+'px');
+            // inTransition = true;
+            if (activeSlide < 0){
+                // welcomeSliderContent.classList.add('no-transition');
+                activeSlide = sliderLength -1;
+                // setTimeout(()=>{slidesWrp.classList.remove('no-transition')})
+            }
+            if (activeSlide > sliderLength-1){
+                //console.log('END')
+                // welcomeSliderContent.classList.add('no-transition');
+                // console.log(slidesWrp)
+                activeSlide = 0;
+                // setTimeout(()=>{slidesWrp.classList.remove('no-transition')})
+            }
+            welcomeSliderControls.querySelector('#welcome-controls-current').innerText = `0${+activeSlide+1}`.slice(-2);
+            controlsButtons[activeSlide].classList.add('active');
         }
-        if (direction === 'l'){
-            activeSlide = activeSlide-1 >= 0 ? activeSlide - 1 : sliderLength -1;
-        }
-        console.log(activeSlide);
-        document.documentElement.style.setProperty('--welcome-slider-offset', -(activeSlide*sliderWidth)+'px');
-        welcomeSliderControls.querySelector('#welcome-controls-current').innerText = `0${+activeSlide+1}`.slice(-2);
-        controlsButtons[activeSlide].classList.add('active');
     }
-
+    document.documentElement.style.setProperty('--welcome-slider-offset', -((activeSlide+1)*sliderWidth)+'px');
+    
+    welcomeSliderContent.addEventListener('transitionstart', () => inTransition = true)
+    welcomeSliderContent.addEventListener('transitionend', () => {
+        inTransition = false
+        slidesWrp.classList.add('no-transition');
+        document.documentElement.style.setProperty('--welcome-slider-offset', -((activeSlide+1)*sliderWidth)+'px');
+        setTimeout(()=>{
+            slidesWrp.classList.remove('no-transition')
+        })
+    })
     arrowLeft.addEventListener('click', () => changeSlide(activeSlide, 'l'));
     arrowRight.addEventListener('click', () => changeSlide(activeSlide, 'r'));
 }
