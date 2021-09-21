@@ -439,12 +439,16 @@ header{
 }
 
 .video{
-    padding-top: 90px;
+    padding-top: 70px;
     padding-bottom: 50px;
+    &-player{
+        // width: 100%;
+        object-fit: cover;
+    }
     &-player-wrp{
         position: relative;
         width: 1440px;
-        height: 629px;
+        height: 650px;
         margin: 0 0 125px;
     }
     &-player-start{
@@ -460,16 +464,17 @@ header{
     }
     &-player-controls{
         position: absolute;
-        bottom: -87px;
+        bottom: -85px;
         align-items: center;
-        padding: 2px 40px 0 41px;
+        padding: 2px 25px 0 30px;
         box-sizing: border-box;
         width: 1440px;
-        height: 87px;
+        height: 85px;
+        gap:50px;
         background-color: var(--black-text);
         &-btn{
             height: 30px;
-            margin-right: 41px;
+            // margin-right: 41px;
             background-color: transparent;
             border: none;
         }
@@ -490,7 +495,7 @@ header{
             background: url("assets/svg/forvard.svg") no-repeat;
         }
         &-mute{
-            margin-right: 20px;
+            // margin-right: 20px;
             width: 38px;
             background: url("assets/svg/volume.svg") no-repeat;
         }
@@ -503,7 +508,7 @@ header{
 
         &-bar{
             height: 8px;
-            background: linear-gradient(to right, #24809E 0%, #24809E 40%, #c4c4c4 40%, #c4c4c4 100%);
+            background: linear-gradient(to right, #710707 0%, #710707 40%, #c4c4c4 40%, #c4c4c4 100%);
             border: none;
             outline: none;
             transition: background 450ms ease-in;
@@ -518,12 +523,12 @@ header{
             background: #ffffff;
         }
         &-progress{
-            width: 820px;
-            margin-right: 41px;
+            width: 929px;
+            // margin-right: 41px;
         }
         &-volume{
             width: 155px;
-            margin-right: 48px;
+            // margin-right: 48px;
         }
         //background: url("assets/img/video-controls.png") no-repeat;
         // transition: filter 0.1s ease-in;
@@ -545,6 +550,59 @@ header{
         font-weight: 300;
         font-size: 22px;
         line-height: 38px;
+    }
+    &-slider{
+        overflow-x: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &-controls{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap:20px;
+            margin: 40px auto 0;
+            & .arrow-left, & .arrow-right{
+                width: 10px;
+                height: 12px;
+                background-image: url("assets/svg/video-sl-arrow-left.svg");
+                transition: filter 0.3s;
+            }
+            & .arrow-right{
+                background-image: url("assets/svg/video-sl-arrow-rightt.svg");
+            }
+            & .arrow-left:hover, & .arrow-right:hover{
+                filter: var(--golden-filter);
+            }
+            &-dots{
+                display: flex;
+                flex-direction: row;
+                gap:20px;
+            }
+            &-dot{
+                width: 12px;
+                height: 12px;
+                background-color: #999999;
+                border-radius: 50%;
+                transition: background-color 0.3s;
+            }
+            &-dot:hover{
+                background-color: var(--golden-text);
+            }
+            &-dot.active{
+                background-color: var(--dark-background);
+            }
+        }
+    
+    }
+    &-slider::-webkit-scrollbar {
+        display: none;
+    } 
+    
+    &-slides-wrp{
+        display: flex;
+        flex-direction: row;
+        gap: 42px;
+        
     }
 }
 

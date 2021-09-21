@@ -535,14 +535,19 @@ header {
 }
 
 .video {
-  padding-top: 90px;
+  padding-top: 70px;
   padding-bottom: 50px;
+}
+
+.video-player {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .video-player-wrp {
   position: relative;
   width: 1440px;
-  height: 629px;
+  height: 650px;
   margin: 0 0 125px;
 }
 
@@ -561,21 +566,21 @@ header {
 
 .video-player-controls {
   position: absolute;
-  bottom: -87px;
+  bottom: -85px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2px 40px 0 41px;
+  padding: 2px 25px 0 30px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 1440px;
-  height: 87px;
+  height: 85px;
+  gap: 50px;
   background-color: var(--black-text);
 }
 
 .video-player-controls-btn {
   height: 30px;
-  margin-right: 41px;
   background-color: transparent;
   border: none;
 }
@@ -605,7 +610,6 @@ header {
 }
 
 .video-player-controls-mute {
-  margin-right: 20px;
   width: 38px;
   background: url("assets/svg/volume.svg") no-repeat;
 }
@@ -619,8 +623,8 @@ header {
 
 .video-player-controls-bar {
   height: 8px;
-  background: -webkit-gradient(linear, left top, right top, from(#24809E), color-stop(40%, #24809E), color-stop(40%, #c4c4c4), to(#c4c4c4));
-  background: linear-gradient(to right, #24809E 0%, #24809E 40%, #c4c4c4 40%, #c4c4c4 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#710707), color-stop(40%, #710707), color-stop(40%, #c4c4c4), to(#c4c4c4));
+  background: linear-gradient(to right, #710707 0%, #710707 40%, #c4c4c4 40%, #c4c4c4 100%);
   border: none;
   outline: none;
   -webkit-transition: background 450ms ease-in;
@@ -638,13 +642,11 @@ header {
 }
 
 .video-player-controls-progress {
-  width: 820px;
-  margin-right: 41px;
+  width: 929px;
 }
 
 .video-player-controls-volume {
   width: 155px;
-  margin-right: 48px;
 }
 
 .video-player-wrp:hover .video-player-start {
@@ -663,6 +665,91 @@ header {
   font-weight: 300;
   font-size: 22px;
   line-height: 38px;
+}
+
+.video-slider {
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.video-slider-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+  margin: 40px auto 0;
+}
+
+.video-slider-controls .arrow-left, .video-slider-controls .arrow-right {
+  width: 10px;
+  height: 12px;
+  background-image: url("assets/svg/video-sl-arrow-left.svg");
+  -webkit-transition: -webkit-filter 0.3s;
+  transition: -webkit-filter 0.3s;
+  transition: filter 0.3s;
+  transition: filter 0.3s, -webkit-filter 0.3s;
+}
+
+.video-slider-controls .arrow-right {
+  background-image: url("assets/svg/video-sl-arrow-rightt.svg");
+}
+
+.video-slider-controls .arrow-left:hover, .video-slider-controls .arrow-right:hover {
+  -webkit-filter: var(--golden-filter);
+          filter: var(--golden-filter);
+}
+
+.video-slider-controls-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 20px;
+}
+
+.video-slider-controls-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #999999;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.video-slider-controls-dot:hover {
+  background-color: var(--golden-text);
+}
+
+.video-slider-controls-dot.active {
+  background-color: var(--dark-background);
+}
+
+.video-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.video-slides-wrp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 42px;
 }
 
 .tickets-form {

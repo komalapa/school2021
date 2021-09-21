@@ -145,8 +145,12 @@
 
             <section class="section video" id="video">
                 <div class="section-container">
+                    <div class="video-text-wrp flex-row flex-space-between">
+                        <h2 class="section-header video-header golden-font">Video journey</h2>
+                        <p class="video-text">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+                    </div>
                     <div class="video-player-wrp">
-                        <video class="video-player" src="assets/video/video.mp4" poster="assets/video/video-preview.jpg" width="1440" height="629"></video>
+                        <video class="video-player" src="assets/video/video.mp4" poster="assets/video/poster0.jpg" width="1440" height="650"></video>
                         <span class="video-player-start">
                             <svg width="220" height="220" viewBox="0 0 220 220">
                                 <g clip-path="url(#clip0)">
@@ -156,18 +160,28 @@
                             </svg>
                         </span>
                         <div class="video-player-controls flex-row">
-                            <button class="video-player-controls-back video-player-controls-btn"></button>
+                            <!-- <button class="video-player-controls-back video-player-controls-btn"></button> -->
                             <button class="video-player-controls-play video-player-controls-btn"></button>
-                            <button class="video-player-controls-forward video-player-controls-btn"></button>
+                            <!-- <button class="video-player-controls-forward video-player-controls-btn"></button> -->
                             <input  class="video-player-controls-progress video-player-controls-bar" type="range" name="video-progress" id="video-progress" value="47">
                             <button class="video-player-controls-mute video-player-controls-btn"></button>
                             <input  class="video-player-controls-volume video-player-controls-bar" type="range" name="volume-level" id="volume-level" value="46">
                             <button class="video-player-controls-full video-player-controls-btn"></button>
                         </div>
                     </div>
-                    <div class="video-text-wrp flex-row flex-space-between">
-                        <h2 class="section-header video-header golden-font">Video journey</h2>
-                        <p class="video-text">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+                    <div class="video-slider">
+                        <div class="video-slides-wrp">
+                            <video src="assets/video/video0.mp4" poster="/assets/video/poster0.jpg" class="video-slider-item" width="452" height="254"></video>
+                            <video src="assets/video/video1.mp4" poster="/assets/video/poster1.jpg" class="video-slider-item" width="452" height="254"></video>
+                            <video src="assets/video/video2.mp4" poster="/assets/video/poster2.jpg" class="video-slider-item" width="452" height="254"></video>
+                            <video src="assets/video/video3.mp4" poster="/assets/video/poster3.jpg" class="video-slider-item" width="452" height="254"></video>
+                            <video src="assets/video/video4.mp4" poster="/assets/video/poster4.jpg" class="video-slider-item" width="452" height="254"></video>
+                        </div>                        
+                    </div>
+                    <div class="video-slider-controls">
+                        <div class="arrow-left"></div>
+                        <div class="video-slider-controls-dots"></div>
+                        <div class="arrow-right"></div>
                     </div>
                 </div>
             </section>
@@ -262,8 +276,8 @@
             </div>
         </footer>
     </div>
-    <script src="js/script.js" defer></script>
+    <script src="js/video.js" defer></script>
     <script src="js/welcomeSlider.js" defer></script>
-    <script src="js/comparer.js"></script>
+    <script src="js/comparer.js" defer></script>
 </body>
 </html>
