@@ -99,6 +99,16 @@ figure{
     background-color: var(--white-text);
     border: none;
 }
+.black-button{
+    padding: 0 36px;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 50px;
+    letter-spacing: 2px;
+    background-color: var(--black-text);
+    color: var(--white-text);
+    border: none;
+}
 .golden-hover:hover{
     background-color: var(--golden-text);
     transition:background-color 0.2s ease-in;
@@ -648,6 +658,7 @@ header{
     }
 }
 .tickets{
+    position: relative;
     &-form{
         margin-top: 75px;
         
@@ -662,6 +673,7 @@ header{
         font-weight: bold;
         font-size: 28px;
         line-height: 33px;
+        margin-bottom: 20px;
     }
     &-types{
         display: flex;
@@ -670,7 +682,7 @@ header{
         width:270px;
         &-radio-label{
             position: relative;
-            margin: 46px 0 2px;
+            margin: 25px 0 2px;
             font-weight: 300;
             font-size: 22px;
             line-height: 15px;
@@ -702,20 +714,26 @@ header{
             display: block;
             width: 15px;
             height: 15px;
-            border: 2px solid var(--white-text);
+            border: 2px solid var(--black-text);
             border-radius: 50%;
         }
 
         &-radio:checked + &-radio-custom{
-            background-color:  var(--white-text);
+            background-color:  var(--black-text);
             
         }
     }
     &-amount{
         width: 150px;
         margin-left: 240px;
+        &-wrp{
+            display: flex;
+            flex-direction: column;
+            gap:18px;
+            margin-top: 32px;
+        }
         &-label{
-            margin-top: 19px;
+            // margin-top: 19px;
             font-weight: 300;
             font-size: 22px;
             line-height: 15px;
@@ -730,7 +748,7 @@ header{
             font-size: 32px;
             line-height: 37px;
             text-align: center;
-            color: var(--white-text);
+            color: var(--black-text);
             background-color: transparent;
             border: none;
         }
@@ -743,15 +761,15 @@ header{
             font-size: 22px;
             line-height: 26px;
             text-align: center;
-            color: var(--white-text);
+            color: var(--black-text);
             background-color: transparent;
             border: none;
             &-wrp{
                 height: 50px;
                 width: 100%;
                 box-sizing: border-box;
-                margin: 19px 0 40px;
-                border: 3px solid var(--white-text);
+                margin: 19px 0 0;
+                border: 3px solid var(--black-text);
             }
         }
         &-input::-webkit-outer-spin-button, &-input::-webkit-inner-spin-button {
@@ -770,7 +788,190 @@ header{
         align-items: flex-end;
     }
     &-submit{
-        margin-top: 50px;
+        margin-top: 40px;
+    }
+
+    &-modal{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        &-close{
+            position: absolute;
+            top:30px;
+            right: 30px;
+            width: 25px;
+            height: 25px;
+            stroke: var(--dark-background);
+            transition: stroke 0.3s;
+            &:hover{
+                stroke: var(--golden-text);
+            }
+        }
+        &-form{
+            margin: 91px auto;
+            width: 970px;
+            padding: 0;
+            .booking-header{
+                border: none;
+                font-family: var(--font-forum);
+                font-size: 50px;
+                line-height: 55px;
+                letter-spacing: 0;
+                padding: 0;
+            }
+            & .logo{
+                width: 85px;
+                height: 41px;
+                background-image: url("assets/svg/logo-booking.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                filter: var(--golden-filter);
+            }
+            &-header{
+                position: relative;
+                &-text{
+                    display: block;
+                    margin-top: 16px;
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: var(--red-background);
+                }
+                &:after{
+                    position: absolute;
+                    bottom:-12px;
+                    content: '';
+                    width: 400px;
+                    border-bottom: 4px solid var(--red-background);
+                    opacity: 0.9;
+                }
+            }
+            &-date-wrp{
+                margin-top: 22px;
+                gap:20px;
+            }
+            &-fields-wrp{
+                width: 400px;
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                gap:20px;
+            }
+            & .input-wrp{
+                position: relative;
+                // width: 100%;
+                
+                .icon{
+                    position: absolute;
+                    top: 15px;
+                    left: 17px;
+                    width: 15px;
+                    height: 15px;
+                }
+                .icon-open{
+                    position: absolute;
+                    top:15px;
+                    right:14px;
+                    width: 17px;
+                    height: 17px;
+                    pointer-events: none;
+                }
+                input, select{
+                    width: 400px;
+                    height: 100%;
+                    padding-left: 43px;
+                    font-size: 18px;
+                    color: var(--black-text);
+                    box-sizing: border-box;
+                    border:1px solid var(--dark-background);
+                    height: 45px;
+                }
+                #tickets-date-pick, #tickets-time-pick{
+                    width: 190px;
+                }
+                input[type="date"],input[type="time"]{
+                    font-family: var(--font-roboto);
+                    font-size: 16px;
+                }
+                input[type="date"]::-webkit-inner-spin-button,
+                input[type="date"]::-webkit-calendar-picker-indicator,
+                input[type="time"]::-webkit-inner-spin-button,
+                input[type="time"]::-webkit-calendar-picker-indicator {
+                    opacity: 0;
+                }
+
+                #tickets-tel-pick ~ img{
+                    width: 16px;
+                    height: 23px;
+                    top: 11px;
+                    left: 15px;
+                }
+                #tickets-select-type{
+                    background-color: var(--white-text);
+                    appearance: none;
+                    option{
+                        background-color: var(--dark-background);
+                        color: var(--white-text);
+                        width: 300px;
+                        overflow: hidden;
+                    }
+                    option:first-of-type{
+                        display: none;
+                    }
+                }
+
+            }
+            .amounts{
+                &-wrp{
+                    width: 400px;
+                    height: 135px;
+                    padding: 10px 15px 15px;
+                    box-sizing: border-box;
+                    background-color: var(--white-text);
+                    .amount-label{
+                        font-size: 18px;
+                        margin-top: 15px;
+                        align-items: center;
+                    }
+                    .amount-btn{
+                        width: 35px;
+                        height: 25px;
+                        background-color: var(--dark-background);
+                        color: var(--white-text);
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                    .amount-input{
+                        width: 33px;
+                        height: 22px;
+                        padding: 0;
+                        font-size: 18px;
+                        text-align: center;
+                        color: var(--dark-background);
+                        background-color: var(--white-text);
+                    }
+                    .amount-input::-webkit-outer-spin-button, .amount-input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0; 
+                    }
+                }
+                &-header{
+                    font-size: 18px;
+                    color: var(--golden-text);
+                    &:after{
+                        content: '';
+                        display: block;
+                        width: 370px;
+                        margin-top: 3px;
+                        border-bottom: 2px solid var(--red-background);
+                    }
+                }
+                
+                
+            }
+        }
     }
 }
 .contacts{
