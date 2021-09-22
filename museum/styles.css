@@ -1404,7 +1404,9 @@ header {
   border-left: 0.5px solid #A4A4A3;
   background-color: var(--white-text);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 10px 12px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
 .tickets-modal-form .card-face .card-input-exp-wrp .up-btn {
@@ -1413,8 +1415,9 @@ header {
 }
 
 .tickets-modal-form .card-face .card-input-exp-wrp .down-btn {
-  bottom: 2px;
+  bottom: 1px;
   background-image: url(assets/svg/card-arrow-down.svg);
+  background-position: 10px 4px;
 }
 
 .tickets-modal-form .card-face .card-input-exp:first-of-type {

@@ -1134,17 +1134,21 @@ header{
                                     border-left: 0.5px solid #A4A4A3;
                                     background-color: var(--white-text);
                                     background-repeat: no-repeat;
-                                    background-position: center;
-                                    
+                                    background-position: 10px 12px;
+                                    transition: background-color 0.3s;
                                 }
                                 .up-btn{
                                     top: 6px;
                                     background-image: url(assets/svg/card-arrow-up.svg);
                                     }
                                 .down-btn{
-                                    bottom: 2px;
+                                    bottom: 1px;
                                     background-image: url(assets/svg/card-arrow-down.svg);
-                                }   
+                                    background-position: 10px 4px;
+                                }  
+                                // .up-btn:hover, .down-btn:hover{
+                                //     background-color: #A4A4A3;
+                                // } 
                             }    
                         }
                         &-exp:first-of-type{
