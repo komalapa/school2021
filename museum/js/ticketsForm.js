@@ -31,3 +31,13 @@ timeEl.addEventListener('focus', formatTimeOnFocusIn);
 // if(opt.textContent.length>20)
 // opt.textContent=x.textContent.substring(0,20)+'...';
 // })
+
+function humanReadableDate(date){
+    console.log(date)
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+    return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`
+}
+const testDate = new Date ('2022-08-19  16:30');
+document.querySelector('#overview-date').innerHTML = humanReadableDate(testDate)
+document.querySelector('#overview-time').innerHTML = testDate.getHours() + ':' + testDate.getMinutes()

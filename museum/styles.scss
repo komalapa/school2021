@@ -971,6 +971,89 @@ header{
                 
                 
             }
+            .right-col{
+                width: 530px;
+                height: 663px;
+                padding: 25px 30px;
+                box-sizing: border-box;
+                margin-left: 40px;
+                border:1px solid var(--dark-background);
+            }
+            &-img{
+                float: right;
+                width: 150px;
+                height: 120px;
+                background-image: url("assets/img/tickets-small-img.jpg");
+                background-size: cover;
+            }
+            &-overview{
+                &-header{
+                    margin: 0;
+                    width: fit-content;
+                    font-weight: 500;
+                    font-size: 32px;
+                    color:#272727;
+                }
+            }
+            &-tour{
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 26px;
+                color: var(--red-background);
+                opacity: 0.9;
+                margin-bottom: 10px;
+            }
+            &-total{
+                margin-top:15px;
+                color: var(--dark-background);
+                .line{
+                    position: relative;;
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 22px;
+                    margin-bottom: 6px;
+                    line-height: 28px;
+                    .total-amount{
+                        display: inline-block;
+                        min-width: 32px;
+                        height: 21px;
+                        font-size: 18px;
+                        line-height: 21px;
+                        text-align: center;
+                        border-radius: 6px;
+                        background-color: var(--dark-background);
+                        color: var(--white-text);
+                    }
+                    
+                }
+                .line-total{
+                    margin-top: 21px;
+                    font-size: 32px;
+                    line-height: 37px;
+                    .sum{
+                        font-weight: 500;
+                    }
+                }
+                .line-total:before{
+                    position: absolute;
+                    top:-13px;
+                    content: '';
+                    display: block;
+                    width: 470px;
+                    border-bottom: 2px solid var(--red-background) ;
+                }
+            }
+            .icon{
+                width: 17px;
+                height: 23px;
+                margin-right: 10px;
+            }
+            .icon ~ span{
+                padding-top: 2px;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 21px;
+            }
         }
     }
 }
