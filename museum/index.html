@@ -297,115 +297,145 @@
                                 <path d="M26 1L1 26" />
                             </svg>
                         </div>
-                        <form action="#" class="tickets-modal-form flex-row">
-                            <div class="left-col">
-                                <div class="tickets-modal-form-header">
-                                    <div class="logo"></div> 
-                                    <h3 class="section-header golden-font booking-header">Booking tickets</h3>
-                                    <span class="tickets-modal-form-header-text">Tour to Louvre</span>
-                                </div>
-                                <div class="tickets-modal-form-fields-wrp">
-                                    <div class="tickets-modal-form-date-wrp flex-row">
+                        <form action="#" class="tickets-modal-form ">
+                            <div class="tickets-modal-form-wrp flex-row">
+                                <div class="left-col">
+                                    <div class="tickets-modal-form-header">
+                                        <div class="logo"></div> 
+                                        <h3 class="section-header golden-font booking-header">Booking tickets</h3>
+                                        <span class="tickets-modal-form-header-text">Tour to Louvre</span>
+                                    </div>
+                                    <div class="tickets-modal-form-fields-wrp">
+                                        <div class="tickets-modal-form-date-wrp flex-row">
+                                            <div class="input-wrp">
+                                                <input type="text" name="tickets-date-pick" id="tickets-date-pick"
+                                                    class="tickets-modal-form-date" placeholder="Date">
+                                                <!-- <span class="placeholder">Date</span>; -->
+                                                <img src="assets/svg/date.svg" alt="date icon" class="icon">
+                                                <img src="assets/svg/arrow-down.svg" alt="date icon" class="icon-open">
+                                            </div>
+                                            <div class="input-wrp">
+                                                <input type="text" name="tickets-time-pick" id="tickets-time-pick"
+                                                    class="tickets-modal-form-date" placeholder="Time">
+                                                <img src="assets/svg/time.svg" alt="date icon" class="icon">
+                                                <img src="assets/svg/arrow-down.svg" alt="date icon" class="icon-open"><img
+                                                    src="assets/svg/arrow-down.svg" alt="date icon" class="icon-open">
+                                            </div>
+                                        </div>
                                         <div class="input-wrp">
-                                            <input type="text" name="tickets-date-pick" id="tickets-date-pick"
-                                                class="tickets-modal-form-date" placeholder="Date">
-                                            <!-- <span class="placeholder">Date</span>; -->
+                                            <input type="text" name="tickets-name-pick" id="tickets-name-pick"
+                                                class="tickets-modal-form-name" placeholder="Name">
+                                            <img src="assets/svg/name.svg" alt="date icon" class="icon">
+                                        </div>
+                                        <div class="input-wrp">
+                                            <input type="email" name="tickets-email-pick" id="tickets-email-pick"
+                                                class="tickets-modal-form-email" placeholder="Email">
+                                            <img src="assets/svg/email.svg" alt="date icon" class="icon">
+                                        </div>
+                                        <div class="input-wrp">
+                                            <input type="tel" name="tickets-tel-pick" id="tickets-tel-pick"
+                                                class="tickets-modal-form-tel" placeholder="Phone">
+                                            <img src="assets/svg/tel.svg" alt="date icon" class="icon">
+                                        </div>
+                                        <div class="input-wrp">
+                                            <select name="tickets-select-type" id="tickets-select-type"
+                                                class="tickets-modal-form-type" placeholder="Ticket Type">
+                                                <option value="" disabled selected>Ticket Type</option>
+                                                <option value="Basic">Basic</option>
+                                                <option value="Senior">Senior</option>
+                                            </select>
+                                            <img src="assets/svg/type.svg" alt="date icon" class="icon">
+                                        </div>
+                                        <div class="amounts-wrp">
+                                            <span class="amounts-header">Entry ticket</span>
+                                            <label class="amount-label flex-row flex-space-between">
+                                                Basic 18+ (20 €)
+                                                <div class="amount-input-wrp flex-row">
+                                                    <button class="amount-btn" type="button"
+                                                        onclick="this.nextElementSibling.stepDown()">–</button>
+                                                    <input class="amount-input" type="number" min="0"
+                                                        name="tickets-18-amount-modal" id="tickets-18-amount-modal" value="1">
+                                                    <button class="amount-btn" type="button"
+                                                        onclick="this.previousElementSibling.stepUp()">+</button>
+                                                </div>
+                                            </label>
+                                            <label class="amount-label flex-row flex-space-between">
+                                                Senior 65+ (10 €)
+                                                <div class="amount-input-wrp flex-row">
+                                                    <button class="amount-btn" type="button"
+                                                        onclick="this.nextElementSibling.stepDown()">–</button>
+                                                    <input class="amount-input" type="number" min="0"
+                                                        name="tickets-65-amount-modal" id="tickets-65-amount-modal" value="1">
+                                                    <button class="amount-btn" type="button"
+                                                        onclick="this.previousElementSibling.stepUp()">+</button>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="right-col">
+                                    <div class="tickets-modal-form-overview">
+                                        <div class="tickets-modal-form-img"></div>
+                                        <h4 class="tickets-modal-form-overview-header">Overview</h4>
+                                        <div class="tickets-modal-form-tour">Tour to Louvre</div>
+                                        <div class="tickets-modal-form-date">
                                             <img src="assets/svg/date.svg" alt="date icon" class="icon">
-                                            <img src="assets/svg/arrow-down.svg" alt="date icon" class="icon-open">
+                                            <span id="overview-date"></span>
                                         </div>
-                                        <div class="input-wrp">
-                                            <input type="text" name="tickets-time-pick" id="tickets-time-pick"
-                                                class="tickets-modal-form-date" placeholder="Time">
+                                        <div class="tickets-modal-form-time">
                                             <img src="assets/svg/time.svg" alt="date icon" class="icon">
-                                            <img src="assets/svg/arrow-down.svg" alt="date icon" class="icon-open"><img
-                                                src="assets/svg/arrow-down.svg" alt="date icon" class="icon-open">
+                                            <span id="overview-time"></span>
+                                        </div>
+                                        <div class="tickets-modal-form-exhib">
+                                            <img src="assets/svg/check_circle_outline.svg" alt="date icon" class="icon">
+                                            <span id="overview-time">Temporary exhibition</span>
                                         </div>
                                     </div>
-                                    <div class="input-wrp">
-                                        <input type="text" name="tickets-name-pick" id="tickets-name-pick"
-                                            class="tickets-modal-form-name" placeholder="Name">
-                                        <img src="assets/svg/name.svg" alt="date icon" class="icon">
+                                    <div class="tickets-modal-form-total">
+                                        <div class="line">
+                                            <span class="tickets"><span class="total-amount">2</span> Basic (20 €)</span>
+                                            <span class="sum">40 €</span>
+                                        </div>
+                                        <div class="line">
+                                            <span class="tickets"><span class="total-amount">2</span> Senior (10 €)</span>
+                                            <span class="sum">20 €</span>
+                                        </div>
+                                        <div class="line-total line">
+                                            <span class="total">Total:</span>
+                                            <span class="sum" id="total-sum">60 €</span>
+                                        </div>
                                     </div>
-                                    <div class="input-wrp">
-                                        <input type="email" name="tickets-email-pick" id="tickets-email-pick"
-                                            class="tickets-modal-form-email" placeholder="Email">
-                                        <img src="assets/svg/email.svg" alt="date icon" class="icon">
-                                    </div>
-                                    <div class="input-wrp">
-                                        <input type="tel" name="tickets-tel-pick" id="tickets-tel-pick"
-                                            class="tickets-modal-form-tel" placeholder="Phone">
-                                        <img src="assets/svg/tel.svg" alt="date icon" class="icon">
-                                    </div>
-                                    <div class="input-wrp">
-                                        <select name="tickets-select-type" id="tickets-select-type"
-                                            class="tickets-modal-form-type" placeholder="Ticket Type">
-                                            <option value="" disabled selected>Ticket Type</option>
-                                            <option value="Basic">Basic</option>
-                                            <option value="Senior">Senior</option>
-                                        </select>
-                                        <img src="assets/svg/type.svg" alt="date icon" class="icon">
-                                    </div>
-                                    <div class="amounts-wrp">
-                                        <span class="amounts-header">Entry ticket</span>
-                                        <label class="amount-label flex-row flex-space-between">
-                                            Basic 18+ (20 €)
-                                            <div class="amount-input-wrp flex-row">
-                                                <button class="amount-btn" type="button"
-                                                    onclick="this.nextElementSibling.stepDown()">–</button>
-                                                <input class="amount-input" type="number" min="0"
-                                                    name="tickets-18-amount-modal" id="tickets-18-amount-modal" value="1">
-                                                <button class="amount-btn" type="button"
-                                                    onclick="this.previousElementSibling.stepUp()">+</button>
+                                    <div class="card">
+                                        <div class="card-face">
+                                            <img src="assets/svg/Visa.svg" alt="visa pay" class="pay-visa">
+                                            <img src="assets/svg/Mastercard.svg" alt="mastercard pay" class="pay-mc">
+                                            <label class="card-number card-label">Card number<input class="card-input card-input-number" type="text" name="card-number" id="card-number"></label>
+                                            <div class="card-exp card-label">Expiration date
+                                                <div class="exp-wrp flex-row">
+                                                    <div class="card-input-exp-wrp">
+                                                        <button type="button" class="up-btn" onclick="stepper(this,'up')"></button>
+                                                        <input class="card-input card-input-exp" type="number" name="card-exp-m" id="card-exp-m" min="1" max="12">
+                                                        <button type="button" class="down-btn" onclick="stepper(this,'down')"></button>
+                                                    </div>
+                                                    <div class="card-input-exp-wrp">
+                                                        <button type="button" class="up-btn" onclick="stepper(this,'up')"></button>
+                                                        <input class="card-input card-input-exp" type="number" name="card-exp-y" id="card-exp-y" min="2021" max="2999">    
+                                                        <button type="button" class="down-btn" onclick="stepper(this,'down')"></button>
+                                                    </div>
+                                                    
+                                                </div>
                                             </div>
-                                        </label>
-                                        <label class="amount-label flex-row flex-space-between">
-                                            Senior 65+ (10 €)
-                                            <div class="amount-input-wrp flex-row">
-                                                <button class="amount-btn" type="button"
-                                                    onclick="this.nextElementSibling.stepDown()">–</button>
-                                                <input class="amount-input" type="number" min="0"
-                                                    name="tickets-65-amount-modal" id="tickets-65-amount-modal" value="1">
-                                                <button class="amount-btn" type="button"
-                                                    onclick="this.previousElementSibling.stepUp()">+</button>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="right-col">
-                                <div class="tickets-modal-form-overview">
-                                    <div class="tickets-modal-form-img"></div>
-                                    <h4 class="tickets-modal-form-overview-header">Overview</h4>
-                                    <div class="tickets-modal-form-tour">Tour to Louvre</div>
-                                    <div class="tickets-modal-form-date">
-                                        <img src="assets/svg/date.svg" alt="date icon" class="icon">
-                                        <span id="overview-date"></span>
-                                    </div>
-                                    <div class="tickets-modal-form-time">
-                                        <img src="assets/svg/time.svg" alt="date icon" class="icon">
-                                        <span id="overview-time"></span>
-                                    </div>
-                                    <div class="tickets-modal-form-exhib">
-                                        <img src="assets/svg/check_circle_outline.svg" alt="date icon" class="icon">
-                                        <span id="overview-time">Temporary exhibition</span>
-                                    </div>
-                                </div>
-                                <div class="tickets-modal-form-total">
-                                    <div class="line">
-                                        <span class="tickets"><span class="total-amount">2</span> Basic (20 €)</span>
-                                        <span class="sum">40 €</span>
-                                    </div>
-                                    <div class="line">
-                                        <span class="tickets"><span class="total-amount">2</span> Senior (10 €)</span>
-                                        <span class="sum">20 €</span>
-                                    </div>
-                                    <div class="line-total line">
-                                        <span class="total">Total:</span>
-                                        <span class="sum" id="total-sum">60 €</span>
+                                            <label class="card-name card-label">Cardholder name<input class="card-input card-input-name" type="text" name="card-name" id="card-name"></label>
+                                            
+                                        </div>
+                                        <div class="card-cvv">
+    
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </form>
                     </div>
                 </div>

@@ -797,7 +797,7 @@ header{
         left:0;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.95);
         &-close{
             position: absolute;
             top:30px;
@@ -811,8 +811,14 @@ header{
             }
         }
         &-form{
-            margin: 91px auto;
-            width: 970px;
+            &-wrp{
+                width: fit-content;
+                margin: 0 auto;
+                padding: 91px 235px;
+                // background-color: var(--white-text);
+            }
+            // margin: 91px auto;
+            // width: 970px;
             padding: 0;
             .booking-header{
                 border: none;
@@ -1028,6 +1034,7 @@ header{
                 }
                 .line-total{
                     margin-top: 21px;
+                    margin-bottom: 12px;
                     font-size: 32px;
                     line-height: 37px;
                     .sum{
@@ -1054,6 +1061,99 @@ header{
                 font-size: 18px;
                 line-height: 21px;
             }
+            .card{
+                position: relative;
+                &-face{
+                    position: relative;
+                    width: 360px;
+                    height: 211px;
+                    padding: 10px 20px;
+                    box-sizing: border-box;
+                    background-color: #bcbcbc;
+                    .pay-visa{
+                        position: absolute;
+                        top:33px;
+                        right: 20px;
+                        width: 55px;
+                        height: 16px;
+                    }
+                    .pay-mc{
+                        position: absolute;
+                        top:64px;
+                        right: 20px;
+                        width: 53px;
+                        height: 32px;
+                    }
+                    .card-label{
+                        font-size: 12px;
+                        line-height: 14px;
+                        color: #161615;
+                    }
+                    .card-name{
+                        display: inline-block;
+                        margin-top: 10px;
+                    }
+
+                    .card-exp{
+                        position: relative;
+                        margin-top: 10px;
+                    }
+                    .card-input{
+                        display: block;
+                        margin-top: 5px;
+                        height: 35px;
+                        width: 215px;
+                        background: #FFFFFF;
+                        border: 0.5px solid #A4A4A3;
+                        padding: 0 5px;
+                        box-sizing: border-box;
+                        &-name{
+                            text-transform: uppercase;
+                            width: 320px;
+                        }
+                        &-exp{
+                            position: relative;
+                            width: 100px;
+                            input[type=number]::-webkit-inner-spin-button {
+                                // -webkit-appearance: none;
+                                height: 17px;
+                                width: 28px;
+                            }
+                            
+                            &-wrp{
+                                position: relative;
+                                .up-btn, .down-btn{
+                                    position: absolute;
+                                    right:11px;
+                                    z-index: 2;
+                                    content: '';
+                                    display: block;
+                                    width: 28px;
+                                    height: 18px;
+                                    border:none;
+                                    border-left: 0.5px solid #A4A4A3;
+                                    background-color: var(--white-text);
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                    
+                                }
+                                .up-btn{
+                                    top: 6px;
+                                    background-image: url(assets/svg/card-arrow-up.svg);
+                                    }
+                                .down-btn{
+                                    bottom: 2px;
+                                    background-image: url(assets/svg/card-arrow-down.svg);
+                                }   
+                            }    
+                        }
+                        &-exp:first-of-type{
+                            margin-right: 14px;
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
