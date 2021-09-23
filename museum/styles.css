@@ -245,7 +245,7 @@ header {
 .menu-item-link {
   font-weight: 200;
   font-size: 23px;
-  letter-spacing: 1.65px;
+  letter-spacing: 2px;
   color: var(--white-text);
 }
 
