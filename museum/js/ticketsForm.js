@@ -25,12 +25,6 @@ const timeEl = document.querySelector('#tickets-time-pick');
 timeEl.addEventListener('focusout', formatOnTimeFocusOut);
 timeEl.addEventListener('focus', formatTimeOnFocusIn);
 
-//small options in select
-// const selectOpts=document.querySelector('#tickets-select-type').querySelectorAll('option')
-// selectOpts.forEach(opt=>{
-// if(opt.textContent.length>20)
-// opt.textContent=x.textContent.substring(0,20)+'...';
-// })
 
 function humanReadableDate(date){
     console.log(date)
@@ -115,3 +109,21 @@ function stepper(that,direction){ //for using as onclick for step buttons in car
         that.previousElementSibling.dispatchEvent(event)
     }
 }
+
+//select in booking form
+const selectCheckbox = document.querySelector('#select-is-open');
+let ticketType = '';
+const options = document.querySelectorAll('.select-option')
+options.forEach(opt =>{
+    opt.addEventListener('click', (e)=>{
+        selectCheckbox.checked = false;
+        ticketType = e.target.dataset.type;
+        console.log(ticketType)
+    })
+})
+const openIcon = document.querySelector('#select-icon-open');
+selectCheckbox.addEventListener('input',()=>{
+    console.log(openIcon)
+    openIcon.style.transform = selectCheckbox.checked ? 'rotate(180deg)': ''
+})
+

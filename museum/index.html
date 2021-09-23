@@ -338,14 +338,21 @@
                                             <img src="assets/svg/tel.svg" alt="date icon" class="icon">
                                         </div>
                                         <div class="input-wrp">
-                                            <select name="tickets-select-type" id="tickets-select-type"
-                                                class="tickets-modal-form-type" placeholder="Ticket Type">
-                                                <option value="" disabled selected>Ticket Type</option>
-                                                <option value="Basic">Basic</option>
-                                                <option value="Senior">Senior</option>
-                                            </select>
+                                            <div name="tickets-select-type" id="tickets-select-type"
+                                                class="tickets-modal-form-type select">
+                                                Ticket Type
+                                                <input type="checkbox" name="select-is-open" id="select-is-open" class="select-checkbox">
+                                                <div class="select-wrp">
+                                                    <div class="select-option" data-type="permanent">Permanent exhibition</div>
+                                                    <div class="select-option" data-type="temporary">Temporary exhibition</div>
+                                                    <div class="select-option" data-type="combined">Combined Admission</div>
+                                                </div>
+                                                
+                                        </div>
+                                            
                                             <img src="assets/svg/type.svg" alt="date icon" class="icon">
-                                            <img src="assets/svg/arrow-down.svg" alt="date icon" class="icon-open">
+                                            <img src="assets/svg/arrow-down.svg" alt="date icon" id="select-icon-open" class="icon-open">
+                                            
                                         </div>
                                         <div class="amounts-wrp">
                                             <span class="amounts-header">Entry ticket</span>
