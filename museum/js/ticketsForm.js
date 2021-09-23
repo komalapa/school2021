@@ -1,5 +1,5 @@
 function initTicketsForm(){
-    let formIsOpen = false;
+    let formIsOpen = true;
     const modalForm = document.querySelector('.tickets-modal')
     function formSwitcher(e){
         formIsOpen = !formIsOpen;
