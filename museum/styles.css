@@ -994,12 +994,21 @@ header {
 }
 
 .tickets-modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
   -webkit-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
 }
@@ -1030,6 +1039,7 @@ header {
   width: fit-content;
   margin: 0 auto;
   padding: 91px 235px;
+  background-color: var(--white-text);
 }
 
 .tickets-modal-form .booking-header {
@@ -1540,12 +1550,20 @@ header {
   float: right;
 }
 
+.parallax {
+  width: 100%;
+  height: 400px;
+  background-image: url("assets/img/parallax.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .contacts-wrp {
   width: 282px;
 }
 
 .contacts-name {
-  margin: 85px 0 37px;
+  margin: 75px 0 50px;
   font-weight: 500;
   font-size: 28px;
   line-height: 34px;
@@ -1558,7 +1576,7 @@ header {
 }
 
 .contacts-list-item {
-  margin-top: 20px;
+  margin-top: 25px;
   font-weight: 300;
   font-size: 22px;
   line-height: 26px;
@@ -1571,8 +1589,14 @@ header {
   background: url("assets/img/map.png") no-repeat;
 }
 
+.footer {
+  padding: 80px 0 0;
+  height: 392px;
+}
+
 .footer-container {
   margin-top: 1px;
+  margin-bottom: 33px;
 }
 
 .footer-menu {
@@ -1585,18 +1609,22 @@ header {
           flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 25px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: 150px;
   margin-left: 145px;
 }
 
 .footer-menu-item {
-  margin-right: 155px;
+  margin-right: 140px;
 }
 
 .footer-socials {
   list-style: none;
   padding: 0;
-  margin: 0 0 13px 505px;
+  margin: 0 0 20px 510px;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -1619,10 +1647,11 @@ header {
 .footer-socials-item-link:hover {
   -webkit-filter: var(--golden-filter);
           filter: var(--golden-filter);
-  -webkit-transition: -webkit-filter 0.2s ease-in;
-  transition: -webkit-filter 0.2s ease-in;
-  transition: filter 0.2s ease-in;
-  transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+  border-color: var(--golden-text);
+  -webkit-transition: border-color 0.2s ease-in, -webkit-filter 0.2s ease-in;
+  transition: border-color 0.2s ease-in, -webkit-filter 0.2s ease-in;
+  transition: filter 0.2s ease-in, border-color 0.2s ease-in;
+  transition: filter 0.2s ease-in, border-color 0.2s ease-in, -webkit-filter 0.2s ease-in;
 }
 
 .footer-socials-item-link:active {
@@ -1652,5 +1681,26 @@ header {
 
 #social-fb {
   background-position: 192px;
+}
+
+.additional-footer {
+  width: 100%;
+  height: 125px;
+  padding-top: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 200;
+  font-size: 22px;
+  letter-spacing: 2px;
+  border-top: 3px solid #666666;
+}
+
+.additional-footer-link {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.additional-footer-link:hover {
+  color: var(--golden-text);
 }
 /*# sourceMappingURL=styles.css.map */
