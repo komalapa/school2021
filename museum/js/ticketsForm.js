@@ -10,9 +10,11 @@ function initTicketsForm(){
     document.querySelector('.tickets-modal-close').addEventListener('click', formSwitcher)
     document.querySelector('.tickets-submit').addEventListener('click', formSwitcher)
     const overlay = document.querySelector('.tickets-modal')
-    const form = document.querySelector('.tickets-modal-form-wrp')
+    // const formWrp = document.querySelector('.tickets-modal-form-wrp')
+    // const form = document.querySelector('.tickets-modal-form')
     overlay.addEventListener('click', (e)=>{
-        if (e.target == overlay || e.target==form) formSwitcher();
+        console.log(e.target)
+        if (e.target == overlay) formSwitcher();
     })
     
 

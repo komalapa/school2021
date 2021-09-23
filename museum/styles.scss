@@ -201,9 +201,8 @@ header{
         &-link{
             font-weight: 200;
             // font-size: 22px;
-            // letter-spacing: 2px;
             font-size: 23px;
-            letter-spacing: 1.65px;
+            letter-spacing: 2px;
             color: var(--white-text);
         }
         &-link:hover,&-link:active{
@@ -792,12 +791,17 @@ header{
     }
 
     &-modal{
-        position: absolute;
+        position: fixed;
         top:0;
         left:0;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
+        // width: 100vw;
+        // height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
         transition: left 0.3s ease-in;
         &-close{
             position: absolute;
@@ -817,7 +821,7 @@ header{
                 width: fit-content;
                 margin: 0 auto;
                 padding: 91px 235px;
-                // background-color: var(--white-text);
+                background-color: var(--white-text);
             }
             // margin: 91px auto;
             // width: 970px;
@@ -1257,12 +1261,20 @@ header{
         }
     }
 }
+
+.parallax{
+    width: 100%;
+    height: 400px;
+    background-image: url("assets/img/parallax.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
 .contacts{
     &-wrp{
         width:282px
     }
     &-name{
-        margin: 85px 0 37px;
+        margin: 75px 0 50px;
         font-weight: 500;
         font-size: 28px;
         line-height: 34px;
@@ -1272,7 +1284,7 @@ header{
         padding: 0;
         list-style: none;
         &-item{
-            margin-top: 20px;
+            margin-top: 25px;
             font-weight: 300;
             font-size: 22px;
             line-height: 26px;
@@ -1285,25 +1297,31 @@ header{
         background: url("assets/img/map.png") no-repeat;
     }
 }
-
+.footer{
+    padding: 80px 0 0;
+    height: 392px;
+}
 .footer-container{
     margin-top: 1px;
+    margin-bottom: 33px;
 }
 .footer-menu{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    gap:25px;
+    justify-content: flex-start;
     height: 150px;
     margin-left: 145px;
     &-item{
-        margin-right: 155px;
+        margin-right: 140px;
     }
 }
 
 .footer-socials{
     list-style: none;
     padding: 0;
-    margin: 0 0 13px 505px;
+    margin: 0 0 20px 510px;
     align-self: flex-end;
     &-item{
         margin-right: 24px;
@@ -1320,7 +1338,8 @@ header{
     
     &-item-link:hover{
         filter: var(--golden-filter);
-        transition:filter 0.2s ease-in;
+        border-color: var(--golden-text);
+        transition:filter 0.2s ease-in, border-color 0.2s ease-in;
     }
     &-item-link:active{
         transform: scale(0.9);
@@ -1341,4 +1360,23 @@ header{
 }
 #social-fb{
     background-position: 192px;
+}
+
+.additional-footer{
+    width: 100%;
+    height: 125px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    font-weight: 200;
+    font-size: 22px;
+    letter-spacing: 2px;
+
+    
+    border-top: 3px solid #666666;
+    &-link{
+        transition: color 0.3s;
+    }
+    &-link:hover{
+        color: var(--golden-text);
+    }   
 }
