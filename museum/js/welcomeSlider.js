@@ -34,7 +34,7 @@ function initSlider(){
 
 
     const sliderWidth = welcomeSliderContent.clientWidth;
-    console.log(sliderWidth)
+    // console.log(sliderWidth)
 
     function changeSlide(number = activeSlide, direction = null){
         if (!inTransition){
@@ -47,7 +47,7 @@ function initSlider(){
             if (direction === 'l'){
                 activeSlide = activeSlide-1  //>= 0 ? activeSlide - 1 : sliderLength -1;
             }
-            console.log(activeSlide);
+            // console.log(activeSlide);
             document.documentElement.style.setProperty('--welcome-slider-offset', -((activeSlide+1)*sliderWidth)+'px');
             // inTransition = true;
             if (activeSlide < 0){
