@@ -285,20 +285,22 @@
 
                                 <span class="tickets-strong-text tickets-cost">Total &euro;<span>220</span></span>
                             </div>
-                            <button type="submit" class="tickets-submit black-button golden-hover">Buy Now</button>
+                            <button type="button" class="tickets-submit black-button golden-hover">Buy Now</button>
                         </div>
 
                     </form>
                     <div class="tickets-modal">
-                        <div class="tickets-modal-close">
-                            <svg width="25" height="25" viewBox="0 0 27 27" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L26 26" />
-                                <path d="M26 1L1 26" />
-                            </svg>
-                        </div>
-                        <form action="#" class="tickets-modal-form ">
+                        
+                        <form action="#tickets" class="tickets-modal-form">
+
                             <div class="tickets-modal-form-wrp flex-row">
+                                <div class="tickets-modal-close">
+                                    <svg width="25" height="25" viewBox="0 0 27 27" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L26 26" />
+                                        <path d="M26 1L1 26" />
+                                    </svg>
+                                </div>
                                 <div class="left-col">
                                     <div class="tickets-modal-form-header">
                                         <div class="logo"></div> 
@@ -414,7 +416,7 @@
                                             <span class="sum" id="total-sum">60 €</span>
                                         </div>
                                     </div>
-                                    <div class="card">
+                                    <div class="card credit-card">
                                         <div class="card-face">
                                             <img src="assets/svg/Visa.svg" alt="visa pay" class="pay-visa">
                                             <img src="assets/svg/Mastercard.svg" alt="mastercard pay" class="pay-mc">
@@ -438,9 +440,11 @@
                                             
                                         </div>
                                         <div class="card-cvv">
-    
+                                            <label class="card-label-cvv card-label">CVC/CVV<input class="card-input card-input-cvv" type="text" name="card-cvv" id="card-cvv"></label>
+                                            <div class="card-cvv-info">The last<br>3 or 4 digits<br>on back<br>of the card</div>
                                         </div>
                                     </div>
+                                    <button class="book-submit red-button golden-hover">Book</button>
                                 </div>
                             </div>
                             
