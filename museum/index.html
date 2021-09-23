@@ -46,7 +46,7 @@
                     <div class="welcome-content-wrp">
                         <h2>Welcome<br>to the Louvre</h2>
                         <p class="welcome-text">From the castle to the museum</p>
-                        <button class="red-button golden-hover welcome-button">Discover the Louvre</button>
+                        <a href="tours/tour0.html" class="red-button golden-hover welcome-button" target="_blank">Discover the Louvre</a>
                     </div>
                     <div class="welcome-slider">
                         <div class="welcome-slider-content">
@@ -79,16 +79,18 @@
                 <div class="section-container">
                     <h2 class="section-header golden-font">Virtual tour</h2>
                     <div class="visiting-cards-wrp flex-row flex-space-between flex-wrap">
+                    <a href="tours/tour1.html" class="visiting-link"  target="_blank">
                         <figure class="card">
                             <img src="assets/img/royal-palace.jpg" alt="royal palace interior" class="card-img"
                                 width="440" height="285">
                             <figcaption>
                                 <h3 class="card-header">Royal Palace</h3>
-                                <a href="" class="card-tour golden-font-hover" target="_blank">360° Virtual Tour</a>
-                                <a href="" class="card-googlestreet golden-font-hover" target="_blank">Google Street
-                                    Panorama View</a>
+                                <span class="card-tour golden-font-hover" target="_blank">360° Virtual Tour</span>
+                                <span class="card-googlestreet golden-font-hover" target="_blank">Google Street
+                                    Panorama View</span>
                             </figcaption>
                         </figure>
+                    </a>
                         <figure class="card">
                             <img src="assets/img/denon-wing.jpg" alt="Denon Wing photo" class="card-img" width="440"
                                 height="285">
@@ -304,7 +306,7 @@
                                 <div class="left-col">
                                     <div class="tickets-modal-form-header">
                                         <div class="logo"></div> 
-                                        <h3 class="section-header golden-font booking-header">Booking tickets</h3>
+                                        <h4 class="section-header golden-font booking-header">Booking tickets</h3>
                                         <span class="tickets-modal-form-header-text">Tour to Louvre</span>
                                     </div>
                                     <div class="tickets-modal-form-fields-wrp">
@@ -516,6 +518,7 @@
             </div>
         </footer>
     </div>
+
     <script src="js/video.js" defer></script>
     <script src="js/welcomeSlider.js" defer></script>
     <script src="js/comparer.js" defer></script>

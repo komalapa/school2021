@@ -22,7 +22,7 @@ body{
     font-style: normal;
 }
 
-h2, h3{
+h2, h3, h4{
     margin: 0;
     text-transform: uppercase;
     font-family: var(--font-forum);
@@ -343,6 +343,9 @@ header{
 
 .visiting{
     padding-bottom: 2px;
+    &-link{
+        display: block;
+    }
     &-cards-wrp{
         margin-top: 75px;
         column-gap: 60px;
