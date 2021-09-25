@@ -14,6 +14,7 @@
     --video-slider-step:495px;
     --video-slider-offset: calc(-3*var(--video-slider-step))  
 }
+
 html{
     scroll-behavior: smooth;
 }
@@ -1271,6 +1272,7 @@ header{
                 }
             }
             .book-submit{
+                position: relative;
                 width: 220px;
                 height: 45px;
                 border-radius: 0;
@@ -1278,7 +1280,26 @@ header{
                 line-height: 45px;
                 padding: 0;
                 float: right;
+                overflow: hidden;
             }
+
+            // animations
+            @keyframes ripple {
+                to {
+                transform: scale(3);
+                opacity: 0;
+                }
+            }
+            .ripple {
+                position: absolute;
+                z-index: 10;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.4s linear;
+                background-color:var(--red-background);
+                opacity: 0.6;
+            }
+            
         }
     }
 }

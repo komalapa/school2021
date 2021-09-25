@@ -1556,6 +1556,7 @@ header {
 }
 
 .tickets-modal-form .book-submit {
+  position: relative;
   width: 220px;
   height: 45px;
   border-radius: 0;
@@ -1563,6 +1564,35 @@ header {
   line-height: 45px;
   padding: 0;
   float: right;
+  overflow: hidden;
+}
+
+@-webkit-keyframes ripple {
+  to {
+    -webkit-transform: scale(3);
+            transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  to {
+    -webkit-transform: scale(3);
+            transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.tickets-modal-form .ripple {
+  position: absolute;
+  z-index: 10;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-animation: ripple 0.4s linear;
+          animation: ripple 0.4s linear;
+  background-color: var(--red-background);
+  opacity: 0.6;
 }
 
 .parallax {
