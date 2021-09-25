@@ -166,7 +166,7 @@ header{
         position: relative;
         width: 49px;
         height: 26px;
-        background: url("assets/svg/logo.svg") no-repeat;
+        background: url("../assets/svg/logo.svg") no-repeat;
     }
     &-text{
         display: block;
@@ -318,10 +318,10 @@ header{
                 filter: var(--golden-filter);
             }
             .arrow-left{
-                background-image: url('assets/svg/arrow-left.svg');
+                background-image: url('../assets/svg/arrow-left.svg');
             }
             .arrow-right{
-                background-image: url('assets/svg/arrow-right.svg');
+                background-image: url('../assets/svg/arrow-right.svg');
             }
         }
         &-content{
@@ -500,26 +500,26 @@ header{
         }
         &-back{
             width: 27px;
-            background: url("assets/svg/back.svg") no-repeat;
+            background: url("../assets/svg/back.svg") no-repeat;
         }
         &-play{
             width: 23px;
-            background: url("assets/svg/play.svg") no-repeat;
+            background: url("../assets/svg/play.svg") no-repeat;
         }
         &-forward{
             width: 27px;
-            background: url("assets/svg/forvard.svg") no-repeat;
+            background: url("../assets/svg/forvard.svg") no-repeat;
         }
         &-mute{
             // margin-right: 20px;
             width: 38px;
-            background: url("assets/svg/volume.svg") no-repeat;
+            background: url("../assets/svg/volume.svg") no-repeat;
         }
         &-full{
             margin-right: 0;
             width: 38px;
             height: 38px;
-            background: url("assets/svg/full-screen.svg") no-repeat;
+            background: url("../assets/svg/full-screen.svg") no-repeat;
         }
 
         &-bar{
@@ -580,11 +580,11 @@ header{
             & .arrow-left, & .arrow-right{
                 width: 10px;
                 height: 12px;
-                background-image: url("assets/svg/video-sl-arrow-left.svg");
+                background-image: url("../assets/svg/video-sl-arrow-left.svg");
                 transition: filter 0.3s;
             }
             & .arrow-right{
-                background-image: url("assets/svg/video-sl-arrow-rightt.svg");
+                background-image: url("../assets/svg/video-sl-arrow-rightt.svg");
             }
             & .arrow-left:hover, & .arrow-right:hover{
                 filter: var(--golden-filter);
@@ -668,7 +668,7 @@ header{
     &-picture{
         width: 720px;
         height: 550px;
-        background: url("assets/img/eneas.jpg") no-repeat;
+        background: url("../assets/img/eneas.jpg") no-repeat;
     }
     &-strong-text{
         margin: 0;
@@ -841,7 +841,7 @@ header{
             & .logo{
                 width: 85px;
                 height: 41px;
-                background-image: url("assets/svg/logo-booking.svg");
+                background-image: url("../assets/svg/logo-booking.svg");
                 background-size: contain;
                 background-repeat: no-repeat;
                 filter: var(--golden-filter);
@@ -1029,7 +1029,7 @@ header{
                 float: right;
                 width: 150px;
                 height: 120px;
-                background-image: url("assets/img/tickets-small-img.jpg");
+                background-image: url("../assets/img/tickets-small-img.jpg");
                 background-size: cover;
             }
             &-overview{
@@ -1185,11 +1185,11 @@ header{
                                 }
                                 .up-btn{
                                     top: 6px;
-                                    background-image: url(assets/svg/card-arrow-up.svg);
+                                    background-image: url("../assets/svg/card-arrow-up.svg");
                                     }
                                 .down-btn{
                                     bottom: 1px;
-                                    background-image: url(assets/svg/card-arrow-down.svg);
+                                    background-image: url("../assets/svg/card-arrow-down.svg");
                                     background-position: 10px 4px;
                                 }  
                                 // .up-btn:hover, .down-btn:hover{
@@ -1269,7 +1269,7 @@ header{
 .parallax{
     width: 100%;
     height: 400px;
-    background-image: url("assets/img/parallax.jpg");
+    background-image: url("../assets/img/parallax.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
@@ -1298,7 +1298,7 @@ header{
         margin-top: 75px;
         width: 960px;
         height: 620px;
-        background: url("assets/img/map.png") no-repeat;
+        background: url("../assets/img/map.png") no-repeat;
     }
 }
 .footer{
@@ -1337,7 +1337,7 @@ header{
         display: block;
         width: 48px;
         height: 48px;
-        background: url("assets/svg/Social.svg");
+        background: url("../assets/svg/Social.svg");
     }
     
     &-item-link:hover{
