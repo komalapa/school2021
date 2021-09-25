@@ -11,6 +11,9 @@
   --font-forum: 'Forum', cursive;
   --golden-filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
   --welcome-slider-offset: 0px;
+  --video-slider-step:495px;
+  --video-slider-offset: calc(-3*var(--video-slider-step))  
+;
 }
 
 html {
@@ -687,11 +690,34 @@ header {
 }
 
 .video-slider {
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+  overflow-x: hidden;
+  position: relative;
+  min-height: 252px;
+}
+
+.video-slider-wrp {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 42px;
+  left: var(--video-slider-offset);
+  -webkit-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+}
+
+.video-slider-item {
+  width: 454px;
+  height: 252px;
+}
+
+.video-slider-item iframe {
+  width: 454px;
+  height: 252px;
 }
 
 .video-slider-controls {
@@ -754,21 +780,6 @@ header {
 
 .video-slider-controls-dot.active {
   background-color: var(--dark-background);
-}
-
-.video-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.video-slides-wrp {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  gap: 42px;
 }
 
 .galery {
