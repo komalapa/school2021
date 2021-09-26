@@ -13,7 +13,6 @@ function initTicketsForm(){
     // const formWrp = document.querySelector('.tickets-modal-form-wrp')
     // const form = document.querySelector('.tickets-modal-form')
     overlay.addEventListener('click', (e)=>{
-        console.log(e.target)
         if (e.target == overlay) formSwitcher();
     })
     
@@ -119,17 +118,7 @@ function initTicketsForm(){
     }
     document.querySelector('#card-exp-y').addEventListener('keydown',cardYearValidator)
 
-    function stepper(that,direction){ //for using as onclick for step buttons in card form
-        // console.log(that)
-        const event = new Event('change');
-        if (direction === 'up'){
-            that.nextElementSibling.stepUp()
-            that.nextElementSibling.dispatchEvent(event)
-        } else {
-            that.previousElementSibling.stepDown()
-            that.previousElementSibling.dispatchEvent(event)
-        }
-    }
+
 
     //select in booking form
     const selectCheckbox = document.querySelector('#select-is-open');
@@ -166,3 +155,15 @@ function initTicketsForm(){
 }
 
 initTicketsForm()
+
+function stepper(that,direction){ //for using as onclick for step buttons in card form
+    // console.log(that)
+    const event = new Event('change');
+    if (direction === 'up'){
+        that.nextElementSibling.stepUp()
+        that.nextElementSibling.dispatchEvent(event)
+    } else {
+        that.previousElementSibling.stepDown()
+        that.previousElementSibling.dispatchEvent(event)
+    }
+}

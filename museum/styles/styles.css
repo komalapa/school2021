@@ -11,6 +11,9 @@
   --font-forum: 'Forum', cursive;
   --golden-filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
   --welcome-slider-offset: 0px;
+  --video-slider-step:495px;
+  --video-slider-offset: calc(-3*var(--video-slider-step))  
+;
 }
 
 html {
@@ -23,7 +26,7 @@ body {
   font-style: normal;
 }
 
-h2, h3, h4 {
+h2, h3 {
   margin: 0;
   text-transform: uppercase;
   font-family: var(--font-forum);
@@ -687,11 +690,34 @@ header {
 }
 
 .video-slider {
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+  overflow-x: hidden;
+  position: relative;
+  min-height: 252px;
+}
+
+.video-slider-wrp {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 42px;
+  left: var(--video-slider-offset);
+  -webkit-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+}
+
+.video-slider-item {
+  width: 454px;
+  height: 252px;
+}
+
+.video-slider-item iframe {
+  width: 454px;
+  height: 252px;
 }
 
 .video-slider-controls {
@@ -754,21 +780,6 @@ header {
 
 .video-slider-controls-dot.active {
   background-color: var(--dark-background);
-}
-
-.video-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.video-slides-wrp {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  gap: 42px;
 }
 
 .galery {
@@ -999,6 +1010,7 @@ header {
 
 .tickets-modal {
   position: fixed;
+  z-index: 8;
   top: 0;
   left: -100%;
   width: 100%;
@@ -1372,7 +1384,7 @@ header {
 
 .tickets-modal-form .card-face {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   width: 360px;
   height: 211px;
   padding: 10px 20px;
@@ -1447,11 +1459,11 @@ header {
 .tickets-modal-form .card-face .card-input-exp-wrp .up-btn, .tickets-modal-form .card-face .card-input-exp-wrp .down-btn {
   position: absolute;
   right: 11px;
-  z-index: 2;
+  z-index: 10;
   content: '';
   display: block;
   width: 28px;
-  height: 18px;
+  height: 16px;
   border: none;
   border-left: 0.5px solid #A4A4A3;
   background-color: var(--white-text);
@@ -1462,7 +1474,7 @@ header {
 }
 
 .tickets-modal-form .card-face .card-input-exp-wrp .up-btn {
-  top: 6px;
+  top: 7px;
   background-image: url("../assets/svg/card-arrow-up.svg");
 }
 
@@ -1478,7 +1490,7 @@ header {
 
 .tickets-modal-form .card-cvv {
   position: absolute;
-  z-index: 1;
+  z-index: 9;
   top: 30px;
   left: 110px;
   display: -webkit-box;
@@ -1545,6 +1557,7 @@ header {
 }
 
 .tickets-modal-form .book-submit {
+  position: relative;
   width: 220px;
   height: 45px;
   border-radius: 0;
@@ -1552,6 +1565,35 @@ header {
   line-height: 45px;
   padding: 0;
   float: right;
+  overflow: hidden;
+}
+
+@-webkit-keyframes ripple {
+  to {
+    -webkit-transform: scale(3);
+            transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  to {
+    -webkit-transform: scale(3);
+            transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.tickets-modal-form .ripple {
+  position: absolute;
+  z-index: 12;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-animation: ripple 0.4s linear;
+          animation: ripple 0.4s linear;
+  background-color: var(--red-background);
+  opacity: 0.6;
 }
 
 .parallax {

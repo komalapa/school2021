@@ -10,8 +10,11 @@
     --font-roboto: 'Roboto', sans-serif;
     --font-forum: 'Forum', cursive;
     --golden-filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
-    --welcome-slider-offset: 0px;        
+    --welcome-slider-offset: 0px;      
+    --video-slider-step:495px;
+    --video-slider-offset: calc(-3*var(--video-slider-step))  
 }
+
 html{
     scroll-behavior: smooth;
 }
@@ -22,7 +25,7 @@ body{
     font-style: normal;
 }
 
-h2, h3, h4{
+h2, h3{
     margin: 0;
     text-transform: uppercase;
     font-family: var(--font-forum);
@@ -568,9 +571,26 @@ header{
         line-height: 38px;
     }
     &-slider{
-        overflow-x: scroll;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+        overflow-x: hidden;
+        position: relative;
+        min-height: 252px;
+        &-wrp{
+            // background-color: red;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            gap: 42px;
+            left:var(--video-slider-offset);
+            transition: left 0.3s ease-in;
+        }
+        &-item{
+            width: 454px;
+            height: 252px;
+            iframe{
+                width: 454px;
+                height: 252px;
+            }
+        }
         &-controls{
             display: flex;
             flex-direction: row;
@@ -610,16 +630,14 @@ header{
         }
     
     }
-    &-slider::-webkit-scrollbar {
-        display: none;
-    } 
     
-    &-slides-wrp{
-        display: flex;
-        flex-direction: row;
-        gap: 42px;
+    // &-slides-wrp{
+    //     position: absolute;
+    //     display: flex;
+    //     flex-direction: row;
+    //     gap: 42px;
         
-    }
+    // }
 }
 .galery{
     position: relative;
@@ -795,6 +813,7 @@ header{
 
     &-modal{
         position: fixed;
+        z-index: 8;
         top:0;
         // left:0;
         left:-100%;
@@ -1110,7 +1129,7 @@ header{
                 margin-bottom: 55px;
                 &-face{
                     position: relative;
-                    z-index: 2;
+                    z-index: 10;
                     width: 360px;
                     height: 211px;
                     padding: 10px 20px;
@@ -1171,11 +1190,11 @@ header{
                                 .up-btn, .down-btn{
                                     position: absolute;
                                     right:11px;
-                                    z-index: 2;
+                                    z-index: 10;
                                     content: '';
                                     display: block;
                                     width: 28px;
-                                    height: 18px;
+                                    height: 16px;
                                     border:none;
                                     border-left: 0.5px solid #A4A4A3;
                                     background-color: var(--white-text);
@@ -1184,7 +1203,7 @@ header{
                                     transition: background-color 0.3s;
                                 }
                                 .up-btn{
-                                    top: 6px;
+                                    top: 7px;
                                     background-image: url("../assets/svg/card-arrow-up.svg");
                                     }
                                 .down-btn{
@@ -1204,7 +1223,7 @@ header{
                 }
                 &-cvv{
                     position: absolute;
-                    z-index: 1;
+                    z-index: 9;
                     top:30px;
                     left:110px;
                     display: flex;
@@ -1254,6 +1273,7 @@ header{
                 }
             }
             .book-submit{
+                position: relative;
                 width: 220px;
                 height: 45px;
                 border-radius: 0;
@@ -1261,7 +1281,26 @@ header{
                 line-height: 45px;
                 padding: 0;
                 float: right;
+                overflow: hidden;
             }
+
+            // animations
+            @keyframes ripple {
+                to {
+                transform: scale(3);
+                opacity: 0;
+                }
+            }
+            .ripple {
+                position: absolute;
+                z-index: 12;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.4s linear;
+                background-color:var(--red-background);
+                opacity: 0.6;
+            }
+            
         }
     }
 }
