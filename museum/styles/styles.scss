@@ -1374,14 +1374,21 @@ header{
     }
     &-item-link{
         display: block;
-        width: 48px;
-        height: 48px;
-        background: url("../assets/svg/Social.svg");
+        width: 45px;
+        height: 43px;
+        border-radius: 50%;
+        border: 2px solid var(--white-text);
+        // background: url("../assets/svg/Social.svg");
+        outline: hidden;
+        text-decoration: none;
+
+        background-repeat: no-repeat;
+        background-position: center;
     }
     
     &-item-link:hover{
         filter: var(--golden-filter);
-        border-color: var(--golden-text);
+        // border-color: var(--golden-light);
         transition:filter 0.2s ease-in, border-color 0.2s ease-in;
     }
     &-item-link:active{
@@ -1390,19 +1397,24 @@ header{
     }
 }
 #social-yt{
-    background-position: 0;
+    // background-position: 0;
+    background-image: url("../assets/svg/s-yt.svg");
 }
 #social-pin{
-    background-position: 48px;
+    // background-position: 48px;
+    background-image: url("../assets/svg/s-pin.svg");
 }
 #social-inst{
-    background-position: 264px;
+    // background-position: 264px;
+    background-image: url("../assets/svg/s-inst.svg");
 }
 #social-tw{
-    background-position: 120px;
+    // background-position: 120px;
+    background-image: url("../assets/svg/s-tw.svg");
 }
 #social-fb{
-    background-position: 192px;
+    // background-position: 192px;
+    background-image: url("../assets/svg/s-fb.svg");
 }
 
 .additional-footer{
