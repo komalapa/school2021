@@ -1008,6 +1008,9 @@ header{
                         font-size: 18px;
                         font-weight: bold;
                     }
+                    .amount-btn:hover{
+                        color: var(--golden-text);
+                    }
                     .amount-input{
                         width: 33px;
                         height: 22px;

@@ -1246,6 +1246,10 @@ header {
   font-weight: bold;
 }
 
+.tickets-modal-form .amounts-wrp .amount-btn:hover {
+  color: var(--golden-text);
+}
+
 .tickets-modal-form .amounts-wrp .amount-input {
   width: 33px;
   height: 22px;
