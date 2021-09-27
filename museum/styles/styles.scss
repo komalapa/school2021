@@ -241,7 +241,7 @@ header{
         margin-top: 150px;
     }
     &-text{
-        margin: 26px 0 76px;
+        margin: 26px 0 102px;
         font-weight: 300;
         font-size: 28px;
         line-height: 33px;
@@ -472,7 +472,7 @@ header{
     }
     &-player-start{
         position: absolute;
-        top: 206px;
+        top: 215px;
         left: 611px;
         content: '';
         display: block;
@@ -571,7 +571,7 @@ header{
         line-height: 38px;
     }
     &-slider{
-        overflow-x: hidden;
+        overflow: hidden;
         position: relative;
         min-height: 252px;
         &-wrp{
@@ -1002,11 +1002,14 @@ header{
                     }
                     .amount-btn{
                         width: 35px;
-                        height: 25px;
+                        height: 27px;
                         background-color: var(--dark-background);
                         color: var(--white-text);
                         font-size: 18px;
                         font-weight: bold;
+                    }
+                    .amount-btn:hover{
+                        color: var(--golden-text);
                     }
                     .amount-input{
                         width: 33px;
@@ -1199,15 +1202,15 @@ header{
                                     border-left: 0.5px solid #A4A4A3;
                                     background-color: var(--white-text);
                                     background-repeat: no-repeat;
-                                    background-position: 10px 12px;
+                                    background-position: 10px 11px;
                                     transition: background-color 0.3s;
                                 }
                                 .up-btn{
-                                    top: 7px;
+                                    top: 6px;
                                     background-image: url("../assets/svg/card-arrow-up.svg");
                                     }
                                 .down-btn{
-                                    bottom: 1px;
+                                    bottom: 2px;
                                     background-image: url("../assets/svg/card-arrow-down.svg");
                                     background-position: 10px 4px;
                                 }  
@@ -1374,14 +1377,21 @@ header{
     }
     &-item-link{
         display: block;
-        width: 48px;
-        height: 48px;
-        background: url("../assets/svg/Social.svg");
+        width: 45px;
+        height: 43px;
+        border-radius: 50%;
+        border: 2px solid var(--white-text);
+        // background: url("../assets/svg/Social.svg");
+        outline: hidden;
+        text-decoration: none;
+
+        background-repeat: no-repeat;
+        background-position: center;
     }
     
     &-item-link:hover{
         filter: var(--golden-filter);
-        border-color: var(--golden-text);
+        // border-color: var(--golden-light);
         transition:filter 0.2s ease-in, border-color 0.2s ease-in;
     }
     &-item-link:active{
@@ -1390,19 +1400,24 @@ header{
     }
 }
 #social-yt{
-    background-position: 0;
+    // background-position: 0;
+    background-image: url("../assets/svg/s-yt.svg");
 }
 #social-pin{
-    background-position: 48px;
+    // background-position: 48px;
+    background-image: url("../assets/svg/s-pin.svg");
 }
 #social-inst{
-    background-position: 264px;
+    // background-position: 264px;
+    background-image: url("../assets/svg/s-inst.svg");
 }
 #social-tw{
-    background-position: 120px;
+    // background-position: 120px;
+    background-image: url("../assets/svg/s-tw.svg");
 }
 #social-fb{
-    background-position: 192px;
+    // background-position: 192px;
+    background-image: url("../assets/svg/s-fb.svg");
 }
 
 .additional-footer{

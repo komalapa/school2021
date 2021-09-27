@@ -1,5 +1,3 @@
-
-
 function initSlider(){
     const welcomeSliderContent = document.querySelector('.welcome-slider');
     const welcomeSliderControls = document.querySelector('.welcome-slider-controls');
@@ -33,12 +31,10 @@ function initSlider(){
     welcomeSliderControls.querySelector('#welcome-controls-all').innerText = `0${sliderLength}`.slice(-2);
 
 
-    const sliderWidth = welcomeSliderContent.clientWidth;
-    // console.log(sliderWidth)
-
+    const sliderWidth = slides[0].clientWidth;
+    
     function changeSlide(number = activeSlide, direction = null){
         if (!inTransition){
-            console.log('>>',number)
             controlsButtons[activeSlide].classList.remove('active');
             if (direction === null) activeSlide = +number;
             if (direction === 'r'){
@@ -47,20 +43,12 @@ function initSlider(){
             if (direction === 'l'){
                 activeSlide = activeSlide-1  //>= 0 ? activeSlide - 1 : sliderLength -1;
             }
-            // console.log(activeSlide);
             document.documentElement.style.setProperty('--welcome-slider-offset', -((activeSlide+1)*sliderWidth)+'px');
-            // inTransition = true;
             if (activeSlide < 0){
-                // welcomeSliderContent.classList.add('no-transition');
                 activeSlide = sliderLength -1;
-                // setTimeout(()=>{slidesWrp.classList.remove('no-transition')})
             }
             if (activeSlide > sliderLength-1){
-                //console.log('END')
-                // welcomeSliderContent.classList.add('no-transition');
-                // console.log(slidesWrp)
                 activeSlide = 0;
-                // setTimeout(()=>{slidesWrp.classList.remove('no-transition')})
             }
             welcomeSliderControls.querySelector('#welcome-controls-current').innerText = `0${+activeSlide+1}`.slice(-2);
             controlsButtons[activeSlide].classList.add('active');

@@ -58,6 +58,7 @@ function initVideoSlider(){
 
   
   function moveSlider(direction = 'right'){
+    if (inTransition) return;
     controlsBtns[activeVideo].classList.remove('active');
     if (direction==='right'){
       activeVideo++; 
