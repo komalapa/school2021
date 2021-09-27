@@ -9,15 +9,12 @@ function initTicketsForm(){
     //eventlisteners for buttons
     document.querySelector('.tickets-modal-close').addEventListener('click', formSwitcher)
     document.querySelector('.tickets-submit').addEventListener('click', formSwitcher)
+    //close by overlay
     const overlay = document.querySelector('.tickets-modal')
-    // const formWrp = document.querySelector('.tickets-modal-form-wrp')
-    // const form = document.querySelector('.tickets-modal-form')
     overlay.addEventListener('click', (e)=>{
         if (e.target == overlay) formSwitcher();
     })
     
-
-
     function formatOnDateFocusOut(e){
         e.target.type='text';
         if (e.target.value) e.target.value=e.target.value.split('-').reverse().join('.')
@@ -52,13 +49,13 @@ function initTicketsForm(){
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
         return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`
     }
+
     const testDate = new Date ('2022-08-19  16:30');
     document.querySelector('#overview-date').innerHTML = humanReadableDate(testDate)
     document.querySelector('#overview-time').innerHTML = testDate.getHours() + ':' + testDate.getMinutes()
 
     function cardNumberValidator(e){
         if (e.key != 'Backspace') e.preventDefault();
-        // console.log(e.target.value.split(' ').join(''))
         let val = e.target.value.split(' ').join('')
         if (['1','2','3','4','5','6','7','8','9','0'].indexOf(e.key)>=0 && val.length < 16 ){
             val += e.key;
@@ -70,7 +67,6 @@ function initTicketsForm(){
 
     function cardMonthValidator(e){
         if (e.key != 'Backspace') e.preventDefault();
-        console.log(e.target.key)
         let val = e.target.value
         if (['1','2','3','4','5','6','7','8','9','0'].indexOf(e.key)>=0){
             val += e.key;
@@ -99,7 +95,6 @@ function initTicketsForm(){
 
     function cardYearValidator(e){
         if (e.key != 'Backspace') e.preventDefault();
-        console.log(e.target.key)
         let val = e.target.value
         if (['1','2','3','4','5','6','7','8','9','0'].indexOf(e.key)>=0){
             val += e.key;
@@ -118,8 +113,6 @@ function initTicketsForm(){
     }
     document.querySelector('#card-exp-y').addEventListener('keydown',cardYearValidator)
 
-
-
     //select in booking form
     const selectCheckbox = document.querySelector('#select-is-open');
     let ticketType = '';
@@ -128,12 +121,11 @@ function initTicketsForm(){
         opt.addEventListener('click', (e)=>{
             selectCheckbox.checked = false;
             ticketType = e.target.dataset.type;
-            console.log(ticketType)
+            console.log(ticketType)//there will be main action on click
         })
     })
     const openIcon = document.querySelector('#select-icon-open');
     selectCheckbox.addEventListener('input',()=>{
-        console.log(openIcon)
         openIcon.style.transform = selectCheckbox.checked ? 'rotate(180deg)': ''
     })
 
@@ -144,8 +136,7 @@ function initTicketsForm(){
         if (['1','2','3','4','5','6','7','8','9','0'].indexOf(e.key)>=0){
             val += e.key;
         }
-        // val = +val
-        if (+val < 10000) {
+        if (+val < 10000) {//cvv 4 digits not 3!
             e.target.value = val
             return
         }
@@ -157,7 +148,6 @@ function initTicketsForm(){
 initTicketsForm()
 
 function stepper(that,direction){ //for using as onclick for step buttons in card form
-    // console.log(that)
     const event = new Event('change');
     if (direction === 'up'){
         that.nextElementSibling.stepUp()

@@ -20,7 +20,6 @@ function genGalery(){
     
     const randSorter = (a,b) => 0.5 - Math.random();
     PATHS.sort(randSorter)
-    //console.log(PATHS)
     PATHS.forEach((pic, i) => {
         let classes = '';
         if (i%Math.floor(PATHS.length/3) === 0) {
@@ -36,8 +35,6 @@ function genGalery(){
         img.className = classes;
         galleryWrp.append(img)
     })
-    
-    // galleryWrp.querySelectorAll('img').forEach(i=> console.log(i, i.getClientRects(), ))
     
 }
 genGalery()

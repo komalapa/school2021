@@ -690,7 +690,7 @@ header {
 }
 
 .video-slider {
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
   min-height: 252px;
 }

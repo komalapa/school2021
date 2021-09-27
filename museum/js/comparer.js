@@ -1,6 +1,6 @@
 function initComparer() {
     const overlay = document.querySelector(".overlay");
-    console.log(overlay)
+    // console.log(overlay)
     function compareImages(img = overlay) {
     let slider, clicked = 0, width, height;
     width = img.offsetWidth;
@@ -12,13 +12,13 @@ function initComparer() {
     slider.classList.add("compare-slider");
     
     img.parentElement.insertBefore(slider, img)
-    console.log( slider.offsetWidth)
+    
     slider.style.top = ((height - slider.offsetWidth) / 2) + "px";
     slider.style.left = ((width  - slider.offsetWidth) / 2) + "px";
     
     //eventlisteners
     slider.addEventListener("mousedown", slideReady);
-    window.addEventListener("mouseup", slideFinish);
+    window.addEventListener("mouseup", slideFinish);//window need if mouse leaved comparer
     slider.addEventListener("touchstart", slideReady);
     window.addEventListener("touchstop", slideFinish);
     
@@ -32,6 +32,8 @@ function initComparer() {
     }
     function slideFinish() {
         clicked = 0;
+        window.removeEventListener("mousemove", slideMove);
+        window.removeEventListener("touchmove", slideMove);
     }
     function slideMove(e) {
         let position;
