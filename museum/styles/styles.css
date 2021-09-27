@@ -1239,7 +1239,7 @@ header {
 
 .tickets-modal-form .amounts-wrp .amount-btn {
   width: 35px;
-  height: 25px;
+  height: 27px;
   background-color: var(--dark-background);
   color: var(--white-text);
   font-size: 18px;
@@ -1468,18 +1468,18 @@ header {
   border-left: 0.5px solid #A4A4A3;
   background-color: var(--white-text);
   background-repeat: no-repeat;
-  background-position: 10px 12px;
+  background-position: 10px 11px;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
 .tickets-modal-form .card-face .card-input-exp-wrp .up-btn {
-  top: 7px;
+  top: 6px;
   background-image: url("../assets/svg/card-arrow-up.svg");
 }
 
 .tickets-modal-form .card-face .card-input-exp-wrp .down-btn {
-  bottom: 1px;
+  bottom: 2px;
   background-image: url("../assets/svg/card-arrow-down.svg");
   background-position: 10px 4px;
 }

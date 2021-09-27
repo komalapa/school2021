@@ -1002,7 +1002,7 @@ header{
                     }
                     .amount-btn{
                         width: 35px;
-                        height: 25px;
+                        height: 27px;
                         background-color: var(--dark-background);
                         color: var(--white-text);
                         font-size: 18px;
@@ -1199,15 +1199,15 @@ header{
                                     border-left: 0.5px solid #A4A4A3;
                                     background-color: var(--white-text);
                                     background-repeat: no-repeat;
-                                    background-position: 10px 12px;
+                                    background-position: 10px 11px;
                                     transition: background-color 0.3s;
                                 }
                                 .up-btn{
-                                    top: 7px;
+                                    top: 6px;
                                     background-image: url("../assets/svg/card-arrow-up.svg");
                                     }
                                 .down-btn{
-                                    bottom: 1px;
+                                    bottom: 2px;
                                     background-image: url("../assets/svg/card-arrow-down.svg");
                                     background-position: 10px 4px;
                                 }  
