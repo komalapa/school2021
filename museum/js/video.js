@@ -40,7 +40,7 @@ function initVideoSlider(){
   
   for (let i = 0; i< sliderLength; i++){
       const sliderBtn = document.createElement('div');
-      sliderBtn.classList.add('video-slider-controls-dot');
+      sliderBtn.classList.add('video-slider-controls-dot', 'red-hover');
       if (i === activeVideo)  sliderBtn.classList.add('active');
       sliderBtn.dataset.number = i;
       sliderBtn.addEventListener('click', ()=>setSliderOffset(i))
