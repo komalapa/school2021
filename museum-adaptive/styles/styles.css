@@ -243,7 +243,7 @@ header {
   transition: color 0.2s ease-in;
 }
 
-.main-burger > div, .main-burger > input {
+.main-burger > div, .main-burger > input, .main-burger-pictures, .main-burger-socials {
   display: none;
 }
 
@@ -1835,7 +1835,7 @@ header {
 }
 
 @media (max-width: 1024px) {
-  .main-burger > div, .main-burger > input {
+  .main-burger > .main-burger-line, .main-burger > input {
     display: block;
   }
   .main-burger {
@@ -1855,12 +1855,12 @@ header {
     z-index: 2;
     opacity: 0;
   }
-  .main-burger-checkbox:checked ~ .main-burger-line:first-of-type {
+  .main-burger-checkbox:checked ~ .main-burger-line:nth-of-type(1) {
     -webkit-transform: translateY(9px);
             transform: translateY(9px);
     opacity: 0;
   }
-  .main-burger-checkbox:checked ~ .main-burger-line:last-of-type {
+  .main-burger-checkbox:checked ~ .main-burger-line:nth-of-type(4) {
     -webkit-transform: translateY(-9px);
             transform: translateY(-9px);
     opacity: 0;
@@ -1948,6 +1948,66 @@ header {
 }
 
 @media (max-width: 796px) {
+  .main-menu {
+    top: 100px;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--dark-background);
+  }
+  .main-menu .menu {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-left: 55px;
+  }
+  .main-burger-pictures {
+    margin: 35px 45px 35px 50px;
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 20px;
+        grid-template-areas: "first first" "second third";
+  }
+  .main-burger-picture-1 {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: first;
+    height: 194px;
+    background-image: url("../assets/img/Navigation-1.png");
+  }
+  .main-burger-picture-2 {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: second;
+    height: 161px;
+    background-image: url("../assets/img/Navigation-2.png");
+  }
+  .main-burger-picture-3 {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: third;
+    height: 161px;
+    background-image: url("../assets/img/Navigation-3.png");
+  }
+  .main-burger-socials {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .main-burger-socials .footer-socials {
+    position: relative;
+    margin: 36px auto 0;
+  }
+  .main-burger-socials .footer-socials:before {
+    position: absolute;
+    left: -160px;
+    top: -35px;
+    content: '';
+    display: block;
+    width: 658px;
+    height: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
   .welcome-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

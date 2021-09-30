@@ -198,7 +198,7 @@ header{
 }
 
 
-.main-burger > div, .main-burger > input {
+.main-burger > div, .main-burger > input, .main-burger-pictures, .main-burger-socials {
     display: none;
 }
 .menu{
@@ -1515,7 +1515,7 @@ header{
 
 }
 @media (max-width: 1024px) {
-    .main-burger > div, .main-burger > input {
+    .main-burger > .main-burger-line, .main-burger > input {
         display: block;
     }
     .main-burger{
@@ -1534,11 +1534,11 @@ header{
             z-index: 2;
             opacity: 0;
         }
-        &-checkbox:checked ~ &-line:first-of-type{
+        &-checkbox:checked ~ &-line:nth-of-type(1){
             transform: translateY(9px);
             opacity: 0;
         }
-        &-checkbox:checked ~ &-line:last-of-type{
+        &-checkbox:checked ~ &-line:nth-of-type(4){
             transform: translateY(-9px);
             opacity: 0;
         }
@@ -1616,10 +1616,61 @@ header{
     }
   }
 @media (max-width: 796px) {
-// .main-burger{
-//     margin-right: 67px;
-//     margin-top: -9px;
-// }
+    .main-menu{
+        top:100px;
+        width: 100vw;
+        min-height: 100vh;
+        background-color: var(--dark-background);
+    }
+    .main-menu .menu{
+        height: fit-content;
+        padding-left: 55px;
+    }
+    .main-burger-pictures{
+        margin: 35px 45px 35px 50px;
+        display: grid;
+        grid-gap: 20px;
+        // grid-template-columns: 1fr 1fr;
+        // grid-template-rows: 194px 161px;
+        grid-template-areas: 
+        "first first"
+        "second third";
+    }
+    .main-burger-picture-1{
+        grid-area: first;
+        
+        height: 194px;
+        background-image: url("../assets/img/Navigation-1.png");
+    }
+    .main-burger-picture-2{
+        grid-area: second;
+        height: 161px;
+        background-image: url("../assets/img/Navigation-2.png");
+    }
+    .main-burger-picture-3{
+        grid-area: third;
+        height: 161px;
+        background-image: url("../assets/img/Navigation-3.png");
+    }
+    .main-burger-socials{
+        display: flex;
+    }
+    .main-burger-socials .footer-socials{
+        position: relative;
+        margin: 36px auto 0;
+
+    }
+    .main-burger-socials .footer-socials:before{
+        position: absolute;
+        left:-160px;
+        top:-35px;
+        content: '';
+        display: block;
+        width: 658px;
+        height: 0;
+        border-bottom:1px solid rgba(255, 255, 255, 0.5);;
+
+    }
     .welcome-container{
         flex-direction: column;
         align-items: center;
