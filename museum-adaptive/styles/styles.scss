@@ -1541,7 +1541,20 @@ header{
             }
         }
     }
-
+    .explore{
+        .compare{
+            width: 100%;
+            height:100%;
+        }
+        &-img{
+            width: 50vw;
+            height: 48vw;
+            img{
+                width: 50vw;
+                height: auto;
+            }
+        }
+    }
 }
 @media (max-width: 1024px) {
     .main-burger > .main-burger-line, .main-burger > input {
@@ -1642,17 +1655,54 @@ header{
             }
             
         }
+        
     }
     .visiting{
         padding-top: 50px;
     }
     .section-header{
         padding-bottom: 15px;
+        width: 95vw;
     }
 
+    .explore{
+        padding-top: 50px;
+        
+        figure.explore-figure{
+            flex-direction: column;
+        }
+        &-text:last-of-type{
+            display: none;
+        }
+        &-text:first-of-type {
+            margin-top: 55px;
+            margin-bottom: 0px;
+            width: 95vw;
+        }
+        &-text {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            width: 95vw;
+            font-size: 20px;
+        }
+        .compare{
+            width: 100%;
+            height:100%;
+        }
+        &-img{
+            width: 71vw;
+            height: 68vw;
+            margin: 60px auto 0;
+            img{
+                width: 50vw;
+                height: auto;
+            }
+        }
+    }
+    
   }
 
-@media (max-width: 840px) {
+@media (max-width: 850px) {
     .main-menu{
         top:100px;
         width: 100vw;
@@ -1720,6 +1770,9 @@ header{
         font-size: 22px;
         letter-spacing: 3px;
     }
+    .section-header{
+        width: 90vw;
+    }
     .welcome-content-wrp{
         margin-top: 0;
         text-align: center;
@@ -1751,6 +1804,7 @@ header{
     }
     .visiting{
         padding-top: 35px;
+        padding-bottom: 35px ;
         .section-header{
             padding-bottom: 20px;
         }
@@ -1784,8 +1838,43 @@ header{
             }
         }
     }
+    .explore{
+        
+        .compare{
+            width: 100%;
+            height:100%;
+        }
+        &-img{
+            width: 90vw;
+            height: 88vw;
+            margin: 60px auto 0;
+            img{
+                width: 50vw;
+                height: auto;
+            }
+        }
+    }
 }
-
+@media (max-width: 770px) {
+    .explore{
+        padding-top: 43px;
+        &-caption{
+            width: 100%;
+        }
+        figure.explore-figure{
+            flex-direction: column;
+        }
+        
+        &-text {
+        display: none;
+        }
+        &-img {
+            width: 95vw;
+            height: 92vw;
+            margin: 45px auto 0;
+        }
+    }    
+}
 
 @media (max-width: 730px) {
     .welcome-slider{
@@ -1809,6 +1898,22 @@ header{
     .main-burger-socials .footer-socials:before{
         width: 73vw;
         left: 3vw;
+    }
+    .explore{
+        
+        .compare{
+            width: 100%;
+            height:100%;
+        }
+        &-img{
+            width: 88vw;
+            height: 86vw;
+            margin: 60px auto 0;
+            img{
+                width: 50vw;
+                height: auto;
+            }
+        }
     }
 }
 @media (max-width: 450px) {
@@ -1891,6 +1996,9 @@ header{
             background-repeat: no-repeat;
         }
     }
+    .visiting{
+        padding-bottom: 0;
+    }
     .visiting-cards-wrp{
         margin-top: 40px;
         justify-content: center;
@@ -1920,11 +2028,33 @@ header{
             }
         }
     }
+    .explore{
+        padding-bottom: 40px;
+        .compare-slider{
+            width: 20px;
+            height:20px;
+            border: 2px solid var(--white-text);
+        }
+        .compare-slider:before, .compare-slider:after{
+            left:8px;
+            border-right: 2px solid var(--white-text);
+        }
+        .compare-slider:after{
+            top: 20px;
+        }
+        &-img{
+            // width: 88vw;
+            // height: 86vw;
+            margin: 50px auto 0;
+            
+        }
+
+    }
 
 }
 
 //dev
-.video, .tickets, .explore, .contacts, .galery, footer, .parallax { //header, visiting
+.video, .tickets, .contacts, .galery, footer, .parallax { //header, .visiting, .explore
     display: none;
 }
 

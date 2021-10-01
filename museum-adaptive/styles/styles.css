@@ -1855,6 +1855,18 @@ header {
   .visiting-cards-wrp .card-header:after {
     width: 150px;
   }
+  .explore .compare {
+    width: 100%;
+    height: 100%;
+  }
+  .explore-img {
+    width: 50vw;
+    height: 48vw;
+  }
+  .explore-img img {
+    width: 50vw;
+    height: auto;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1973,10 +1985,47 @@ header {
   }
   .section-header {
     padding-bottom: 15px;
+    width: 95vw;
+  }
+  .explore {
+    padding-top: 50px;
+  }
+  .explore figure.explore-figure {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .explore-text:last-of-type {
+    display: none;
+  }
+  .explore-text:first-of-type {
+    margin-top: 55px;
+    margin-bottom: 0px;
+    width: 95vw;
+  }
+  .explore-text {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 95vw;
+    font-size: 20px;
+  }
+  .explore .compare {
+    width: 100%;
+    height: 100%;
+  }
+  .explore-img {
+    width: 71vw;
+    height: 68vw;
+    margin: 60px auto 0;
+  }
+  .explore-img img {
+    width: 50vw;
+    height: auto;
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 850px) {
   .main-menu {
     top: 100px;
     width: 100vw;
@@ -2054,6 +2103,9 @@ header {
     font-size: 22px;
     letter-spacing: 3px;
   }
+  .section-header {
+    width: 90vw;
+  }
   .welcome-content-wrp {
     margin-top: 0;
     text-align: center;
@@ -2084,6 +2136,7 @@ header {
   }
   .visiting {
     padding-top: 35px;
+    padding-bottom: 35px;
   }
   .visiting .section-header {
     padding-bottom: 20px;
@@ -2115,6 +2168,42 @@ header {
   .visiting-cards-wrp .card-header:after {
     width: 150px;
   }
+  .explore .compare {
+    width: 100%;
+    height: 100%;
+  }
+  .explore-img {
+    width: 90vw;
+    height: 88vw;
+    margin: 60px auto 0;
+  }
+  .explore-img img {
+    width: 50vw;
+    height: auto;
+  }
+}
+
+@media (max-width: 770px) {
+  .explore {
+    padding-top: 43px;
+  }
+  .explore-caption {
+    width: 100%;
+  }
+  .explore figure.explore-figure {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .explore-text {
+    display: none;
+  }
+  .explore-img {
+    width: 95vw;
+    height: 92vw;
+    margin: 45px auto 0;
+  }
 }
 
 @media (max-width: 730px) {
@@ -2139,6 +2228,19 @@ header {
   .main-burger-socials .footer-socials:before {
     width: 73vw;
     left: 3vw;
+  }
+  .explore .compare {
+    width: 100%;
+    height: 100%;
+  }
+  .explore-img {
+    width: 88vw;
+    height: 86vw;
+    margin: 60px auto 0;
+  }
+  .explore-img img {
+    width: 50vw;
+    height: auto;
   }
 }
 
@@ -2221,6 +2323,9 @@ header {
     background-size: contain;
     background-repeat: no-repeat;
   }
+  .visiting {
+    padding-bottom: 0;
+  }
   .visiting-cards-wrp {
     margin-top: 40px;
     -webkit-box-pack: center;
@@ -2244,9 +2349,27 @@ header {
   .visiting-cards-wrp .card-header:after {
     margin-top: 5px;
   }
+  .explore {
+    padding-bottom: 40px;
+  }
+  .explore .compare-slider {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--white-text);
+  }
+  .explore .compare-slider:before, .explore .compare-slider:after {
+    left: 8px;
+    border-right: 2px solid var(--white-text);
+  }
+  .explore .compare-slider:after {
+    top: 20px;
+  }
+  .explore-img {
+    margin: 50px auto 0;
+  }
 }
 
-.video, .tickets, .explore, .contacts, .galery, footer, .parallax {
+.video, .tickets, .contacts, .galery, footer, .parallax {
   display: none;
 }
 /*# sourceMappingURL=styles.css.map */
