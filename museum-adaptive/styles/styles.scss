@@ -1627,7 +1627,7 @@ header{
         padding-top: 55px;
         max-height: 142.5vw;
         .section-header{
-            padding-bottom: 35px;
+            padding-bottom: 0;
         }
         &-wrp{
             max-height: 214vw;
@@ -1638,6 +1638,7 @@ header{
     }
     .tickets{
         padding-top: 55px;
+        padding-bottom: 60px;
         &-right-column{
             margin-right: 35px;
         }
@@ -1665,6 +1666,25 @@ header{
         &-cost{
             margin: 20px 0 31px;
             letter-spacing: 4px;
+        }
+    }
+    .contacts{
+        padding-top: 50px;
+        &-map{
+            width: 67.7vw;
+            height: 44.3vw;
+            margin-top: 60px;
+        }
+        &-name{
+            font-weight: 500;
+            font-size: 24px;
+            margin: 55px 0 29px;
+        }
+        &-list{
+            font-size: 20px;
+            &-item{
+                line-height: 15px;
+            }
         }
     }
 }
@@ -1826,6 +1846,7 @@ header{
 @media (max-width: 1000px) {
     .tickets{
         padding-top: 45px;
+        padding-bottom: 40px;
         &-right-column{
             margin-right: 50px;
         }
@@ -1842,6 +1863,26 @@ header{
         }
         &-cost{
             margin: 40px 0 0px
+        }
+    }
+    .contacts{
+        padding-top: 40px;
+        &-adaptive{
+            flex-direction: column;
+        }
+        &-list-item{
+            font-size: 18px;
+            line-height: 13px;
+        }
+        &-name{
+            margin: 40px 0 40px;
+            line-height: 26px;
+            font-size: 20px;
+        }
+        &-map{
+            width: 95vw;
+            height: 62vw;
+            margin-top: 42px;
         }
     }
 }
@@ -2091,6 +2132,9 @@ header{
     .video{
         padding-bottom: 80px;
     }
+    .parallax{
+        height: 300px;
+    }
      
 }
 
@@ -2268,8 +2312,29 @@ header{
             margin-top: 35px;
         }
     }
-    .parallax{
-        height: 300px;
+    // .parallax{
+    //     height: 300px;
+    // }
+    .contacts{
+        padding-top: 40px;
+        &-adaptive{
+            flex-direction: column;
+        }
+        &-list-item{
+            font-size: 16px;
+            line-height: 13px;
+            margin-top: 21px;
+        }
+        &-name{
+            margin: 40px 0 40px;
+            line-height: 23px;
+            font-size: 16px;
+        }
+        &-map{
+            width: 90vw;
+            height: 59vw;
+            margin-top: 42px;
+        }
     }
 }
 @media (max-width: 450px) {
@@ -2407,10 +2472,11 @@ header{
 
     }
 
+
 }
 
 //dev
- .contacts, footer, .tickets-modal { //header, .visiting, .explore, .video, .galery, .tickets, .parallax
+footer, .tickets-modal { //header, .visiting, .explore, .video, .galery, .tickets, .parallax, .contacts
     display: none;
 }
 

@@ -1938,7 +1938,7 @@ header {
     max-height: 142.5vw;
   }
   .galery .section-header {
-    padding-bottom: 35px;
+    padding-bottom: 0;
   }
   .galery-wrp {
     max-height: 214vw;
@@ -1948,6 +1948,7 @@ header {
   }
   .tickets {
     padding-top: 55px;
+    padding-bottom: 60px;
   }
   .tickets-right-column {
     margin-right: 35px;
@@ -1980,6 +1981,25 @@ header {
   .tickets-cost {
     margin: 20px 0 31px;
     letter-spacing: 4px;
+  }
+  .contacts {
+    padding-top: 50px;
+  }
+  .contacts-map {
+    width: 67.7vw;
+    height: 44.3vw;
+    margin-top: 60px;
+  }
+  .contacts-name {
+    font-weight: 500;
+    font-size: 24px;
+    margin: 55px 0 29px;
+  }
+  .contacts-list {
+    font-size: 20px;
+  }
+  .contacts-list-item {
+    line-height: 15px;
   }
 }
 
@@ -2154,6 +2174,7 @@ header {
 @media (max-width: 1000px) {
   .tickets {
     padding-top: 45px;
+    padding-bottom: 40px;
   }
   .tickets-right-column {
     margin-right: 50px;
@@ -2171,6 +2192,29 @@ header {
   }
   .tickets-cost {
     margin: 40px 0 0px;
+  }
+  .contacts {
+    padding-top: 40px;
+  }
+  .contacts-adaptive {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .contacts-list-item {
+    font-size: 18px;
+    line-height: 13px;
+  }
+  .contacts-name {
+    margin: 40px 0 40px;
+    line-height: 26px;
+    font-size: 20px;
+  }
+  .contacts-map {
+    width: 95vw;
+    height: 62vw;
+    margin-top: 42px;
   }
 }
 
@@ -2426,6 +2470,9 @@ header {
   .video {
     padding-bottom: 80px;
   }
+  .parallax {
+    height: 300px;
+  }
 }
 
 @media (max-width: 730px) {
@@ -2601,8 +2648,29 @@ header {
     padding: 0 50px;
     margin-top: 35px;
   }
-  .parallax {
-    height: 300px;
+  .contacts {
+    padding-top: 40px;
+  }
+  .contacts-adaptive {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .contacts-list-item {
+    font-size: 16px;
+    line-height: 13px;
+    margin-top: 21px;
+  }
+  .contacts-name {
+    margin: 40px 0 40px;
+    line-height: 23px;
+    font-size: 16px;
+  }
+  .contacts-map {
+    width: 90vw;
+    height: 59vw;
+    margin-top: 42px;
   }
 }
 
@@ -2731,7 +2799,7 @@ header {
   }
 }
 
-.contacts, footer, .tickets-modal {
+footer, .tickets-modal {
   display: none;
 }
 /*# sourceMappingURL=styles.css.map */
