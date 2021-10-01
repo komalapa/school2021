@@ -1555,6 +1555,72 @@ header{
             }
         }
     }
+    .video{
+        &-player{
+            // width: 90vw;
+            &-start{
+                width: 15vw;
+                height: 15vw;
+                top: calc(50% - 7vw);
+                left: calc(50% - 7vw);
+                svg{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            &-wrp{
+                width: 96vw;
+                height: 44vw;
+                margin-bottom: 100px;
+                video{
+                    width: 96vw;
+                    height: 44vw;
+                }
+            }
+            
+            &-controls{
+                width:96vw;
+                height: 60px;
+                bottom:-60px;
+                gap:0;
+                justify-content: space-between;
+                padding: 0 40px;
+                &-mute{
+                    width: 26px;
+                    height: 20px;
+                    background-size: contain;
+                }
+                &-full{
+                    width: 26px;
+                    height: 26px;
+                    background-size: contain;
+                }
+                &-play{
+                    width: 23px;
+                    height: 30px;
+                    background-size: contain;
+                }
+                &-progress{
+                    height: 5px;
+                    width: 55vw;
+                }
+                &-volume{
+                    height: 5px;
+                    width: 14vw;
+                }
+            }
+        }
+        .video-slider{
+            min-height: 17vw;
+        }
+        .video-slider-wrp{
+            gap:3.7vw;
+        }
+        .video-slider-item,.video-slider-item iframe {
+            width: 29vw;
+            height: 17vw;
+        }
+    }
 }
 @media (max-width: 1024px) {
     .main-burger > .main-burger-line, .main-burger > input {
@@ -1669,7 +1735,7 @@ header{
 
     .explore{
         padding-top: 50px;
-        
+        padding-bottom: 60px;
         figure.explore-figure{
             flex-direction: column;
         }
@@ -1701,7 +1767,15 @@ header{
             }
         }
     }
-    
+    .video{
+        padding-top:55px;
+        &-player-wrp{
+            margin-top: 10px;
+        }
+        &-text{
+            display: none;
+        }
+    }
   }
 
 @media (max-width: 850px) {
@@ -1841,7 +1915,7 @@ header{
         }
     }
     .explore{
-        
+        padding-bottom: 40px;
         .compare{
             width: 100%;
             height:100%;
@@ -1854,6 +1928,62 @@ header{
                 width: 50vw;
                 height: auto;
             }
+        }
+    }
+    .video{
+        padding-top: 38px;
+        &-player{
+            // width: 90vw;
+            &-start{
+                width: 10vw;
+                height: 10vw;
+                top: calc(50% - 5vw);
+                left: calc(50% - 5vw);
+            
+                svg{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            &-wrp{
+                width: 95vw;
+                height: 42vw;
+                margin-bottom: 80px;
+                video{
+                    width: 95vw;
+                    height: 42vw;
+                }
+            }
+    
+            &-controls{
+                width:95vw;
+                padding: 0 30px;
+                &-progress{
+                    position: absolute;
+                    top:-2px;
+                    left:0;
+                    height: 5px;
+                    width: 100%;
+                }
+                &-volume{
+                    height: 5px;
+                    width: 63vw;
+                }
+            }
+        }
+        .video-slider{
+            min-height: 26vw;
+            &-controls{
+                margin-top: 20px;
+                transform: scale(0.95);
+            }
+        }
+        .video-slider-wrp{
+            gap:2.5vw;
+        }
+        .video-slider-item,.video-slider-item iframe {
+            width: 46vw;
+            height: 26vw;
         }
     }
 }
@@ -1915,6 +2045,83 @@ header{
                 width: 50vw;
                 height: auto;
             }
+        }
+    }
+    .video{
+        padding-top: 38px;
+        &-player{
+            width: 90vw;
+            &-start{
+                width: 10vw;
+                height: 10vw;
+                top: calc(50% - 5vw);
+                left: calc(50% - 5vw);
+            
+                svg{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            &-wrp{
+                width: 90vw;
+                height: 41vw;
+                margin-bottom: 95px;
+                margin-top: 0;
+                video{
+                    width: 90vw;
+                    height: 41vw;
+                }
+            }
+    
+            &-controls{
+                width:90vw;
+                padding: 0 30px;
+                &-play{
+                    width: 13px;
+                    height: 17px;
+                }
+                &-mute{
+                    width: 18px;
+                    height: 14px;
+                }
+                &-full{
+                    width: 18px;
+                    height: 18px;
+                }
+                &-progress{
+                    position: absolute;
+                    top:-2px;
+                    left:0;
+                    height: 5px;
+                    width: 100%;
+                }
+                &-volume{
+                    height: 5px;
+                    width: 47.5vw;
+                }
+                &-bar::-webkit-slider-thumb {
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+        }
+        .video-slider{
+            min-height: 24vw;
+            &-controls{
+                margin-top: 40px;
+                transform: scale(0.7);
+                gap:28px;
+                &-dots{
+                    gap:28px
+                }
+            }
+        }
+        .video-slider-wrp{
+            gap:4.7vw;
+        }
+        .video-slider-item,.video-slider-item iframe {
+            width: 42.8vw;
+            height: 24vw;
         }
     }
 }
@@ -2056,7 +2263,7 @@ header{
 }
 
 //dev
-.video, .tickets, .contacts, .galery, footer, .parallax { //header, .visiting, .explore
+.tickets, .contacts, .galery, footer, .parallax { //header, .visiting, .explore, .video
     display: none;
 }
 
