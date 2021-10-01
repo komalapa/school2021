@@ -1609,6 +1609,7 @@ header {
   background-image: url("../assets/img/parallax.jpg");
   background-size: cover;
   background-attachment: fixed;
+  background-position: center;
 }
 
 .contacts-wrp {
@@ -2600,6 +2601,9 @@ header {
     padding: 0 50px;
     margin-top: 35px;
   }
+  .parallax {
+    height: 300px;
+  }
 }
 
 @media (max-width: 450px) {
@@ -2727,7 +2731,7 @@ header {
   }
 }
 
-.contacts, footer, .parallax, .tickets-modal {
+.contacts, footer, .tickets-modal {
   display: none;
 }
 /*# sourceMappingURL=styles.css.map */
