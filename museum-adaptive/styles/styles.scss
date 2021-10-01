@@ -25,6 +25,8 @@ body{
     margin: 0;
     font-family: var(--font-roboto);
     font-style: normal;
+    padding: 0;
+    margin: 0;
 }
 
 h2, h3{
@@ -1458,16 +1460,17 @@ header{
         font-size: 50px;
     }
     .section-container{
-        min-width: 100%;
+        // min-width: 100%;
         padding: 0 20px;
     }
     header{
         padding: 65px 0;
+        // overflow-x: hidden;
     }
+
+
     .welcome-container{
-        // justify-content: space-evenly;
         height: fit-content;
-        
     }
     .welcome-content-wrp{
         margin:50px 0 0 0;
@@ -1615,7 +1618,8 @@ header{
         }
     }
   }
-@media (max-width: 796px) {
+
+@media (max-width: 840px) {
     .main-menu{
         top:100px;
         width: 100vw;
@@ -1683,6 +1687,7 @@ header{
         margin-top: 0;
         text-align: center;
         min-height: 0;
+        width: initial;
     }
     .welcome-content-wrp > h2{
         margin-top: -20px;
@@ -1713,12 +1718,129 @@ header{
     }
 }
 
-@media (max-width: 768px) {
-    .main-burger{
-        margin-top: -9px;
+
+@media (max-width: 730px) {
+    .welcome-slider{
+        min-width: 380px;
+        width: 90%;
+        &-controls{
+            min-width: initial;
+            &-buttons{
+                gap: 10px;
+                margin: 0 25px;
+            }
+            &-btn{
+                width: 7px;
+                height: 7px;
+            }
+            &-text{
+                font-size: 16px;
+            }
+        }
+    }
+    .main-burger-socials .footer-socials:before{
+        width: 73vw;
+        left: 3vw;
     }
 }
+@media (max-width: 450px) {
+    header{
+        padding-top: 45px;
+    }
+    .logo-img{
+        width: 29px;
+        height: 16px;
+        background-size: contain;
+    }
+    .logo-text{
+        font-size: 16px
+    }
+    .main-burger{
+        // width: 32px;
+        margin-right: -12px;
+    }
+    .main-menu{
+        top:80px
+    }
+    .main-menu .footer-socials{
+        margin-top: 22px;
+    }
+    .main-menu .footer-socials-item{
+        margin-right: 7px;
+    }
+    .main-burger-socials .footer-socials:before {
+        width: 73vw;
+        left: -5vw;
+        top: -22px;
+    }
+    .main-burger-pictures{
+        grid-template-areas: "second first third";
+        grid-gap:0;
+        margin-bottom: 20px;
+    }
+    .main-burger-picture-1{
+        background-image: url("../assets/img/Navigation-1-420.png");
+    }
+    .main-burger-picture-2{
+        background-image: url("../assets/img/Navigation-2-420.png");
+    }
+    .main-burger-picture-3{
+        background-image: url("../assets/img/Navigation-3-420.png");
+    }
+    .main-burger-pictures div{
+        background-position: center;
+        width: 95px;
+        height: 95px;
+    }
+    h2{
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .welcome-content-wrp{
+        margin-top: 0;
+    }
+    .welcome-text{
+        font-size: 16px;
+    }
+    .welcome-slider-controls{
+        height: 80px;
+        bottom:20px;
+        .arrow-left, .arrow-right{
+            width: 20px;
+            height: 8px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+}
+
 //dev
-.video, .tickets, .explore, .contacts, .galery, footer{
+.video, .tickets, .explore, .contacts, .galery, footer, .visiting, .parallax { //header
     display: none;
 }
+
+// body{
+//     background-color:red;
+    
+// }
+// body > *{
+//     background-color: orange;
+// }
+// body > * > *{
+//     background-color: yellow;
+// }
+// body > * > * > *{
+//     background-color: green;
+// }
+
+// body > * > * > * > *{
+//     background-color: blue;
+// }
+// body > * > * > * > * > *{
+//     background-color: violet;
+// }
+
+// body > * > * > * > * > * > * {
+//     background-color: mediumaquamarine;
+// }
