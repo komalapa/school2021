@@ -1867,6 +1867,9 @@ header {
     width: 50vw;
     height: auto;
   }
+  .video {
+    padding-bottom: 55px;
+  }
   .video-player-start {
     width: 15vw;
     height: 15vw;
@@ -1928,6 +1931,19 @@ header {
   .video .video-slider-item, .video .video-slider-item iframe {
     width: 29vw;
     height: 17vw;
+  }
+  .galery {
+    padding-top: 55px;
+    max-height: 142.5vw;
+  }
+  .galery .section-header {
+    padding-bottom: 35px;
+  }
+  .galery-wrp {
+    max-height: 214vw;
+  }
+  .galery img {
+    width: 29.6vw;
   }
 }
 
@@ -2260,6 +2276,7 @@ header {
   }
   .video {
     padding-top: 38px;
+    padding-bottom: 80px;
   }
   .video-player-start {
     width: 10vw;
@@ -2310,6 +2327,20 @@ header {
     width: 46vw;
     height: 26vw;
   }
+  .galery {
+    padding-top: 38px;
+    max-height: 158.8vw;
+  }
+  .galery .section-header {
+    padding-bottom: 35px;
+    margin-bottom: 0px;
+  }
+  .galery-wrp {
+    max-height: 214vw;
+  }
+  .galery img {
+    width: 45.8vw;
+  }
 }
 
 @media (max-width: 770px) {
@@ -2332,6 +2363,24 @@ header {
     width: 95vw;
     height: 92vw;
     margin: 45px auto 0;
+  }
+  .video {
+    padding-bottom: 40px;
+  }
+  .galery {
+    padding-top: 38px;
+    max-height: 180vw;
+  }
+  .galery .section-header {
+    padding-bottom: 35px;
+    margin-bottom: 0px;
+  }
+  .galery-wrp {
+    max-height: 214vw;
+    gap: 5.7vw;
+  }
+  .galery img {
+    width: 42.3vw;
   }
 }
 
@@ -2574,7 +2623,7 @@ header {
   }
 }
 
-.tickets, .contacts, .galery, footer, .parallax {
+.tickets, .contacts, footer, .parallax {
   display: none;
 }
 /*# sourceMappingURL=styles.css.map */

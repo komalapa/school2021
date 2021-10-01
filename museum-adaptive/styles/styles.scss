@@ -1556,6 +1556,7 @@ header{
         }
     }
     .video{
+        padding-bottom: 55px;
         &-player{
             // width: 90vw;
             &-start{
@@ -1619,6 +1620,19 @@ header{
         .video-slider-item,.video-slider-item iframe {
             width: 29vw;
             height: 17vw;
+        }
+    }
+    .galery{
+        padding-top: 55px;
+        max-height: 142.5vw;
+        .section-header{
+            padding-bottom: 35px;
+        }
+        &-wrp{
+            max-height: 214vw;
+        }
+        img{
+            width: 29.6vw;
         }
     }
 }
@@ -1932,6 +1946,7 @@ header{
     }
     .video{
         padding-top: 38px;
+        padding-bottom: 80px;
         &-player{
             // width: 90vw;
             &-start{
@@ -1986,6 +2001,20 @@ header{
             height: 26vw;
         }
     }
+    .galery{
+        padding-top: 38px;
+        max-height: 158.8vw;
+        .section-header{
+            padding-bottom: 35px;
+            margin-bottom: 0px;
+        }
+        &-wrp{
+            max-height: 214vw;
+        }
+        img{
+            width: 45.8vw;
+        }
+    }
 }
 @media (max-width: 770px) {
     .explore{
@@ -2004,6 +2033,24 @@ header{
             width: 95vw;
             height: 92vw;
             margin: 45px auto 0;
+        }
+    }
+    .video{
+        padding-bottom: 40px;
+    }
+    .galery{
+        padding-top: 38px;
+        max-height: 180vw;
+        .section-header{
+            padding-bottom: 35px;
+            margin-bottom: 0px;
+        }
+        &-wrp{
+            max-height: 214vw;
+            gap:5.7vw
+        }
+        img{
+            width: 42.3vw;
         }
     }    
 }
@@ -2263,7 +2310,7 @@ header{
 }
 
 //dev
-.tickets, .contacts, .galery, footer, .parallax { //header, .visiting, .explore, .video
+.tickets, .contacts, footer, .parallax { //header, .visiting, .explore, .video, .galery
     display: none;
 }
 
