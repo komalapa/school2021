@@ -10,6 +10,7 @@
     --font-roboto: 'Roboto', sans-serif;
     --font-forum: 'Forum', cursive;
     --golden-filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
+    --light-golden-filter: invert(80%) sepia(12%) saturate(955%) hue-rotate(355deg) brightness(89%) contrast(91%);;
     --welcome-slider-offset: 0px;      
     --video-slider-step:495px;
     --video-slider-offset: calc(-3*var(--video-slider-step))  
@@ -114,6 +115,11 @@ figure{
 }
 .golden-hover:hover{
     background-color: var(--golden-text);
+    transition:background-color 0.2s ease-in;
+}
+
+.red-hover:hover{
+    background-color: var(--red-background);
     transition:background-color 0.2s ease-in;
 }
 .golden-font-hover:hover{
@@ -606,9 +612,9 @@ header{
             & .arrow-right{
                 background-image: url("../assets/svg/video-sl-arrow-rightt.svg");
             }
-            & .arrow-left:hover, & .arrow-right:hover{
-                filter: var(--golden-filter);
-            }
+            // & .arrow-left:hover, & .arrow-right:hover{
+            //     filter: var(--golden-filter);
+            // }
             &-dots{
                 display: flex;
                 flex-direction: row;
@@ -621,9 +627,9 @@ header{
                 border-radius: 50%;
                 transition: background-color 0.3s;
             }
-            &-dot:hover{
-                background-color: var(--golden-text);
-            }
+            // &-dot:hover{
+            //     background-color: var(--golden-text);
+            // }
             &-dot.active{
                 background-color: var(--dark-background);
             }
@@ -650,7 +656,7 @@ header{
         content: '';
         display: block;
         width: 100%;
-        height: 100%;
+        height: 360px;
         background:linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
         pointer-events: none;
     }
@@ -1380,7 +1386,7 @@ header{
         width: 45px;
         height: 43px;
         border-radius: 50%;
-        border: 2px solid var(--white-text);
+        border: 1px solid #666666;
         // background: url("../assets/svg/Social.svg");
         outline: hidden;
         text-decoration: none;
