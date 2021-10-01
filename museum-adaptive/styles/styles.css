@@ -1945,6 +1945,41 @@ header {
   .galery img {
     width: 29.6vw;
   }
+  .tickets {
+    padding-top: 55px;
+  }
+  .tickets-right-column {
+    margin-right: 35px;
+  }
+  .tickets-form {
+    margin-top: 55px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .tickets-picture {
+    height: initial;
+  }
+  .tickets-types {
+    display: none;
+  }
+  .tickets-amount {
+    margin: 0;
+    width: 175px;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .tickets-amount-wrp {
+    gap: 34px;
+  }
+  .tickets-amount-header {
+    text-align: left;
+  }
+  .tickets-cost {
+    margin: 20px 0 31px;
+    letter-spacing: 4px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -2112,6 +2147,29 @@ header {
   }
   .video-text {
     display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .tickets {
+    padding-top: 45px;
+  }
+  .tickets-right-column {
+    margin-right: 50px;
+  }
+  .tickets-form {
+    margin-top: 45px;
+  }
+  .tickets-picture {
+    width: 57.8vw;
+    background-size: contain;
+  }
+  .tickets-amount-wrp {
+    margin-top: 45px;
+    gap: 20px;
+  }
+  .tickets-cost {
+    margin: 40px 0 0px;
   }
 }
 
@@ -2365,22 +2423,7 @@ header {
     margin: 45px auto 0;
   }
   .video {
-    padding-bottom: 40px;
-  }
-  .galery {
-    padding-top: 38px;
-    max-height: 180vw;
-  }
-  .galery .section-header {
-    padding-bottom: 35px;
-    margin-bottom: 0px;
-  }
-  .galery-wrp {
-    max-height: 214vw;
-    gap: 5.7vw;
-  }
-  .galery img {
-    width: 42.3vw;
+    padding-bottom: 80px;
   }
 }
 
@@ -2495,6 +2538,67 @@ header {
   .video .video-slider-item, .video .video-slider-item iframe {
     width: 42.8vw;
     height: 24vw;
+  }
+  .galery {
+    padding-top: 38px;
+    max-height: 170vw;
+  }
+  .galery .section-header {
+    padding-bottom: 35px;
+    margin-bottom: 0px;
+  }
+  .galery-wrp {
+    max-height: 214vw;
+    gap: 5.7vw;
+  }
+  .galery img {
+    width: 42.3vw;
+  }
+  .tickets-form {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .tickets-picture {
+    width: 90vw;
+    background-size: cover;
+    background-position: center;
+    height: 38vw;
+  }
+  .tickets-right-column {
+    margin: 0;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .tickets-amount-wrp {
+    margin-top: 15px;
+  }
+  .tickets-amount-header {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 27px;
+  }
+  .tickets-amount-label {
+    font-weight: 300;
+    font-size: 16px;
+  }
+  .tickets-cost {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: initial;
+  }
+  .tickets-submit {
+    font-size: 16px;
+    padding: 0 50px;
+    margin-top: 35px;
   }
 }
 
@@ -2623,7 +2727,7 @@ header {
   }
 }
 
-.tickets, .contacts, footer, .parallax {
+.contacts, footer, .parallax, .tickets-modal {
   display: none;
 }
 /*# sourceMappingURL=styles.css.map */
