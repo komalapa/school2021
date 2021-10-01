@@ -1459,6 +1459,10 @@ header{
     h2{
         font-size: 50px;
     }
+    h3{
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
     .section-container{
         // min-width: 100%;
         padding: 0 20px;
@@ -1513,7 +1517,29 @@ header{
         }
     }
     .visiting-cards-wrp{
-        justify-content: space-evenly;
+        margin-top: 60px;
+        justify-content: center;
+
+        gap: 0 108px;
+    }
+
+    .visiting-cards-wrp .card{
+        width: 330px;
+        margin-bottom: -16px;
+        &{
+            img{
+                height: 215px;
+            }
+            &-tour{
+                font-size: 20px;
+            }
+            &-googlestreet{
+                font-size: 16px;
+            }
+            &-header:after{
+                width:150px;
+            }
+        }
     }
 
 }
@@ -1617,6 +1643,13 @@ header{
             
         }
     }
+    .visiting{
+        padding-top: 50px;
+    }
+    .section-header{
+        padding-bottom: 15px;
+    }
+
   }
 
 @media (max-width: 840px) {
@@ -1683,6 +1716,10 @@ header{
         font-size: 40px;
         line-height: 60px;
     }
+    h3{
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
     .welcome-content-wrp{
         margin-top: 0;
         text-align: center;
@@ -1712,9 +1749,40 @@ header{
         padding: 0;
 
     }
+    .visiting{
+        padding-top: 35px;
+        .section-header{
+            padding-bottom: 20px;
+        }
+    }
+    .visiting-cards-wrp{
+        margin-top: 40px;
+        justify-content: center;
 
-    .card {
-  width: 280px;
+        gap: 0 55px;
+    }
+
+    .visiting-cards-wrp .card{
+        width: 280px;
+        margin-bottom: -16px;
+        height: 358px;
+        &{
+            img{
+                height: 180px;
+                margin-bottom: 20px;
+            }
+            &-tour{
+                font-size: 18px;
+                margin-top: 1px;
+            }
+            &-googlestreet{
+                font-size: 16px;
+                margin-top: 9px;
+            }
+            &-header:after{
+                width:150px;
+            }
+        }
     }
 }
 
@@ -1796,7 +1864,18 @@ header{
         font-size: 28px;
         line-height: 40px;
     }
+    h3{
+        font-size: 18px;
+        letter-spacing: 5px;
+    }
+    .welcome-slider{
+        padding-bottom: 45px;
+    }
     .welcome-content-wrp{
+        h2{
+            margin-top: -15px;
+            margin-bottom: -5px;
+        }
         margin-top: 0;
     }
     .welcome-text{
@@ -1804,7 +1883,7 @@ header{
     }
     .welcome-slider-controls{
         height: 80px;
-        bottom:20px;
+        bottom:5px;
         .arrow-left, .arrow-right{
             width: 20px;
             height: 8px;
@@ -1812,11 +1891,40 @@ header{
             background-repeat: no-repeat;
         }
     }
+    .visiting-cards-wrp{
+        margin-top: 40px;
+        justify-content: center;
+
+        gap: 0 55px;
+    }
+
+    .visiting-cards-wrp .card{
+        // width: 280px;
+        // margin-bottom: -16px;
+        height: 351px;
+        &{
+            img{
+                // height: 180px;
+                margin-bottom: 15px;
+            }
+            &-tour{
+                font-size: 16px;
+                margin-top: 5px;
+            }
+            &-googlestreet{
+                // font-size: 16px;
+                margin-top: 5px;
+            }
+            &-header:after{
+                margin-top: 5px;
+            }
+        }
+    }
 
 }
 
 //dev
-.video, .tickets, .explore, .contacts, .galery, footer, .visiting, .parallax { //header
+.video, .tickets, .explore, .contacts, .galery, footer, .parallax { //header, visiting
     display: none;
 }
 
