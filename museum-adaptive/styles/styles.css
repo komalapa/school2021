@@ -2047,7 +2047,7 @@ header {
     display: block;
     width: 32px;
     height: 20px;
-    margin-right: 40px;
+    margin-right: 0;
   }
   .main-burger-checkbox {
     position: absolute;
@@ -2119,7 +2119,7 @@ header {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 25px;
-    padding: 42px 0 0 31px;
+    padding: 35px 0 0 55px;
     width: 297px;
     height: calc(100vh - 130px);
     -webkit-box-pack: start;
@@ -2240,6 +2240,12 @@ header {
   .tickets-modal-form-wrp .input-wrp #tickets-date-pick, .tickets-modal-form-wrp .input-wrp #tickets-time-pick {
     width: 255px;
   }
+  .tickets-modal-form-wrp .line-total:before, .tickets-modal-form-wrp .amounts-header:after {
+    width: 500px;
+  }
+  .tickets-modal-form-wrp .tickets-modal-form-header:after {
+    width: 530px;
+  }
   .tickets-modal-form-wrp .tickets-modal-form-date-wrp {
     margin-top: 0;
   }
@@ -2334,6 +2340,7 @@ header {
     height: -moz-fit-content;
     height: fit-content;
     padding-left: 55px;
+    padding-top: 45px;
   }
   .main-burger-pictures {
     margin: 35px 45px 35px 50px;
@@ -2853,6 +2860,7 @@ header {
   }
   .footer {
     padding-top: 40px;
+    overflow-x: hidden;
   }
   .footer .footer-container {
     -webkit-box-orient: vertical;
