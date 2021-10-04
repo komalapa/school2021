@@ -2828,6 +2828,7 @@ header {
   }
   .contacts {
     padding-top: 40px;
+    padding-bottom: 40px;
   }
   .contacts-adaptive {
     -webkit-box-orient: vertical;
@@ -2850,6 +2851,9 @@ header {
     height: 59vw;
     margin-top: 42px;
   }
+  .footer {
+    padding-top: 40px;
+  }
   .footer .footer-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2859,25 +2863,40 @@ header {
   .footer .footer-container .footer-menu, .footer .footer-container .footer-socials {
     margin: 0 auto;
   }
+  .footer .footer-container nav {
+    margin-top: 25px;
+    margin: 35px 0 39px;
+    width: 90vw;
+  }
   .additional-footer-link:nth-child(2) {
     display: none;
   }
+  .additional-footer {
+    font-size: 16px;
+  }
   .footer-menu {
-    -webkit-box-orient: horizontal !important;
-    -webkit-box-direction: normal !important;
-        -ms-flex-direction: row !important;
-            flex-direction: row !important;
-    width: 100%;
+    width: 100vw;
+    margin: 10px 0 39px;
     font-size: 16px;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    gap: 14px;
+    height: 75px;
   }
   .footer-menu-item {
     margin: 0;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    line-height: 16px;
   }
   .footer-menu-item a {
+    margin: 0;
     font-size: 16px;
+  }
+  .footer .footer-socials > * {
+    margin: 0 3px 38px;
   }
 }
 

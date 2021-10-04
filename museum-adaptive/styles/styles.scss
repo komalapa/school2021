@@ -2476,6 +2476,7 @@ header{
     // }
     .contacts{
         padding-top: 40px;
+        padding-bottom: 40px;
         &-adaptive{
             flex-direction: column;
         }
@@ -2495,27 +2496,49 @@ header{
             margin-top: 42px;
         }
     }
+    .footer{
+        padding-top: 40px;
+    }
     .footer .footer-container{
         flex-direction: column;
         // justify-content: center;
         .footer-menu, .footer-socials{
             margin: 0 auto;
         }
-        
+        nav{
+            margin-top: 25px;
+            margin: 35px 0 39px;
+            width: 90vw;
+        }
     }
     .additional-footer-link:nth-child(2){
         display: none;
     }
+    .additional-footer{
+        font-size: 16px;
+    }
     .footer-menu{
-        flex-direction: row!important;
-        width: 100%;
+        
+        width: 100vw;
+        margin: 10px 0 39px;
         font-size: 16px;
         justify-content: space-between;
+        gap: 14px;
+        height: 75px;
         &-item {
             margin: 0;
+            // margin-right: 30px;
+            height: fit-content;
+            line-height: 16px;
             a{
+                margin: 0;
                 font-size: 16px;
             }
+        }
+    }
+    .footer .footer-socials{
+        &>*{
+            margin:0 3px 38px;
         }
     }
 }
