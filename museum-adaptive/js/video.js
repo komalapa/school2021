@@ -23,8 +23,12 @@ initVideoPlayer();
 function initVideoSlider(){
 
   const videoContent = document.querySelector('.video-slider-wrp');
+  // const  = videoContent.style.gap;
+  // console.log('gap', gap)
   const videoSliderControls = document.querySelector('.video-slider-controls');
   const slides = videoContent.querySelectorAll('.video-slider-item');
+  
+  
   const controlsButtonsList = videoSliderControls.querySelector('.video-slider-controls-dots')
 
   const arrowLeft = videoSliderControls.querySelector('.arrow-left');
@@ -35,6 +39,10 @@ function initVideoSlider(){
   
   videoContent.append(slides[0].cloneNode(true),slides[1].cloneNode(true),slides[2].cloneNode(true))
   videoContent.prepend(slides[sliderLength -1].cloneNode(true),slides[sliderLength-2].cloneNode(true),slides[sliderLength-3].cloneNode(true))
+
+  const step = videoContent.offsetWidth / (sliderLength + 6);
+  console.log(step)
+  document.documentElement.style.setProperty('--video-slider-step', `${step}px`);
 
   let inTransition = false;
   

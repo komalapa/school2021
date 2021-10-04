@@ -64,7 +64,10 @@ function initComparer() {
         /*position the slider:*/
         slider.style.left = overlay.offsetWidth - (slider.offsetWidth / 2) + "px";
     }
-    slide(440)
+    // slide(440)
+    const comparer = document.querySelector('.explore-img')
+    console.log(comparer.offsetWidth)
+    slide(0.61 * comparer.offsetWidth)
  }
  compareImages()
  
