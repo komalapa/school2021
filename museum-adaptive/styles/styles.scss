@@ -1667,9 +1667,19 @@ header{
             margin: 20px 0 31px;
             letter-spacing: 4px;
         }
+        &-modal-form-wrp{
+            padding: 75px 25px 30px;
+            .left-col{
+                width: 400px;
+            }
+            .tickets{
+                padding: 0;
+            }
+        }
     }
     .contacts{
         padding-top: 50px;
+        padding-bottom: 60px;
         &-map{
             width: 67.7vw;
             height: 44.3vw;
@@ -1685,6 +1695,26 @@ header{
             &-item{
                 line-height: 15px;
             }
+        }
+    }
+    .footer{
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding-top: 60px;
+        .additional-footer{
+            width: 100%;
+        }
+    }
+    .footer-socials{
+        margin-left: 10.5vw;
+        margin-bottom: 50px;
+    }
+    .footer-menu{
+        margin-right: 9vw;
+        margin-left: 4.3vw;
+        &-item{
+            margin-right: 10vw;
         }
     }
 }
@@ -1842,7 +1872,69 @@ header{
             display: none;
         }
     }
+    
   }
+@media (max-width: 1020px) {
+ .tickets-modal-form-wrp{
+     .section-header{
+         width: fit-content;
+     }
+     flex-direction: column;
+     gap:50px;
+    //  width: 765px;
+     height: 90vh;
+     overflow-y: scroll;
+     box-sizing: border-box;
+     .left-col, .right-col{
+         margin: 0;
+         width: 530px;
+         margin: 0 auto;
+     }
+     .right-col{
+        padding: 28px 18px 25px 10px;
+     }
+     .amounts-wrp{
+         width: 530px;
+     }
+     & .input-wrp, .input-wrp input, .input-wrp #tickets-select-type{
+         width: 530px;
+     }
+    .input-wrp #tickets-date-pick, .input-wrp #tickets-time-pick {
+        width: 255px;
+    }
+    .tickets-modal-form-date-wrp{
+        margin-top: 0;
+    }
+    .card-cvv{
+        left: 140px;
+    }
+ }
+
+.footer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer-socials{
+    align-self: end; 
+    margin-left: 39vw;
+    margin-top: 18px;
+    margin-bottom: 50px;
+}
+.footer-menu{
+    width: 100%;
+    margin-right: 9vw;
+    margin-left: 12vw;
+    &-item{
+        margin-right: 15vw;
+        font-size: 18px;
+    }
+}
+.additional-footer{
+
+    background-color: var(--dark-background);
+}
+}
+
 @media (max-width: 1000px) {
     .tickets{
         padding-top: 45px;
@@ -2312,6 +2404,73 @@ header{
             margin-top: 35px;
         }
     }
+
+        .tickets-modal-form-wrp{
+            .section-header{
+                width: fit-content;
+                font-size: 32px;
+            }
+            flex-direction: column;
+            gap:50px;
+           //  width: 765px;
+            height: 90vh;
+            overflow-y: scroll;
+            box-sizing: border-box;
+            .tickets-modal-form-fields-wrp{
+                width: fit-content;
+            }
+            .left-col, .right-col{
+                margin: 0;
+                width: 360px;
+                margin: 0 auto;
+            }
+            .right-col{
+                height: fit-content;
+                padding: 28px 18px 25px 10px;
+            }
+            .amounts-wrp{
+                width: 360px;
+            }
+            & .input-wrp, .input-wrp input, .input-wrp #tickets-select-type{
+                width: 360px;
+            }
+           .input-wrp #tickets-date-pick, .input-wrp #tickets-time-pick {
+               width: 360px;
+           }
+           .tickets-modal-form-date-wrp{
+               margin-top: 0;
+               flex-direction: column;
+           }
+           .line-total:before, .amounts-header:after{
+               width: 330px;
+           }
+           .tickets-modal-form-header:after{
+               width: 360px;
+           }
+           .tickets-modal-form-img{
+               width: 120px;
+               height: 95px;
+           }
+           & .card, .right-col .card-face{
+               width: 330px;
+           }
+           .card-face{
+               .card-input-name{
+                   width: 290px;
+               }
+           }
+           .card-cvv{
+               position: relative;
+                width: 330px;
+                left: 0px;
+                margin-top: -10px;
+           }
+           .book-submit{
+               font-size: 20px;
+           }
+        }
+       
+
     // .parallax{
     //     height: 300px;
     // }
@@ -2334,6 +2493,29 @@ header{
             width: 90vw;
             height: 59vw;
             margin-top: 42px;
+        }
+    }
+    .footer .footer-container{
+        flex-direction: column;
+        // justify-content: center;
+        .footer-menu, .footer-socials{
+            margin: 0 auto;
+        }
+        
+    }
+    .additional-footer-link:nth-child(2){
+        display: none;
+    }
+    .footer-menu{
+        flex-direction: row!important;
+        width: 100%;
+        font-size: 16px;
+        justify-content: space-between;
+        &-item {
+            margin: 0;
+            a{
+                font-size: 16px;
+            }
         }
     }
 }
@@ -2476,9 +2658,9 @@ header{
 }
 
 //dev
-footer, .tickets-modal { //header, .visiting, .explore, .video, .galery, .tickets, .parallax, .contacts
-    display: none;
-}
+// footer { //header, .visiting, .explore, .video, .galery, .tickets, .parallax, .contacts
+//     display: none;
+// }
 
 // body{
 //     background-color:red;
