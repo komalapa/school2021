@@ -75,18 +75,39 @@ function initSlider(){
 
     function detectSwipe(evt){
         const startX = evt.clientX;
+        const startXTouche = evt.touches && evt.touches[0].clientX; 
         const moveSlide = (e) =>{
-            if (welcomeSliderContent.contains(e.target)) {
-                (e.clientX>startX) ? changeSlide(activeSlide,'l') : changeSlide(activeSlide,'r') 
-            }  
+
+            console.log (e)
+            if (e.type === "touchmove"){
+                if (welcomeSliderContent.contains(e.target)) {
+                    const x = e.touches[0].clientX;                                    
+                    const xDiff = startXTouche - x;
+                                                                            
+                    if ( xDiff > 0 ) {
+                        changeSlide(activeSlide,'r')
+                    } else {
+                        changeSlide(activeSlide,'l')
+                    }   
+                } 
+                document.removeEventListener('touchmove', moveSlide);
+            } else {
+                if (welcomeSliderContent.contains(e.target)) {
+                    (e.clientX>startX) ? changeSlide(activeSlide,'l') : changeSlide(activeSlide,'r') 
+                }  
+                
+                document.removeEventListener('mousemove', moveSlide)
+            }
             
-            document.removeEventListener('mousemove', moveSlide)
         }
-        document.addEventListener('mousemove', moveSlide)
+        document.addEventListener('mousemove', moveSlide);
+        document.addEventListener('touchmove', moveSlide);
+        document.addEventListener('mouseup', ()=>{document.removeEventListener('mousemove', moveSlide)})
+        
     }
 
     document.addEventListener('mousedown', detectSwipe)
-
+    document.addEventListener('touchstart', detectSwipe);        
     
 }
 initSlider()
