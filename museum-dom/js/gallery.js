@@ -21,7 +21,7 @@ function genGalery(){
     const randSorter = (a,b) => 0.5 - Math.random();
     PATHS.sort(randSorter)
     PATHS.forEach((pic, i) => {
-        let classes = '';
+        let classes = 'gallery-img';
         if (i%Math.floor(PATHS.length/3) === 0) {
             const flexWrap = document.createElement('div');
             flexWrap.classList.add('flex-wrap-element');
@@ -36,5 +36,19 @@ function genGalery(){
         galleryWrp.append(img)
     })
     
+    window.addEventListener('scroll', ()=>{
+        const galImgs = document.querySelectorAll('.gallery-img');
+        console.log(galImgs)
+        galImgs.forEach(img => {
+            if (document.body.scrollTop > img.getBoundingClientRect().top -550) {
+                img.style.opacity = 1;
+                img.style.transform = "translate(0, 0)"
+            } else {
+                img.style.opacity = 0;
+                img.style.transform = "translate(0, 100px)"
+            }
+        })
+    })
 }
 genGalery()
+
