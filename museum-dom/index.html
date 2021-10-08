@@ -284,15 +284,15 @@
                             <h4 class="tickets-types-header tickets-strong-text">Ticket Type</h4>
                             <label class="tickets-types-radio-label golden-font-hover"> <input
                                     class="tickets-types-radio" type="radio" name="tickets-type"
-                                    id="tickets-type-permanent" checked><span
+                                    id="tickets-type-permanent" data-type="Permanent exhibition" checked><span
                                     class="tickets-types-radio-custom"></span>Permanent exhibition</label>
                             <label class="tickets-types-radio-label golden-font-hover"> <input
                                     class="tickets-types-radio" type="radio" name="tickets-type"
-                                    id="tickets-type-temporary"><span
+                                    id="tickets-type-temporary" data-type="Temporary exhibition"><span
                                     class="tickets-types-radio-custom"></span>Temporary exhibition</label>
                             <label class="tickets-types-radio-label golden-font-hover"> <input
                                     class="tickets-types-radio" type="radio" name="tickets-type"
-                                    id="tickets-type-combined"><span class="tickets-types-radio-custom"></span>Combined
+                                    id="tickets-type-combined" data-type="Combined Admission"><span class="tickets-types-radio-custom"></span>Combined
                                 Admission</label>
                         </div>
                         <div class="tickets-right-column">
@@ -303,27 +303,28 @@
                                         Basic 18+
                                         <div class="tickets-amount-input-wrp flex-row flex-space-between">
                                             <button class="tickets-amount-btn" type="button"
-                                                onclick="this.nextElementSibling.stepDown()">–</button>
+                                                onclick="stepper(this, 'down')">–</button>
+                                                <!-- this.nextElementSibling.stepDown() -->
                                             <input class="tickets-amount-input" type="number" min="0" max="20"
                                                 name="tickets-18-amount" id="tickets-18-amount" value="1">
                                             <button class="tickets-amount-btn" type="button"
-                                                onclick="this.previousElementSibling.stepUp()">+</button>
+                                                onclick="stepper(this, 'up')">+</button>
                                         </div>
                                     </div>
                                     <div class="tickets-amount-label">
                                         Senior 65+
                                         <div class="tickets-amount-input-wrp flex-row flex-space-between">
                                             <button class="tickets-amount-btn" type="button"
-                                                onclick="this.nextElementSibling.stepDown()">–</button>
+                                                onclick="stepper(this, 'down')">–</button>
                                             <input class="tickets-amount-input" type="number" min="0" max="20"
                                                 name="tickets-65-amount" id="tickets-65-amount" value="1">
                                             <button class="tickets-amount-btn" type="button"
-                                                onclick="this.previousElementSibling.stepUp()">+</button>
+                                                onclick="stepper(this, 'up')">+</button>
                                         </div>
                                     </div>
                                 </div>
 
-                                <span class="tickets-strong-text tickets-cost">Total &euro;<span>220</span></span>
+                                <span class="tickets-strong-text tickets-cost">Total &euro;<span id="prev-cost">220</span></span>
                             </div>
                             <button type="button" class="tickets-submit black-button golden-hover">Buy Now</button>
                         </div>
@@ -385,9 +386,9 @@
                                                 Ticket Type
                                                 <input type="checkbox" name="select-is-open" id="select-is-open" class="select-checkbox">
                                                 <div class="select-wrp">
-                                                    <div class="select-option" data-type="permanent">Permanent exhibition</div>
-                                                    <div class="select-option" data-type="temporary">Temporary exhibition</div>
-                                                    <div class="select-option" data-type="combined">Combined Admission</div>
+                                                    <div class="select-option" data-type="Permanent exhibition">Permanent exhibition</div>
+                                                    <div class="select-option" data-type="Temporary exhibition">Temporary exhibition</div>
+                                                    <div class="select-option" data-type="Combined Admission">Combined Admission</div>
                                                 </div>
                                                 
                                         </div>
@@ -402,22 +403,22 @@
                                                 Basic 18+ (20 €)
                                                 <div class="amount-input-wrp flex-row">
                                                     <button class="amount-btn" type="button"
-                                                        onclick="this.nextElementSibling.stepDown()">–</button>
+                                                        onclick="stepper(this, 'down')">–</button>
                                                     <input class="amount-input" type="number" min="0" max="20"
                                                         name="tickets-18-amount-modal" id="tickets-18-amount-modal" value="1">
                                                     <button class="amount-btn" type="button"
-                                                        onclick="this.previousElementSibling.stepUp()">+</button>
+                                                        onclick="stepper(this, 'up')">+</button>
                                                 </div>
                                             </div>
                                             <div class="amount-label flex-row flex-space-between">
                                                 Senior 65+ (10 €)
                                                 <div class="amount-input-wrp flex-row">
                                                     <button class="amount-btn" type="button"
-                                                        onclick="this.nextElementSibling.stepDown()">–</button>
+                                                        onclick="stepper(this, 'down')">–</button>
                                                     <input class="amount-input" type="number" min="0" max="20"
                                                         name="tickets-65-amount-modal" id="tickets-65-amount-modal" value="1">
                                                     <button class="amount-btn" type="button"
-                                                        onclick="this.previousElementSibling.stepUp()">+</button>
+                                                        onclick="stepper(this, 'up')">+</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -444,16 +445,16 @@
                                     </div>
                                     <div class="tickets-modal-form-total">
                                         <div class="line">
-                                            <span class="tickets"><span class="total-amount">2</span> Basic (20 €)</span>
-                                            <span class="sum">40 €</span>
+                                            <span class="tickets"><span class="total-amount" id="total-amount-basic">2</span> Basic (<span id="total-basic-cost">20</span>€)</span>
+                                            <span class="sum"><span id="total-sum-basic">40</span>€</span>
                                         </div>
                                         <div class="line">
-                                            <span class="tickets"><span class="total-amount">2</span> Senior (10 €)</span>
-                                            <span class="sum">20 €</span>
+                                            <span class="tickets"><span class="total-amount" id="total-amount-senior">2</span> Senior (<span id="total-senior-cost">10</span>€)</span>
+                                            <span class="sum" ><span id="total-sum-senior">20</span>€</span>
                                         </div>
                                         <div class="line-total line">
                                             <span class="total">Total:</span>
-                                            <span class="sum" id="total-sum">60 €</span>
+                                            <span class="sum" ><span id="total-sum">60</span>€</span>
                                         </div>
                                     </div>
                                     <div class="card credit-card">
@@ -464,14 +465,14 @@
                                             <div class="card-exp card-label">Expiration date
                                                 <div class="exp-wrp flex-row">
                                                     <div class="card-input-exp-wrp">
-                                                        <button type="button" class="up-btn" onclick="stepper(this,'up')"></button>
-                                                        <input class="card-input card-input-exp" type="number" name="card-exp-m" id="card-exp-m" min="1" max="12" value="03">
                                                         <button type="button" class="down-btn" onclick="stepper(this,'down')"></button>
+                                                        <input class="card-input card-input-exp" type="number" name="card-exp-m" id="card-exp-m" min="1" max="12" value="03">
+                                                        <button type="button" class="up-btn" onclick="stepper(this,'up')"></button>
                                                     </div>
                                                     <div class="card-input-exp-wrp">
-                                                        <button type="button" class="up-btn" onclick="stepper(this,'up')"></button>
-                                                        <input class="card-input card-input-exp" type="number" name="card-exp-y" id="card-exp-y" min="2021" max="2999" value="2024">    
                                                         <button type="button" class="down-btn" onclick="stepper(this,'down')"></button>
+                                                        <input class="card-input card-input-exp" type="number" name="card-exp-y" id="card-exp-y" min="2021" max="2999" value="2024">    
+                                                        <button type="button" class="up-btn" onclick="stepper(this,'up')"></button>
                                                     </div>
                                                     
                                                 </div>

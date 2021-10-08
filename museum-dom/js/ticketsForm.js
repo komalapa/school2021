@@ -1,3 +1,109 @@
+class Order{
+    constructor(types, costs) {
+        this.costs = costs;
+        this.types = types;
+        this.curTypeIndex = 0;
+        this.basicAmount = 1;
+        this.seniorAmount = 1;
+        this.basicSum = 0;
+        this.seniorSum = 0;
+        this.sum = 0;
+        this.setSums()
+    }
+    setType(type){
+        if (!type) return;
+        const newIndex = this.types.indexOf(type);
+        if (newIndex <0) return;
+        this.curTypeIndex = newIndex;
+        this.setSums();
+    }
+    setBasicAmount(n){
+        if (!n || +n < 0 || +n > 20) return
+        this.basicAmount = n;
+        this.setSums();
+        return this.basicAmount;
+    }
+    setSeniorAmount(n){
+        if (!n || +n < 0 || +n > 20) return
+        this.seniorAmount = n;
+        this.setSums();
+        return this.seniorAmount;
+    }
+    setSums(){
+        this.basicSum = this.basicAmount * this.getBasicCost();
+        this.seniorSum = this.seniorAmount * this.getSeniorCost();
+        this.sum = this.basicSum + this.seniorSum;
+    }
+    getBasicCost(){
+        return this.costs[this.types[this.curTypeIndex]].basic;
+    }
+    getSeniorCost(){
+        return this.costs[this.types[this.curTypeIndex]].senior;
+    }
+}
+
+const order = new Order (['Permanent exhibition', 'Temporary exhibition', 'Combined Admission'], {'Permanent exhibition': {'basic': 20, 'senior': 10}, 'Temporary exhibition': {'basic': 20, 'senior': 10}, 'Combined Admission':{'basic': 40, 'senior': 20}})
+
+console.log("ORDER", order)
+
+//start form to class events
+    const basicAmount1 = document.querySelector('#tickets-18-amount');
+    basicAmount1.value = order.basicAmount;
+    basicAmount1.addEventListener('change', (e) => {
+        order.setBasicAmount(+e.target.value);
+        updateForm()
+    })
+
+    const basicAmount2 = document.querySelector('#tickets-18-amount-modal');
+    basicAmount2.value = order.basicAmount;
+    basicAmount2.addEventListener('change', (e) => {
+        order.setBasicAmount(+e.target.value);
+        updateForm()
+    })
+    
+    const seniorAmount1 = document.querySelector('#tickets-65-amount');
+    seniorAmount1.value = order.seniorAmount;
+    seniorAmount1.addEventListener('change', (e) => {
+        order.setSeniorAmount(+e.target.value)
+        updateForm();
+    })
+
+    const seniorAmount2 = document.querySelector('#tickets-65-amount-modal');
+    seniorAmount2.value = order.seniorAmount;
+    seniorAmount2.addEventListener('change', (e) => {
+        order.setSeniorAmount(+e.target.value)
+        updateForm();
+    })
+
+    const typeRadios = document.querySelectorAll('.tickets-types-radio')
+    typeRadios.forEach(rad =>rad.addEventListener('click', (e)=>{
+        order.setType(e.target.dataset.type)
+        updateForm();
+    }))
+
+
+
+    function updateForm(){
+        const formSum1 = document.querySelector('#prev-cost');
+        formSum1.innerText = order.sum;
+        basicAmount1.value = order.basicAmount;
+        basicAmount2.value = order.basicAmount;
+        seniorAmount1.value = order.seniorAmount;
+        seniorAmount2.value = order.seniorAmount;
+        document.querySelector('#total-amount-basic').innerText = order.basicAmount;
+        document.querySelector('#total-amount-senior').innerText = order.seniorAmount;
+
+        document.querySelector('#total-basic-cost').innerText = order.getBasicCost();
+        document.querySelector('#total-senior-cost').innerText = order.getSeniorCost();
+
+        document.querySelector('#total-sum-basic').innerText = order.basicSum;
+        document.querySelector('#total-sum-senior').innerText = order.seniorSum;
+        document.querySelector('#total-sum').innerText = order.sum;
+    }
+    updateForm();
+//end form to class events
+
+
 function initTicketsForm(){
     let formIsOpen = true;
     const modalForm = document.querySelector('.tickets-modal')
@@ -122,6 +228,8 @@ function initTicketsForm(){
             selectCheckbox.checked = false;
             ticketType = e.target.dataset.type;
             console.log(ticketType)//there will be main action on click
+            order.setType(ticketType);
+            updateForm();
         })
     })
     const openIcon = document.querySelector('#select-icon-open');
@@ -149,11 +257,12 @@ initTicketsForm()
 
 function stepper(that,direction){ //for using as onclick for step buttons in card form
     const event = new Event('change');
-    if (direction === 'up'){
-        that.nextElementSibling.stepUp()
+    // console.log(that.nextElementSibling)
+    if (direction === 'down'){
+        that.nextElementSibling.stepDown()
         that.nextElementSibling.dispatchEvent(event)
     } else {
-        that.previousElementSibling.stepDown()
+        that.previousElementSibling.stepUp()
         that.previousElementSibling.dispatchEvent(event)
     }
 }
