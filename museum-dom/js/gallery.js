@@ -32,6 +32,8 @@ function genGalery(){
         img.src = pic;
         img.alt = "galery random image";
         img.style.position = 'relative';
+        img.style.opacity = 0;
+        img.style.transform = "translate(0, 100px)"
         img.className = classes;
         galleryWrp.append(img)
     })
