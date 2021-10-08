@@ -40,6 +40,9 @@ class Order{
     getSeniorCost(){
         return this.costs[this.types[this.curTypeIndex]].senior;
     }
+    getType(){
+        return this.types[this.curTypeIndex]
+    }
 }
 
 const order = new Order (['Permanent exhibition', 'Temporary exhibition', 'Combined Admission'], {'Permanent exhibition': {'basic': 20, 'senior': 10}, 'Temporary exhibition': {'basic': 20, 'senior': 10}, 'Combined Admission':{'basic': 40, 'senior': 20}})
@@ -99,6 +102,8 @@ console.log("ORDER", order)
         document.querySelector('#total-sum-basic').innerText = order.basicSum;
         document.querySelector('#total-sum-senior').innerText = order.seniorSum;
         document.querySelector('#total-sum').innerText = order.sum;
+
+        document.querySelector("#overview-type").innerText = order.getType();
     }
     updateForm();
 //end form to class events
@@ -142,12 +147,18 @@ function initTicketsForm(){
     const dateEl = document.querySelector('#tickets-date-pick');
     dateEl.addEventListener('focusout', formatOnDateFocusOut);
     dateEl.addEventListener('focus', formatDateOnFocusIn);
+    dateEl.addEventListener('change', (e)=>{
+        if (e.target.value) document.querySelector('#overview-date').innerText = humanReadableDate(new Date(e.target.value))
+    })
 
 
     const timeEl = document.querySelector('#tickets-time-pick');
     timeEl.addEventListener('focusout', formatOnTimeFocusOut);
     timeEl.addEventListener('focus', formatTimeOnFocusIn);
-
+    timeEl.addEventListener('input', (e)=>{
+        console.log(e.target.value)
+        if (e.target.value) document.querySelector('#overview-time').innerText = e.target.value;
+    })
 
     function humanReadableDate(date){
         console.log(date)
