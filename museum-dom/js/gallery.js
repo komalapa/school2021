@@ -40,7 +40,7 @@ function genGalery(){
     
     window.addEventListener('scroll', ()=>{
         const galImgs = document.querySelectorAll('.gallery-img');
-        console.log(galImgs)
+        // console.log(galImgs)
         galImgs.forEach(img => {
             if (document.body.scrollTop > img.getBoundingClientRect().top -550) {
                 img.style.opacity = 1;

@@ -573,6 +573,58 @@ header {
   padding-bottom: 75px;
 }
 
+.video .crossed {
+  position: relative;
+}
+
+.video .crossed:before {
+  position: absolute;
+  left: -7px;
+  top: 12px;
+  content: '';
+  width: 50px;
+  border-top: 5px solid var(--red-background);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.video .fullscreen {
+  min-width: 100vw;
+  min-height: 100%;
+}
+
+.video .fullscreen .video-player {
+  width: 100vW;
+  height: 100%;
+}
+
+.video .fullscreen ~ .video-player-start {
+  display: none;
+}
+
+.video .fullscreen ~ .video-player-controls {
+  position: fixed;
+  bottom: -80px;
+  z-index: 15;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  opacity: 0.7;
+}
+
+.video .fullscreen ~ .video-player-controls:before {
+  position: absolute;
+  top: -50px;
+  content: '';
+  width: 100%;
+  height: 50px;
+}
+
+.video .fullscreen ~ .video-player-controls:hover {
+  bottom: 0;
+}
+
 .video-player {
   -o-object-fit: cover;
      object-fit: cover;
@@ -596,6 +648,25 @@ header {
   fill: var(--white-text);
   -webkit-transition: fill 0.1s ease-in;
   transition: fill 0.1s ease-in;
+}
+
+.video-controls-message {
+  display: none;
+  position: absolute;
+  bottom: 90px;
+  z-index: 15;
+  left: 10px;
+  padding: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 1px;
+  font-family: monospace;
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--white-text);
+  background: var(--dark-background);
+  opacity: 0.5;
 }
 
 .video-player-controls {
@@ -638,6 +709,12 @@ header {
   background: url("../assets/svg/play.svg") no-repeat;
 }
 
+.video-player-controls-pause {
+  width: 23px;
+  background: url("../assets/svg/pause.svg") no-repeat;
+  background-size: 100% 100%;
+}
+
 .video-player-controls-forward {
   width: 27px;
   background: url("../assets/svg/forvard.svg") no-repeat;
@@ -645,7 +722,13 @@ header {
 
 .video-player-controls-mute {
   width: 38px;
-  background: url("../assets/svg/volume.svg") no-repeat;
+  background-image: url(../assets/svg/volume.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.video-player-controls-muted {
+  background-image: url("../assets/svg/muted.svg");
 }
 
 .video-player-controls-full {

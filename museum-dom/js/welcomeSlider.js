@@ -78,7 +78,7 @@ function initSlider(){
         const startXTouche = evt.touches && evt.touches[0].clientX; 
         const moveSlide = (e) =>{
 
-            console.log (e)
+            // console.log (e)
             if (e.type === "touchmove"){
                 if (welcomeSliderContent.contains(e.target)) {
                     const x = e.touches[0].clientX;                                    
