@@ -37,7 +37,7 @@ function initComparer() {
         window.removeEventListener("touchmove", slideMove);
     }
     function slideMove(e) {
-        console.log(e.type, e.touches[0])
+        // console.log(e.type, e.touches[0])
         let position;
         
         if (clicked == 0) return false;//slideFinished by event
