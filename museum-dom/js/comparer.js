@@ -24,6 +24,7 @@ function initComparer() {
     
     
     function slideReady(e) {
+        // console.log(e.type)
         e.preventDefault();
         clicked = 1;
         
@@ -36,12 +37,13 @@ function initComparer() {
         window.removeEventListener("touchmove", slideMove);
     }
     function slideMove(e) {
+        // console.log(e.type, e.touches[0])
         let position;
         
         if (clicked == 0) return false;//slideFinished by event
         
-        position = getCursorPos(e)
-        
+        position = getCursorPos(e) || e.touches[0].clientX - overlay.getBoundingClientRect().left;
+        // console.log('comparer', position)
         if (position < 0) position = 0;
         if (position > width) position = width;
         
