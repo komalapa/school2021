@@ -45,7 +45,7 @@ class Order{
     }
 }
 
-const order = new Order (['Permanent exhibition', 'Temporary exhibition', 'Combined Admission'], {'Permanent exhibition': {'basic': 20, 'senior': 10}, 'Temporary exhibition': {'basic': 20, 'senior': 10}, 'Combined Admission':{'basic': 40, 'senior': 20}})
+const order = new Order (['Permanent exhibition', 'Temporary exhibition', 'Combined Admission'], {'Permanent exhibition': {'basic': 20, 'senior': 10}, 'Temporary exhibition': {'basic': 25, 'senior': 12.5}, 'Combined Admission':{'basic': 40, 'senior': 20}})
 
 console.log("ORDER", order)
 
@@ -277,3 +277,48 @@ function stepper(that,direction){ //for using as onclick for step buttons in car
         that.previousElementSibling.dispatchEvent(event)
     }
 }
+
+//validator
+const submitBtn = document.querySelector('.book-submit')
+console.log(submitBtn)
+const nameField = document.querySelector('#tickets-name-pick')
+nameField.addEventListener('input', (e)=>{
+    console.log(e.target)
+    const re = new RegExp ('^([A-Z]|[a-z]|[а-я]|[А-Я]|\ ){3,15}$')
+    console.log(re.test(e.target.value))
+    if (re.test(e.target.value)){
+        nameField.parentNode.classList.remove('wrong-input', 'wrong-input-text')
+        submitBtn.disabled = false;
+    } else {
+        nameField.parentNode.classList.add('wrong-input', 'wrong-input-text')
+        submitBtn.disabled = true;
+    }
+})
+
+const emailField = document.querySelector('#tickets-email-pick')
+emailField.addEventListener('input', (e)=>{
+    console.log(e.target)
+    const re = new RegExp ('^[A-Za-z0-9_-]{3,15}@[A-Za-z0-9-]{4,}.[A-Za-z]{2,4}$')
+    console.log(re.test(e.target.value))
+    if (re.test(e.target.value)){
+        emailField.parentNode.classList.remove('wrong-input', 'wrong-input-email')
+        submitBtn.disabled = false;
+    } else {
+        emailField.parentNode.classList.add('wrong-input', 'wrong-input-email')
+        submitBtn.disabled = true;
+    }
+})
+
+const phoneField = document.querySelector('#tickets-tel-pick')
+phoneField.addEventListener('input', (e)=>{
+    console.log(e.target)
+    const re = new RegExp ('^([0-9]( ?|-?)){0,10}$')
+    console.log(re.test(e.target.value))
+    if (re.test(e.target.value)){
+        phoneField.parentNode.classList.remove('wrong-input', 'wrong-input-phone')
+        submitBtn.disabled = false;
+    } else {
+        phoneField.parentNode.classList.add('wrong-input', 'wrong-input-phone')
+        submitBtn.disabled = true;
+    }
+})

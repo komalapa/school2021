@@ -163,6 +163,49 @@ figure {
   transition: none !important;
 }
 
+.wrong-input {
+  border: 2px solid var(--red-background) !important;
+}
+
+.wrong-input-text::before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: 'Letters only';
+  display: block;
+  padding: 5px;
+  background-color: var(--white-text);
+  border: 1px solid var(--red-background);
+  color: var(--red-background);
+  opacity: 0.5;
+}
+
+.wrong-input-email::before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: 'email as name@example.com';
+  display: block;
+  padding: 5px;
+  background-color: var(--white-text);
+  border: 1px solid var(--red-background);
+  color: var(--red-background);
+  opacity: 0.5;
+}
+
+.wrong-input-phone::before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: '10 digits or less';
+  display: block;
+  padding: 5px;
+  background-color: var(--white-text);
+  border: 1px solid var(--red-background);
+  color: var(--red-background);
+  opacity: 0.5;
+}
+
 header {
   padding: 74px 0 75px;
   -webkit-box-sizing: border-box;
