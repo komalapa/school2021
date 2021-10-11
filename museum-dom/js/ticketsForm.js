@@ -132,8 +132,12 @@ function initTicketsForm(){
     }
     function formatDateOnFocusIn(e){
         if (e.target.value) e.target.value=new Date(e.target.value.split('.').reverse().join('-')).toISOString().substring(0,10)
-        console.log(e.target.value)
+        // console.log(e.target.value)
         e.target.type='date';
+        const today = new Date();
+        // dateEl.min = `${today.getFullYear()}-${('0'+today.getMonth()).slice(-2)}-${('0'+today.getDate()).slice(-2)}`
+        // dateEl.max = `${today.getFullYear()+1}-${('0'+today.getMonth()).slice(-2)}-${('0'+today.getDate()).slice(-2)}`
+
     }
 
     function formatOnTimeFocusOut(e){
@@ -150,6 +154,9 @@ function initTicketsForm(){
     dateEl.addEventListener('change', (e)=>{
         if (e.target.value) document.querySelector('#overview-date').innerText = humanReadableDate(new Date(e.target.value))
     })
+    const today = new Date();
+    dateEl.min = `${today.getFullYear()}-${('0'+(today.getMonth()+1)).slice(-2)}-${('0'+today.getDate()).slice(-2)}`
+    dateEl.max = `${today.getFullYear()+1}-${('0'+(today.getMonth()+1)).slice(-2)}-${('0'+today.getDate()).slice(-2)}`
 
 
     const timeEl = document.querySelector('#tickets-time-pick');
