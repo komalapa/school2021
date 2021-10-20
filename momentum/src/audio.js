@@ -70,35 +70,53 @@ app.append(audioWrp);
 
 music.forEach((item, index) => {
     const listItem = document.createElement('li');
-    listItem.className = "audio-playlist-item";
+    listItem.className = "audio-playlist-item icon-pause";
     listItem.dataset.id = index;
     listItem.innerHTML = item.name;
     listItem.addEventListener('click', () => {
+        if (activeAudio === index && !audioPlayer.paused) {
+            audioPlayer.pause();
+            return
+        }
+        audioPlaylist.childNodes[activeAudio].classList.remove('item-active');
+        audioPlaylist.childNodes[activeAudio].classList.remove('icon-play');
+        audioPlaylist.childNodes[activeAudio].classList.add('icon-pause');
         activeAudio = index;
         audioPlayer.src = music[activeAudio].src;
         audioName.innerText = item.name;
+        audioPlaylist.childNodes[activeAudio].classList.add('item-active');
+        audioPlaylist.childNodes[activeAudio].classList.add('icon-play');
+        audioPlaylist.childNodes[activeAudio].classList.remove('icon-pause');
         audioPlayer.play();
     }) 
     audioPlaylist.append(listItem)
 })
 
+audioPlaylist.childNodes[activeAudio].classList.add('item-active');
 
 function playAudio(){
     audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause();
 }
 function playIconToggle(action = "play"){
-    //console.log(action)
+    // console.log('toggle')
     if (action === 'pause'){
         audioPlay.classList.remove('icon-pause');
         audioPlay.classList.add('icon-play');
+        audioPlaylist.childNodes[activeAudio].classList.remove('icon-play');
+        audioPlaylist.childNodes[activeAudio].classList.add('icon-pause');
     } else if (action === 'play'){
         audioPlay.classList.remove('icon-play');
-        audioPlay.classList.add('icon-pause')
+        audioPlay.classList.add('icon-pause');
+        audioPlaylist.childNodes[activeAudio].classList.add('icon-play');
+        audioPlaylist.childNodes[activeAudio].classList.remove('icon-pause');
     }
 }
 
 function changeAudio(direction = "next"){
     const paused = audioPlayer.paused;
+    audioPlaylist.childNodes[activeAudio].classList.remove('item-active');
+    audioPlaylist.childNodes[activeAudio].classList.add('icon-pause');
+    audioPlaylist.childNodes[activeAudio].classList.remove('icon-play');
     audioPlayer.pause();
     if (direction === "prev"){
         activeAudio = activeAudio > 0 ? activeAudio -1 : music.length - 1;
@@ -109,7 +127,10 @@ function changeAudio(direction = "next"){
     audioName.innerText = music[activeAudio].name;
     audioPlayer.src = music[activeAudio].src;
     audioPlayer.load();
-    audioPlayer.play()
+    audioPlayer.play();
+    audioPlaylist.childNodes[activeAudio].classList.add('item-active');
+    audioPlaylist.childNodes[activeAudio].classList.add('icon-play');
+    audioPlaylist.childNodes[activeAudio].classList.remove('icon-pause');
     updateTiming()
 }
 
