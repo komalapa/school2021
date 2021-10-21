@@ -8,7 +8,7 @@ async function getWeather(city='Минск', lang = 'ru', isDefault = false) {
     // console.log(res.status)
     if (res.status !== 200) return null;
     const data = await res.json(); 
-    console.log(data.wind);
+    // console.log(data.wind);
     const weatherItem = document.createElement('li');
     weatherItem.classList.add('weather-list-item');
     const name = document.createElement('h3');
@@ -40,6 +40,7 @@ async function getWeather(city='Минск', lang = 'ru', isDefault = false) {
     wind.prepend(windIcon);
     wind.style.textTransform = "lowercase"
 
+    weatherItem.dataset.city = city;
 
     weatherItem.append(name, icon, temp, humidity, wind)
     if (isDefault) {
@@ -52,21 +53,26 @@ async function getWeather(city='Минск', lang = 'ru', isDefault = false) {
 
   }
 
-  function weatherListGen(){
+  function weatherListGen(savedCity = null){
     weatherList.innerHTML = '';
     weatherList.innerText = '';
     if (lang === "ru"){
       //console.log('ru')
         DEFAULT_CITIES_RU.forEach(city => {
         //  console.log(city)
-        getWeather(city, lang, true)
+        getWeather(city, lang, savedCity.toLowerCase() !== city)
       })
     } else {
       //console.log('en')
         DEFAULT_CITIES_EN.forEach(city => {
       //    console.log(city)
-        getWeather(city, 'en', true)
+        getWeather(city, 'en', savedCity.toLowerCase() !== city)
       })
     }
+  }
+
+  function weatherNotDefault(city){
+    const item = document.querySelector(`li[data-city=${city}]`);
+    if (item) item.classList.remove('weather-default-city')
   }
   

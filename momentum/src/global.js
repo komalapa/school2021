@@ -14,8 +14,8 @@ let userName = localStorage.getItem('momentName') ? localStorage.getItem('moment
 
 let lang = 'ru';//'en'
 
-const DEFAULT_CITIES_RU = ['минск', 'москва','самара'];
-const DEFAULT_CITIES_EN = ['minsk', 'moskva','samara'];
+const DEFAULT_CITIES_RU = ['минск', 'москва'];
+const DEFAULT_CITIES_EN = ['minsk', 'moskva'];
 
 
 const monthsRu = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];

@@ -15,7 +15,14 @@ langSwitch.checked = (lang === 'en')
 
 const cities = (lang == 'ru') ? [...DEFAULT_CITIES_RU] : [...DEFAULT_CITIES_EN]
 let name, city;
+
 resetStartForm();
+// if (city){
+    
+//     // cities.push(city.toLowerCase())
+// }
+
+
 changeLang();
 // if (city && typeof getWeather == 'function') {
 //     cities.push(city.toLowerCase());
@@ -33,6 +40,10 @@ function submitStartForm(e){
 
     
     if (cityInput.value) {
+        if (DEFAULT_CITIES_EN.indexOf(cityInput.value.toLowerCase()) >= 0 || DEFAULT_CITIES_RU.indexOf(cityInput.value.toLowerCase()) >= 0){
+            if (typeof weatherNotDefault == 'function') weatherNotDefault(cityInput.value);
+            localStorage.setItem('momentCity', cityInput.value);
+        }
         if (cities.indexOf(cityInput.value.toLowerCase()) < 0 ){
             if (typeof getWeather == 'function'){
                 let weather = getWeather(cityInput.value)
@@ -44,7 +55,7 @@ function submitStartForm(e){
                             form.classList.remove('error-city');
                         }, 5000)
                     } else {
-                        // console.log('add city')
+                        console.log('add city')
                         localStorage.setItem('momentCity', cityInput.value);
                         cities.push(cityInput.value.toLowerCase());
                         form.classList.add("form-none")
@@ -65,17 +76,31 @@ function resetStartForm(e){
     if (e) e.preventDefault();
     name = localStorage.getItem('momentName');
     city = localStorage.getItem('momentCity');
-    if (city) cities.push(city.toLowerCase());
+    if (city) {
+        if (DEFAULT_CITIES_EN.indexOf(city.toLowerCase()) >= 0 || DEFAULT_CITIES_RU.indexOf(city.toLowerCase()) >= 0){
+            if (typeof weatherNotDefault == 'function') weatherNotDefault(city);
+        } else {
+            cities.push(city.toLowerCase());
+        }
+    }
     nameInput.value = name || '';
     cityInput.value = city || '';
-    form.classList.add("form-none")//module not found. exit
+    form.classList.add("form-none")
 }
 
 function changeLang(){
     lang = langSwitch.checked ? 'en' : 'ru';
     localStorage.setItem('momentLang', lang);
-    if (typeof weatherListGen == 'function') weatherListGen();
-    if (city && (typeof getWeather == 'function')) getWeather(city, lang) 
+    if (typeof weatherListGen == 'function') weatherListGen(city);
+    
+    if (city){
+        if (DEFAULT_CITIES_EN.indexOf(city.toLowerCase()) >= 0 || DEFAULT_CITIES_RU.indexOf(city.toLowerCase()) >= 0){
+            console.log('def city')
+            if (typeof weatherNotDefault == 'function') weatherNotDefault(city);
+        } else if(typeof getWeather == 'function'){ 
+            getWeather(city, lang)
+        }  
+    } 
     if (typeof newQuote == 'function') newQuote();
     if (lang === 'ru'){
         cityLbl.innerText = 'Город';
