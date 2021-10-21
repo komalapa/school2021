@@ -79,7 +79,9 @@ body,html{
     border-radius: 1vw;
     opacity: 0.6;
 }
-
+.weather-list-item-header{
+    margin: 10px auto;
+}
 .weather-list > *{
     display: none;
     
@@ -103,6 +105,14 @@ body,html{
     display: inline-block;
 }
 
+.wind-icon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    transform-origin: 10px 20px;
+}
 .start-form{
     position: absolute;
     top:50%;

@@ -59,3 +59,9 @@
 .icon-refresh:before {
   content: "\61";
 }
+.icon-tint:before {
+  content: "\62";
+}
+.icon-arrow-circle-o-up:before {
+  content: "\63";
+}

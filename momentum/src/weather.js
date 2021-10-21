@@ -8,7 +8,7 @@ async function getWeather(city='Минск', lang = 'ru', isDefault = false) {
     // console.log(res.status)
     if (res.status !== 200) return null;
     const data = await res.json(); 
-    //console.log(data, data.weather[0].id, data.weather[0].description, data.main.temp);
+    console.log(data.wind);
     const weatherItem = document.createElement('li');
     weatherItem.classList.add('weather-list-item');
     const name = document.createElement('h3');
@@ -18,13 +18,30 @@ async function getWeather(city='Минск', lang = 'ru', isDefault = false) {
     const temp = document.createElement('span');
     temp.classList.add('weather-list-item-temp');
     temp.innerHTML = data.main.temp.toFixed(0) + '&deg;C';
-    temp.title = `ощущается как ${data.main.feels_like.toFixed(0)}°C`
+    temp.title = `${lang === 'ru' ? 'ощущается как': 'feels like'} ${data.main.feels_like.toFixed(0)}°C`
     
     const icon = document.createElement('span');
     icon.classList.add('weather-list-item-icon','weather-icon' , 'owf' , 'owf-'+data.weather[0].id);
     icon.title = data.weather[0].description;
+    
+    const humidity = document.createElement('div');
+    humidity.classList.add('weather-list-item-icon','weather-icon' , 'icon-tint');
+    humidity.innerText = data.main.humidity + '%';
+    humidity.title = `${lang === 'ru' ? 'влажность': 'humidity'}`
 
-    weatherItem.append(name, icon, temp,)
+    const wind = document.createElement('div');
+    const windIcon = document.createElement('span');
+    windIcon.style.transform = `rotate(${data.wind.deg}deg)`
+    // windIcon.classList.add('icon-arrow-circle-o-up');
+    windIcon.innerText = '↑'
+    windIcon.classList.add('wind-icon')
+    wind.classList.add('weather-list-item-icon','weather-icon');
+    wind.innerText = Math.round(data.wind.speed) + `${lang === 'ru' ? 'м/c' : 'm/s'}`;
+    wind.prepend(windIcon);
+    wind.style.textTransform = "lowercase"
+
+
+    weatherItem.append(name, icon, temp, humidity, wind)
     if (isDefault) {
       weatherItem.classList.add('weather-default-city');
       weatherList.prepend(weatherItem)
