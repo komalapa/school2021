@@ -17,17 +17,8 @@ const cities = (lang == 'ru') ? [...DEFAULT_CITIES_RU] : [...DEFAULT_CITIES_EN]
 let name, city;
 
 resetStartForm();
-// if (city){
-    
-//     // cities.push(city.toLowerCase())
-// }
-
-
 changeLang();
-// if (city && typeof getWeather == 'function') {
-//     cities.push(city.toLowerCase());
-//     getWeather(city)
-// } //if weather module disabled city will be ignored
+
 function submitStartForm(e){
     e.preventDefault();
     if (nameInput.value) {
@@ -121,3 +112,7 @@ langSwitch.addEventListener('input',changeLang)
 
 if (!name || ! city) form.classList.remove('form-none');
 
+document.addEventListener('keydown', (e)=>{
+    // console.log(e.key)
+    if (e.key == 'Escape') form.classList.add('form-none')
+})

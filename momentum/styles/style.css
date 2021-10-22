@@ -68,6 +68,7 @@ body,html{
 }
 
 .weather-list, .start-form, .clock-wrp, .greeting, .quote-wrp, .audio-wrp, .todos-wrp{
+    position: relative;
     display: flex;
     width: fit-content;
     padding: 1vw;
@@ -78,6 +79,8 @@ body,html{
     background-color: var(--main-background-color);
     border-radius: 1vw;
     opacity: 0.6;
+
+    transition: transform 0.5s;
 }
 .weather-list-item-header{
     margin: 10px auto;
@@ -124,6 +127,7 @@ body,html{
     margin: -125px 0 0 -200px;
     border: 2px solid var(--main-color);
     opacity: 0.8;
+    transition: transform 0.5s;
 }
 .start-form-label-wrp{
     display: flex;
@@ -170,7 +174,8 @@ body,html{
     opacity: 0.9;
 }
 .form-none{
-    display: none;
+    /* display: none; */
+    transform: scale(0);
 }
 
   
