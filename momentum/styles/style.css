@@ -67,7 +67,7 @@ body,html{
     border-right: 2vw solid var(--main-color);
 }
 
-.weather-list, .start-form, .clock-wrp, .greeting, .quote-wrp, .audio-wrp{
+.weather-list, .start-form, .clock-wrp, .greeting, .quote-wrp, .audio-wrp, .todos-wrp{
     display: flex;
     width: fit-content;
     padding: 1vw;
@@ -414,3 +414,56 @@ body,html{
     border-radius: 15px;
 }
 
+
+.todos-wrp{
+    position: absolute;
+    top: 30vh;
+    right: 5vw;
+    display: block;
+    min-width: 10vw;
+    max-width: 20vw;
+    /* max-height: 40vh; */
+}
+.todos-wrp h3{
+    margin: 1vw 0;
+}
+.todos-wrp:hover{
+    opacity: 1;
+}
+.todos{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y:auto;
+    max-height: 30vh;
+}
+
+.todos-item{
+    cursor: pointer;
+    border-bottom: 1px solid var(--main-color);
+}
+.todos-item-text{
+    word-wrap: normal;
+}
+.todos-item-done .todos-item-text{
+    text-decoration: line-through;
+}
+
+.todos-item .icon-trash-o:before{
+    font-size: 1rem;
+}
+
+.todos-item-delete:hover::before{
+    text-decoration: underline;
+}
+.todos-item-delete:active:before{
+    font-size: 0.9rem;
+}
+
+.todos-input{
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--main-color);
+    color: var(--main-color);
+}

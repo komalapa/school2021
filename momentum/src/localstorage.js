@@ -111,6 +111,7 @@ function changeLang(){
         nameLbl.innerText = 'Name';
         cancelBtn.innerText = 'Cancel';
     }
+    if(typeof changeTodoLang == 'function') changeTodoLang()
 }
 
 settingsBtn.addEventListener('click', () => form.classList.remove('form-none'));

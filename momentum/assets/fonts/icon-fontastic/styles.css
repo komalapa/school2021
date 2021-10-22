@@ -65,3 +65,9 @@
 .icon-arrow-circle-o-up:before {
   content: "\63";
 }
+.icon-trash-o:before {
+  content: "\6a";
+}
+.icon-check:before {
+  content: "\6b";
+}
