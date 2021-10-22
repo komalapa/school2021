@@ -3,7 +3,7 @@ todosWrp.classList.add('todos-wrp');
 
 app.append(todosWrp)
 const todoTitle = document.createElement('h3')
-todoTitle.innerText = `${lang==='en' ? 'ToDo':'План'}`;
+todoTitle.innerText = `${lang==='en' ? 'ToDo':'Дела'}`;
 todosWrp.append(todoTitle)
 const todos = [];
 const savedTodos = localStorage.getItem('momentToDos');

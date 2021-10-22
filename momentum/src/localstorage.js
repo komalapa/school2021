@@ -13,6 +13,78 @@ if (localStorage.getItem('momentLang')) lang = localStorage.getItem('momentLang'
 langSwitch.checked = (lang === 'en')
 // if (typeof weatherListGen == 'function') weatherListGen();
 
+//func switchers
+const blocksState = {
+    player: true,
+    weather: true,
+    quotes: true,
+    todos: true,
+    wallpapers: 'git',
+    tag:''
+}
+const switchers = document.createElement('div');
+switchers.classList.add('form-switchers')
+
+form.append(switchers)
+
+const playerSw = document.createElement('span');
+playerSw.classList.add('form-func-switcher');
+playerSw.addEventListener('click', ()=>{
+    blocksState.player = !blocksState.player;
+    playerSw.style.textDecoration = !blocksState.player ? 'line-through' : 'none';
+    const playerWrp = document.querySelector('.audio-wrp');
+    console.log(playerWrp)
+    if (playerWrp) {
+        blocksState.player ? playerWrp.classList.remove('form-none')
+                :playerWrp.classList.add('form-none')
+    }
+}) 
+
+const weatherSw = document.createElement('span');
+weatherSw.classList.add('form-func-switcher');
+weatherSw.addEventListener('click', ()=>{
+    blocksState.weather = !blocksState.weather;
+    weatherSw.style.textDecoration = !blocksState.weather ? 'line-through' : 'none';
+    const weatherWrp = document.querySelector('.weather-list');
+    console.log(weatherWrp)
+    if (weatherWrp) {
+        blocksState.weather ? weatherWrp.classList.remove('form-none')
+                :weatherWrp.classList.add('form-none')
+    }
+}) 
+
+const quoteSw = document.createElement('span');
+quoteSw.classList.add('form-func-switcher');
+quoteSw.addEventListener('click', ()=>{
+    blocksState.quotes = !blocksState.quotes;
+    quoteSw.style.textDecoration = !blocksState.quotes ? 'line-through' : 'none';
+    const quoteWrp = document.querySelector('.quote-wrp');
+    console.log(quoteWrp)
+    if (quoteWrp) {
+        blocksState.quotes ? quoteWrp.classList.remove('form-none')
+                :quoteWrp.classList.add('form-none')
+    }
+}) 
+
+const todosSw = document.createElement('span');
+todosSw.classList.add('form-func-switcher');
+todosSw.addEventListener('click', ()=>{
+    blocksState.todos = !blocksState.todos;
+    quoteSw.style.textDecoration = !blocksState.todos ? 'line-through' : 'none';
+    const todosWrp = document.querySelector('.todos-wrp');
+    console.log(todosWrp)
+    if (todosWrp) {
+        blocksState.todos ? todosWrp.classList.remove('form-none')
+                :todosWrp.classList.add('form-none')
+    }
+}) 
+
+switchers.append(playerSw, weatherSw, quoteSw, todosSw )
+
+
+
+
+
 const cities = (lang == 'ru') ? [...DEFAULT_CITIES_RU] : [...DEFAULT_CITIES_EN]
 let name, city;
 
@@ -79,6 +151,7 @@ function resetStartForm(e){
     form.classList.add("form-none")
 }
 
+
 function changeLang(){
     lang = langSwitch.checked ? 'en' : 'ru';
     localStorage.setItem('momentLang', lang);
@@ -97,10 +170,18 @@ function changeLang(){
         cityLbl.innerText = 'Город';
         nameLbl.innerText = 'Имя';
         cancelBtn.innerText = 'Отмена';
+        playerSw.innerText = 'Музыка'
+        weatherSw.innerText = 'Погода';
+        quoteSw.innerText = 'Цитаты';
+        todosSw.innerText = 'Дела';
     } else {
         cityLbl.innerText = 'City';
         nameLbl.innerText = 'Name';
         cancelBtn.innerText = 'Cancel';
+        playerSw.innerText = 'Player';
+        weatherSw.innerText = 'Weather';
+        quoteSw.innerText = 'Quotes';
+        todosSw.innerText = 'ToDos';
     }
     if(typeof changeTodoLang == 'function') changeTodoLang()
 }

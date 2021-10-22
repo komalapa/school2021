@@ -60,13 +60,13 @@ async function getWeather(city='Минск', lang = 'ru', isDefault = false) {
       //console.log('ru')
         DEFAULT_CITIES_RU.forEach(city => {
         //  console.log(city)
-        getWeather(city, lang, savedCity.toLowerCase() !== city)
+        getWeather(city, lang, savedCity !== city)
       })
     } else {
       //console.log('en')
         DEFAULT_CITIES_EN.forEach(city => {
       //    console.log(city)
-        getWeather(city, 'en', savedCity.toLowerCase() !== city)
+        getWeather(city, 'en', savedCity !== city)
       })
     }
   }
