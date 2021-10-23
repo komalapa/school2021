@@ -22,7 +22,7 @@ function setBackground(number = backgroundNumber){
     //console.log(backgroundNumber)
     const image = new Image();
     number = ('0' + number).slice(-2)
-    image.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${number}.jpg`;
+    image.src = `https://raw.githubusercontent.com/komalapa/stage1-tasks/assets/images/${timeOfDay}/${number}.webp`;
 
     image.onload = function () {
         if (!inTransition){ //only when not transition apply changes for new background

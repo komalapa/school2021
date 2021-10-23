@@ -14,6 +14,8 @@ let userName = localStorage.getItem('momentName') ? localStorage.getItem('moment
 
 let lang = 'ru';//'en'
 
+let showSecs = true;
+
 const DEFAULT_CITIES_RU = ['минск', 'москва'];
 const DEFAULT_CITIES_EN = ['minsk', 'moskva'];
 

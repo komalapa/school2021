@@ -13,15 +13,18 @@ if (localStorage.getItem('momentLang')) lang = localStorage.getItem('momentLang'
 langSwitch.checked = (lang === 'en')
 // if (typeof weatherListGen == 'function') weatherListGen();
 
-//func switchers
-const blocksState = {
+//===========func switchers
+let blocksState = {
     player: true,
     weather: true,
     quotes: true,
     todos: true,
+    clock: true,
+    seconds: true,
     wallpapers: 'git',
     tag:''
 }
+
 const switchers = document.createElement('div');
 switchers.classList.add('form-switchers')
 
@@ -38,6 +41,7 @@ playerSw.addEventListener('click', ()=>{
         blocksState.player ? playerWrp.classList.remove('form-none')
                 :playerWrp.classList.add('form-none')
     }
+    localStorage.setItem('momentumSettings', JSON.stringify(blocksState))
 }) 
 
 const weatherSw = document.createElement('span');
@@ -51,6 +55,7 @@ weatherSw.addEventListener('click', ()=>{
         blocksState.weather ? weatherWrp.classList.remove('form-none')
                 :weatherWrp.classList.add('form-none')
     }
+    localStorage.setItem('momentumSettings', JSON.stringify(blocksState))
 }) 
 
 const quoteSw = document.createElement('span');
@@ -64,26 +69,65 @@ quoteSw.addEventListener('click', ()=>{
         blocksState.quotes ? quoteWrp.classList.remove('form-none')
                 :quoteWrp.classList.add('form-none')
     }
+    localStorage.setItem('momentumSettings', JSON.stringify(blocksState))
 }) 
 
 const todosSw = document.createElement('span');
 todosSw.classList.add('form-func-switcher');
 todosSw.addEventListener('click', ()=>{
     blocksState.todos = !blocksState.todos;
-    quoteSw.style.textDecoration = !blocksState.todos ? 'line-through' : 'none';
+    todosSw.style.textDecoration = !blocksState.todos ? 'line-through' : 'none';
     const todosWrp = document.querySelector('.todos-wrp');
     console.log(todosWrp)
     if (todosWrp) {
         blocksState.todos ? todosWrp.classList.remove('form-none')
                 :todosWrp.classList.add('form-none')
     }
+    localStorage.setItem('momentumSettings', JSON.stringify(blocksState))
+}) 
+const clockSw = document.createElement('span');
+clockSw.classList.add('form-func-switcher');
+clockSw.addEventListener('click', ()=>{
+    blocksState.clock = !blocksState.clock;
+    clockSw.style.textDecoration = !blocksState.clock ? 'line-through' : 'none';
+    const clockWrp = document.querySelector('.clock-wrp');
+    // console.log(todosWrp)
+    if (clockWrp) {
+        blocksState.clock ? clockWrp.classList.remove('form-none')
+                :clockWrp.classList.add('form-none')
+    }
+
+    localStorage.setItem('momentumSettings', JSON.stringify(blocksState))
 }) 
 
-switchers.append(playerSw, weatherSw, quoteSw, todosSw )
+const secSw = document.createElement('span');
+secSw.classList.add('form-func-switcher');
+secSw.addEventListener('click', ()=>{
+    blocksState.seconds = !blocksState.seconds;
+    secSw.style.textDecoration = !blocksState.seconds ? 'line-through' : 'none';
+    showSecs = blocksState.seconds
+
+    localStorage.setItem('momentumSettings', JSON.stringify(blocksState))
+}) 
+
+switchers.append( clockSw, secSw, playerSw, weatherSw, quoteSw, todosSw, )
+
+const savedBlocksStateJSON = localStorage.getItem('momentumSettings');
+// console.log(savedBlocksState)
+if (savedBlocksStateJSON) {
+    const savedBlocksState=  JSON.parse(savedBlocksStateJSON)
+    if (!savedBlocksState.player) playerSw.click();
+    if (!savedBlocksState.clock) clockSw.click();
+    if (!savedBlocksState.quotes) quoteSw.click();
+    if (!savedBlocksState.seconds) secSw.click();
+    if (!savedBlocksState.todos) todosSw.click();
+    if (!savedBlocksState.weather) weatherSw.click();
+    
+    
+}
 
 
-
-
+//===========func switchers end
 
 const cities = (lang == 'ru') ? [...DEFAULT_CITIES_RU] : [...DEFAULT_CITIES_EN]
 let name, city;
@@ -170,6 +214,8 @@ function changeLang(){
         cityLbl.innerText = 'Город';
         nameLbl.innerText = 'Имя';
         cancelBtn.innerText = 'Отмена';
+        clockSw.innerText = 'Часы';
+        secSw.innerText = 'Секунды';
         playerSw.innerText = 'Музыка'
         weatherSw.innerText = 'Погода';
         quoteSw.innerText = 'Цитаты';
@@ -178,6 +224,8 @@ function changeLang(){
         cityLbl.innerText = 'City';
         nameLbl.innerText = 'Name';
         cancelBtn.innerText = 'Cancel';
+        clockSw.innerText = 'Clock';
+        secSw.innerText = 'Seconds';
         playerSw.innerText = 'Player';
         weatherSw.innerText = 'Weather';
         quoteSw.innerText = 'Quotes';
