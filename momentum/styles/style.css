@@ -539,3 +539,89 @@ body,html{
     border-bottom: 2px solid var(--main-color);
     color: var(--main-color);
 }
+
+@media (max-width: 1440px) {
+    .audio-wrp, .quote-wrp, .weather-list, .todos-wrp{
+        position: relative;
+        top:initial;
+        left: initial;
+        right: initial;
+        bottom: initial;
+    }
+    .quote-refresh-btn{
+        position: static;
+        margin: 0 auto;
+    }
+    #app{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .clock-wrp{
+        width: 80%;
+    }
+
+    .weather-list{
+        align-self: center;
+    }
+
+    .audio-wrp .audio-playlist{
+        display: none;
+    }
+    .todos-wrp{
+        min-width: 50vw;
+    }
+    .todos{
+        max-height: 10vh;
+    }
+}
+
+@media (max-width: 850px){
+    .quote-wrp{
+        width: 80%;
+    }
+    .todos{
+        max-height: 10vh;
+    }
+    .todos-item{
+        font-size: 0.8em;
+    }
+    h3{
+        font-size: 1em;
+    }
+    .weather-list-item{
+        font-size: 0.6em;
+    }
+
+    .quote-text{
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width: 550px){
+    .todos-wrp{
+        min-width: 80vw;
+        margin: 0;
+    }
+    .audio-wrp{
+        transform: scale(0.5);
+    }
+    .slider-arrow{
+        display: none;
+    }
+    .todos{
+        max-height: 10vh;
+    }
+
+    .todos-item{
+        font-size: 0.6em;
+    }
+
+}
+@media (max-width: 450px){
+    .clock{
+        font-size: 2em;
+    }
+}
