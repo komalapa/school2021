@@ -1,4 +1,4 @@
-const BACKGROUNDS_COUNT = 4;
+const BACKGROUNDS_COUNT = 20;//4;
 const AUTO_CHANGE_INTERVAL = 10 * 60 * 1000; //10min
 
 let tag = timeOfDay;
@@ -199,5 +199,5 @@ async function setBackgroundFlickr(number){
         }
     };
 };
-setBackgroundSettings('flickr')
-setBackground()
+// setBackgroundSettings('flickr')
+// setBackground()
