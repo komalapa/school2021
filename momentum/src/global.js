@@ -10,6 +10,17 @@ console.log(`
 
 
 let timeOfDay = 'morning'//'afternoon';//'morning' 'evening' 'night'
+let dateNow = new Date()
+if (dateNow.getHours() < 6) {
+    timeOfDay = 'night';
+} else if (dateNow.getHours() < 12) {
+    timeOfDay = 'morning';
+} else if (dateNow.getHours() < 18) {
+    timeOfDay = 'afternoon';
+} else timeOfDay = 'evening';
+
+
+
 
 let userName = localStorage.getItem('momentName') ? localStorage.getItem('momentName') : ''
 

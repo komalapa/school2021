@@ -1,8 +1,8 @@
 const BACKGROUNDS_COUNT = 4;
 const AUTO_CHANGE_INTERVAL = 10 * 60 * 1000; //10min
 
-let tag = 'cats';
-let service = 'git'//'unsplash'
+let tag = timeOfDay;
+let service = 'unsplash'
 
 
 const sliderLeftBtn = document.querySelector('#slider-left');
@@ -22,13 +22,18 @@ let backgroundNumber = Math.floor(Math.random() * BACKGROUNDS_COUNT);
 document.documentElement.style.setProperty('--background-image', ` )`)
 
 
-function setBackgroundSettings(srvc = 'git', tg = 'nature') {
-    tag = tg;
+let apiBackgrounds = [];
+let activeApiBackground = -1;
+
+function setBackgroundSettings(srvc = 'git', tg = timeOfDay) {
+    tag = tg || timeOfDay;
     service =srvc;
     if (service === 'git'){
         backgroundNumber = Math.floor(Math.random() * BACKGROUNDS_COUNT);
     } else {
         backgroundNumber = 0
+        apiBackgrounds = [];
+        activeApiBackground = -1;
     }
 }
 
@@ -52,6 +57,7 @@ function setBackground(n) {
     console.log("slide n", n)
     if (service==='git') setBackgroundGit()
     if (service==='unsplash') setBackgroundUnsplash(n)
+    if (service==='flickr') setBackgroundFlickr(n)
     
 }
 
@@ -92,16 +98,16 @@ sliderRightBtn.addEventListener('click',()=>changeSlide('right'));
 // setBackgroundGit()
 
 
-const apiBackgrounds = [];
-let activeApiBackground = -1;
+// const apiBackgrounds = [];
+// let activeApiBackground = -1;
 async function getLinkToImageUnsplash(n) {
     console.log('apiN', activeApiBackground)
     console.log('n', n)
     const LENGTH = BACKGROUNDS_COUNT;
-    if (n === 'undefined'){
+    if (typeof n !== 'undefined'){
         if (n<0) {
             activeApiBackground = -1;
-        } else if (n>=apiBackgrounds.length - 1) {
+        } else if (n>apiBackgrounds.length - 1) {
             activeApiBackground = apiBackgrounds.length -1
         } else {
             activeApiBackground= n;
@@ -109,21 +115,22 @@ async function getLinkToImageUnsplash(n) {
         }
     }
 
-
     if (apiBackgrounds.length<LENGTH){
         console.log('NEW')
         const url = `https://api.unsplash.com/photos/random?query=${tag}&orientation=landscape&client_id=R_-j0FlbUgTGBC_0hqN3sYG-dflJXCA_xL0eHN43eaA`;
         const res = await fetch(url);
         const data = await res.json();
+        // if (!data) alert("can't find tag on unsplash")
         apiBackgrounds.push(data.urls.regular)
         activeApiBackground++;
         console.log(data.urls.regular)
-        return data.urls.regular
+        // return data.urls.regular
     } else {
         activeApiBackground = (activeApiBackground+1)%LENGTH;
         console.log(apiBackgrounds[activeApiBackground])
+    }
         return apiBackgrounds[activeApiBackground]
-    }   
+       
 }
 
 async function setBackgroundUnsplash(number){
@@ -138,4 +145,57 @@ async function setBackgroundUnsplash(number){
         }
     };
 };
+
+async function getLinkToImageFlickr(n) {
+    console.log('apiN', activeApiBackground)
+    console.log('n', n)
+    const LENGTH = BACKGROUNDS_COUNT;
+    if (typeof n !== 'undefined'){
+        if (n<0) {
+            activeApiBackground = -1;
+        } else if (n>apiBackgrounds.length - 1) {
+            activeApiBackground = apiBackgrounds.length -1
+        } else {
+            activeApiBackground= n;
+            return apiBackgrounds[activeApiBackground]
+        }
+    }
+
+    if (apiBackgrounds.length<LENGTH){
+        console.log('NEW')
+        const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=4814ca8cacb6f0ae76e0dcb23fbaea2a&tags=${tag}&extras=url_l&format=json&nojsoncallback=1`;
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log(data.photos.photo)
+        // if (!data) alert("can't find tag on unsplash")
+        data.photos.photo.forEach(item =>{
+            if (apiBackgrounds.length < LENGTH){
+                apiBackgrounds.push(item.url_l);
+            } 
+        })
+          
+        activeApiBackground++;
+        console.log(apiBackgrounds)
+        // return data.urls.regular
+    } else {
+        activeApiBackground = (activeApiBackground+1)%LENGTH;
+        console.log(apiBackgrounds[activeApiBackground])
+    }
+        return apiBackgrounds[activeApiBackground]
+       
+}
+
+async function setBackgroundFlickr(number){
+    //console.log(backgroundNumber)
+    const image = new Image();
+    image.src = await getLinkToImageFlickr(number);
+
+    image.onload = function () {
+        if (!inTransition){ //only when not transition apply changes for new background
+            document.documentElement.style.setProperty('--background-image', `url("${image.src}")`)
+            app.style.opacity = 1;
+        }
+    };
+};
+setBackgroundSettings('flickr')
 setBackground()
