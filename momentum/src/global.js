@@ -9,13 +9,27 @@ console.log(`
 `)
 
 
-let timeOfDay = 'afternoon';//'morning' 'evening' 'night'
+let timeOfDay = 'morning'//'afternoon';//'morning' 'evening' 'night'
+let dateNow = new Date()
+if (dateNow.getHours() < 6) {
+    timeOfDay = 'night';
+} else if (dateNow.getHours() < 12) {
+    timeOfDay = 'morning';
+} else if (dateNow.getHours() < 18) {
+    timeOfDay = 'afternoon';
+} else timeOfDay = 'evening';
+
+
+
+
 let userName = localStorage.getItem('momentName') ? localStorage.getItem('momentName') : ''
 
 let lang = 'ru';//'en'
 
-const DEFAULT_CITIES_RU = ['минск', 'москва','самара'];
-const DEFAULT_CITIES_EN = ['minsk', 'moskva','samara'];
+let showSecs = true;
+
+const DEFAULT_CITIES_RU = ['минск', 'москва'];
+const DEFAULT_CITIES_EN = ['minsk', 'moskva'];
 
 
 const monthsRu = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];

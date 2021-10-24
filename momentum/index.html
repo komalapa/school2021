@@ -48,6 +48,15 @@
                 <label class="start-form-label" id="city-lbl" for="city">Город </label>
                 <input type="text" class="start-form-input" name="city" id="city">
             </div>
+            <div class="start-form-label-wrp backgrounds-radio" >
+                <label class="start-form-label backgrounds-radio-label" id="backgrounds-lbl" for="git-background" ><input type="radio" class="start-form-radio backgrounds-radio-input" name="backgrounds-radio" id="git-background" checked value="git">GitHub</label>
+                <label class="start-form-label backgrounds-radio-label" id="backgrounds-lbl" for="unsplash-background" ><input type="radio" class="start-form-radio backgrounds-radio-input" name="backgrounds-radio" id="unsplash-background" value="unsplash">Unsplash</label>
+                <label class="start-form-label backgrounds-radio-label" id="backgrounds-lbl" for="flickr-background" ><input type="radio" class="start-form-radio backgrounds-radio-input" name="backgrounds-radio" id="flickr-background" value="flickr">Flickr</label>
+            </div>
+            <div class="start-form-label-wrp" >
+                <label class="start-form-label" id="tag-lbl" for="tag">Тег</label>
+                <input type="text" class="start-form-input" name="tag" id="tag">
+            </div>
             <button type="submit" class="start-form-button" id="start-form-submit">Ok</button>
             <button type="reset" class="start-form-button" id="start-form-reset">Отмена</button>
         </form>
@@ -61,6 +70,7 @@
     <script id="quotes-data" type="application/json" src="assets/quotesRU.json"></script>
     <script src="src/quotes.js"></script>
     <script src="src/audio.js"></script>
+    <script src="src/todos.js"></script>
 </body>
 
 </html>

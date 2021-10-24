@@ -67,7 +67,8 @@ body,html{
     border-right: 2vw solid var(--main-color);
 }
 
-.weather-list, .start-form, .clock-wrp, .greeting, .quote-wrp, .audio-wrp{
+.weather-list, .start-form, .clock-wrp, .greeting, .quote-wrp, .audio-wrp, .todos-wrp{
+    position: relative;
     display: flex;
     width: fit-content;
     padding: 1vw;
@@ -78,8 +79,12 @@ body,html{
     background-color: var(--main-background-color);
     border-radius: 1vw;
     opacity: 0.6;
-}
 
+    transition: transform 0.5s;
+}
+.weather-list-item-header{
+    margin: 10px auto;
+}
 .weather-list > *{
     display: none;
     
@@ -103,6 +108,14 @@ body,html{
     display: inline-block;
 }
 
+.wind-icon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    transform-origin: 10px 20px;
+}
 .start-form{
     position: absolute;
     top:50%;
@@ -110,10 +123,11 @@ body,html{
     z-index: 15;
     flex-direction: column;
     width: 400px;
-    height: 250px;
+    height: 335px;
     margin: -125px 0 0 -200px;
     border: 2px solid var(--main-color);
     opacity: 0.8;
+    transition: transform 0.5s;
 }
 .start-form-label-wrp{
     display: flex;
@@ -144,7 +158,7 @@ body,html{
     border-radius: 1vw;
     opacity: 0.6;
 }
-.error-city:before{
+.error-city-ru:before{
     position: absolute;
     bottom: -50px;
     left: 0;
@@ -159,10 +173,69 @@ body,html{
     color: brown;
     opacity: 0.9;
 }
-.form-none{
-    display: none;
+.error-city-en:before{
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    content: 'city not found';
+    display: block;
+    width: 400px;
+    padding: 5px 1vw;
+    text-transform: none;
+    text-align: center;
+    background-color: pink;
+    border:1px solid brown;
+    color: brown;
+    opacity: 0.9;
 }
 
+.error-tag-ru:before{
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    content: 'недопустимый тег';
+    display: block;
+    width: 400px;
+    padding: 5px 1vw;
+    text-transform: none;
+    text-align: center;
+    background-color: pink;
+    border:1px solid brown;
+    color: brown;
+    opacity: 0.9;
+}
+.error-tag-en:before{
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    content: 'invalid tag';
+    display: block;
+    width: 400px;
+    padding: 5px 1vw;
+    text-transform: none;
+    text-align: center;
+    background-color: pink;
+    border:1px solid brown;
+    color: brown;
+    opacity: 0.9;
+}
+.form-none{
+    /* display: none; */
+    transform: scale(0);
+}
+.form-switchers{
+    text-align: center;
+}
+.form-func-switcher{
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin: 2px;
+    font-size: 0.5em;
+    background-color: var(--main-color);
+    color: var(--main-background-color);
+    cursor: pointer;
+    /* text-align: center; */
+}
   
   /* Hide default HTML checkbox */
   .start-form-lang-switch-input {
@@ -211,6 +284,15 @@ body,html{
     -ms-transform: translateX(30px);
     transform: translateX(30px);
   }
+
+  .backgrounds-radio{
+      /* flex-direction: column; */
+      align-items: center;
+      justify-content: space-around;
+  }
+  .backgrounds-radio-label{
+    font-size: 0.7em;
+}
 
 
 .settings-btn:hover {
@@ -327,13 +409,20 @@ body,html{
 }
 
 .audio-playlist-item{
+    position: relative;
+    padding-left: 20px;
     font-size: 20px;
     cursor: pointer;
 }
 .audio-playlist-item:hover{
     font-weight: bold;
 }
-
+.audio-playlist-item:before{
+    position: absolute;
+    font-size: 10px;
+    top:7px;
+    left:7px;
+} 
 .audio-timing{
     font-size: 15px;
     text-align: right;
@@ -390,4 +479,149 @@ body,html{
 
 .audio-icon{
     cursor: pointer;
+}
+
+.item-active{    
+    background-image: linear-gradient(45deg, black, transparent);
+    border-radius: 15px;
+}
+
+
+.todos-wrp{
+    position: absolute;
+    top: 30vh;
+    right: 5vw;
+    display: block;
+    min-width: 10vw;
+    max-width: 20vw;
+    /* max-height: 40vh; */
+}
+.todos-wrp h3{
+    margin: 1vw 0;
+}
+.todos-wrp:hover{
+    opacity: 1;
+}
+.todos{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y:auto;
+    max-height: 30vh;
+}
+
+.todos-item{
+    cursor: pointer;
+    border-bottom: 1px solid var(--main-color);
+}
+.todos-item-text{
+    word-wrap: normal;
+}
+.todos-item-done .todos-item-text{
+    text-decoration: line-through;
+}
+
+.todos-item .icon-trash-o:before{
+    font-size: 1rem;
+}
+
+.todos-item-delete:hover::before{
+    text-decoration: underline;
+}
+.todos-item-delete:active:before{
+    font-size: 0.9rem;
+}
+
+.todos-input{
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--main-color);
+    color: var(--main-color);
+}
+
+@media (max-width: 1440px) {
+    .audio-wrp, .quote-wrp, .weather-list, .todos-wrp{
+        position: relative;
+        top:initial;
+        left: initial;
+        right: initial;
+        bottom: initial;
+    }
+    .quote-refresh-btn{
+        position: static;
+        margin: 0 auto;
+    }
+    #app{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .clock-wrp{
+        width: 80%;
+    }
+
+    .weather-list{
+        align-self: center;
+    }
+
+    .audio-wrp .audio-playlist{
+        display: none;
+    }
+    .todos-wrp{
+        min-width: 50vw;
+    }
+    .todos{
+        max-height: 10vh;
+    }
+}
+
+@media (max-width: 850px){
+    .quote-wrp{
+        width: 80%;
+    }
+    .todos{
+        max-height: 10vh;
+    }
+    .todos-item{
+        font-size: 0.8em;
+    }
+    h3{
+        font-size: 1em;
+    }
+    .weather-list-item{
+        font-size: 0.6em;
+    }
+
+    .quote-text{
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width: 550px){
+    .todos-wrp{
+        min-width: 80vw;
+        margin: 0;
+    }
+    .audio-wrp{
+        transform: scale(0.5);
+    }
+    .slider-arrow{
+        display: none;
+    }
+    .todos{
+        max-height: 10vh;
+    }
+
+    .todos-item{
+        font-size: 0.6em;
+    }
+
+}
+@media (max-width: 450px){
+    .clock{
+        font-size: 2em;
+    }
 }

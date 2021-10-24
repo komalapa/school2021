@@ -48,7 +48,7 @@ function setGreeting(date) {
       let date = new Date();
       greeting.innerHTML = setGreeting(date);
       setDate(date)
-      clock.innerHTML = `${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}:${('0'+date.getSeconds()).slice(-2)}`;
+      clock.innerHTML = `${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}${showSecs? ':'+('0'+date.getSeconds()).slice(-2) : ''}`;
   }, 1000)
 
   greeting.style.visibility = "initial";
