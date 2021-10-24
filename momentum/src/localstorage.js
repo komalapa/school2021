@@ -165,9 +165,10 @@ function submitStartForm(e){
                 weather.then((weather)=>{
                     
                     if (weather === null) {
-                        form.classList.add('error-city');
+                        const className = `error-city-${lang}`
+                        form.classList.add(className);
                         setTimeout(()=>{
-                            form.classList.remove('error-city');
+                            form.classList.remove(className);
                         }, 5000)
                     } else {
                         console.log('add city')
@@ -268,9 +269,10 @@ backgroundRadio.forEach(el => el.addEventListener('input',() => {
 backgroundTagInput.addEventListener('input',(e) => {
     const re = new RegExp(`^[a-zA-Z]*$`)
     if (!re.test(e.target.value)) {
-        form.classList.add('error-tag');
+        const className = `error-tag-${lang}`
+        form.classList.add(className);
         setTimeout(()=>{
-            form.classList.remove('error-tag');
+            form.classList.remove(className);
         }, 5000)
     } else {
         console.log(e.target.value)
