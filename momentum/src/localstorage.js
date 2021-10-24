@@ -6,14 +6,24 @@ const cancelBtn = document.querySelector('#start-form-reset');
 const submitBtn = document.querySelector('#start-form-submit');
 const langSwitch = document.querySelector('#lang-switch');
 
+const backgroundRadio = document.querySelectorAll('input[name="backgrounds-radio"]');
+const backgroundTagInput = document.querySelector('#tag');
+
 const nameLbl = document.querySelector('#name-lbl');
 const cityLbl = document.querySelector('#city-lbl');
+const tagLbl = document.querySelector('#tag-lbl');
+
+let isBackgroundChanged = false; //to prevent reload backgrounds without changing
 
 if (localStorage.getItem('momentLang')) lang = localStorage.getItem('momentLang');
 langSwitch.checked = (lang === 'en')
 // if (typeof weatherListGen == 'function') weatherListGen();
 
 //===========func switchers
+let backgroundService = document.querySelector('input[name="backgrounds-radio"]:checked').value;
+let backgroundTag = timeOfDay;
+backgroundTagInput.value = backgroundTag;
+
 let blocksState = {
     player: true,
     weather: true,
@@ -21,8 +31,6 @@ let blocksState = {
     todos: true,
     clock: true,
     seconds: true,
-    wallpapers: 'git',
-    tag:''
 }
 
 const switchers = document.createElement('div');
@@ -177,12 +185,21 @@ function submitStartForm(e){
         }
         localStorage.setItem('momentName', nameInput.value);
     }
+    if (isBackgroundChanged){
+        localStorage.setItem('momentBackgroundSrc', backgroundService);
+        localStorage.setItem('momentBackgroundTag', backgroundTag);
+        isBackgroundChanged = false;
+        setBackgroundSettings(backgroundService, backgroundTag);
+    }
 }
 
 function resetStartForm(e){
     if (e) e.preventDefault();
     name = localStorage.getItem('momentName');
     city = localStorage.getItem('momentCity');
+    backgroundService = localStorage.getItem('momentBackgroundSrc') || 'git';
+    backgroundTag = localStorage.getItem('momentBackgroundTag') || timeOfDay;
+    setBackgroundSettings(backgroundService, backgroundTag);
     if (city) {
         if (DEFAULT_CITIES_EN.indexOf(city.toLowerCase()) >= 0 || DEFAULT_CITIES_RU.indexOf(city.toLowerCase()) >= 0){
             if (typeof weatherNotDefault == 'function') weatherNotDefault(city);
@@ -192,6 +209,8 @@ function resetStartForm(e){
     }
     nameInput.value = name || '';
     cityInput.value = city || '';
+    backgroundTagInput.value = backgroundTag;
+    document.querySelector(`#${backgroundService}-background`).checked = true;
     form.classList.add("form-none")
 }
 
@@ -213,6 +232,7 @@ function changeLang(){
     if (lang === 'ru'){
         cityLbl.innerText = 'Город';
         nameLbl.innerText = 'Имя';
+        tagLbl.innerText = 'Тэг';
         cancelBtn.innerText = 'Отмена';
         clockSw.innerText = 'Часы';
         secSw.innerText = 'Секунды';
@@ -223,6 +243,7 @@ function changeLang(){
     } else {
         cityLbl.innerText = 'City';
         nameLbl.innerText = 'Name';
+        tagLbl.innerText = 'Tag'
         cancelBtn.innerText = 'Cancel';
         clockSw.innerText = 'Clock';
         secSw.innerText = 'Seconds';
@@ -238,6 +259,26 @@ settingsBtn.addEventListener('click', () => form.classList.remove('form-none'));
 cancelBtn.addEventListener('click', resetStartForm);
 submitBtn.addEventListener('click', submitStartForm)
 langSwitch.addEventListener('input',changeLang)
+
+backgroundRadio.forEach(el => el.addEventListener('input',() => {
+    backgroundService = document.querySelector('input[name="backgrounds-radio"]:checked').value;
+    isBackgroundChanged = true;
+}))
+
+backgroundTagInput.addEventListener('input',(e) => {
+    const re = new RegExp(`^[a-zA-Z]*$`)
+    if (!re.test(e.target.value)) {
+        form.classList.add('error-tag');
+        setTimeout(()=>{
+            form.classList.remove('error-tag');
+        }, 5000)
+    } else {
+        console.log(e.target.value)
+        backgroundTag = e.target.value.toLowerCase();
+        isBackgroundChanged = true;
+    }
+})
+
 
 if (!name || ! city) form.classList.remove('form-none');
 
