@@ -8,7 +8,7 @@ todosWrp.append(todoTitle)
 const todos = [];
 const savedTodos = localStorage.getItem('momentToDos');
 if (savedTodos) todos.push(...JSON.parse(savedTodos));
-console.log(savedTodos)
+// console.log(savedTodos)
 
 function addToDo(name = '', done = false){
     const item = {name,done};
@@ -16,9 +16,9 @@ function addToDo(name = '', done = false){
     reloadTodos()
 }
 function removeToDo(index){
-    console.log(todos)
+    // console.log(todos)
     todos.splice(index,1);
-    console.log(todos)
+    // console.log(todos)
     reloadTodos()
 }
 

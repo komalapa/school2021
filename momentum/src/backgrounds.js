@@ -26,7 +26,7 @@ let apiBackgrounds = [];
 let activeApiBackground = -1;
 
 function setBackgroundSettings(srvc = 'git', tg = timeOfDay) {
-    console.log('SETTINGS', tg, srvc)
+    // console.log('SETTINGS', tg, srvc)
     tag = tg || timeOfDay;
     service =srvc;
     if (service === 'git'){
@@ -42,17 +42,31 @@ function setBackgroundSettings(srvc = 'git', tg = timeOfDay) {
 
 function setBackgroundGit(number = backgroundNumber){
     // console.log(backgroundNumber)
-    const image = new Image();
-    number++;
-    number = ('0' + number).slice(-2)
-    image.src = `https://raw.githubusercontent.com/komalapa/stage1-tasks/assets/images/${timeOfDay}/${number}.webp`;
+    try{
+        const image = new Image();
+        number++;
+        number = ('0' + number).slice(-2)
+        image.src = `https://raw.githubusercontent.com/komalapa/stage1-tasks/assets/images/${timeOfDay}/${number}.webp`;
 
-    image.onload = function () {
-        if (!inTransition){ //only when not transition apply changes for new background
-            document.documentElement.style.setProperty('--background-image', `url("${image.src}")`)
-            app.style.opacity = 1;
-        }
-    };
+        image.onload = function () {
+            if (!inTransition){ //only when not transition apply changes for new background
+                document.documentElement.style.setProperty('--background-image', `url("${image.src}")`)
+                app.style.opacity = 1;
+            }
+        };
+    }
+    catch{
+        const image = new Image();
+        image.src = `assets/img/fallback.webp`;
+
+        image.onload = function () {
+            if (!inTransition){ //only when not transition apply changes for new background
+                document.documentElement.style.setProperty('--background-image', `url("${image.src}")`)
+                app.style.opacity = 1;
+            }
+        };
+    }
+    
 };
 
 function setBackground(n) {
@@ -119,12 +133,18 @@ async function getLinkToImageUnsplash(n) {
 
     if (apiBackgrounds.length<LENGTH){
         // console.log('NEW')
-        const url = `https://api.unsplash.com/photos/random?query=${tag}&orientation=landscape&client_id=R_-j0FlbUgTGBC_0hqN3sYG-dflJXCA_xL0eHN43eaA`;
-        const res = await fetch(url);
-        const data = await res.json();
-        // if (!data) alert("can't find tag on unsplash")
-        apiBackgrounds.push(data.urls.regular)
-        activeApiBackground++;
+        try{
+            const url = `https://api.unsplash.com/photos/random?query=${tag}&orientation=landscape&client_id=R_-j0FlbUgTGBC_0hqN3sYG-dflJXCA_xL0eHN43eaA`;
+            const res = await fetch(url);
+            const data = await res.json();
+            // if (!data) alert("can't find tag on unsplash")
+            apiBackgrounds.push(data.urls.regular)
+            activeApiBackground++;
+                
+        }
+        catch{
+            return 'assets/img/fallback.webp'
+        }
         // console.log(data.urls.regular)
         // return data.urls.regular
     } else {
@@ -164,24 +184,29 @@ async function getLinkToImageFlickr(n) {
     }
 
     if (apiBackgrounds.length<LENGTH){
-        console.log('NEW')
-        const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=4814ca8cacb6f0ae76e0dcb23fbaea2a&tags=${tag}&extras=url_l&format=json&nojsoncallback=1`;
-        const res = await fetch(url);
-        const data = await res.json();
-        // console.log(data.photos.photo)
-        // if (!data) alert("can't find tag on unsplash")
-        data.photos.photo.forEach(item =>{
-            if (apiBackgrounds.length < LENGTH){
-                apiBackgrounds.push(item.url_l);
-            } 
-        })
-          
-        activeApiBackground++;
+        try{
+            // console.log('NEW')
+            const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=4814ca8cacb6f0ae76e0dcb23fbaea2a&tags=${tag}&extras=url_l&format=json&nojsoncallback=1`;
+            const res = await fetch(url);
+            const data = await res.json();
+            // console.log(data.photos.photo)
+            // if (!data) alert("can't find tag on unsplash")
+            data.photos.photo.forEach(item =>{
+                if (apiBackgrounds.length < LENGTH){
+                    apiBackgrounds.push(item.url_l);
+                } 
+            })
+            
+            activeApiBackground++;
+        }
+        catch{
+            return 'assets/img/fallback.webp'
+        }
         // console.log(apiBackgrounds)
         // return data.urls.regular
     } else {
         activeApiBackground = (activeApiBackground+1)%LENGTH;
-        console.log(apiBackgrounds[activeApiBackground])
+        // console.log(apiBackgrounds[activeApiBackground])
     }
         return apiBackgrounds[activeApiBackground]
        
