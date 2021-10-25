@@ -624,4 +624,42 @@ body,html{
     .clock{
         font-size: 2em;
     }
+    .start-form{
+        width: 90%;
+        left:55%;
+    }
+    .start-form .start-form-input{
+        width: 90%;
+    }
+    .start-form .start-form-label{
+        font-size: 0.8em;
+    }
+    .form-func-switcher{
+        display: none;
+    }
+}
+
+@media (max-width: 400px){
+    .clock{
+        font-size: 1em;
+    }
+    .start-form{
+        left:60%;
+    }
+    .start-form .start-form-input{
+        width: 80%;
+    }
+
+}
+@media (max-width: 340px){
+    .clock{
+        font-size: 1em;
+    }
+    .start-form{
+        left:65%;
+    }
+    .start-form .start-form-input{
+        width: 80%;
+    }
+
 }
