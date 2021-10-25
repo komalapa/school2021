@@ -539,7 +539,47 @@ body,html{
     border-bottom: 2px solid var(--main-color);
     color: var(--main-color);
 }
-
+footer {
+    position: fixed;
+    bottom: -70px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 50px;
+    display: flex;
+    background-color: var(--main-background-color);
+    justify-content: space-between;
+    color: var(--main-color);
+    align-items: baseline;
+    opacity: 0.9;
+    transition: bottom 0.3s ease-in;
+  }
+  footer:hover{
+      bottom:0;
+  }
+  .github-link {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-color);
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    outline: var(--text-color);
+  }
+  
+  .course-link:hover img, .course-link:active img {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  
+  .course-link:active {
+    -webkit-transform: translate(2px, 1px);
+            transform: translate(2px, 1px);
+  }
+  
+  .github-link:active, .github-link:hover {
+    font-style: italic;
+  }
+  
 @media (max-width: 1440px) {
     .audio-wrp, .quote-wrp, .weather-list, .todos-wrp{
         position: relative;
@@ -624,4 +664,49 @@ body,html{
     .clock{
         font-size: 2em;
     }
+    .start-form{
+        width: 90%;
+        left:55%;
+    }
+    .start-form .start-form-input{
+        width: 90%;
+    }
+    .start-form .start-form-label{
+        font-size: 0.8em;
+    }
+    .form-func-switcher{
+        display: none;
+    }
 }
+
+@media (max-width: 400px){
+    .clock{
+        font-size: 1em;
+    }
+    .start-form{
+        left:60%;
+    }
+    .start-form .start-form-input{
+        width: 80%;
+    }
+    footer>span{
+        display: none;
+    }
+
+}
+@media (max-width: 340px){
+    .clock{
+        font-size: 1em;
+    }
+    .start-form{
+        left:65%;
+    }
+    .start-form .start-form-input{
+        width: 80%;
+    }
+    footer {
+        padding: 20px 0;
+    }
+
+}
+
