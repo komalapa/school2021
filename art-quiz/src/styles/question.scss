@@ -1,0 +1,54 @@
+.question {
+  &-wrp {
+    padding: 5vh 5vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    height: 90vh;
+    overflow: hidden;
+    width: 90vw;
+    box-sizing: border-box;
+    
+    // shadows and filters https://codepen.io/rebelchris/pen/WNGpVEZ
+    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+    }
+    &-main-picture {
+      min-width: 80vw;
+      min-height: 50vh;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &-answers {
+      box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.6);
+      border-radius: 10px;
+        
+      &-wrp {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vh 5vw;
+      }
+      
+      &:hover{
+        transform: scale(1.05);
+      }
+      &:active{
+        transform: scale(1.03) translateY(2px);
+      }
+
+      &-author {
+        padding: 1vh;
+        width: 100%;
+        // border: 2px solid gray;
+        text-align: center;
+      }
+    }
+  }

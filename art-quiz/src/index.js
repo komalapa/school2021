@@ -1,4 +1,8 @@
 import Question from './scripts/question';
+import questionRender from './scripts/questionRender';
+
+//styles
+import "./styles/question.scss"
 
 // import image from './images/lazy.png';
 
@@ -19,5 +23,7 @@ import Question from './scripts/question';
 
 // render();
 
-const q = new Question(1, 'author', 2);
-console.log(q, q.getAnswers().toString(), q.testAnswer(3), q.testAnswer(0))
+// const q = new Question(1, 'author', 4);
+// console.log(q, q.getAnswers().toString(), q.testAnswer(3), q.testAnswer(0))
+
+questionRender(1)
