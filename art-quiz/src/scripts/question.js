@@ -1,6 +1,6 @@
 import images from "./images";
 
-const IMAGES_PATH = 'https://github.com/komalapa/image-data/raw/master/img/';
+const IMAGES_PATH = 'https://github.com/komalapa/image-data/raw/master/full/';
 
 // console.log(images[5].year)
 
@@ -16,7 +16,7 @@ export default class Question{
     this.author = images[number].author;
     this.year = images[number].year;
     this.imageNum = images[number].imageNum;
-    this.imagePath = IMAGES_PATH + this.imageNum +'.jpg'
+    this.imagePath = IMAGES_PATH + this.imageNum +'full.jpg'
     this.answers = [];
     this.type = type;
     this.genAnswers = this.genAnswers.bind(this)

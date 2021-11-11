@@ -16,12 +16,16 @@ export default function questionRender(index, type = 'picture', answersNumber = 
     console.log('picture')
     questionText.innerText = ('Выберите автора картины:');
 
-    const mainPicture = document.createElement('div');
+    const mainImage = question.getImage();
+    
+    const mainPicture = document.createElement('img');
     mainPicture.classList.add('question-main-picture');
 
-    const mainImage = question.getImage();
+    
     mainImage.onload = function () {
-      mainPicture.style.backgroundImage = `url("${mainImage.src}")`;
+      // mainPicture.style.backgroundImage = `url("${mainImage.src}")`;
+      mainPicture.src = mainImage.src;
+
     };
 
     const answersArr = question.getAnswers();
