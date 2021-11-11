@@ -48,5 +48,12 @@
         width: 100%;
         text-align: center;
       }
+      &-picture {
+        padding: 0;
+        max-width: 20vh;
+        max-height: 20vh;
+        text-align: center;
+        margin: 0 auto;
+      }
     }
   }

@@ -1,5 +1,5 @@
 import Question from "./question";
-
+import { IMAGES_PATH } from "./consts";
 export default function questionRender(index, type = 'picture', answersNumber = 4) {
   const question = new Question(index, type, answersNumber);
 
@@ -41,21 +41,18 @@ export default function questionRender(index, type = 'picture', answersNumber = 
     console.log('author')
     questionText.innerText = (`${question.author} написал:`);
 
-    const mainPicture = document.createElement('div');
-    mainPicture.classList.add('question-main-picture');
+    // const mainPicture = document.createElement('div');
+    // mainPicture.classList.add('question-main-picture');
 
     
     const answersArr = question.getAnswers();
-    answersArr.forEach((answer) => {
-      const answerElement = document.createElement('div');
-      
-      
-
-      
+    answersArr.forEach((answer, ind) => {
+      const answerElement = document.createElement('img');
+      answerElement.src = answer;
       answerElement.classList.add('question-answers', 'question-answers-picture');
-      answerElement.innerText = answer;
-      answersContainer.append(answerElement)
-      questionContainer.append(mainPicture, answersContainer);
+      answerElement.onload = ()=> answersContainer.append(answerElement);
+      answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
+      questionContainer.append(answersContainer);
     })
   }
 

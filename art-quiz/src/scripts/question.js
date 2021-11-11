@@ -1,7 +1,7 @@
 import images from "./images";
 
-const IMAGES_PATH = 'https://github.com/komalapa/image-data/raw/master/full/';
-
+// const IMAGES_PATH = 'https://github.com/komalapa/image-data/raw/master/full/';
+import { IMAGES_PATH, IMAGES_PATH_SMALL } from "./consts";
 // console.log(images[5].year)
 
 export default class Question{
@@ -36,13 +36,26 @@ export default class Question{
   }
 
   genAnswers(){
+    const authors = [];
+    authors.push(this.author);
+      
     for (let i=0; i<this.answersNumber-1; i++){
       const answerIndex = Math.floor(Math.random() * (images.length));
-      if (images[answerIndex].author === this.author){
+      // console.log(images[answerIndex].author, this.author, images[answerIndex].author == this.author)
+      let answer;
+      if (this.type === 'author'){
+        answer = IMAGES_PATH_SMALL + images[answerIndex].imageNum +'.jpg';
+      } else if (this.type === 'picture'){ 
+        answer = images[answerIndex].author;
+      }
+      console.log(authors, images[answerIndex].author, authors.indexOf(images[answerIndex].author))
+      if (authors.indexOf(images[answerIndex].author)>=0){
+        console.log('double');
         i--;
       } else {
-        if (this.type === 'author') this.answers.push(IMAGES_PATH + images[answerIndex].imageNum +'.jpg?raw=true');
-        if (this.type === 'picture') this.answers.push(images[answerIndex].author);
+        // console.log('add answer')
+        this.answers.push(answer);
+        authors.push(images[answerIndex].author)
       }
     }
     if (this.type === 'author') this.answers.push (this.imagePath);
