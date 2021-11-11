@@ -26,4 +26,4 @@ import "./styles/question.scss"
 // const q = new Question(1, 'author', 4);
 // console.log(q, q.getAnswers().toString(), q.testAnswer(3), q.testAnswer(0))
 
-questionRender(1)
+questionRender(Math.floor(Math.random()*200))
