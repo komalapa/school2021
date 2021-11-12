@@ -14,10 +14,10 @@
     width: 90vw;
     box-sizing: border-box;
     
-    // shadows and filters https://codepen.io/rebelchris/pen/WNGpVEZ
-    box-shadow: var(--button-shadow);
-    background-color:var(--button-background-color);
-    backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+    
+    box-shadow: var(--block-shadow);
+    background-color:var(--block-background-color);
+    backdrop-filter: var(--glass-filter);
     }
     &-main-picture {
       max-width: 80vw;

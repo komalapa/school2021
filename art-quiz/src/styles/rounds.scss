@@ -1,0 +1,36 @@
+.rounds, .round{
+  &-wrp{
+    width:80vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2vh 2vw;
+    flex-wrap: wrap;
+    padding: 2vw;
+  }
+  &-opener{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 20vw;
+    border: 2px solid var(--color);
+    border-radius: 2vw;
+    box-shadow: var(--button-shadow);
+    background-color: var(--button-background-color);
+    backdrop-filter: var(--glass-filter);
+    font-size: 10vw;
+    color: var(--color);
+    &:hover{
+      transform: scale(1.05);
+    }
+    &:active{
+      transform: scale(1.03) translateY(2px);
+    }
+  }
+  &-header{
+    min-width: 100%;
+    text-align:center;
+  }
+}

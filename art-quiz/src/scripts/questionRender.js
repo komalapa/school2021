@@ -1,8 +1,7 @@
 import Question from "./question";
 import { APP_CONTAINER } from "./consts";
-export default function questionRender(index, type = 'picture', answersNumber = 4) {
-  const question = new Question(index, type, answersNumber);
-
+export default function questionRender(question) {
+  console.log(question)
   const questionContainer = document.createElement('div');
   questionContainer.classList.add('question-wrp');
   const questionText = document.createElement('span');
@@ -12,7 +11,7 @@ export default function questionRender(index, type = 'picture', answersNumber = 
   const answersContainer = document.createElement('div');
   answersContainer.classList.add('question-answers-wrp');
 
-  if (type === 'picture') {
+  if (question.type === 'picture') {
     // console.log('picture')
     questionText.innerText = ('Выберите автора картины:');
 
@@ -37,7 +36,7 @@ export default function questionRender(index, type = 'picture', answersNumber = 
       questionContainer.append(mainPicture, answersContainer);
       answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
     })
-  } else if (type === 'author') {
+  } else if (question.type === 'author') {
     // console.log('author')
     questionText.innerText = (`${question.author} написал:`);
 

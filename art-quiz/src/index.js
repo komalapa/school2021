@@ -1,10 +1,13 @@
-// import Question from './scripts/question';
+import Question from './scripts/question';
 import questionRender from './scripts/questionRender';
+import RoundList from './scripts/roundList';
+import { roundsRender } from './scripts/roundsRender';
+
 // import roundsRender from './scripts/roundsRender';
 //styles
 import "./styles/vars.scss"
 import "./styles/question.scss"
-import RoundList from './scripts/roundList';
+import "./styles/rounds.scss"
 
 // import image from './images/lazy.png';
 
@@ -25,11 +28,14 @@ import RoundList from './scripts/roundList';
 
 // render();
 
-// const q = new Question(1, 'author', 4);
+// const q = new Question(1, 'picture', 4);
 // console.log(q, q.getAnswers().toString(), q.testAnswer(3), q.testAnswer(0))
 
-questionRender(Math.floor(Math.random()*200), 'picture', 6)
+// questionRender(q)
 // roundsRender('author')
 
-const round = new RoundList('picture',4)
-console.log(round)
+// const round = new RoundList('picture',4)
+// console.log(round)
+
+const roundList = new RoundList('picture');
+roundsRender(roundList)
