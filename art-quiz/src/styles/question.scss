@@ -4,8 +4,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap:2vh 2vw;
     border: 1px solid #fff;
     border-radius: 2vw;
     height: 90vh;
@@ -14,8 +15,8 @@
     box-sizing: border-box;
     
     // shadows and filters https://codepen.io/rebelchris/pen/WNGpVEZ
-    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
-    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--button-shadow);
+    background-color:var(--button-background-color);
     backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
     }
     &-main-picture {
@@ -29,6 +30,7 @@
       box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.6);
       border-radius: 2vw;
       box-sizing: border-box;  
+      user-select: none;
       &-wrp {
         display: grid;
         width: 100%;
@@ -46,7 +48,9 @@
       &-author {
         padding: 1vh;
         width: 100%;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       &-picture {
         padding: 0;
@@ -54,6 +58,7 @@
         max-height: 20vh;
         text-align: center;
         margin: 0 auto;
+        align-self: center;
       }
     }
   }

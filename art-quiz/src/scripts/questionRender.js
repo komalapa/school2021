@@ -1,5 +1,5 @@
 import Question from "./question";
-import { IMAGES_PATH } from "./consts";
+import { APP_CONTAINER } from "./consts";
 export default function questionRender(index, type = 'picture', answersNumber = 4) {
   const question = new Question(index, type, answersNumber);
 
@@ -13,7 +13,7 @@ export default function questionRender(index, type = 'picture', answersNumber = 
   answersContainer.classList.add('question-answers-wrp');
 
   if (type === 'picture') {
-    console.log('picture')
+    // console.log('picture')
     questionText.innerText = ('Выберите автора картины:');
 
     const mainImage = question.getImage();
@@ -38,7 +38,7 @@ export default function questionRender(index, type = 'picture', answersNumber = 
       answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
     })
   } else if (type === 'author') {
-    console.log('author')
+    // console.log('author')
     questionText.innerText = (`${question.author} написал:`);
 
     // const mainPicture = document.createElement('div');
@@ -57,8 +57,8 @@ export default function questionRender(index, type = 'picture', answersNumber = 
   }
 
 
-
-  document.getElementById('app').append(questionContainer);
+  APP_CONTAINER.innerHTML ='';
+  APP_CONTAINER.append(questionContainer);
 
 
 }

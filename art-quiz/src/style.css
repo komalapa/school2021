@@ -10,7 +10,7 @@ body {
   /* text-transform: uppercase; */
   /* background-color: #363636; */
   /* https://pixabay.com/photos/texture-rough-plaster-plaster-wall-1504364/ */
-  background-image: url("images/background_1920.jpg");
+  background-image: var(--background);
 }
 /* 
 h1 { color: #e6c300; }

@@ -1,8 +1,10 @@
-import Question from './scripts/question';
+// import Question from './scripts/question';
 import questionRender from './scripts/questionRender';
-
+// import roundsRender from './scripts/roundsRender';
 //styles
+import "./styles/vars.scss"
 import "./styles/question.scss"
+import RoundList from './scripts/roundList';
 
 // import image from './images/lazy.png';
 
@@ -26,4 +28,8 @@ import "./styles/question.scss"
 // const q = new Question(1, 'author', 4);
 // console.log(q, q.getAnswers().toString(), q.testAnswer(3), q.testAnswer(0))
 
-questionRender(Math.floor(Math.random()*200), 'author', 6)
+questionRender(Math.floor(Math.random()*200), 'picture', 6)
+// roundsRender('author')
+
+const round = new RoundList('picture',4)
+console.log(round)
