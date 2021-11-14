@@ -34,7 +34,10 @@ export default function questionRender(question) {
       answerElement.innerText = answer;
       answersContainer.append(answerElement)
       questionContainer.append(mainPicture, answersContainer);
-      answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
+      // answerElement.addEventListener('click', ()=>console.log(question, question.isAnswer(ind)))
+      answerElement.dataset.action = 'answer';
+      answerElement.dataset.questionNumber = question.number;
+      answerElement.dataset.index = ind;
     })
   } else if (question.type === 'author') {
     // console.log('author')
@@ -50,7 +53,10 @@ export default function questionRender(question) {
       answerElement.src = answer;
       answerElement.classList.add('question-answers', 'question-answers-picture');
       answerElement.onload = ()=> answersContainer.append(answerElement);
-      answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
+      // answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
+      answerElement.dataset.action = 'answer';
+      answerElement.dataset.questionNumber = question.number;
+      answerElement.dataset.index = ind;
       questionContainer.append(answersContainer);
     })
   }

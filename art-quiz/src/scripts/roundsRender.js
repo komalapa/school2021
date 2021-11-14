@@ -22,7 +22,10 @@ export function roundsRender(roundList){
     const roundOpener = document.createElement('div');
     roundOpener.classList.add('rounds-opener');
     roundOpener.innerText = i+1;
-    roundOpener.addEventListener('click', () => roundQuestionsRender(roundList.rounds[i])) ;
+    // roundOpener.addEventListener('click', () => roundQuestionsRender(roundList.rounds[i])) ;
+    roundOpener.dataset.action = 'render';
+    roundOpener.dataset.object = 'roundQuestions';
+    roundOpener.dataset.roundNumber = i;
     roundsContainer.append(roundOpener);
   }
   APP_CONTAINER.innerHTML = '';
@@ -42,7 +45,12 @@ export function roundQuestionsRender(round){
     const questionOpener = document.createElement('div');
     questionOpener.classList.add('rounds-opener');
     questionOpener.innerText = i+1;
-    questionOpener.addEventListener('click', () =>  questionRender(round.questions[i]))
+    // questionOpener.addEventListener('click', () =>  questionRender(round.questions[i]))
+    questionOpener.dataset.action = 'render';
+    questionOpener.dataset.object = 'questions';
+    questionOpener.dataset.roundNumber = round.number;
+    questionOpener.dataset.questionNumber = i;
+    
     roundContainer.append(questionOpener);
   }
   APP_CONTAINER.innerHTML = '';

@@ -2,12 +2,13 @@ import Question from './scripts/question';
 import questionRender from './scripts/questionRender';
 import RoundList from './scripts/roundList';
 import { roundsRender } from './scripts/roundsRender';
-
+import listener from './scripts/events';
 // import roundsRender from './scripts/roundsRender';
 //styles
 import "./styles/vars.scss"
 import "./styles/question.scss"
 import "./styles/rounds.scss"
+
 
 // import image from './images/lazy.png';
 
@@ -37,5 +38,7 @@ import "./styles/rounds.scss"
 // const round = new RoundList('picture',4)
 // console.log(round)
 
-const roundList = new RoundList('picture');
+export const roundList = new RoundList('picture');
 roundsRender(roundList)
+
+listener()
