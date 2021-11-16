@@ -2,8 +2,10 @@ import { roundsRender } from "./roundsRender";
 import { roundQuestionsRender } from "./roundsRender";
 import questionRender from "./questionRender";
 import { IMAGES_PER_ROUND } from "./consts";
+import RoundList from "./roundList";
+// import { roundList } from "..";
 
-import { roundList } from "..";
+let roundList = new RoundList('picture');
 
 export default function listener(){
 
@@ -24,6 +26,14 @@ export default function listener(){
           // questionRender(roundList.rounds[+evt.target.dataset.roundNumber].questions[+evt.target.dataset.questionNumber])
           break;
         // break;
+        case 'answer':
+          console.log(roundList.rounds[Math.floor(evt.target.dataset.questionNumber/IMAGES_PER_ROUND)].questions[evt.target.dataset.questionNumber%IMAGES_PER_ROUND].isAnswer(evt.target.dataset.index))
+          // questionRender(roundList.rounds[+evt.target.dataset.roundNumber].questions[+evt.target.dataset.questionNumber])
+          break;
+        // break;
+        case 'start':
+          roundList = new RoundList(evt.target.dataset.type, );
+          roundsRender(roundList)
     }
   })
 }

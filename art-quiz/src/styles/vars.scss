@@ -7,3 +7,19 @@
   --background:url("../images/background_1920.jpg");
   --color: white;
 }
+
+@mixin active-behavior{
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1.03) translateY(2px);
+  }
+}
+
+@mixin glass-background{
+  box-shadow: var(--block-shadow);
+  background-color:var(--block-background-color);
+  backdrop-filter: var(--glass-filter);
+}

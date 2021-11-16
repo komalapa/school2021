@@ -1,3 +1,4 @@
+@import "vars.scss";
 .rounds, .round{
   &-wrp{
     width:80vw;
@@ -22,12 +23,7 @@
     backdrop-filter: var(--glass-filter);
     font-size: 10vw;
     color: var(--color);
-    &:hover{
-      transform: scale(1.05);
-    }
-    &:active{
-      transform: scale(1.03) translateY(2px);
-    }
+    @include active-behavior;
   }
   &-header{
     min-width: 100%;

@@ -5,9 +5,11 @@ import { roundsRender } from './scripts/roundsRender';
 import listener from './scripts/events';
 // import roundsRender from './scripts/roundsRender';
 //styles
+import "./styles/home.scss"
 import "./styles/vars.scss"
 import "./styles/question.scss"
 import "./styles/rounds.scss"
+import homeRender from './scripts/homeRender';
 
 
 // import image from './images/lazy.png';
@@ -38,7 +40,7 @@ import "./styles/rounds.scss"
 // const round = new RoundList('picture',4)
 // console.log(round)
 
-export const roundList = new RoundList('picture');
-roundsRender(roundList)
-
+// export const roundList = new RoundList('picture');
+// roundsRender(roundList)
+homeRender();
 listener()

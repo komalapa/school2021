@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+@import "vars.scss";
+.home {
+  &-wrp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:2vh
+  }
+  &-header{
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3em;
+    text-align: center;
+    @include glass-background;
+    width: 100vw;
+
+  }
+  &-button {
+    display: block;
+    max-width: 80vw;
+    line-height: 2;
+    border: 2px solid var(--color);
+    border-radius: 2vw;
+    @include glass-background;
+    font-size: 2em;
+    color: var(--color);
+    padding: 0 1vw;
+    @include active-behavior;
+  }
+  &-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20vw;
+    padding: 2vh 0;
+    font-size: 1em;
+    text-align: center;
+    @include glass-background;
+    width: 100vw; 
+    &-course-img{
+      width: 110px;
+      @include active-behavior;
+    }  
+    &-git-link{
+      text-decoration: none;
+      color: var(--color); 
+      @include active-behavior;
+    }
+    
+  }
+}
