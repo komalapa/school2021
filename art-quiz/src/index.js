@@ -3,15 +3,19 @@ import questionRender from './scripts/questionRender';
 import RoundList from './scripts/roundList';
 import { roundsRender } from './scripts/roundsRender';
 import listener from './scripts/events';
+import homeRender from './scripts/homeRender';
+import Sounds from './scripts/sounds';
+import { SOUNDS_PATHS } from './scripts/consts';
+
 // import roundsRender from './scripts/roundsRender';
 //styles
 import "./styles/home.scss"
 import "./styles/vars.scss"
 import "./styles/question.scss"
 import "./styles/rounds.scss"
-import homeRender from './scripts/homeRender';
-import Sounds from './scripts/sounds';
-import { SOUNDS_PATHS } from './scripts/consts';
+import "./styles/dataCard.scss"
+
+
 
 
 // import image from './images/lazy.png';

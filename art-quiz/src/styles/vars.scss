@@ -6,6 +6,7 @@
   
   --background:url("/images/background_1920.jpg");
   --color: white;
+  --wrong-color:#B22222;
 }
 
 @mixin active-behavior{
@@ -22,4 +23,11 @@
   box-shadow: var(--block-shadow);
   background-color:var(--block-background-color);
   backdrop-filter: var(--glass-filter);
+}
+
+@mixin rounded-button{
+  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.6);
+  border-radius: 2vw;
+  box-sizing: border-box;  
+  user-select: none;
 }

@@ -4,6 +4,7 @@ import questionRender from "./questionRender";
 import { IMAGES_PER_ROUND, SOUNDS_PATHS } from "./consts";
 import RoundList from "./roundList";
 import Sounds from "./sounds";
+import renderDataCard from "./renderDataCard";
 // import { roundList } from "..";
 const sounds = new Sounds(SOUNDS_PATHS);
 let roundList = new RoundList('picture');
@@ -24,9 +25,11 @@ export default function listener(){
           break;
         }
       case 'answer':
-          const result = (roundList.rounds[Math.floor(evt.target.dataset.questionNumber/IMAGES_PER_ROUND)].questions[evt.target.dataset.questionNumber%IMAGES_PER_ROUND].isAnswer(evt.target.dataset.index))
+          const question = roundList.rounds[Math.floor(evt.target.dataset.questionNumber/IMAGES_PER_ROUND)].questions[evt.target.dataset.questionNumber%IMAGES_PER_ROUND]; 
+          const result = (question.isAnswer(evt.target.dataset.index))
           result ? sounds.playClick() : sounds.playWrong();
           // questionRender(roundList.rounds[+evt.target.dataset.roundNumber].questions[+evt.target.dataset.questionNumber])
+          renderDataCard(question, result, ()=>{})
           break;
         // break;
         case 'start':
