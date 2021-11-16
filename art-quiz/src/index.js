@@ -10,6 +10,7 @@ import "./styles/vars.scss"
 import "./styles/question.scss"
 import "./styles/rounds.scss"
 import homeRender from './scripts/homeRender';
+import Sounds from './scripts/sounds';
 
 
 // import image from './images/lazy.png';
@@ -44,3 +45,6 @@ import homeRender from './scripts/homeRender';
 // roundsRender(roundList)
 homeRender();
 listener()
+
+const audio = new Sounds({click: '/audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main:'/audio/main.mp3'});
+const audio2 = new Sounds({click: '/audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main:'/audio/main.mp3'});
