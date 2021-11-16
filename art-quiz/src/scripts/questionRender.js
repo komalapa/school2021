@@ -1,4 +1,4 @@
-import Question from "./question";
+// import Question from "./question";
 import { APP_CONTAINER } from "./consts";
 export default function questionRender(question) {
   console.log(question)

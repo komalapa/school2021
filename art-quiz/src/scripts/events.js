@@ -24,12 +24,14 @@ export default function listener(){
           questionRender(roundList.rounds[+evt.target.dataset.roundNumber].questions[+evt.target.dataset.questionNumber])
           break;
         }
-      case 'answer':
+        break;
+      case 'answer':{
           const question = roundList.rounds[Math.floor(evt.target.dataset.questionNumber/IMAGES_PER_ROUND)].questions[evt.target.dataset.questionNumber%IMAGES_PER_ROUND]; 
           const result = (question.isAnswer(evt.target.dataset.index))
           result ? sounds.playClick() : sounds.playWrong();
           // questionRender(roundList.rounds[+evt.target.dataset.roundNumber].questions[+evt.target.dataset.questionNumber])
           renderDataCard(question, result, ()=>{})
+        }
           break;
         // break;
         case 'start':

@@ -1,6 +1,6 @@
-import Round from "./round";
-import questionRender from "./questionRender";
-import { IMAGES_PER_ROUND, IMAGES_AMOUNT, APP_CONTAINER, roundsInfo } from "./consts";
+// import Round from "./round";
+// import questionRender from "./questionRender";
+import {  APP_CONTAINER } from "./consts";
 
 export function roundsRender(roundList){
   const roundsContainer = document.createElement('div');

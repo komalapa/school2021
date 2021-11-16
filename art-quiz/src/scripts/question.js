@@ -4,7 +4,7 @@ import images from "./images";
 import {
   IMAGES_PATH,
   IMAGES_PATH_SMALL,
-  IMAGES_LIST_PATH,
+  // IMAGES_LIST_PATH,
 } from "./consts";
 // console.log(images[5].year)
 
@@ -26,7 +26,7 @@ import {
 
 export default class Question {
   constructor(number, type = 'picture', answersNumber = 4) { //types: picture, author
-    if (!images || images.length === 0) getImageInfo(IMAGES_LIST_PATH);
+    // if (!images || images.length === 0) getImageInfo(IMAGES_LIST_PATH);
     if (number >= images.length) {
       console.error(`ERROR: no question #${number}, #0 will be used`);
       number = 0;
@@ -49,7 +49,7 @@ export default class Question {
     image.src = this.imagePath;
 
     return image;
-  };
+  }
   getAuthor() {
     return this.author;
   }
