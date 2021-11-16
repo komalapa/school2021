@@ -11,6 +11,7 @@ import "./styles/question.scss"
 import "./styles/rounds.scss"
 import homeRender from './scripts/homeRender';
 import Sounds from './scripts/sounds';
+import { SOUNDS_PATHS } from './scripts/consts';
 
 
 // import image from './images/lazy.png';
@@ -46,5 +47,11 @@ import Sounds from './scripts/sounds';
 homeRender();
 listener()
 
-const audio = new Sounds({click: '/audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main:'/audio/main.mp3'});
-const audio2 = new Sounds({click: '/audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main:'/audio/main.mp3'});
+const sounds = new Sounds(SOUNDS_PATHS);
+// const audio2 = new Sounds({click: '/audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main:'/audio/main.mp3'});
+
+setTimeout(()=>{
+  console.log('MUTE!');
+  // sounds.muteAll()
+  sounds.muteMusic();
+}, 5000)

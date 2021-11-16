@@ -6,6 +6,9 @@ export const IMAGES_LIST_PATH = './images/images.json';
 export const IMAGES_PER_ROUND = 10;
 export let IMAGES_AMOUNT =240;
 
-export let roundsInfo = [];
+export const SOUNDS_PATHS = {click: '/audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main:'/audio/main.mp3'};
+
+
+// export let roundsInfo = [];
 
 export const APP_CONTAINER = document.querySelector('#app')

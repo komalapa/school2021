@@ -30,7 +30,7 @@ export function roundsRender(roundList){
   }
   APP_CONTAINER.innerHTML = '';
   APP_CONTAINER.append(roundsContainer);
-  console.log('rounds-info',roundsInfo);
+  // console.log('rounds-info',roundsInfo);
 }
 
 export function roundQuestionsRender(round){
