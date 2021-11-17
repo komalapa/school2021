@@ -57,12 +57,13 @@
 // }
 
 // Another singleton for linter
-export default function Sounds(src) {
+function SoundsSingleton() {
 // Instance stores a reference to the singleton
   let instance;
 
   function init(srcs) {
-    if (!instance) {
+    console.log('init', instance)
+    if (typeof instance === 'undefined') {
       instance = {};
       instance.paths = { ...srcs };
       instance.sounds = [];
@@ -100,6 +101,7 @@ export default function Sounds(src) {
       };
 
       instance.muteMusic = () => {
+        console.log(instance.main);
         instance.main.muted = true;
         instance.main.pause();
       };
@@ -114,5 +116,7 @@ export default function Sounds(src) {
     }
     return instance;
   }
-  return init(src);
+  return init;
 }
+const Sounds = SoundsSingleton();
+export default Sounds;

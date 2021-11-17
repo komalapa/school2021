@@ -4,8 +4,8 @@
 // import { roundsRender } from './scripts/roundsRender';
 import listener from './scripts/events';
 import homeRender from './scripts/homeRender';
-import Sounds from './scripts/sounds';
-import { SOUNDS_PATHS } from './scripts/consts';
+// import Sounds from './scripts/sounds';
+// import { SOUNDS_PATHS } from './scripts/consts';
 
 // import roundsRender from './scripts/roundsRender';
 // styles
@@ -49,7 +49,7 @@ homeRender();
 listener();
 
 // const sounds = new Sounds(SOUNDS_PATHS);
-// sounds.muteMusic();
+// sounds.muteSounds();
 // setTimeout(() => {
 //   console.log(sounds);
 //   // sounds.muteAll()

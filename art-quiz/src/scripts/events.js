@@ -7,7 +7,7 @@ import Sounds from './sounds';
 import renderDataCard from './renderDataCard';
 // import { roundList } from "..";
 const sounds = new Sounds(SOUNDS_PATHS);
-sounds.muteMusic();
+// sounds.muteMusic();
 // console.log(sounds)
 let roundList = new RoundList('picture');
 
