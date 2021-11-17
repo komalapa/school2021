@@ -8,15 +8,12 @@ import Sounds from './scripts/sounds';
 import { SOUNDS_PATHS } from './scripts/consts';
 
 // import roundsRender from './scripts/roundsRender';
-//styles
-import "./styles/home.scss"
-import "./styles/vars.scss"
-import "./styles/question.scss"
-import "./styles/rounds.scss"
-import "./styles/dataCard.scss"
-
-
-
+// styles
+import './styles/home.scss';
+import './styles/vars.scss';
+import './styles/question.scss';
+import './styles/rounds.scss';
+import './styles/dataCard.scss';
 
 // import image from './images/lazy.png';
 
@@ -49,13 +46,12 @@ import "./styles/dataCard.scss"
 // export const roundList = new RoundList('picture');
 // roundsRender(roundList)
 homeRender();
-listener()
+listener();
 
-const sounds = new Sounds(SOUNDS_PATHS);
-// const audio2 = new Sounds({click: '/audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main:'/audio/main.mp3'});
-
-setTimeout(()=>{
-  console.log('MUTE!');
-  // sounds.muteAll()
-  sounds.muteMusic();
-}, 5000)
+// const sounds = new Sounds(SOUNDS_PATHS);
+// sounds.muteMusic();
+// setTimeout(() => {
+//   console.log(sounds);
+//   // sounds.muteAll()
+//   sounds.muteMusic();
+// }, 5000);
