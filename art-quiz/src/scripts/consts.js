@@ -10,4 +10,9 @@ export const SOUNDS_PATHS = { click: 'audio/zipclick.flac', wrong: 'audio/MetalC
 
 // export let roundsInfo = [];
 
-export const APP_CONTAINER = document.querySelector('#app');
+export const APP_CONTAINER = document.getElementById('art-quiz-app');
+export const APP_MAIN_MENU = document.getElementById('art-quiz-main-menu');
+
+export const MIN_TIME = 5;
+export const MAX_TIME = 30;
+export const STEP_TIME = 5;

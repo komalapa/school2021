@@ -4,12 +4,14 @@
 // import { roundsRender } from './scripts/roundsRender';
 import listener from './scripts/events';
 import homeRender from './scripts/homeRender';
+import addMenu from './scripts/menu';
 // import Sounds from './scripts/sounds';
 // import { SOUNDS_PATHS } from './scripts/consts';
 
 // import roundsRender from './scripts/roundsRender';
 // styles
 import './styles/main.scss';
+import './styles/menu.scss';
 import './styles/home.scss';
 import './styles/vars.scss';
 import './styles/question.scss';
@@ -47,6 +49,7 @@ import './styles/roundResults.scss';
 
 // export const roundList = new RoundList('picture');
 // roundsRender(roundList)
+addMenu();
 homeRender();
 listener();
 

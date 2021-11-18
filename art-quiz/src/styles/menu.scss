@@ -1,0 +1,235 @@
+@import "vars.scss";
+
+@keyframes toggle-burger-open {
+  0% {
+    transform: none;
+    background-image: linear-gradient(to bottom, var(--color), var(--color) 20%, transparent 20%, transparent 40%, var(--color) 40%, var(--color) 60%, transparent 60%, transparent 80%, var(--color) 80%, var(--color) 100%);
+
+  }
+
+  50% {
+    transform: scale(0.1);
+    background-image: linear-gradient(to bottom, var(--color), var(--color) 20%, transparent 20%, transparent 40%, var(--color) 40%, var(--color) 60%, transparent 60%, transparent 80%, var(--color) 80%, var(--color) 100%);
+  }
+
+  50% {
+    transform: scale(0.1);
+    background-image: linear-gradient(45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%),
+      linear-gradient(-45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%);
+  }
+
+  100% {
+    transform: none;
+    background-image: linear-gradient(45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%),
+      linear-gradient(-45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%);
+  }
+}
+
+@keyframes toggle-burger-close {
+  0% {
+    transform: none;
+    background-image: linear-gradient(45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%),
+      linear-gradient(-45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%);
+  }
+
+  50% {
+    transform: scale(0.1);
+    background-image: linear-gradient(45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%),
+      linear-gradient(-45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%);
+  }
+
+  50% {
+    transform: scale(0.1);
+    background-image: linear-gradient(to bottom, var(--color), var(--color) 20%, transparent 20%, transparent 40%, var(--color) 40%, var(--color) 60%, transparent 60%, transparent 80%, var(--color) 80%, var(--color) 100%);
+  }
+
+  100% {
+    transform: none;
+    background-image: linear-gradient(to bottom, var(--color), var(--color) 20%, transparent 20%, transparent 40%, var(--color) 40%, var(--color) 60%, transparent 60%, transparent 80%, var(--color) 80%, var(--color) 100%);
+  }
+}
+
+.burger {
+  &-toggle {
+    position: fixed;
+    z-index: 3;
+    top: 5vh;
+    left: 5vw;
+    width: 3vw;
+    height: 3vw;
+    background: none;
+    border: none;
+    background-image: linear-gradient(to bottom, var(--color), var(--color) 20%, transparent 20%, transparent 40%, var(--color) 40%, var(--color) 60%, transparent 60%, transparent 80%, var(--color) 80%, var(--color) 100%);
+    animation: toggle-burger-close 0.5s;
+
+    &-open {
+      background-image: linear-gradient(45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, var(--color) 45%, var(--color) 55%, transparent 55%);
+      animation: toggle-burger-open 0.5s;
+    }
+  }
+
+  &-menu {
+    &-wrp {
+      position: fixed;
+      z-index: 2;
+      left: -100%;
+      top: 0;
+      height: 100vh;
+      min-width: 40vw;
+      max-width: 90vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5vh;
+      box-sizing: border-box;
+      padding-top: 20vw;
+      font-size: 2em;
+      @include glass-background;
+      transition: left 0.5s ease-in-out;
+      h4{
+        width: 100%;
+        // max-width: 100%;
+        margin: 0 auto 1vh;
+        text-align: center;
+      }
+    }
+
+    &-open {
+      left: 0;
+    }
+
+    &-radio {
+      visibility: hidden;
+      width: 0;
+      margin: 0;
+    }
+    &-checkbox:checked + &-lbl{
+      opacity: 1;
+    }
+    &-lbl {
+      width: 40%;
+      text-align: center;
+      margin: 0;
+      opacity: 0.5;
+      @include rounded-button;
+      border-radius: 0;
+
+      &:first-of-type {
+        border-radius: 2vw 0 0 2vw;
+      }
+
+      &:last-of-type {
+        border-radius: 0 2vw 2vw 0;
+      }
+      
+    }
+    &-checkbox{
+      visibility: hidden;
+      width: 0;
+      margin: 0;
+    }
+    &-answers {
+      &-wrp{
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+      &-lbl {
+        width: 20%;
+        text-align: center;
+        margin: 0;
+        opacity: 0.5;
+        @include rounded-button;
+        border-radius: 0;
+
+        &:first-of-type {
+          border-radius: 2vw 0 0 2vw;
+        }
+
+        &:last-of-type {
+          border-radius: 0 2vw 2vw 0;
+        }
+      }
+
+      &:checked+&-lbl {
+        opacity: 1;
+      }
+    }
+    &-select{
+      display: block; 
+      width: 60%;
+      text-align: center;
+      margin: 0 auto;
+      font-size: 1em;
+      appearance: none;
+      // /opacity: 0.5;
+      @include rounded-button;
+    }
+    &-volume{
+      &-wrp{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1vw;
+        width: 70%;
+      }
+      &-lbl{
+        display: block;
+        // width: 80%;
+        height: 1em;
+        width: 1em;
+        background-image: url('../images/music.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.6;
+      }
+      appearance: none;  
+      display: block;
+      overflow: hidden;
+      width: 60%;
+      @include rounded-button;
+      height: 1em;
+      padding: 0;
+      
+      &::-webkit-slider-thumb {
+        width: 1.5em;
+        appearance: none;
+        height: 1.5em;
+        border-radius: 50%;
+        cursor: ew-resize;
+        background: var(--color);
+        // box-shadow: -80px 0 0 80px var(--color);
+      }
+    }
+  }
+
+  
+}
+
+@media (max-width:1440px) {
+  .burger-toggle {
+    width: 4vw;
+    height: 4vw;
+  }
+}
+
+@media (max-width:1024px) {
+  .burger-toggle {
+    left: 10vw;
+    width: 5vw;
+    height: 5vw;
+  }
+}
+
+@media (max-width:500px) {
+  .burger-toggle {
+    left: 10vw;
+    width: 6vw;
+    height: 6vw;
+  }
+}
