@@ -34,10 +34,10 @@ export default function homeRender() {
   fastGameElement.dataset.action = 'fast-game';
   // fastGameElement.dataset.type = 'fast';
 
-  const settingsElement = document.createElement('button');
-  settingsElement.classList.add('home-button', 'settings-button');
-  settingsElement.innerText = 'Настройки';
-  settingsElement.dataset.action = 'settings';
+  // const settingsElement = document.createElement('button');
+  // settingsElement.classList.add('home-button', 'settings-button');
+  // settingsElement.innerText = 'Настройки';
+  // settingsElement.dataset.action = 'settings';
 
   const footerElement = document.createElement('footer');
   footerElement.classList.add('home-footer');
@@ -61,7 +61,7 @@ export default function homeRender() {
     byPictureElement,
     networkGameElement,
     fastGameElement,
-    settingsElement,
+    // settingsElement,
     footerElement,
   );
   APP_CONTAINER.innerHTML = '';

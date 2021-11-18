@@ -41,3 +41,14 @@
     filter: grayscale(100);
   }
 }
+
+@media (min-width: 900px){
+  .round-opener, .rounds-opener{
+    width: 10vw;
+    height: 10vw;
+    font-size: 5vw;
+    &-result{
+      font-size: 2vw;
+    }
+  }
+}

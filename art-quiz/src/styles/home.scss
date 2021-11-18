@@ -37,6 +37,7 @@
     padding: 2vh 0;
     font-size: 1em;
     text-align: center;
+    margin: 0.7em 0; //as h1
     @include glass-background;
     width: 100vw; 
     &-course-img{

@@ -53,10 +53,10 @@
   &-toggle {
     position: fixed;
     z-index: 3;
-    top: 5vh;
-    left: 5vw;
-    width: 3vw;
-    height: 3vw;
+    top: 1vh;
+    left: 1vw;
+    width: 2vw;
+    height: 2vw;
     background: none;
     border: none;
     background-image: linear-gradient(to bottom, var(--color), var(--color) 20%, transparent 20%, transparent 40%, var(--color) 40%, var(--color) 60%, transparent 60%, transparent 80%, var(--color) 80%, var(--color) 100%);
@@ -84,7 +84,7 @@
       align-items: center;
       gap: 5vh;
       box-sizing: border-box;
-      padding-top: 20vw;
+      padding-top: 10vw;
       font-size: 2em;
       @include glass-background;
       transition: left 0.5s ease-in-out;
@@ -213,8 +213,11 @@
 
 @media (max-width:1440px) {
   .burger-toggle {
-    width: 4vw;
-    height: 4vw;
+    width: 3vw;
+    height: 3vw;
+  }
+  .burger-menu-wrp{
+    padding-top: 10vw;
   }
 }
 
@@ -224,6 +227,9 @@
     width: 5vw;
     height: 5vw;
   }
+  .burger-menu-wrp{
+    padding-top: 15vw;
+  }
 }
 
 @media (max-width:500px) {
@@ -231,5 +237,8 @@
     left: 10vw;
     width: 6vw;
     height: 6vw;
+  }
+  .burger-menu-wrp{
+    padding-top: 22vw;
   }
 }
