@@ -1,0 +1,30 @@
+@import "vars.scss";
+.results{
+  &-container{
+    position: absolute;
+    top: 25vh;
+    left: 25vw;
+    width: 50vw;
+    height: 50vh;
+    background-color: var(--anti-color);
+    border-radius: 2vw;
+    border: 2px solid var(--color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+  }
+  &-button{
+    @include rounded-button;
+  }
+}
+.low-result{
+  border-color: var(--wrong-color);
+  box-shadow: 0px 0px 30px 10px var(--wrong-color);
+}
+
+.high-result{
+  border-color: goldenrod;
+  box-shadow: 0px 0px 15px 30px goldenrod;
+}

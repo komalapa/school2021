@@ -62,7 +62,7 @@ function SoundsSingleton() {
   let instance;
 
   function init(srcs) {
-    console.log('init', instance)
+    // console.log('init', instance)
     if (typeof instance === 'undefined') {
       instance = {};
       instance.paths = { ...srcs };
@@ -101,7 +101,7 @@ function SoundsSingleton() {
       };
 
       instance.muteMusic = () => {
-        console.log(instance.main);
+        // console.log(instance.main);
         instance.main.muted = true;
         instance.main.pause();
       };

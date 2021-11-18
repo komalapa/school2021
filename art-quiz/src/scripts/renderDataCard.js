@@ -26,6 +26,7 @@ export default function renderDataCard(question, isSolved = true) {
   okBtn.innerText = 'Далее';
   okBtn.dataset.action = 'closeCard';
   okBtn.dataset.number = question.number;
+  okBtn.dataset.roundNumber = question.roundNumber;
 
   image.onload = () => {
     cardContainer.append(image, year, name, author, okBtn);

@@ -18,10 +18,20 @@ export function roundsRender(roundList) {
   for (let i = 0; i < roundList.rounds.length; i += 1) {
     const roundOpener = document.createElement('div');
     roundOpener.classList.add('rounds-opener');
-    roundOpener.innerText = i + 1;
+    const roundNumber = document.createElement('span');
+    roundNumber.innerText = i + 1;
+
+    const result = document.createElement('span');
+    result.innerText = `${roundList.rounds[i].getProgress() * 100}%`;
+    result.classList.add('rounds-opener-result');
+
+    roundOpener.append(roundNumber, result);
     roundOpener.dataset.action = 'render';
     roundOpener.dataset.object = 'roundQuestions';
     roundOpener.dataset.roundNumber = i;
+
+    if (roundList.rounds[i].getProgress() < 0.3) roundOpener.classList.add('rounds-opener-not-solved');
+
     roundsContainer.append(roundOpener);
   }
   APP_CONTAINER.innerHTML = '';

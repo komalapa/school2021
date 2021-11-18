@@ -5,7 +5,9 @@
   --glass-filter:blur(10px) saturate(100%) contrast(45%) brightness(130%);
   
   --background:url("/images/background_1920.jpg");
-  --color: white;
+  --color: #3d3d3d;
+  --anti-color: #d3d3d3;
+  
   --wrong-color:#B22222;
 }
 
@@ -28,6 +30,8 @@
 @mixin rounded-button{
   box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.6);
   border-radius: 2vw;
+  padding: 1vh 2vw;
   box-sizing: border-box;  
   user-select: none;
+  background-color: var(--anti-color);
 }

@@ -12,6 +12,7 @@ export default function questionRender(question) {
   const answersContainer = document.createElement('div');
   answersContainer.classList.add('question-answers-wrp');
 
+  // console.log('render', question);
   if (question.type === 'picture') {
     // console.log('picture')
     questionText.innerText = ('Выберите автора картины:');

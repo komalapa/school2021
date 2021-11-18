@@ -4,8 +4,8 @@
 // import { roundsRender } from './scripts/roundsRender';
 import listener from './scripts/events';
 import homeRender from './scripts/homeRender';
-// import Sounds from './scripts/sounds';
-// import { SOUNDS_PATHS } from './scripts/consts';
+import Sounds from './scripts/sounds';
+import { SOUNDS_PATHS } from './scripts/consts';
 
 // import roundsRender from './scripts/roundsRender';
 // styles
@@ -14,6 +14,7 @@ import './styles/vars.scss';
 import './styles/question.scss';
 import './styles/rounds.scss';
 import './styles/dataCard.scss';
+import './styles/roundResults.scss';
 
 // import image from './images/lazy.png';
 
@@ -48,8 +49,9 @@ import './styles/dataCard.scss';
 homeRender();
 listener();
 
-// const sounds = new Sounds(SOUNDS_PATHS);
-// sounds.muteSounds();
+const sounds = new Sounds(SOUNDS_PATHS);
+sounds.muteMusic();
+// console.log(sounds);
 // setTimeout(() => {
 //   console.log(sounds);
 //   // sounds.muteAll()

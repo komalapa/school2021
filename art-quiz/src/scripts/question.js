@@ -4,6 +4,7 @@ import images from './images';
 import {
   IMAGES_PATH,
   IMAGES_PATH_SMALL,
+  IMAGES_PER_ROUND,
   // IMAGES_LIST_PATH,
 } from './consts';
 // console.log(images[5].year)
@@ -32,6 +33,7 @@ export default class Question {
     }
     this.answersNumber = answersNumber;
     this.number = number;
+    this.roundNumber = Math.floor(number / IMAGES_PER_ROUND);
     this.name = images[number].name;
     this.author = images[number].author;
     this.year = images[number].year;
