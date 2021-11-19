@@ -8,9 +8,9 @@ function SettingsSingleton() {
       instance = {};
       instance.music = localStorage.getItem('komaAQmusic') ? JSON.parse(localStorage.getItem('komaAQmusic')) : true;
       // console.log();
-      instance.sounds = localStorage.getItem('komaAQsounds') || true;
+      instance.sounds = localStorage.getItem('komaAQsounds') ? JSON.parse(localStorage.getItem('komaAQsounds')) : true;
       instance.volume = localStorage.getItem('komaAQvolume') || 0.5;
-      instance.answers = localStorage.getItem('komaAQanswers') || 4;
+      instance.answers = localStorage.getItem('komaAQanswers') || 2;
       instance.timer = localStorage.getItem('komaAQtimer') || false;
 
       instance.toggleMusic = () => {

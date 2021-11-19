@@ -60,8 +60,6 @@ export default function addMenu() {
   mutesContainer.append(musicMute, musicMuteLbl, soundMute, soundMuteLbl);
   soundMuteLbl.dataset.action = 'settings';
   soundMuteLbl.dataset.prop = 'sounds';
-  soundMuteLbl.dataset.action = 'settings';
-  soundMuteLbl.dataset.prop = 'sounds';
   soundMute.addEventListener('input', () => {
     sounds.muteSounds(!soundMute.checked);
     settings.toggleSounds();
@@ -104,11 +102,14 @@ export default function addMenu() {
   answers2Lbl.classList.add('burger-menu-answers-lbl', 'burger-menu-lbl');
   answers2Lbl.innerText = '2';
   answers2Lbl.htmlFor = 'answers-radio-2';
+  answers2Lbl.dataset.action = 'settings';
+  answers2Lbl.dataset.prop = 'answers';
+  answers2Lbl.dataset.value = '2';
   // answers2Lbl.append(answers2);
 
   const answers4 = document.createElement('input');
   answers4.type = 'radio';
-  answers4.checked = true;
+  // answers4.checked = true;
   answers4.classList.add('burger-menu-answers', 'burger-menu-radio');
   answers4.value = '4';
   answers4.id = 'answers-radio-4';
@@ -117,6 +118,10 @@ export default function addMenu() {
   answers4Lbl.classList.add('burger-menu-answers-lbl', 'burger-menu-lbl');
   answers4Lbl.innerText = '4';
   answers4Lbl.htmlFor = 'answers-radio-4';
+  answers4Lbl.dataset.action = 'settings';
+  answers4Lbl.dataset.prop = 'answers';
+  answers4Lbl.dataset.value = '4';
+
   // answers4Lbl.append(answers4);
 
   const answers6 = document.createElement('input');
@@ -129,6 +134,10 @@ export default function addMenu() {
   answers6Lbl.classList.add('burger-menu-answers-lbl', 'burger-menu-lbl');
   answers6Lbl.innerText = '6';
   answers6Lbl.htmlFor = 'answers-radio-6';
+  answers6Lbl.dataset.action = 'settings';
+  answers6Lbl.dataset.prop = 'answers';
+  answers6Lbl.dataset.value = '6';
+
   // answers6Lbl.append(answers6);
 
   answersContainer.append(
@@ -140,7 +149,7 @@ export default function addMenu() {
     answers6,
     answers6Lbl,
   );
-
+  answersContainer.querySelector(`input[name="answers-radio"][value="${settings.answers}"]`).checked = true;
   // timer
   const timerContainer = document.createElement('div');
   const timerHeader = document.createElement('h4');

@@ -7,8 +7,10 @@ import Sounds from './sounds';
 import renderDataCard from './renderDataCard';
 import roundResultsRender from './roundResultsRender';
 import homeRender from './homeRender';
+import Settings from './settings';
 // import { roundList } from "..";
 const sounds = new Sounds(SOUNDS_PATHS);
+const settings = new Settings();
 // sounds.muteMusic();
 // console.log(sounds)
 let roundList = new RoundList('picture');
@@ -72,6 +74,14 @@ export default function listener() {
         break;
       case 'goHome':
         homeRender();
+        break;
+      case 'settings':
+        sounds.playClick();
+        if (evt.target.dataset.prop === 'answers') {
+          settings.setAnswers(+evt.target.dataset.value);
+          roundList = new RoundList(roundList.type);
+          homeRender();
+        }
         break;
       default:
         // console.error('unknown click action');
