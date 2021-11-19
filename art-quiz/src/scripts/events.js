@@ -38,7 +38,7 @@ export default function listener() {
         if (result) {
           sounds.playClick();
         } else sounds.playWrong();
-        renderDataCard(question, result, () => {});
+        renderDataCard(question, result);
       }
         break;
       case 'start':

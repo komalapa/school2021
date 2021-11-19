@@ -159,14 +159,21 @@ export default function addMenu() {
   timer.classList.add('burger-menu-select');
 
   const noneOption = document.createElement('Option');
-  noneOption.selected = true;
+  timer.dataset.action = 'settings';
+  timer.addEventListener('change', () => {
+    settings.setTimer(timer.options[timer.selectedIndex].value);
+  });
+  // noneOption.selected = true;
   noneOption.value = false;
   noneOption.innerText = '∞';
+  if (settings.timer === false) noneOption.selected = true;
   timer.append(noneOption);
 
   for (let i = MIN_TIME; i <= MAX_TIME; i += STEP_TIME) {
     const option = document.createElement('Option');
     option.value = i;
+    if (settings.timer === i) option.selected = true;
+
     option.innerText = `${i}сек.`;
     timer.append(option);
   }

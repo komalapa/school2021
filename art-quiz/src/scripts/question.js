@@ -7,6 +7,9 @@ import {
   IMAGES_PER_ROUND,
   // IMAGES_LIST_PATH,
 } from './consts';
+import Settings from './settings';
+
+const settings = new Settings();
 // console.log(images[5].year)
 
 // let images = [];
@@ -44,6 +47,7 @@ export default class Question {
     this.genAnswers = this.genAnswers.bind(this);
     this.genAnswers();
     this.isSolved = false;
+    this.timeOut = null;
   }
 
   getImage() {
@@ -89,6 +93,7 @@ export default class Question {
   }
 
   isAnswer(ind) {
+    this.denyTimer();
     if (this.type === 'author' && this.answers[ind] === this.imagePath) {
       this.isSolved = true;
       return true;
@@ -98,5 +103,18 @@ export default class Question {
       return true;
     }
     return false;
+  }
+
+  setTimer(callback) {
+    if (settings.timer) {
+      this.timer = setTimeout(() => {
+        // console.log ('timer');
+        callback();
+      }, settings.timer * 1000);
+    }
+  }
+
+  denyTimer() {
+    clearTimeout(this.timer);
   }
 }

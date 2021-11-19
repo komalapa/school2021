@@ -1,5 +1,8 @@
 // import Question from "./question";
-import { APP_CONTAINER } from './consts';
+import {
+  APP_CONTAINER,
+} from './consts';
+import renderDataCard from './renderDataCard';
 
 export default function questionRender(question) {
   // console.log(question);
@@ -25,6 +28,7 @@ export default function questionRender(question) {
     mainImage.onload = () => {
       // mainPicture.style.backgroundImage = `url("${mainImage.src}")`;
       mainPicture.src = mainImage.src;
+      question.setTimer(() => renderDataCard(question, false));
     };
 
     const answersArr = question.getAnswers();
@@ -45,21 +49,29 @@ export default function questionRender(question) {
 
     // const mainPicture = document.createElement('div');
     // mainPicture.classList.add('question-main-picture');
-
+    const promises = [];
     const answersArr = question.getAnswers();
     answersArr.forEach((answer, ind) => {
       const answerElement = document.createElement('img');
       answerElement.src = answer;
       answerElement.classList.add('question-answers', 'question-answers-picture');
-      answerElement.onload = () => answersContainer.append(answerElement);
-      // answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
-      answerElement.dataset.action = 'answer';
-      answerElement.dataset.questionNumber = question.number;
-      answerElement.dataset.index = ind;
+      const pr = new Promise((resolve) => {
+        answerElement.onload = () => {
+          answersContainer.append(answerElement);
+          // answerElement.addEventListener('click', ()=>console.log(question.isAnswer(ind)))
+          answerElement.dataset.action = 'answer';
+          answerElement.dataset.questionNumber = question.number;
+          answerElement.dataset.index = ind;
+          resolve();
+        };
+      });
+      promises.push(pr);
+    });
+    Promise.all(promises).then(() => {
       questionContainer.append(answersContainer);
+      question.setTimer(() => renderDataCard(question, false));
     });
   }
-
   APP_CONTAINER.innerHTML = '';
   APP_CONTAINER.append(questionContainer);
 }
