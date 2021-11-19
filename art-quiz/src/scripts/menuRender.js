@@ -4,9 +4,12 @@ import {
   MIN_TIME,
   STEP_TIME,
 } from './consts';
+import Settings from './settings';
+import Sounds from './sounds';
 
 // import notes from '../images/music.svg';
-
+const settings = new Settings();
+const sounds = new Sounds();
 export default function addMenu() {
   // burger
   const burgerBtn = document.createElement('button');
@@ -27,12 +30,19 @@ export default function addMenu() {
   musicMute.type = 'checkbox';
   musicMute.classList.add('burger-menu-music-mute', 'burger-menu-checkbox');
   musicMute.id = 'music-mute';
-  musicMute.checked = true;
+  musicMute.checked = settings.music;
+  sounds.muteMusic(!musicMute.checked); // sync sounds with visible state
 
   const musicMuteLbl = document.createElement('label');
   musicMuteLbl.classList.add('burger-menu-music-mute-lbl', 'burger-menu-lbl');
   musicMuteLbl.innerText = 'Музыка';
   musicMuteLbl.htmlFor = 'music-mute';
+  musicMuteLbl.dataset.action = 'settings';
+  musicMuteLbl.dataset.prop = 'music';
+  musicMute.addEventListener('input', () => {
+    sounds.muteMusic(!musicMute.checked);
+    settings.toggleMusic();
+  });
 
   // sounds mute
 
@@ -40,13 +50,22 @@ export default function addMenu() {
   soundMute.type = 'checkbox';
   soundMute.classList.add('burger-menu-music-mute', 'burger-menu-checkbox');
   soundMute.id = 'sound-mute';
-  soundMute.checked = true;
+  soundMute.checked = settings.sounds;
+  sounds.muteSounds(!soundMute.checked);// sync sounds with visible state
 
   const soundMuteLbl = document.createElement('label');
   soundMuteLbl.classList.add('burger-menu-music-mute-lbl', 'burger-menu-lbl');
   soundMuteLbl.innerText = 'Звуки';
   soundMuteLbl.htmlFor = 'sound-mute';
   mutesContainer.append(musicMute, musicMuteLbl, soundMute, soundMuteLbl);
+  soundMuteLbl.dataset.action = 'settings';
+  soundMuteLbl.dataset.prop = 'sounds';
+  soundMuteLbl.dataset.action = 'settings';
+  soundMuteLbl.dataset.prop = 'sounds';
+  soundMute.addEventListener('input', () => {
+    sounds.muteSounds(!soundMute.checked);
+    settings.toggleSounds();
+  });
 
   // volume
   const volumeContainer = document.createElement('div');
@@ -55,12 +74,19 @@ export default function addMenu() {
   volumeBar.type = 'range';
   volumeBar.classList.add('burger-menu-volume');
   volumeBar.id = 'volume-bar';
+  volumeBar.value = settings.volume * 100;
 
   const volumeBarLbl = document.createElement('label');
   // volumeBarLbl.style.background = notes;
   volumeBarLbl.classList.add('burger-menu-volume-lbl');
   volumeBarLbl.htmlFor = 'volume-bar';
   volumeContainer.append(volumeBarLbl, volumeBar);
+
+  volumeBar.addEventListener('input', () => {
+    // console.log(volumeBar.value)
+    sounds.setVolume(volumeBar.value / 100);
+    settings.setVolume(volumeBar.value / 100);
+  });
 
   // answers number
   const answersContainer = document.createElement('div');

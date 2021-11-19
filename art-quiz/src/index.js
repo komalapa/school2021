@@ -4,7 +4,7 @@
 // import { roundsRender } from './scripts/roundsRender';
 import listener from './scripts/events';
 import homeRender from './scripts/homeRender';
-import addMenu from './scripts/menu';
+import addMenu from './scripts/menuRender';
 // import Sounds from './scripts/sounds';
 // import { SOUNDS_PATHS } from './scripts/consts';
 

@@ -100,18 +100,26 @@ function SoundsSingleton() {
         instance.muteSounds();
       };
 
-      instance.muteMusic = () => {
+      instance.muteMusic = (state) => {
         // console.log(instance.main);
-        instance.main.muted = true;
-        instance.main.pause();
+        instance.main.muted = state;
+        // instance.main.pause();
       };
 
-      instance.muteSounds = () => {
+      instance.muteSounds = (state) => {
         instance.sounds = instance.sounds.map((element) => {
           const curEl = element;
-          curEl.muted = true;
+          curEl.muted = state;
           return curEl;
         });
+      };
+      instance.setVolume = (value) => {
+        instance.sounds = instance.sounds.map((element) => {
+          const curEl = element;
+          curEl.volume = value;
+          return curEl;
+        });
+        instance.main.volume = value;
       };
     }
     return instance;
