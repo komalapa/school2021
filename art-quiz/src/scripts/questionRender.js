@@ -14,7 +14,7 @@ export default function questionRender(question) {
 
   const answersContainer = document.createElement('div');
   answersContainer.classList.add('question-answers-wrp');
-
+  let timerEl;
   // console.log('render', question);
   if (question.type === 'picture') {
     // console.log('picture')
@@ -28,7 +28,8 @@ export default function questionRender(question) {
     mainImage.onload = () => {
       // mainPicture.style.backgroundImage = `url("${mainImage.src}")`;
       mainPicture.src = mainImage.src;
-      question.setTimer(() => renderDataCard(question, false));
+      // question.setTimer(questionContainer, () => renderDataCard(question, false));
+      // console.log(timerEl);
     };
 
     const answersArr = question.getAnswers();
@@ -37,7 +38,7 @@ export default function questionRender(question) {
       answerElement.classList.add('question-answers', 'question-answers-author');
       answerElement.innerText = answer;
       answersContainer.append(answerElement);
-      questionContainer.append(mainPicture, answersContainer);
+      questionContainer.append( mainPicture, answersContainer);
       // answerElement.addEventListener('click', ()=>console.log(question, question.isAnswer(ind)))
       answerElement.dataset.action = 'answer';
       answerElement.dataset.questionNumber = question.number;
@@ -69,7 +70,7 @@ export default function questionRender(question) {
     });
     Promise.all(promises).then(() => {
       questionContainer.append(answersContainer);
-      question.setTimer(() => renderDataCard(question, false));
+      question.setTimer(questionContainer, () => renderDataCard(question, false));
     });
   }
   APP_CONTAINER.innerHTML = '';

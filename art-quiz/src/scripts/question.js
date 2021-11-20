@@ -8,6 +8,7 @@ import {
   // IMAGES_LIST_PATH,
 } from './consts';
 import Settings from './settings';
+// import questionRender from './questionRender';
 
 const settings = new Settings();
 // console.log(images[5].year)
@@ -93,6 +94,7 @@ export default class Question {
   }
 
   isAnswer(ind) {
+    this.isAnswered = true;
     this.denyTimer();
     if (this.type === 'author' && this.answers[ind] === this.imagePath) {
       this.isSolved = true;
@@ -105,13 +107,28 @@ export default class Question {
     return false;
   }
 
-  setTimer(callback) {
-    if (settings.timer) {
-      this.timer = setTimeout(() => {
-        // console.log ('timer');
-        callback();
-      }, settings.timer * 1000);
-    }
+  setTimer(container, callback) {
+    this.isAnswered = false;
+    let counter = +settings.timer;
+    const timerEl = document.createElement('div');
+    timerEl.classList.add('question-timer');
+    timerEl.innerHTML = counter;
+    const secTimer = () => {
+      setTimeout(() => {
+        counter -= 1;
+        timerEl.innerText = counter;
+        if (!this.isAnswered) {
+          if (counter < 3) timerEl.classList.add('question-timer-ending');
+          if (counter > 0) {
+            this.timer = secTimer();
+          } else {
+            callback();
+          }
+        }
+      }, 1000);
+    };
+    this.timer = secTimer();
+    container.prepend(timerEl);
   }
 
   denyTimer() {

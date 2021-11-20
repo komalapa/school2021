@@ -1,4 +1,17 @@
 @import "vars.scss";
+@keyframes alarm {
+  0%{
+    transform: rotate(0);
+  };
+  50%{
+    transform: rotate(10deg);
+  };
+
+  100%{
+    transform: rotate(-10deg);
+  };
+}
+
 .question {
   &-wrp {
     padding: 5vh 5vw;
@@ -50,4 +63,43 @@
         align-self: center;
       }
     }
+    &-timer {
+      position:relative;
+      font-size:1em;
+      width:2em;
+      height:2em;
+      border:3px solid black;
+      border-radius: 50%;
+      display: flex;
+      align-items:center;
+      justify-content:center;
+      align-self: flex-end;
+      &:before, &:after{
+        content:'';
+        width:1em;
+        height:0.3em;
+        border-radius: 50%  50% 0 0;
+        background-color: black;
+      }
+      
+      &:before{
+        top: -0.2em;
+        left: 1.3em;
+        position: absolute;
+        transform:rotate(35deg);
+      }
+      
+      
+      &:after{
+        top: -0.2em;
+        left: -0.3em;
+        position: absolute;
+        transform:rotate(-35deg);
+      }
+      &-ending{
+        animation: alarm 0.3s infinite;
+      }
+    }
+    
+    
   }
