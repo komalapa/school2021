@@ -4,13 +4,16 @@ import questionRender from './questionRender';
 import { IMAGES_PER_ROUND, SOUNDS_PATHS } from './consts';
 import RoundList from './roundList';
 import Sounds from './sounds';
-import renderDataCard from './renderDataCard';
+import renderDataCard from './dataCardRender';
 import roundResultsRender from './roundResultsRender';
 import homeRender from './homeRender';
 import Settings from './settings';
+import State from './state';
+// import Question from './question';
 // import { roundList } from "..";
 const sounds = new Sounds(SOUNDS_PATHS);
 const settings = new Settings();
+const state = new State();
 // sounds.muteMusic();
 // console.log(sounds)
 let roundList = new RoundList('picture');
@@ -20,6 +23,7 @@ export default function listener() {
     switch (evt.target.dataset.action) {
       case 'render':
         sounds.playClick();
+        state.stopTimer();
         if (evt.target.dataset.object === 'roundQuestions') {
           roundQuestionsRender(roundList.rounds[+evt.target.dataset.roundNumber]);
           break;
@@ -43,6 +47,7 @@ export default function listener() {
         break;
       case 'start':
         sounds.playClick();
+        state.stopTimer();
         if (roundList.type !== evt.target.dataset.type) {
           roundList = new RoundList(evt.target.dataset.type);
         }
@@ -74,9 +79,11 @@ export default function listener() {
         break;
       case 'goHome':
         homeRender();
+        state.stopTimer();
         break;
       case 'settings':
         sounds.playClick();
+        state.stopTimer();
         if (evt.target.dataset.prop === 'answers') {
           settings.setAnswers(+evt.target.dataset.value);
           roundList = new RoundList(roundList.type);

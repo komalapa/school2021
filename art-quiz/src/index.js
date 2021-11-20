@@ -18,6 +18,7 @@ import './styles/question.scss';
 import './styles/rounds.scss';
 import './styles/dataCard.scss';
 import './styles/roundResults.scss';
+import './styles/crumps.scss';
 
 // import image from './images/lazy.png';
 

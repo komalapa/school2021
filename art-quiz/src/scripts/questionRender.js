@@ -1,13 +1,15 @@
 // import Question from "./question";
 import {
-  APP_CONTAINER,
+  APP_CONTAINER, IMAGES_PER_ROUND,
 } from './consts';
-import renderDataCard from './renderDataCard';
+import crumpsRender from './crumpsRender';
+import renderDataCard from './dataCardRender';
 
 export default function questionRender(question) {
   // console.log(question);
   const questionContainer = document.createElement('div');
   questionContainer.classList.add('question-wrp');
+  crumpsRender(questionContainer, true, question.roundNumber, question.number % IMAGES_PER_ROUND);
   const questionText = document.createElement('span');
   questionText.classList.add('question-text');
   questionContainer.append(questionText);

@@ -5,7 +5,7 @@ export default function roundResultsRender(roundNumber, result) {
   resultContainer.classList.add('results-container');
 
   const resultRoundName = document.createElement('h3');
-  resultRoundName.innerText = `Раунд №${roundNumber} завершен!`;
+  resultRoundName.innerText = `Раунд №${roundNumber + 1} завершен!`;
 
   const resultEl = document.createElement('span');
   resultEl.innerText = `Ваш результат ${result * 100}%`;

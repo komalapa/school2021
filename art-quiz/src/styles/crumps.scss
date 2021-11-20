@@ -1,0 +1,25 @@
+@import "vars.scss";
+.crumps{
+  align-self: flex-start;
+  font-weight: bold;
+  // width: 100%;
+  padding: 1vh 1vw;
+  border-radius: 1vw;
+  @include glass-background;
+  // font-size: 1.5em;
+  &>span{
+    display: inline-block;
+    @include active-behavior;
+    color: var(--color)
+    
+    // @include rounded-button;
+  }
+  &>span:after{
+    content: '>';
+    padding: 0 1vw;
+  }
+  &>span:last-child:after{
+    content: '';
+  }
+
+}

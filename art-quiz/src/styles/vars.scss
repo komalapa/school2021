@@ -12,6 +12,9 @@
 }
 
 @mixin active-behavior{
+  &{
+    cursor: pointer;
+  }
   &:hover {
     transform: scale(1.05);
   }

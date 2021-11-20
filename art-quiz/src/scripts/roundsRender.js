@@ -1,10 +1,22 @@
 // import Round from "./round";
 // import questionRender from "./questionRender";
 import { APP_CONTAINER } from './consts';
+import crumpsRender from './crumpsRender';
 
 export function roundsRender(roundList) {
   const roundsContainer = document.createElement('div');
   roundsContainer.classList.add('rounds-wrp');
+
+  // const crumps = document.createElement('div');
+  // crumps.classList.add('crumps');
+  // const crumpsHome = document.createElement('span');
+  // crumpsHome.innerText = 'ArtQuiz';
+  // crumpsHome.dataset.action = 'goHome';
+  // crumps.append(crumpsHome);
+  // roundsContainer.append(crumps);
+
+  crumpsRender(roundsContainer);
+
   const roundsHeader = document.createElement('h2');
   roundsHeader.classList.add('rounds-header');
   if (roundList.type === 'picture') {
@@ -42,9 +54,12 @@ export function roundsRender(roundList) {
 export function roundQuestionsRender(round) {
   const roundContainer = document.createElement('div');
   roundContainer.classList.add('round-wrp');
+
+  crumpsRender(roundContainer, true, round.number);
+
   const roundHeader = document.createElement('h2');
   roundHeader.classList.add('rounds-header');
-  roundHeader.innerText = `Раунд № ${round.number}`;
+  roundHeader.innerText = `Раунд № ${round.number + 1}`;
   roundContainer.append(roundHeader);
   for (let i = 0; i < round.questions.length; i += 1) {
     // console.log('create question', i);

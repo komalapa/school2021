@@ -8,8 +8,9 @@ import {
   // IMAGES_LIST_PATH,
 } from './consts';
 import Settings from './settings';
+import State from './state';
 // import questionRender from './questionRender';
-
+const state = new State();
 const settings = new Settings();
 // console.log(images[5].year)
 
@@ -94,7 +95,6 @@ export default class Question {
   }
 
   isAnswer(ind) {
-    this.isAnswered = true;
     this.denyTimer();
     if (this.type === 'author' && this.answers[ind] === this.imagePath) {
       this.isSolved = true;
@@ -117,21 +117,24 @@ export default class Question {
       setTimeout(() => {
         counter -= 1;
         timerEl.innerText = counter;
-        if (!this.isAnswered) {
+        if (state.timer !== null) {
           if (counter < 3) timerEl.classList.add('question-timer-ending');
           if (counter > 0) {
-            this.timer = secTimer();
+            state.timer = secTimer();
           } else {
             callback();
           }
         }
       }, 1000);
     };
-    this.timer = secTimer();
+    state.timer = secTimer();
     container.prepend(timerEl);
   }
 
   denyTimer() {
     clearTimeout(this.timer);
+    clearTimeout(state.timer);
+    state.timer = null;
+    this.isAnswered = true;
   }
 }
