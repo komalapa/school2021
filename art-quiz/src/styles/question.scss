@@ -27,7 +27,10 @@
     overflow: hidden;
     width: 90vw;
     box-sizing: border-box;
-    
+    & *{
+      transform: none;
+      transition: transform 0.5s;
+    }
     @include glass-background;
     }
     &-main-picture {

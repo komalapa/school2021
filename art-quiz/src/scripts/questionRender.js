@@ -14,8 +14,9 @@ export default function questionRender(question) {
 
   const answersContainer = document.createElement('div');
   answersContainer.classList.add('question-answers-wrp');
-  let timerEl;
+  // let timerEl;
   // console.log('render', question);
+  const promises = [];
   if (question.type === 'picture') {
     // console.log('picture')
     questionText.innerText = ('Выберите автора картины:');
@@ -25,20 +26,23 @@ export default function questionRender(question) {
     const mainPicture = document.createElement('img');
     mainPicture.classList.add('question-main-picture');
 
-    mainImage.onload = () => {
-      // mainPicture.style.backgroundImage = `url("${mainImage.src}")`;
-      mainPicture.src = mainImage.src;
-      // question.setTimer(questionContainer, () => renderDataCard(question, false));
-      // console.log(timerEl);
-    };
-
+    const pr = new Promise((resolve) => {
+      mainImage.onload = () => {
+        // mainPicture.style.backgroundImage = `url("${mainImage.src}")`;
+        mainPicture.src = mainImage.src;
+        // question.setTimer(questionContainer, () => renderDataCard(question, false));
+        // console.log(timerEl);
+        resolve();
+      };
+    });
+    promises.push(pr);
     const answersArr = question.getAnswers();
     answersArr.forEach((answer, ind) => {
       const answerElement = document.createElement('div');
       answerElement.classList.add('question-answers', 'question-answers-author');
       answerElement.innerText = answer;
       answersContainer.append(answerElement);
-      questionContainer.append( mainPicture, answersContainer);
+      questionContainer.append(mainPicture, answersContainer);
       // answerElement.addEventListener('click', ()=>console.log(question, question.isAnswer(ind)))
       answerElement.dataset.action = 'answer';
       answerElement.dataset.questionNumber = question.number;
@@ -50,7 +54,7 @@ export default function questionRender(question) {
 
     // const mainPicture = document.createElement('div');
     // mainPicture.classList.add('question-main-picture');
-    const promises = [];
+
     const answersArr = question.getAnswers();
     answersArr.forEach((answer, ind) => {
       const answerElement = document.createElement('img');
@@ -68,11 +72,13 @@ export default function questionRender(question) {
       });
       promises.push(pr);
     });
-    Promise.all(promises).then(() => {
-      questionContainer.append(answersContainer);
-      question.setTimer(questionContainer, () => renderDataCard(question, false));
-    });
   }
+  questionContainer.append(answersContainer);
+  questionContainer.classList.add('loading');
   APP_CONTAINER.innerHTML = '';
   APP_CONTAINER.append(questionContainer);
+  Promise.all(promises).then(() => {
+    question.setTimer(questionContainer, () => renderDataCard(question, false));
+    questionContainer.classList.remove('loading');
+  });
 }

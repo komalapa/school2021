@@ -13,3 +13,33 @@ body {
   background-image: var(--background);
   font-family: sans-serif;
 }
+
+@keyframes loading {
+  0%{
+    transform:none;
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.loading{
+  position: relative;
+}
+#art-quiz-app .loading > * {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.loading::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width:10px;
+  height:10px;
+  border-radius: 50%;
+  background-color: var(--color);
+  transform-origin: 20px 20px;
+  animation: loading 1s infinite;
+}
