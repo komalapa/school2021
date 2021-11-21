@@ -16,6 +16,7 @@
     gap: 1vh;
   }
   &-button{
+    @include active-behavior;
     @include rounded-button;
   }
   &-questions{
@@ -48,3 +49,15 @@
   box-shadow: 0px 0px 15px 0px goldenrod;
 }
 
+@media (min-width:850px){
+  .results-questions-marker{
+    width: 5vw;
+    height: 5vw;
+  }
+}
+
+@media (min-width:1000px){
+  .results-questions{
+    padding: 0 5vw;
+  }
+}

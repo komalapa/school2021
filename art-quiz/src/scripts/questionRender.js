@@ -54,7 +54,7 @@ export default function questionRender(question) {
       answerElement.dataset.index = ind;
     });
   } else if (question.type === 'author') {
-    // console.log('author')
+    answersContainer.classList.add('question-answers-pictures');
     questionText.innerText = (`${question.author} написал:`);
 
     // const mainPicture = document.createElement('div');
@@ -83,7 +83,7 @@ export default function questionRender(question) {
   APP_CONTAINER.innerHTML = '';
   APP_CONTAINER.append(questionContainer);
   Promise.all(promises).then(() => {
-    console.log(settings);
+    // console.log(settings);
     if (settings.timer !== null) {
       question.setTimer(questionContainer, () => renderDataCard(question, false));
     }

@@ -221,20 +221,20 @@
   }
 }
 
-@media (max-width:1024px) {
-  .burger-toggle {
-    left: 10vw;
-    width: 5vw;
-    height: 5vw;
-  }
-  .burger-menu-wrp{
-    padding-top: 15vw;
-  }
-}
+// @media (max-width:960px) {
+//   .burger-toggle {
+//     left: 10vw;
+//     width: 5vw;
+//     height: 5vw;
+//   }
+//   .burger-menu-wrp{
+//     padding-top: 15vw;
+//   }
+// }
 
-@media (max-width:500px) {
+@media (max-width:640px) {
   .burger-toggle {
-    left: 10vw;
+    left: 5vw;
     width: 6vw;
     height: 6vw;
   }

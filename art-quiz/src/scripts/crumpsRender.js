@@ -1,5 +1,5 @@
 export default function crumpsRender(container, home = true, round = false, question = false) {
-  console.log(container, home, round, question);
+  // console.log(container, home, round, question);
   const crumps = document.createElement('div');
   crumps.classList.add('crumps');
   if (home !== false) {

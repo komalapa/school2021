@@ -31,7 +31,16 @@
       transform: none;
       transition: transform 0.5s;
     }
+    & .crumps{
+      position: absolute;
+      top:2vh;
+      left:2vh;
+    }
     @include glass-background;
+    }
+    &-text{
+      font-size: 1.5em;
+      margin-top: 5vh;
     }
     &-main-picture {
       max-width: 80vw;
@@ -48,6 +57,13 @@
         grid-template-columns: 1fr 1fr;
         gap: 2vh 5vw;
       }
+      &-pictures{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items:center;
+        gap: 0.5vw;
+      }
       @include active-behavior;
 
       &-author {
@@ -59,7 +75,7 @@
       }
       &-picture {
         padding: 0;
-        max-width: 20vh;
+        max-width: 20vw;
         max-height: 20vh;
         text-align: center;
         margin: 0 auto;
@@ -105,4 +121,20 @@
     }
     
     
+  }
+  @media (max-width: 700px){
+    
+    .question-answers-pictures{
+      flex-direction: column;
+      flex-wrap: nowrap;
+      // overflow-y: auto;
+      // overflow-x: initial;
+      max-height: 100%;
+    }
+    .question-answers-picture{
+      max-width: 80%;
+      max-height: 10vh;
+      margin-top: 1vh;
+      flex-shrink: 0;
+    }
   }

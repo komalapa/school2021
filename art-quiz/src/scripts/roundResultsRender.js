@@ -21,6 +21,8 @@ export default function roundResultsRender(round) {
 
   resultContainer.classList.add(classResult);
 
+  const resultsBtnContainer = document.createElement('div');
+  resultsBtnContainer.classList.add('results-btn-wrp');
   const homeBtn = document.createElement('button');
   homeBtn.classList.add('results-home', 'results-button');
   homeBtn.dataset.action = 'goHome';
@@ -31,6 +33,8 @@ export default function roundResultsRender(round) {
   nextBtn.dataset.action = 'nextRound';
   nextBtn.dataset.roundNumber = round.number;
   nextBtn.innerText = 'Далее';
+
+  resultsBtnContainer.append(homeBtn, nextBtn);
 
   const questionMarkers = document.createElement('div');
   questionMarkers.classList.add('results-questions');
@@ -55,6 +59,6 @@ export default function roundResultsRender(round) {
     });
     promises.push(promise);
   });
-  resultContainer.append(resultRoundName, resultEl, questionMarkers, homeBtn, nextBtn);
+  resultContainer.append(resultRoundName, resultEl, questionMarkers, resultsBtnContainer);
   Promise.all(promises).then(() => APP_CONTAINER.append(resultContainer));
 }
