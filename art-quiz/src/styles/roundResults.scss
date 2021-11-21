@@ -18,13 +18,33 @@
   &-button{
     @include rounded-button;
   }
+  &-questions{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1vw;
+    &-marker{
+      width: 10vw;
+      height: 10vw;
+      border-radius: 50%;
+      background-size: contain;
+      border: 2px solid goldenrod;
+      @include active-behavior;
+      &-wrong {
+        filter: grayscale(1);
+        border: 2px solid var(--color);
+      }
+    }
+  }
+  
 }
 .low-result{
   border-color: var(--wrong-color);
-  box-shadow: 0px 0px 30px 10px var(--wrong-color);
+  box-shadow: 0px 0px 15px 0px var(--wrong-color);
 }
 
 .high-result{
   border-color: goldenrod;
-  box-shadow: 0px 0px 15px 30px goldenrod;
+  box-shadow: 0px 0px 15px 0px goldenrod;
 }
+

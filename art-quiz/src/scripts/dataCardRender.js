@@ -1,6 +1,6 @@
 import { APP_CONTAINER } from './consts';
 
-export default function renderDataCard(question, isSolved = true) {
+export default function renderDataCard(question, isSolved = true, isNeedNext = true) {
   const cardContainer = document.createElement('div');
   cardContainer.classList.add('card-wrp');
   if (!isSolved) cardContainer.classList.add('card-wrp-wrong');
@@ -20,18 +20,25 @@ export default function renderDataCard(question, isSolved = true) {
   const author = document.createElement('span');
   author.classList.add('card-author');
   author.innerText = question.author;
+  cardContainer.append(image, year, name, author);
 
-  const okBtn = document.createElement('button');
-  okBtn.classList.add('card-button');
-  okBtn.innerText = 'Далее';
-  okBtn.dataset.action = 'closeCard';
-  okBtn.dataset.number = question.number;
-  okBtn.dataset.roundNumber = question.roundNumber;
+  if (isNeedNext) {
+    const okBtn = document.createElement('button');
+    okBtn.classList.add('card-button');
+    okBtn.innerText = 'Далее';
+    okBtn.dataset.action = 'closeCard';
+    okBtn.dataset.number = question.number;
+    okBtn.dataset.roundNumber = question.roundNumber;
+    cardContainer.append(okBtn);
+  } else {
+    const okBtn = document.createElement('button');
+    okBtn.classList.add('card-button');
+    okBtn.innerText = 'Закрыть';
+    okBtn.dataset.action = 'removeCard';
+    cardContainer.append(okBtn);
+  }
 
   image.onload = () => {
-    cardContainer.append(image, year, name, author, okBtn);
     APP_CONTAINER.append(cardContainer);
   };
-
-  // console.log(question.imagePath);
 }

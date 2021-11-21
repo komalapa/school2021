@@ -164,9 +164,9 @@ export default function addMenu() {
     settings.setTimer(timer.options[timer.selectedIndex].value);
   });
   // noneOption.selected = true;
-  noneOption.value = false;
+  noneOption.value = null;
   noneOption.innerText = '∞';
-  if (settings.timer === false) noneOption.selected = true;
+  if (settings.timer === null) noneOption.selected = true;
   timer.append(noneOption);
 
   for (let i = MIN_TIME; i <= MAX_TIME; i += STEP_TIME) {

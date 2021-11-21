@@ -4,6 +4,9 @@ import {
 } from './consts';
 import crumpsRender from './crumpsRender';
 import renderDataCard from './dataCardRender';
+import Settings from './settings';
+
+const settings = new Settings();
 
 export default function questionRender(question) {
   // console.log(question);
@@ -80,7 +83,10 @@ export default function questionRender(question) {
   APP_CONTAINER.innerHTML = '';
   APP_CONTAINER.append(questionContainer);
   Promise.all(promises).then(() => {
-    question.setTimer(questionContainer, () => renderDataCard(question, false));
+    console.log(settings);
+    if (settings.timer !== null) {
+      question.setTimer(questionContainer, () => renderDataCard(question, false));
+    }
     questionContainer.classList.remove('loading');
   });
 }

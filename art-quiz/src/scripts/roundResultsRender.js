@@ -1,14 +1,19 @@
-import { APP_CONTAINER } from './consts';
+import {
+  APP_CONTAINER,
+  IMAGES_PATH_SMALL,
+} from './consts';
 
-export default function roundResultsRender(roundNumber, result) {
+export default function roundResultsRender(round) {
   const resultContainer = document.createElement('div');
   resultContainer.classList.add('results-container');
 
   const resultRoundName = document.createElement('h3');
-  resultRoundName.innerText = `Раунд №${roundNumber + 1} завершен!`;
+  resultRoundName.innerText = `Раунд №${round.number + 1} завершен!`;
+
+  const result = round.getProgress();
 
   const resultEl = document.createElement('span');
-  resultEl.innerText = `Ваш результат ${result * 100}%`;
+  resultEl.innerText = `Ваш результат ${Math.round(result * 100)}%`;
 
   let classResult = 'result-container';
   if (result < 0.3) classResult = 'low-result';
@@ -24,9 +29,32 @@ export default function roundResultsRender(roundNumber, result) {
   const nextBtn = document.createElement('button');
   nextBtn.classList.add('results-next-round', 'results-button');
   nextBtn.dataset.action = 'nextRound';
-  nextBtn.dataset.roundNumber = roundNumber;
+  nextBtn.dataset.roundNumber = round.number;
   nextBtn.innerText = 'Далее';
 
-  resultContainer.append(resultRoundName, resultEl, homeBtn, nextBtn);
-  APP_CONTAINER.append(resultContainer);
+  const questionMarkers = document.createElement('div');
+  questionMarkers.classList.add('results-questions');
+  const promises = [];
+  round.questions.forEach((q) => {
+    const promise = new Promise((resolve) => {
+      const marker = document.createElement('div');
+      marker.classList.add('results-questions-marker');
+      const img = new Image();
+      img.src = `${IMAGES_PATH_SMALL}${q.number}.jpg`;
+      if (!q.isSolved) marker.classList.add('results-questions-marker-wrong');
+      marker.dataset.action = 'info';
+      marker.dataset.number = q.number;
+      marker.dataset.action = 'info';
+      marker.dataset.roundNumber = round.number;
+      marker.dataset.questionNumber = q.number;
+      questionMarkers.append(marker);
+      img.onload = () => {
+        marker.style.backgroundImage = `url(${img.src})`;
+        resolve();
+      };
+    });
+    promises.push(promise);
+  });
+  resultContainer.append(resultRoundName, resultEl, questionMarkers, homeBtn, nextBtn);
+  Promise.all(promises).then(() => APP_CONTAINER.append(resultContainer));
 }

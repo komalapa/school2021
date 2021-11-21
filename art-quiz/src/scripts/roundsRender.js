@@ -34,7 +34,7 @@ export function roundsRender(roundList) {
     roundNumber.innerText = i + 1;
 
     const result = document.createElement('span');
-    result.innerText = `${roundList.rounds[i].getProgress() * 100}%`;
+    result.innerText = `${Math.round(roundList.rounds[i].getProgress() * 100)}%`;
     result.classList.add('rounds-opener-result');
 
     roundOpener.append(roundNumber, result);

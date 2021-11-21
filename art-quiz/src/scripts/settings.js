@@ -11,7 +11,7 @@ function SettingsSingleton() {
       instance.sounds = localStorage.getItem('komaAQsounds') ? JSON.parse(localStorage.getItem('komaAQsounds')) : true;
       instance.volume = localStorage.getItem('komaAQvolume') || 0.5;
       instance.answers = localStorage.getItem('komaAQanswers') || 2;
-      instance.timer = localStorage.getItem('komaAQtimer') ? JSON.parse(localStorage.getItem('komaAQtimer')) : false;
+      instance.timer = localStorage.getItem('komaAQtimer') ? JSON.parse(localStorage.getItem('komaAQtimer')) : null;
 
       instance.toggleMusic = () => {
         instance.music = !instance.music;
