@@ -69,7 +69,9 @@ export default function listener() {
       case 'removeCard':
         {
           const card = document.getElementsByClassName('card-wrp');
-          card[0].remove();
+          Array.from(card).forEach((c) => {
+            c.remove();
+          });
         }
         break;
       case 'nextRound':
