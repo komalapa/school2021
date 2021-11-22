@@ -27,17 +27,13 @@ export default function questionRender(question) {
     // console.log('picture')
     questionText.innerText = ('Выберите автора картины:');
 
-    const mainImage = question.getImage();
+    // const mainImage = question.getImage();
 
     const mainPicture = document.createElement('img');
     mainPicture.classList.add('question-main-picture');
-
+    mainPicture.src = question.imagePath;
     const pr = new Promise((resolve) => {
-      mainImage.onload = () => {
-        // mainPicture.style.backgroundImage = `url("${mainImage.src}")`;
-        mainPicture.src = mainImage.src;
-        // question.setTimer(questionContainer, () => renderDataCard(question, false));
-        // console.log(timerEl);
+      mainPicture.onload = () => {
         resolve();
       };
     });
