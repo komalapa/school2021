@@ -35,14 +35,18 @@ export function roundsRender(roundList) {
     const roundNumber = document.createElement('span');
     roundNumber.innerText = i + 1;
 
+    roundOpener.append(roundNumber);
     const progress = roundList.rounds[i].getProgress();
-    const result = document.createElement('span');
-    result.innerText = `${Math.round(progress * 100)}%`;
-    result.classList.add('rounds-opener-result');
-    result.dataset.roundNumber = i;
-    if (progress > 0) result.dataset.action = 'roundResult';
 
-    roundOpener.append(roundNumber, result);
+    if (progress > 0) {
+      const result = document.createElement('span');
+      result.innerText = `${progress}/${IMAGES_PER_ROUND}`;
+      result.classList.add('rounds-opener-result');
+      result.dataset.roundNumber = i;
+      result.dataset.action = 'roundResult';
+      roundOpener.append(result);
+    }
+
     roundOpener.dataset.action = 'render';
     // for questions list
     // roundOpener.dataset.object = 'roundQuestions';
@@ -53,7 +57,7 @@ export function roundsRender(roundList) {
     roundOpener.dataset.roundNumber = i;
     roundOpener.dataset.questionNumber = roundList.rounds[i].questions[0].number % IMAGES_PER_ROUND;
     roundOpener.dataset.clear = true;
-    if (progress > 0.3) roundOpener.classList.add('rounds-opener-solved');
+    if (progress / IMAGES_PER_ROUND > 0.3) roundOpener.classList.add('rounds-opener-solved');
 
     roundsContainer.append(roundOpener);
   }

@@ -41,6 +41,9 @@ export default function listener() {
         }
         break;
       case 'answer': {
+        state.stopTimer();
+        const answers = document.getElementsByClassName('question-answers');
+        Array.from(answers).forEach((answ) => answ.classList.add('no-pointer-events'));
         const roundNumber = Math.floor(evt.target.dataset.questionNumber / IMAGES_PER_ROUND);
         const questionNumber = evt.target.dataset.questionNumber % IMAGES_PER_ROUND;
         const question = roundList.rounds[roundNumber].questions[questionNumber];

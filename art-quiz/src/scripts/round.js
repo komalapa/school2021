@@ -21,6 +21,6 @@ export default class Round {
     this.questions.forEach((q) => { if (q.isSolved) counter += 1; });
     // console.log(this.number, counter, this.questions);
     // console.log(state)
-    return counter / IMAGES_PER_ROUND;
+    return counter;// / IMAGES_PER_ROUND;
   }
 }

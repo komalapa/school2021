@@ -1,6 +1,7 @@
 import {
   APP_CONTAINER,
   IMAGES_PATH_SMALL,
+  IMAGES_PER_ROUND,
 } from './consts';
 
 export default function roundResultsRender(round, isAfterRound = true) {
@@ -13,13 +14,23 @@ export default function roundResultsRender(round, isAfterRound = true) {
   const result = round.getProgress();
 
   const resultEl = document.createElement('span');
-  resultEl.innerText = `Ваш результат ${Math.round(result * 100)}%`;
+  resultEl.innerText = `Ваш результат ${result}/${IMAGES_PER_ROUND}`;
+
+  const resultPhrase = document.createElement('span');
 
   let classResult = 'result-container';
-  if (result < 0.3) classResult = 'low-result';
-  if (result > 0.6) classResult = 'high-result';
+  if (result / IMAGES_PER_ROUND < 0.3) {
+    classResult = 'low-result';
+    resultPhrase.innerText = 'Следующий раз будет лучше!';
+  } else if (result / IMAGES_PER_ROUND > 0.6) {
+    classResult = 'high-result';
+    resultPhrase.innerText = 'Вы знаток живописи!';
+  } else {
+    resultPhrase.innerText = 'Не плохо!';
+  }
 
   resultContainer.classList.add(classResult);
+  resultContainer.append(resultPhrase);
 
   const resultsBtnContainer = document.createElement('div');
   resultsBtnContainer.classList.add('results-btn-wrp');

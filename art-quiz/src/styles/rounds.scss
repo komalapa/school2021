@@ -38,6 +38,7 @@
     &-result{
       font-size: 5vw;
       pointer-events: initial;
+      align-self: flex-end;
       @include active-behavior;
     }
     &-solved{
