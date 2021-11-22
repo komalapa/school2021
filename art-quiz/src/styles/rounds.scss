@@ -24,12 +24,21 @@
     backdrop-filter: var(--glass-filter);
     font-size: 10vw;
     color: var(--color);
+    background-image: url(../images/dali.png);
+    background-position: 0 90%;
+    background-size: 35% 35%;
+    background-repeat: no-repeat;
+    &-picture{
+      background-image: url(../images/liza.png)
+    }
     @include active-behavior;
     *{
       pointer-events: none;
     }
     &-result{
       font-size: 5vw;
+      pointer-events: initial;
+      @include active-behavior;
     }
   }
   &-header{

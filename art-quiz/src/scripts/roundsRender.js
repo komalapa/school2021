@@ -30,19 +30,24 @@ export function roundsRender(roundList) {
   for (let i = 0; i < roundList.rounds.length; i += 1) {
     const roundOpener = document.createElement('div');
     roundOpener.classList.add('rounds-opener');
+    if (roundList.type === 'picture') roundOpener.classList.add('rounds-opener-picture');
+
     const roundNumber = document.createElement('span');
     roundNumber.innerText = i + 1;
 
+    const progress = roundList.rounds[i].getProgress();
     const result = document.createElement('span');
-    result.innerText = `${Math.round(roundList.rounds[i].getProgress() * 100)}%`;
+    result.innerText = `${Math.round(progress * 100)}%`;
     result.classList.add('rounds-opener-result');
+    result.dataset.roundNumber = i;
+    if (progress > 0) result.dataset.action = 'roundResult';
 
     roundOpener.append(roundNumber, result);
     roundOpener.dataset.action = 'render';
     roundOpener.dataset.object = 'roundQuestions';
     roundOpener.dataset.roundNumber = i;
 
-    if (roundList.rounds[i].getProgress() < 0.3) roundOpener.classList.add('rounds-opener-not-solved');
+    if (progress < 0.3) roundOpener.classList.add('rounds-opener-not-solved');
 
     roundsContainer.append(roundOpener);
   }

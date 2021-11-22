@@ -3,7 +3,7 @@ import {
   IMAGES_PATH_SMALL,
 } from './consts';
 
-export default function roundResultsRender(round) {
+export default function roundResultsRender(round, isAfterRound = true) {
   const resultContainer = document.createElement('div');
   resultContainer.classList.add('results-container');
 
@@ -27,14 +27,28 @@ export default function roundResultsRender(round) {
   homeBtn.classList.add('results-home', 'results-button');
   homeBtn.dataset.action = 'goHome';
   homeBtn.innerText = 'Домой';
+  resultsBtnContainer.append(homeBtn);
 
-  const nextBtn = document.createElement('button');
-  nextBtn.classList.add('results-next-round', 'results-button');
-  nextBtn.dataset.action = 'nextRound';
-  nextBtn.dataset.roundNumber = round.number;
-  nextBtn.innerText = 'Далее';
+  if (isAfterRound) {
+    const nextBtn = document.createElement('button');
+    nextBtn.classList.add('results-next-round', 'results-button');
+    nextBtn.dataset.action = 'nextRound';
+    nextBtn.dataset.roundNumber = round.number;
+    nextBtn.innerText = 'Далее';
+    resultsBtnContainer.append(nextBtn);
 
-  resultsBtnContainer.append(homeBtn, nextBtn);
+    const roundsBtn = document.createElement('button');
+    roundsBtn.classList.add('results-rounds', 'results-button');
+    roundsBtn.dataset.action = 'start';
+    roundsBtn.innerText = 'К раундам';
+    resultsBtnContainer.append(roundsBtn);
+  } else {
+    const closeBtn = document.createElement('button');
+    closeBtn.classList.add('results-rounds', 'results-button');
+    closeBtn.dataset.action = 'removeResult';
+    closeBtn.innerText = 'Закрыть';
+    resultsBtnContainer.append(closeBtn);
+  }
 
   const questionMarkers = document.createElement('div');
   questionMarkers.classList.add('results-questions');

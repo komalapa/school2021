@@ -52,23 +52,26 @@ export default function listener() {
           roundList = new RoundList(evt.target.dataset.type);
         }
         roundsRender(roundList);
-        // console.log(roundList);
         break;
       case 'closeCard':
-        // console.log(evt.target.dataset, roundList.rounds[+evt.target.dataset.roundNumber]);
         if (evt.target.dataset.number % IMAGES_PER_ROUND === IMAGES_PER_ROUND - 1) {
           roundResultsRender(roundList.rounds[+evt.target.dataset.roundNumber]);
-          // end round, roound results render
           break;
         }
-        // console.log('next question:', roundList.rounds[+evt.target.dataset.roundNumber]
-        // .questions[(+evt.target.dataset.number + 1) % IMAGES_PER_ROUND]);
         questionRender(roundList.rounds[+evt.target.dataset.roundNumber]
           .questions[(+evt.target.dataset.number + 1) % IMAGES_PER_ROUND]);
         break;
       case 'removeCard':
         {
           const card = document.getElementsByClassName('card-wrp');
+          Array.from(card).forEach((c) => {
+            c.remove();
+          });
+        }
+        break;
+      case 'removeResult':
+        {
+          const card = document.getElementsByClassName('results-container');
           Array.from(card).forEach((c) => {
             c.remove();
           });
@@ -90,6 +93,9 @@ export default function listener() {
 
           renderDataCard(question, true, false);
         }
+        break;
+      case 'roundResult':
+        roundResultsRender(roundList.rounds[+evt.target.dataset.roundNumber], false);
         break;
       case 'goHome':
         homeRender();
