@@ -79,13 +79,13 @@ export default class Question {
       } else if (this.type === 'picture') {
         answer = images[answerIndex].author;
       }
-      if (authors.indexOf(images[answerIndex].author) >= 0) {
+      if (authors.indexOf(images[answerIndex].author.toLowerCase()) >= 0) {
         // console.log('double');
         i -= 1;
       } else {
         // console.log('add answer')
         this.answers.push(answer);
-        authors.push(images[answerIndex].author);
+        authors.push(images[answerIndex].author.toLowerCase());
       }
     }
     if (this.type === 'author') this.answers.push(this.imagePath);
