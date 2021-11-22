@@ -16,6 +16,8 @@
 //       audioEl.autoplay = false;
 //       audioEl.muted = false;
 
+import greetingRender from './gretingRender';
+
 //       this.container.append(audioEl);
 //       // console.log(audioEl)
 //       if (name === 'main') {
@@ -86,7 +88,7 @@ function SoundsSingleton() {
       document.documentElement.append(instance.container);
       instance.isMusicOn = true;
       instance.main.loop = true;
-      if (instance.isMusicOn) instance.main.autoplay = true;
+      if (instance.isMusicOn) greetingRender();
       instance.playClick = () => {
         instance.container.querySelector('#audio-click').play();
       };
@@ -103,6 +105,7 @@ function SoundsSingleton() {
       instance.muteMusic = (state) => {
         // console.log(instance.main);
         instance.main.muted = state;
+        if (!state) instance.main.play();
         // instance.main.pause();
       };
 

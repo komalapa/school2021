@@ -19,6 +19,7 @@ import './styles/rounds.scss';
 import './styles/dataCard.scss';
 import './styles/roundResults.scss';
 import './styles/crumps.scss';
+import './styles/greeting.scss';
 
 // import image from './images/lazy.png';
 

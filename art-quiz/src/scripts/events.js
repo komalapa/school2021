@@ -110,6 +110,16 @@ export default function listener() {
           homeRender();
         }
         break;
+      case 'muteAll':
+        sounds.muteMusic();
+        sounds.muteSounds();
+        document.getElementById('greeting').remove();
+        break;
+      case 'closeGreeting':
+        sounds.main.autoplay = true;
+        if (settings.music) sounds.main.play();
+        document.getElementById('greeting').remove();
+        break;
       default:
         // console.error('unknown click action');
     }

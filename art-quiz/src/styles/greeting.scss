@@ -1,0 +1,24 @@
+@import "vars.scss";
+
+.greeting{
+  &-wrp{
+    position: fixed;
+    top:5vh;
+    left:10vw;
+    width: 80vw;
+    min-height: 50vh;
+    padding: 5vh 5vw;
+    box-sizing: border-box;
+    @include glass-background;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:2vh;
+    
+  }
+  &-btn{
+    @include active-behavior;
+    @include rounded-button;
+  }
+}
