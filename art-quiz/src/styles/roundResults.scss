@@ -17,15 +17,23 @@
     & *{
       transform: none;
       transition: transform 0.5s;
+      text-align: center;
     } 
   }
   &-phrase{
     font-size: 2em;
-    text-align: center
+    text-align: center;
   }
   &-button{
     @include active-behavior;
     @include rounded-button;
+  }
+  &-btn-wrp{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:1vw;
   }
   &-questions{
     display: flex;
