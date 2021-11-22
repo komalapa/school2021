@@ -22,16 +22,17 @@ export default function homeRender() {
   byPictureElement.dataset.action = 'start';
   byPictureElement.dataset.type = 'picture';
 
-  const networkGameElement = document.createElement('button');
-  networkGameElement.classList.add('home-button');
-  networkGameElement.innerText = 'Игра с другом';
-  networkGameElement.dataset.action = 'network';
+  // const networkGameElement = document.createElement('button');
+  // networkGameElement.classList.add('home-button');
+  // networkGameElement.innerText = 'Игра с другом';
+  // networkGameElement.dataset.action = 'network';
   // networkGameElement.dataset.type = 'network';
 
-  const fastGameElement = document.createElement('button');
-  fastGameElement.classList.add('home-button');
-  fastGameElement.innerText = 'Быстрая игра';
-  fastGameElement.dataset.action = 'fast-game';
+  // const fastGameElement = document.createElement('button');
+  // fastGameElement.classList.add('home-button');
+  // fastGameElement.innerText = 'Быстрая игра';
+  // fastGameElement.dataset.action = 'fast-game';
+
   // fastGameElement.dataset.type = 'fast';
 
   // const settingsElement = document.createElement('button');
@@ -59,8 +60,8 @@ export default function homeRender() {
   homeContainer.append(
     byAuthorElement,
     byPictureElement,
-    networkGameElement,
-    fastGameElement,
+    // networkGameElement,
+    // fastGameElement,
     // settingsElement,
     footerElement,
   );
