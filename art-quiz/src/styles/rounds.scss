@@ -48,6 +48,8 @@
   &-header{
     min-width: 100%;
     text-align:center;
+    padding: 2vh;
+    @include glass-background;
   }
   
   &-not-solved{

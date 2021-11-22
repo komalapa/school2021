@@ -5,6 +5,7 @@
 import listener from './scripts/events';
 import homeRender from './scripts/homeRender';
 import addMenu from './scripts/menuRender';
+import log from './scripts/consoleDoc';
 // import Sounds from './scripts/sounds';
 // import { SOUNDS_PATHS } from './scripts/consts';
 
@@ -54,7 +55,7 @@ import './styles/greeting.scss';
 addMenu();
 homeRender();
 listener();
-
+log();
 // const sounds = new Sounds(SOUNDS_PATHS);
 // sounds.muteMusic();
 // console.log(sounds);
