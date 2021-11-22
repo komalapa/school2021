@@ -52,7 +52,7 @@ export function roundsRender(roundList) {
     roundOpener.dataset.object = 'questions';
     roundOpener.dataset.roundNumber = i;
     roundOpener.dataset.questionNumber = roundList.rounds[i].questions[0].number % IMAGES_PER_ROUND;
-
+    roundOpener.dataset.clear = true;
     if (progress > 0.3) roundOpener.classList.add('rounds-opener-solved');
 
     roundsContainer.append(roundOpener);

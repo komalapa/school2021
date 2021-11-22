@@ -108,6 +108,12 @@ export default class Question {
     return false;
   }
 
+  unSolve() {
+    this.isSolved = false;
+    this.isAnswered = false;
+    state[this.type][this.number] = null;
+  }
+
   setTimer(container, callback) {
     this.isAnswered = false;
     let counter = +settings.timer;

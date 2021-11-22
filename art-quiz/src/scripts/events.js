@@ -30,7 +30,11 @@ export default function listener() {
           break;
         }
         if (evt.target.dataset.object === 'questions') {
-          // console.log(evt.target.dataset)
+          if (evt.target.dataset.clear === 'true') {
+            roundList.rounds[+evt.target.dataset.roundNumber].questions.forEach((q) => {
+              q.unSolve();
+            });
+          }
           questionRender(roundList.rounds[+evt.target.dataset.roundNumber]
             .questions[+evt.target.dataset.questionNumber]);
           break;
