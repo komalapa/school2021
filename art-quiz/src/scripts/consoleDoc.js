@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 export default function log() {
   console.log(`
-Подробно: https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/art-quiz/readme.md
+Подробно: https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/art-quiz/readme.html
 
 Коротко:
 

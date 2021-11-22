@@ -26,8 +26,14 @@
 
 @mixin glass-background{
   box-shadow: var(--block-shadow);
-  background-color:var(--block-background-color);
-  backdrop-filter: var(--glass-filter);
+  // background-color:var(--block-background-color);
+  // backdrop-filter: var(--glass-filter);
+
+  background-color: var(--anti-color);
+  @supports (backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%)) {
+      background-color:var(--block-background-color);
+      backdrop-filter: var(--glass-filter);
+  }
 }
 
 @mixin rounded-button{
