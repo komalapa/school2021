@@ -32,6 +32,10 @@
       animation: error-shadow 0.3s;
       box-shadow: inset 0px 0px 15px 2px #BA2843;
     }
+    & *{
+      transform: none;
+      transition: transform 0.5s;
+    }
   }
 
   &-name{

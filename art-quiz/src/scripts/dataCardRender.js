@@ -38,7 +38,9 @@ export default function renderDataCard(question, isSolved = true, isNeedNext = t
     cardContainer.append(okBtn);
   }
 
+  cardContainer.classList.add('loading');
+  APP_CONTAINER.append(cardContainer);
   image.onload = () => {
-    APP_CONTAINER.append(cardContainer);
+    cardContainer.classList.remove('loading');
   };
 }

@@ -86,5 +86,7 @@ export default function roundResultsRender(round, isAfterRound = true) {
     promises.push(promise);
   });
   resultContainer.append(resultRoundName, resultEl, questionMarkers, resultsBtnContainer);
-  Promise.all(promises).then(() => APP_CONTAINER.append(resultContainer));
+  resultContainer.classList.add('loading');
+  APP_CONTAINER.append(resultContainer);
+  Promise.all(promises).then(() => resultContainer.classList.remove('loading'));
 }
