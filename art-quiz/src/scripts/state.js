@@ -7,14 +7,20 @@ function StateSingleton() {
   function init() {
     if (typeof instance === 'undefined') {
       instance = {};
-      instance.picture = new Array(IMAGES_AMOUNT);
-      instance.author = new Array(IMAGES_AMOUNT);
-      // console.log();
-      instance.timer = null;
+      const loadedState = localStorage.getItem('komalapaAQstate');
+      if (loadedState) {
+        instance = JSON.parse(loadedState);
+      } else {
+        instance.picture = new Array(IMAGES_AMOUNT);
+        instance.author = new Array(IMAGES_AMOUNT);
+        // console.log();
+        instance.timer = null;
+      }
       instance.stopTimer = () => {
         clearTimeout(instance.timer);
         instance.timer = null;
       };
+      instance.saveState = () => localStorage.setItem('komalapaAQstate', JSON.stringify(instance));
     }
     return instance;
   }

@@ -40,6 +40,7 @@ export default function roundResultsRender(round, isAfterRound = true) {
     const roundsBtn = document.createElement('button');
     roundsBtn.classList.add('results-rounds', 'results-button');
     roundsBtn.dataset.action = 'start';
+    roundsBtn.dataset.type = round.type;
     roundsBtn.innerText = 'К раундам';
     resultsBtnContainer.append(roundsBtn);
   } else {

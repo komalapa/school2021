@@ -1,6 +1,6 @@
 // import Round from "./round";
 // import questionRender from "./questionRender";
-import { APP_CONTAINER } from './consts';
+import { APP_CONTAINER, IMAGES_PER_ROUND } from './consts';
 import crumpsRender from './crumpsRender';
 
 export function roundsRender(roundList) {
@@ -44,10 +44,16 @@ export function roundsRender(roundList) {
 
     roundOpener.append(roundNumber, result);
     roundOpener.dataset.action = 'render';
-    roundOpener.dataset.object = 'roundQuestions';
-    roundOpener.dataset.roundNumber = i;
+    // for questions list
+    // roundOpener.dataset.object = 'roundQuestions';
+    // roundOpener.dataset.roundNumber = i;
 
-    if (progress < 0.3) roundOpener.classList.add('rounds-opener-not-solved');
+    // for round autostart
+    roundOpener.dataset.object = 'questions';
+    roundOpener.dataset.roundNumber = i;
+    roundOpener.dataset.questionNumber = roundList.rounds[i].questions[0].number % IMAGES_PER_ROUND;
+
+    if (progress > 0.3) roundOpener.classList.add('rounds-opener-solved');
 
     roundsContainer.append(roundOpener);
   }

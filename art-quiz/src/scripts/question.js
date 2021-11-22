@@ -48,7 +48,8 @@ export default class Question {
     this.type = type;
     this.genAnswers = this.genAnswers.bind(this);
     this.genAnswers();
-    this.isSolved = false;
+    // console.log(state);
+    this.isSolved = Boolean(state[type][number]);
     this.timeOut = null;
   }
 

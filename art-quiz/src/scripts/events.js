@@ -20,6 +20,7 @@ let roundList = new RoundList('picture');
 
 export default function listener() {
   document.addEventListener('click', (evt) => {
+    // console.log(roundList)
     switch (evt.target.dataset.action) {
       case 'render':
         sounds.playClick();
@@ -29,6 +30,7 @@ export default function listener() {
           break;
         }
         if (evt.target.dataset.object === 'questions') {
+          // console.log(evt.target.dataset)
           questionRender(roundList.rounds[+evt.target.dataset.roundNumber]
             .questions[+evt.target.dataset.questionNumber]);
           break;
@@ -39,6 +41,7 @@ export default function listener() {
         const questionNumber = evt.target.dataset.questionNumber % IMAGES_PER_ROUND;
         const question = roundList.rounds[roundNumber].questions[questionNumber];
         const result = (question.isAnswer(evt.target.dataset.index));
+        state[roundList.type][evt.target.dataset.questionNumber] = result;
         if (result) {
           sounds.playClick();
         } else sounds.playWrong();
@@ -48,14 +51,15 @@ export default function listener() {
       case 'start':
         sounds.playClick();
         state.stopTimer();
-        if (roundList.type !== evt.target.dataset.type) {
-          roundList = new RoundList(evt.target.dataset.type);
-        }
+        // if (roundList.type !== evt.target.dataset.type) {
+        roundList = new RoundList(evt.target.dataset.type);
+        // }
         roundsRender(roundList);
         break;
       case 'closeCard':
         if (evt.target.dataset.number % IMAGES_PER_ROUND === IMAGES_PER_ROUND - 1) {
           roundResultsRender(roundList.rounds[+evt.target.dataset.roundNumber]);
+          state.saveState();
           break;
         }
         questionRender(roundList.rounds[+evt.target.dataset.roundNumber]

@@ -40,6 +40,9 @@
       pointer-events: initial;
       @include active-behavior;
     }
+    &-solved{
+      border-color: goldenrod;
+    }
   }
   &-header{
     min-width: 100%;
