@@ -17,7 +17,7 @@ export default function roundResultsRender(round, isAfterRound = true) {
   resultEl.innerText = `Ваш результат ${result}/${IMAGES_PER_ROUND}`;
 
   const resultPhrase = document.createElement('span');
-
+  resultPhrase.classList.add('results-phrase');
   let classResult = 'result-container';
   if (result / IMAGES_PER_ROUND < 0.3) {
     classResult = 'low-result';
@@ -78,8 +78,8 @@ export default function roundResultsRender(round, isAfterRound = true) {
       marker.dataset.roundNumber = round.number;
       marker.dataset.questionNumber = q.number;
       questionMarkers.append(marker);
+      marker.style.backgroundImage = `url(${img.src})`;
       img.onload = () => {
-        marker.style.backgroundImage = `url(${img.src})`;
         resolve();
       };
     });
