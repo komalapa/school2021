@@ -103,10 +103,12 @@
       }
     }
     &-timer {
-      position:relative;
-      font-size:1em;
-      width:2em;
-      height:2em;
+      position:absolute;
+      top:2vh;
+      right: 2vw;
+      font-size:2vh;
+      width:4vh;
+      height:4vh;
       border:3px solid black;
       border-radius: 50%;
       display: flex;
@@ -115,15 +117,15 @@
       align-self: flex-end;
       &:before, &:after{
         content:'';
-        width:1em;
-        height:0.3em;
+        width:2vh;
+        height:0.6vh;
         border-radius: 50%  50% 0 0;
         background-color: black;
       }
       
       &:before{
-        top: -0.2em;
-        left: 1.3em;
+        top: -0.4vh;
+        left: 2.6vh;
         position: absolute;
         transform:rotate(35deg);
       }
