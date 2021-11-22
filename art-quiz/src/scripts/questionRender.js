@@ -5,9 +5,10 @@ import {
 import crumpsRender from './crumpsRender';
 import renderDataCard from './dataCardRender';
 import Settings from './settings';
+import State from './state';
 
 const settings = new Settings();
-
+const state = new State();
 export default function questionRender(question) {
   // console.log(question);
   const questionContainer = document.createElement('div');
@@ -79,11 +80,22 @@ export default function questionRender(question) {
     });
   }
   questionContainer.append(answersContainer);
+
+  const resultsContainer = document.createElement('div');
+  resultsContainer.classList.add('result-dots-wrp');
+  let i = question.roundNumber * IMAGES_PER_ROUND;
+  for (i; i < (question.roundNumber + 1) * IMAGES_PER_ROUND; i += 1) {
+    const dot = document.createElement('div');
+    // console.log(i, Boolean(state[question.type][i]));
+    dot.classList.add((state[question.type][i] ? 'result-dots-good' : 'result-dots-bad'));
+    resultsContainer.append(dot);
+  }
+  questionContainer.append(resultsContainer);
   questionContainer.classList.add('loading');
   APP_CONTAINER.innerHTML = '';
   APP_CONTAINER.append(questionContainer);
   Promise.all(promises).then(() => {
-    // console.log(settings);
+    // console.log('promise');
     if (settings.timer !== null) {
       question.setTimer(questionContainer, () => renderDataCard(question, false));
     }
