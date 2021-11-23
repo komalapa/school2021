@@ -165,3 +165,10 @@
       max-height: initial;
     }
   }
+
+  @media (max-width: 450px){
+    .question-answers-wrp{
+      display: flex;
+      flex-direction: column;
+    }
+  }
