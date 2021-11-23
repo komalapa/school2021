@@ -58,9 +58,11 @@ export default function listener() {
       case 'start':
         sounds.playClick();
         state.stopTimer();
-        // if (roundList.type !== evt.target.dataset.type) {
-        roundList = new RoundList(evt.target.dataset.type);
-        // }
+        if (!evt.target.dataset.type) {
+          roundList = new RoundList(roundList.type);
+        } else {
+          roundList = new RoundList(evt.target.dataset.type);
+        }
         roundsRender(roundList);
         break;
       case 'closeCard':
