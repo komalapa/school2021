@@ -161,7 +161,7 @@ export default function addMenu() {
   const noneOption = document.createElement('Option');
   timer.dataset.action = 'settings';
   timer.addEventListener('change', () => {
-    settings.setTimer(timer.options[timer.selectedIndex].value);
+    settings.setTimer(timer.options[timer.selectedIndex].value === 'null' ? null : timer.options[timer.selectedIndex].value);
   });
   // noneOption.selected = true;
   noneOption.value = null;
