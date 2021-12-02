@@ -11,7 +11,6 @@ class AppController extends AppLoader {
             },
             callback
         );
-        // console.log('get srcs')
     }
 
     getNews(e:Event, callback:Function) {

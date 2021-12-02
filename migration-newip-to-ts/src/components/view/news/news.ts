@@ -2,7 +2,6 @@ import './news.css';
 import { INewsData } from '../../../interfaces/interfaces';
 class News {
     draw(data:Array<INewsData>) {
-      console.log('NEWS', data)
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
@@ -16,7 +15,6 @@ class News {
             // newsClone.querySelector('.news__meta-photo')!.style.backgroundImage = `url(${
             //     item.urlToImage || 'img/news_placeholder.jpg'
             // })`;
-            console.log(newsClone)
             newsClone.querySelector('.news__meta-author')!.textContent = item.author || item.source.name;
             newsClone.querySelector('.news__meta-date')!.textContent = item.publishedAt
                 .slice(0, 10)

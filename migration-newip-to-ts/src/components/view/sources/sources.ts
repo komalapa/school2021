@@ -3,7 +3,6 @@ import './sources.css';
 
 class Sources {
     draw(data:Array<INewsData>) {
-      console.log(data)
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

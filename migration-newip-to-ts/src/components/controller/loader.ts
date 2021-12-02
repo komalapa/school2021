@@ -16,7 +16,6 @@ class Loader {
         { endpoint, options = {} }:IRespData,
         callback:Function = noCallback
     ) {
-      // console.log(endpoint)
         this.load('GET', endpoint, callback, options);
     }
 
@@ -42,7 +41,6 @@ class Loader {
     }
 
     load(method:string, endpoint:string, callback:Function, options = {}) {
-      console.log(method,endpoint)
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
