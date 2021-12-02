@@ -1,9 +1,5 @@
 import {IRespData, IOptions} from '../../interfaces/interfaces'
 
-function noCallback():void {
-  console.error('No callback for GET response');
-}
-
 class Loader {
     baseLink: string;
     options: object;
@@ -14,7 +10,7 @@ class Loader {
 
     getResp(
         { endpoint, options = {} }:IRespData,
-        callback:Function = noCallback
+        callback:Function = this.noCallback
     ) {
         this.load('GET', endpoint, callback, options);
     }
@@ -46,6 +42,10 @@ class Loader {
             .then((res) => res.json())
             .then((data) => callback(data))
             .catch((err) => console.error(err));
+    }
+    
+    noCallback():void {
+      console.error('No callback for GET response');
     }
 }
 
