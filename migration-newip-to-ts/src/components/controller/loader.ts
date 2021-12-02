@@ -1,11 +1,4 @@
-interface IRespData{
-  endpoint:string;
-  options:object
-}
-
-interface IOptions { 
-  [key:string] : string; 
-}
+import {IRespData, IOptions} from '../../interfaces/interfaces'
 
 class Loader {
     baseLink: string;

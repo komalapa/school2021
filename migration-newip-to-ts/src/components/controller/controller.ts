@@ -1,24 +1,28 @@
-import AppLoader from './appLoader.js_bak';
+import AppLoader from './appLoader';
+import {IRespData, IOptions} from '../../interfaces/interfaces'
+
 
 class AppController extends AppLoader {
-    getSources(callback) {
+    getSources(callback:Function) {
         super.getResp(
             {
                 endpoint: 'sources',
+                options: {}
             },
-            callback
+            ()=>callback()
         );
     }
 
-    getNews(e, callback) {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
-
-        while (target !== newsContainer) {
-            if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
-                if (newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
+    getNews(e:Event, callback:Function) {
+        if (e.target instanceof HTMLElement && e.currentTarget instanceof HTMLElement){
+          let target = e.target;
+          const newsContainer:HTMLElement = e.currentTarget;
+        
+          while (target !== newsContainer) {
+            if (target!.classList.contains('source__item')) {
+                const sourceId = target!.getAttribute('data-source-id');
+                if (newsContainer!.getAttribute('data-source') !== sourceId) {
+                    newsContainer!.setAttribute('data-source', sourceId ? sourceId : '');
                     super.getResp(
                         {
                             endpoint: 'everything',
@@ -26,13 +30,15 @@ class AppController extends AppLoader {
                                 sources: sourceId,
                             },
                         },
-                        callback
+                        ()=>callback()
                     );
                 }
                 return;
             }
-            target = target.parentNode;
+            target = target.parentNode instanceof HTMLElement ? target!.parentNode : newsContainer;
+          }
         }
+        
     }
 }
 
