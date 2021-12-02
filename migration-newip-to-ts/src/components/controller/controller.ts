@@ -9,8 +9,9 @@ class AppController extends AppLoader {
                 endpoint: 'sources',
                 options: {}
             },
-            ()=>callback()
+            callback
         );
+        // console.log('get srcs')
     }
 
     getNews(e:Event, callback:Function) {
@@ -30,7 +31,7 @@ class AppController extends AppLoader {
                                 sources: sourceId,
                             },
                         },
-                        ()=>callback()
+                        callback
                     );
                 }
                 return;
