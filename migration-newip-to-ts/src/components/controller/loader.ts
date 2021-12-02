@@ -1,3 +1,12 @@
+interface IRespData{
+  endpoint:string;
+  options:object
+}
+
+interface IOptions { 
+  [key:string] : string; 
+}
+
 class Loader {
     baseLink: string;
     options: object;
@@ -7,7 +16,7 @@ class Loader {
     }
 
     getResp(
-        { endpoint, options = {} },
+        { endpoint, options = {} }:IRespData,
         callback = () => {
             console.error('No callback for GET response');
         }
@@ -15,7 +24,7 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res: object) {
+    errorHandler(res: Response) {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -25,7 +34,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options, endpoint) {
+    makeUrl(options:IOptions, endpoint:string) {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -36,7 +45,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
+    load(method:string, endpoint:string, callback:Function, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
