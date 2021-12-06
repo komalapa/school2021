@@ -1,4 +1,5 @@
 .sources {
+    position: relative;
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
@@ -6,8 +7,66 @@
     overflow: auto;
     align-items: center;
     font: 300 1em 'Fira Sans', sans-serif;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
+.sources::-webkit-scrollbar {
+  display: none;
+}
+
+
+.sources-wrp{
+  position: relative;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+.sources-wrp:after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  /* background-image: linear-gradient(to left, var(--background) 0%, transparent 5%, transparent 95%, var(--background)); */ /*Why I can't access --background and --colors??? */ 
+  background-image: linear-gradient(to left, #17181c 3%, transparent 6%, transparent 94%, #17181c 97%); 
+}
+.sources__left, .sources__right{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  display: block;
+  background-color: #17181c/*var(--background)*/;
+  border: 2px solid;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  opacity: 0.5;
+  cursor: pointer;
+  top: calc(50% - 15px);
+  z-index: 2;
+}
+.sources__left:hover, .sources__right:hover{
+  opacity: 0.9;
+}
+
+.sources__left{
+  left: 0;
+}
+
+.disabled-arrow{
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.sources__right{
+  right: 0;
+}
 .source__item {
     background: none;
     border: 2px solid #30c5ff;
@@ -31,4 +90,22 @@
 .source__item-name {
     font-weight: 400;
     white-space: nowrap;
+}
+
+@media (max-width:800px) {
+  .sources-wrp:after{
+    background-image: linear-gradient(to left, #17181c 5%, transparent 10%, transparent 90%, #17181c 95%); 
+  }
+}
+
+@media (max-width: 640px) {
+  .sources-wrp:after{
+    background-image: linear-gradient(to left, #17181c 7%, transparent 12%, transparent 88%, #17181c 92%); 
+  }
+}
+
+@media (max-width:420px) {
+  .sources-wrp:after{
+    background-image: linear-gradient(to left, #17181c 10%, transparent 15%, transparent 85%, #17181c 90%); 
+  }
 }
