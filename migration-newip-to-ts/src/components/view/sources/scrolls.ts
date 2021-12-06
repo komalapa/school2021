@@ -3,10 +3,7 @@ export default function sourcesScroll() : void{
   const buttonLeft = document.querySelector('.sources__left') as HTMLElement;
   
   const slider = document.querySelector('.sources') as HTMLElement;
-  
-  
-  let maxScrollWidth : number = slider.scrollWidth - slider.clientWidth;
-  let maxScrollHeight : number = slider.scrollHeight - slider.clientHeight;
+
   
   
   let sliderInterval : NodeJS.Timeout;
@@ -50,8 +47,6 @@ export default function sourcesScroll() : void{
   scrollSlider(0); // init slider position
   
   window.addEventListener('resize', ()=>{ // reinit slider on window resize
-      maxScrollWidth = slider.scrollWidth - slider.clientWidth;
-      maxScrollHeight = slider.scrollHeight- slider.clientHeight;; 
       slider.scrollLeft = 0;
       slider.scrollTop = 0;
       scrollSlider(0)
