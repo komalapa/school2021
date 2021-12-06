@@ -1,11 +1,21 @@
 import './news.css';
 import { INewsData } from '../../../interfaces/interfaces';
 
-class News {
-    draw(data:Array<INewsData>) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+enum ElementClasses {
+  'Photo' = '.news__meta-photo',
+  'Author' = '.news__meta-author',
+  'Date' = '.news__meta-date',
+  'Title' = '.news__description-title',
+  'Source' = '.news__description-source',
+  'Content' = '.news__description-content',
+  'More' = '.news__read-more a',
+}
 
-        const fragment = document.createDocumentFragment();
+class News {
+    draw(data:Array<INewsData>) :void {
+        const news: Array<INewsData> = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+
+        const fragment : DocumentFragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
         news.forEach((item, idx) => {
@@ -13,29 +23,29 @@ class News {
           
             if (idx % 2) newsClone.querySelector('.news__item')?.classList.add('alt');
 
-            const newsClonePhoto = newsClone.querySelector('.news__meta-photo') as HTMLImageElement;
+            const newsClonePhoto = newsClone.querySelector(ElementClasses.Photo) as HTMLImageElement;
             newsClonePhoto.style.backgroundImage = `url(${
                 item.urlToImage || 'img/news_placeholder.jpg'
             })`;
-            const authorEl = newsClone.querySelector('.news__meta-author');
+            const authorEl = newsClone.querySelector(ElementClasses.Author) as HTMLElement;
             if (authorEl) authorEl.textContent = item.author || item.source.name;
-            const dateEl = newsClone.querySelector('.news__meta-date');
+            const dateEl = newsClone.querySelector(ElementClasses.Date) as HTMLElement;
             if (dateEl) dateEl.textContent = item.publishedAt
                 .slice(0, 10)
                 .split('-')
                 .reverse()
                 .join('-');
 
-            const titleEl = newsClone.querySelector('.news__description-title');
+            const titleEl = newsClone.querySelector(ElementClasses.Title) as HTMLElement;
             if (titleEl) titleEl.textContent = item.title;
 
-            const sourceEl = newsClone.querySelector('.news__description-source');
+            const sourceEl = newsClone.querySelector(ElementClasses.Source) as HTMLElement;
             if (sourceEl) sourceEl.textContent = item.source.name;
 
-            const contentEl = newsClone.querySelector('.news__description-content');
+            const contentEl = newsClone.querySelector(ElementClasses.Content) as HTMLElement;
             if (contentEl) contentEl.textContent = item.description;
 
-            const moreEl = newsClone.querySelector('.news__read-more a');
+            const moreEl = newsClone.querySelector(ElementClasses.More) as HTMLElement;
             if (moreEl) moreEl.setAttribute('href', item.url);
 
             fragment.append(newsClone);
