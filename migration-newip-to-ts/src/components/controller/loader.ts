@@ -1,9 +1,9 @@
 import { IRespData, IOptions, INewsData } from '../../interfaces/interfaces';
 
 class Loader {
-  baseLink: string;
+  private baseLink: string;
 
-  options: object;
+  private options: object;
 
   constructor(baseLink: string, options: object) {
     this.baseLink = baseLink;
