@@ -1,5 +1,4 @@
 export default function crumpsRender(container, home = true, round = false, question = false) {
-  // console.log(container, home, round, question);
   const crumps = document.createElement('div');
   crumps.classList.add('crumps');
   if (home !== false) {
@@ -18,9 +17,6 @@ export default function crumpsRender(container, home = true, round = false, ques
   if (question !== false) {
     const crumpsQuestion = document.createElement('span');
     crumpsQuestion.innerText = `Вопрос №${question + 1}`;
-    // crumpsQuestion.dataset.action = 'render';
-    // crumpsQuestion.dataset.object = 'roundQuestions';
-    // crumpsQuestion.dataset.roundNumber = round;
     crumps.append(crumpsQuestion);
   }
   container.append(crumps);

@@ -9,18 +9,15 @@ import roundResultsRender from './roundResultsRender';
 import homeRender from './homeRender';
 import Settings from './settings';
 import State from './state';
-// import Question from './question';
-// import { roundList } from "..";
+
 const sounds = new Sounds(SOUNDS_PATHS);
 const settings = new Settings();
 const state = new State();
-// sounds.muteMusic();
-// console.log(sounds)
+
 let roundList = new RoundList('picture');
 
 export default function listener() {
   document.addEventListener('click', (evt) => {
-    // console.log(roundList)
     switch (evt.target.dataset.action) {
       case 'render':
         sounds.playClick();
@@ -91,7 +88,6 @@ export default function listener() {
         }
         break;
       case 'nextRound':
-        // console.log(evt.target.dataset);
         if (evt.target.dataset.roundNumber >= roundList.rounds.length - 1) {
           roundsRender(roundList);
         } else {
@@ -134,7 +130,7 @@ export default function listener() {
         document.getElementById('greeting').remove();
         break;
       default:
-        // console.error('unknown click action');
+        break;
     }
   });
 }

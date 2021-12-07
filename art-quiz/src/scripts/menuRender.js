@@ -7,7 +7,6 @@ import {
 import Settings from './settings';
 import Sounds from './sounds';
 
-// import notes from '../images/music.svg';
 const settings = new Settings();
 const sounds = new Sounds();
 export default function addMenu() {
@@ -75,13 +74,11 @@ export default function addMenu() {
   volumeBar.value = settings.volume * 100;
 
   const volumeBarLbl = document.createElement('label');
-  // volumeBarLbl.style.background = notes;
   volumeBarLbl.classList.add('burger-menu-volume-lbl');
   volumeBarLbl.htmlFor = 'volume-bar';
   volumeContainer.append(volumeBarLbl, volumeBar);
 
   volumeBar.addEventListener('input', () => {
-    // console.log(volumeBar.value)
     sounds.setVolume(volumeBar.value / 100);
     settings.setVolume(volumeBar.value / 100);
   });
@@ -105,11 +102,9 @@ export default function addMenu() {
   answers2Lbl.dataset.action = 'settings';
   answers2Lbl.dataset.prop = 'answers';
   answers2Lbl.dataset.value = '2';
-  // answers2Lbl.append(answers2);
 
   const answers4 = document.createElement('input');
   answers4.type = 'radio';
-  // answers4.checked = true;
   answers4.classList.add('burger-menu-answers', 'burger-menu-radio');
   answers4.value = '4';
   answers4.id = 'answers-radio-4';
@@ -121,8 +116,6 @@ export default function addMenu() {
   answers4Lbl.dataset.action = 'settings';
   answers4Lbl.dataset.prop = 'answers';
   answers4Lbl.dataset.value = '4';
-
-  // answers4Lbl.append(answers4);
 
   const answers6 = document.createElement('input');
   answers6.type = 'radio';
@@ -137,8 +130,6 @@ export default function addMenu() {
   answers6Lbl.dataset.action = 'settings';
   answers6Lbl.dataset.prop = 'answers';
   answers6Lbl.dataset.value = '6';
-
-  // answers6Lbl.append(answers6);
 
   answersContainer.append(
     answersHeader,
@@ -163,7 +154,6 @@ export default function addMenu() {
   timer.addEventListener('change', () => {
     settings.setTimer(timer.options[timer.selectedIndex].value === 'null' ? null : timer.options[timer.selectedIndex].value);
   });
-  // noneOption.selected = true;
   noneOption.value = null;
   noneOption.innerText = '∞';
   if (settings.timer === null) noneOption.selected = true;

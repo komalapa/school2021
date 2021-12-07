@@ -18,10 +18,6 @@ export default function greetingRender() {
 
   const greetingTextEnd = document.createElement('span');
   greetingTextEnd.innerText = 'Приятной игры!';
-  // const greetingBtnMute = document.createElement('button');
-  // greetingBtnMute.classList.add('greeting-btn');
-  // greetingBtnMute.dataset.action = 'muteAll';
-  // greetingBtnMute.innerText = 'Отключить звуки и музыку';
 
   const greetingBtnClose = document.createElement('button');
   greetingBtnClose.classList.add('greeting-btn');

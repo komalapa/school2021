@@ -3,11 +3,9 @@ function SettingsSingleton() {
   let instance;
 
   function init() {
-    // console.log('init', instance)
     if (typeof instance === 'undefined') {
       instance = {};
       instance.music = localStorage.getItem('komaAQmusic') ? JSON.parse(localStorage.getItem('komaAQmusic')) : true;
-      // console.log();
       instance.sounds = localStorage.getItem('komaAQsounds') ? JSON.parse(localStorage.getItem('komaAQsounds')) : true;
       instance.volume = localStorage.getItem('komaAQvolume') || 0.5;
       instance.answers = localStorage.getItem('komaAQanswers') || 2;
@@ -30,7 +28,6 @@ function SettingsSingleton() {
         localStorage.setItem('komaAQanswers', value);
       };
       instance.setTimer = (value) => {
-        // console.log(value);
         instance.timer = value;
         localStorage.setItem('komaAQtimer', value);
       };

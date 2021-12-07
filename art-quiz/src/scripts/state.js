@@ -1,7 +1,6 @@
 import { IMAGES_AMOUNT } from './consts';
 
 function StateSingleton() {
-// Instance stores a reference to the singleton
   let instance;
 
   function init() {
@@ -13,7 +12,6 @@ function StateSingleton() {
       } else {
         instance.picture = new Array(IMAGES_AMOUNT);
         instance.author = new Array(IMAGES_AMOUNT);
-        // console.log();
         instance.timer = null;
       }
       instance.stopTimer = () => {

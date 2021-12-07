@@ -8,8 +8,6 @@ export const IMAGES_AMOUNT = 240;
 
 export const SOUNDS_PATHS = { click: 'audio/zipclick.flac', wrong: 'audio/MetalClick.wav', main: 'audio/main.mp3' };
 
-// export let roundsInfo = [];
-
 export const APP_CONTAINER = document.getElementById('art-quiz-app');
 export const APP_MAIN_MENU = document.getElementById('art-quiz-main-menu');
 

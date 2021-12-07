@@ -5,11 +5,10 @@ import {
   IMAGES_PATH,
   IMAGES_PATH_SMALL,
   IMAGES_PER_ROUND,
-  // IMAGES_LIST_PATH,
 } from './consts';
 import Settings from './settings';
 import State from './state';
-// import questionRender from './questionRender';
+
 const state = new State();
 const settings = new Settings();
 // console.log(images[5].year)
@@ -48,7 +47,6 @@ export default class Question {
     this.type = type;
     this.genAnswers = this.genAnswers.bind(this);
     this.genAnswers();
-    // console.log(state);
     this.isSolved = Boolean(state[type][number]);
     this.timeOut = null;
   }
@@ -81,10 +79,8 @@ export default class Question {
         answer = images[answerIndex].author;
       }
       if (authors.indexOf(images[answerIndex].author.toLowerCase()) >= 0) {
-        // console.log('double');
         i -= 1;
       } else {
-        // console.log('add answer')
         this.answers.push(answer);
         authors.push(images[answerIndex].author.toLowerCase());
       }
