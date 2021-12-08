@@ -14,9 +14,10 @@
     color: var(--color);
     // @include rounded-button;
   }
-  &>span:not(:last-child){
+  &>span:not(:last-child), &>span:first-child{
     @include active-behavior;
   }
+
   &>span:after{
     content: '>';
     padding: 0 1vw;
