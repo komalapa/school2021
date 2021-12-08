@@ -54,7 +54,7 @@ export default class Question {
 
   genAnswers() {
     const authors = [];
-    authors.push(this.author);
+    authors.push(this.author.toLowerCase());
 
     for (let i = 0; i < this.answersNumber - 1; i += 1) {
       const images = state.getImages();
