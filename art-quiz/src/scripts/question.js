@@ -1,4 +1,4 @@
-import images from './images';
+// import images from './images';
 
 // const IMAGES_PATH = 'https://github.com/komalapa/image-data/raw/master/full/';
 import {
@@ -11,25 +11,11 @@ import State from './state';
 
 const state = new State();
 const settings = new Settings();
-// console.log(images[5].year)
-
-// let images = [];
-
-// async function getImageInfo(path) {
-//   const response = await fetch(path);
-//   if (response.ok) {
-//     console.log(response)
-//     images = await response.json();
-//     console.log(images)
-//   } else {
-//     console.error("Ошибка HTTP: " + response.status);
-//   }
-// }
-// getImageInfo(IMAGES_LIST_PATH);
 
 export default class Question {
   constructor(qnumber, type = 'picture', answersNumber = 4) { //  types: picture, author
     // if (!images || images.length === 0) getImageInfo(IMAGES_LIST_PATH);
+    const images = state.getImages();
     let number = qnumber;
     if (number >= images.length) {
       // console.error(`ERROR: no question #${number}, #0 will be used`);
@@ -71,6 +57,7 @@ export default class Question {
     authors.push(this.author);
 
     for (let i = 0; i < this.answersNumber - 1; i += 1) {
+      const images = state.getImages();
       const answerIndex = Math.floor(Math.random() * (images.length));
       let answer;
       if (this.type === 'author') {

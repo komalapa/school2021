@@ -14,9 +14,8 @@ const sounds = new Sounds(SOUNDS_PATHS);
 const settings = new Settings();
 const state = new State();
 
-let roundList = new RoundList('picture');
-
 export default function listener() {
+  let roundList = new RoundList('picture');
   document.addEventListener('click', (evt) => {
     switch (evt.target.dataset.action) {
       case 'render':

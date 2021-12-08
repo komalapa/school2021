@@ -14,6 +14,13 @@ function StateSingleton() {
         instance.author = new Array(IMAGES_AMOUNT);
         instance.timer = null;
       }
+
+      instance.setImages = (images) => {
+        this.images = images;
+      };
+
+      instance.getImages = () => this.images;
+
       instance.stopTimer = () => {
         clearTimeout(instance.timer);
         instance.timer = null;

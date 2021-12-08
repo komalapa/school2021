@@ -1,16 +1,8 @@
-// import Question from './scripts/question';
-// import questionRender from './scripts/questionRender';
-// import RoundList from './scripts/roundList';
-// import { roundsRender } from './scripts/roundsRender';
 import listener from './scripts/events';
 import homeRender from './scripts/homeRender';
 import addMenu from './scripts/menuRender';
 import log from './scripts/consoleDoc';
-// import Sounds from './scripts/sounds';
-// import { SOUNDS_PATHS } from './scripts/consts';
 
-// import roundsRender from './scripts/roundsRender';
-// styles
 import './styles/main.scss';
 import './styles/menu.scss';
 import './styles/home.scss';
@@ -21,46 +13,30 @@ import './styles/dataCard.scss';
 import './styles/roundResults.scss';
 import './styles/crumps.scss';
 import './styles/greeting.scss';
+import { IMAGES_LIST_PATH } from './scripts/consts';
+import State from './scripts/state';
 
-// import image from './images/lazy.png';
+// let images = [];
+const state = new State();
+async function getImageInfo(path) {
+  let images = [];
+  const response = await fetch(path);
+  if (response.ok) {
+    images = await response.json();
+    return images;
+  }
+  return [];
+}
 
-// const createImage = (src) => new Promise((res, rej) => {
-//   const img = new Image();
-//   img.onload = () => res(img);
-//   img.onerror = rej;
-//   img.src = src;
-// });
+function startGame(imgs) {
+  state.setImages(imgs);
+  addMenu();
+  homeRender();
+  listener();
+  log();
+}
 
-// async function render() {
-//   const subHeader = document.createElement('h2');
-//   subHeader.innerHTML = 'This elements was created by js';
-//   const myImage = await createImage(image);
-//   document.body.appendChild(subHeader);
-//   document.body.appendChild(myImage);
-// }
-
-// render();
-
-// const q = new Question(1, 'picture', 4);
-// console.log(q, q.getAnswers().toString(), q.testAnswer(3), q.testAnswer(0))
-
-// questionRender(q)
-// roundsRender('author')
-
-// const round = new RoundList('picture',4)
-// console.log(round)
-
-// export const roundList = new RoundList('picture');
-// roundsRender(roundList)
-addMenu();
-homeRender();
-listener();
-log();
-// const sounds = new Sounds(SOUNDS_PATHS);
-// sounds.muteMusic();
-// console.log(sounds);
-// setTimeout(() => {
-//   console.log(sounds);
-//   // sounds.muteAll()
-//   sounds.muteMusic();
-// }, 5000);
+getImageInfo(IMAGES_LIST_PATH)
+  .then((imgs) => {
+    startGame(imgs);
+  });
