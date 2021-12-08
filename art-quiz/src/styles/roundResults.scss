@@ -27,13 +27,19 @@
   &-button{
     @include active-behavior;
     @include rounded-button;
+    border-radius: 0;
+  }
+  &-button:first-of-type{
+    border-radius: 2vw 0 0 2vw;
+  }
+  &-button:last-of-type{
+    border-radius:0 2vw 2vw 0;
   }
   &-btn-wrp{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap:1vw;
   }
   &-questions{
     display: flex;
