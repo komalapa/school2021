@@ -1,0 +1,20 @@
+.favorite-button{
+  background: none;
+  border: none;
+  outline: none;
+  /* position: absolute;
+  bottom: 15px */
+  opacity: 0.5;
+}
+.favorite-button svg{
+  width: 30px;
+  height: 30px;
+  fill: goldenrod;
+}
+.favorite-button:hover{
+  transform: scale(1.1);
+}
+
+/* .favorite-button__on svg{
+  fill:goldenrod;
+} */
