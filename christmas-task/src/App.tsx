@@ -5,11 +5,15 @@ import './App.css';
 import { Toy } from './types/toys/toy'
 import { data } from './data'
 import { ToyCard } from './components/ToyCard/ToyCard';
+import { ToysContainter } from './components/ToysContainer/ToysContainer'
+
+const toysArray : Array<Toy> = data.map(item => new Toy(item));
+
 function App() {
   const testToy:Toy = new Toy(data[0]);
   return (
     <div className="App">
-      <ToyCard toy={testToy}/>
+      <ToysContainter toys={toysArray}/>
     </div>
   );
 }
