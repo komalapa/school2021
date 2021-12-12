@@ -88,7 +88,8 @@
       font-size: 2em;
       @include glass-background;
       transition: left 0.5s ease-in-out;
-      h4{
+
+      h4 {
         width: 100%;
         // max-width: 100%;
         margin: 0 auto 1vh;
@@ -105,9 +106,11 @@
       width: 0;
       margin: 0;
     }
-    &-checkbox:checked + &-lbl{
+
+    &-checkbox:checked+&-lbl {
       opacity: 1;
     }
+
     &-lbl {
       width: 40%;
       text-align: center;
@@ -123,21 +126,24 @@
       &:last-of-type {
         border-radius: 0 2vw 2vw 0;
       }
-      
+
     }
-    &-checkbox{
+
+    &-checkbox {
       visibility: hidden;
       width: 0;
       margin: 0;
     }
+
     &-answers {
-      &-wrp{
+      &-wrp {
         max-width: 100%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
       }
+
       &-lbl {
         width: 20%;
         text-align: center;
@@ -159,8 +165,9 @@
         opacity: 1;
       }
     }
-    &-select{
-      display: block; 
+
+    &-select {
+      display: block;
       min-width: 80%;
       text-align: center;
       margin: 0 auto;
@@ -169,8 +176,9 @@
       // /opacity: 0.5;
       @include rounded-button;
     }
-    &-volume{
-      &-wrp{
+
+    &-volume {
+      &-wrp {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -178,7 +186,8 @@
         gap: 1vw;
         width: 70%;
       }
-      &-lbl{
+
+      &-lbl {
         display: block;
         // width: 80%;
         height: 1em;
@@ -188,14 +197,15 @@
         background-repeat: no-repeat;
         opacity: 0.6;
       }
-      appearance: none;  
+
+      appearance: none;
       display: block;
       overflow: hidden;
       width: 60%;
       @include rounded-button;
       height: 1em;
       padding: 0;
-      
+
       &::-webkit-slider-thumb {
         width: 1.5em;
         appearance: none;
@@ -208,7 +218,7 @@
     }
   }
 
-  
+
 }
 
 @media (max-width:1440px) {
@@ -216,7 +226,8 @@
     width: 3vw;
     height: 3vw;
   }
-  .burger-menu-wrp{
+
+  .burger-menu-wrp {
     padding-top: 10vw;
   }
 }
@@ -238,7 +249,8 @@
     width: 6vw;
     height: 6vw;
   }
-  .burger-menu-wrp{
+
+  .burger-menu-wrp {
     padding-top: 22vw;
   }
 }

@@ -1,10 +1,10 @@
 @import "vars.scss";
 
-.greeting{
-  &-wrp{
+.greeting {
+  &-wrp {
     position: fixed;
-    top:5vh;
-    left:10vw;
+    top: 5vh;
+    left: 10vw;
     width: 80vw;
     min-height: 50vh;
     padding: 5vh 5vw;
@@ -14,11 +14,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:2vh;
+    gap: 2vh;
     color: var(--color)
-    
   }
-  &-btn{
+
+  &-btn {
     @include active-behavior;
     @include rounded-button;
   }

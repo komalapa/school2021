@@ -1,5 +1,5 @@
 body {
-  margin:0;
+  margin: 0;
   padding: 0;
   min-height: 100vh;
   display: flex;
@@ -16,35 +16,37 @@ body {
 }
 
 @keyframes loading {
-  0%{
-    transform:none;
+  0% {
+    transform: none;
   }
-  100%{
+
+  100% {
     transform: rotate(360deg);
   }
 }
 
-.loading{
+.loading {
   position: relative;
 }
-#art-quiz-app .loading > *:not(.crumps) {
+
+#art-quiz-app .loading>*:not(.crumps) {
   opacity: 0;
   transform: scale(0);
 }
 
-.loading::before{
+.loading::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width:10px;
-  height:10px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: var(--color);
   transform-origin: 20px 20px;
   animation: loading 1s infinite;
 }
 
-.no-pointer-events{
+.no-pointer-events {
   pointer-events: none;
 }

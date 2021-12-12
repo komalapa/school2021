@@ -1,5 +1,6 @@
 @import "vars.scss";
-.crumps{
+
+.crumps {
   align-self: flex-start;
   justify-self: flex-start;
   font-weight: bold;
@@ -7,22 +8,26 @@
   padding: 1vh 1vw;
   border-radius: 1vw;
   @include glass-background;
+
   // font-size: 1.5em;
-  &>span{
+  &>span {
     display: inline-block;
-    
+
     color: var(--color);
     // @include rounded-button;
   }
-  &>span:not(:last-child), &>span:first-child{
+
+  &>span:not(:last-child),
+  &>span:first-child {
     @include active-behavior;
   }
 
-  &>span:after{
+  &>span:after {
     content: '>';
     padding: 0 1vw;
   }
-  &>span:last-child:after{
+
+  &>span:last-child:after {
     content: '';
   }
 

@@ -1,20 +1,21 @@
-:root{
+:root {
   // shadows and filters https://codepen.io/rebelchris/pen/WNGpVEZ
-  --block-shadow:0 0 1rem 0 rgb(0 0 0 / 20%);
+  --block-shadow: 0 0 1rem 0 rgb(0 0 0 / 20%);
   --block-background-color: rgba(255, 255, 255, 0.1);
-  --glass-filter:blur(10px) saturate(100%) contrast(45%) brightness(130%);
-  
-  --background:url("../images/background_1920.jpg");
+  --glass-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+
+  --background: url("../images/background_1920.jpg");
   --color: #3d3d3d;
   --anti-color: #d3d3d3;
-  
-  --wrong-color:#B22222;
+
+  --wrong-color: #B22222;
 }
 
-@mixin active-behavior{
-  &{
+@mixin active-behavior {
+  & {
     cursor: pointer;
   }
+
   &:hover {
     transform: scale(1.05);
   }
@@ -24,23 +25,24 @@
   }
 }
 
-@mixin glass-background{
+@mixin glass-background {
   box-shadow: var(--block-shadow);
   // background-color:var(--block-background-color);
   // backdrop-filter: var(--glass-filter);
 
   background-color: var(--anti-color);
+
   @supports (backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%)) {
-      background-color:var(--block-background-color);
-      backdrop-filter: var(--glass-filter);
+    background-color: var(--block-background-color);
+    backdrop-filter: var(--glass-filter);
   }
 }
 
-@mixin rounded-button{
-  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.6);
+@mixin rounded-button {
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
   border-radius: 2vw;
   padding: 1vh 2vw;
-  box-sizing: border-box;  
+  box-sizing: border-box;
   user-select: none;
   background-color: var(--anti-color);
   color: var(--color);
@@ -48,16 +50,16 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root{
+  :root {
     // shadows and filters https://codepen.io/rebelchris/pen/WNGpVEZ
     // --block-shadow:0 0 1rem 0 rgb(0 0 0 / 20%);
     // --block-background-color: rgba(255, 255, 255, 0.1);
-    --glass-filter:blur(10px) saturate(100%) contrast(45%) brightness(30%);
-    
-    --background:url("../images/background_dark_1920.jpg");
+    --glass-filter: blur(10px) saturate(100%) contrast(45%) brightness(30%);
+
+    --background: url("../images/background_dark_1920.jpg");
     --color: #b3b3b3;
     --anti-color: #3d3d3d;
-    
-    --wrong-color:#B22222;
+
+    --wrong-color: #B22222;
   }
 }
