@@ -1,6 +1,3 @@
-// import images from './images';
-
-// const IMAGES_PATH = 'https://github.com/komalapa/image-data/raw/master/full/';
 import {
   IMAGES_PATH,
   IMAGES_PATH_SMALL,
@@ -14,11 +11,9 @@ const settings = new Settings();
 
 export default class Question {
   constructor(qnumber, type = 'picture', answersNumber = 4) { //  types: picture, author
-    // if (!images || images.length === 0) getImageInfo(IMAGES_LIST_PATH);
     const images = state.getImages();
     let number = qnumber;
     if (number >= images.length) {
-      // console.error(`ERROR: no question #${number}, #0 will be used`);
       number = 0;
     }
     this.answersNumber = answersNumber;
