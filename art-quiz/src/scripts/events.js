@@ -16,11 +16,27 @@ const state = new State();
 
 const renderObjects = { questions: 'questions', roundQuestions: 'roundQuestions' };
 
+const GameActions = {
+  render: 'render',
+  answer: 'answer',
+  start: 'start',
+  closeCard: 'closeCard',
+  removeCardView: 'removeCardView',
+  removeResultView: 'removeResultView',
+  nextRound: 'nextRound',
+  info: 'info',
+  roundResult: 'roundResult',
+  goHome: 'goHome',
+  settings: 'settings',
+  muteAll: 'muteAll',
+  closeGreeting: 'closeGreeting',
+};
+
 export default function listener() {
   let roundList = new RoundList('picture');
   document.addEventListener('click', (evt) => {
     switch (evt.target.dataset.action) {
-      case 'render': {
+      case GameActions.render: {
         const round = roundList.rounds[+evt.target.dataset.roundNumber];
         sounds.playClick();
         state.stopTimer();
@@ -39,7 +55,7 @@ export default function listener() {
         }
         break;
       }
-      case 'answer': {
+      case GameActions.answer: {
         state.stopTimer();
         const answers = document.getElementsByClassName('question-answers');
         Array.from(answers).forEach((answ) => answ.classList.add('no-pointer-events'));
@@ -54,7 +70,7 @@ export default function listener() {
         renderDataCard(question, result);
       }
         break;
-      case 'start':
+      case GameActions.start:
         sounds.playClick();
         state.stopTimer();
         if (!evt.target.dataset.type) {
@@ -64,7 +80,7 @@ export default function listener() {
         }
         roundsRender(roundList);
         break;
-      case 'closeCard': {
+      case GameActions.closeCard: {
         const round = roundList.rounds[+evt.target.dataset.roundNumber];
 
         if (evt.target.dataset.number % IMAGES_PER_ROUND === IMAGES_PER_ROUND - 1) {
@@ -75,7 +91,7 @@ export default function listener() {
         questionRender(round.questions[(+evt.target.dataset.number + 1) % IMAGES_PER_ROUND]);
         break;
       }
-      case 'removeCard':
+      case GameActions.removeCardView:
         {
           const card = document.getElementsByClassName('card-wrp');
           Array.from(card).forEach((c) => {
@@ -83,7 +99,7 @@ export default function listener() {
           });
         }
         break;
-      case 'removeResult':
+      case GameActions.removeResultView:
         {
           const card = document.getElementsByClassName('results-container');
           Array.from(card).forEach((c) => {
@@ -91,14 +107,14 @@ export default function listener() {
           });
         }
         break;
-      case 'nextRound':
+      case GameActions.nextRound:
         if (evt.target.dataset.roundNumber >= roundList.rounds.length - 1) {
           roundsRender(roundList);
         } else {
           questionRender(roundList.rounds[+evt.target.dataset.roundNumber + 1].questions[0]);
         }
         break;
-      case 'info':
+      case GameActions.info:
         {
           const question = roundList
             .rounds[+evt.target.dataset.roundNumber]
@@ -107,14 +123,14 @@ export default function listener() {
           renderDataCard(question, true, false);
         }
         break;
-      case 'roundResult':
+      case GameActions.roundResult:
         roundResultsRender(roundList.rounds[+evt.target.dataset.roundNumber], false);
         break;
-      case 'goHome':
+      case GameActions.goHome:
         homeRender();
         state.stopTimer();
         break;
-      case 'settings':
+      case GameActions.settings:
         sounds.playClick();
         state.stopTimer();
         if (evt.target.dataset.prop === 'answers') {
@@ -123,12 +139,12 @@ export default function listener() {
           homeRender();
         }
         break;
-      case 'muteAll':
+      case GameActions.muteAll:
         sounds.muteMusic();
         sounds.muteSounds();
         document.getElementById('greeting').remove();
         break;
-      case 'closeGreeting':
+      case GameActions.closeGreeting:
         sounds.main.autoplay = true;
         if (settings.music) sounds.main.play();
         document.getElementById('greeting').remove();

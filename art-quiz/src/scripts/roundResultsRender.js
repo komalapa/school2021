@@ -57,7 +57,7 @@ export default function roundResultsRender(round, isAfterRound = true) {
   } else {
     const closeBtn = document.createElement('button');
     closeBtn.classList.add('results-rounds', 'results-button');
-    closeBtn.dataset.action = 'removeResult';
+    closeBtn.dataset.action = 'removeResultView';
     closeBtn.innerText = 'Закрыть';
     resultsBtnContainer.append(closeBtn);
   }

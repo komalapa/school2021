@@ -34,7 +34,7 @@ export default function renderDataCard(question, isSolved = true, isNeedNext = t
     const okBtn = document.createElement('button');
     okBtn.classList.add('card-button');
     okBtn.innerText = 'Закрыть';
-    okBtn.dataset.action = 'removeCard';
+    okBtn.dataset.action = 'removeCardView';
     cardContainer.append(okBtn);
   }
 
