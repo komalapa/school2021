@@ -16,7 +16,6 @@ import './styles/greeting.scss';
 import { IMAGES_LIST_PATH } from './scripts/consts';
 import State from './scripts/state';
 
-// let images = [];
 const state = new State();
 async function getImageInfo(path) {
   let images = [];
