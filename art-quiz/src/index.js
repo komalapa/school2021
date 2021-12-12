@@ -13,7 +13,7 @@ import './styles/dataCard.scss';
 import './styles/roundResults.scss';
 import './styles/crumps.scss';
 import './styles/greeting.scss';
-import { IMAGES_LIST_PATH } from './scripts/consts';
+import { IMAGES_LIST_PATH } from './scripts/constants';
 import State from './scripts/state';
 
 const state = new State();

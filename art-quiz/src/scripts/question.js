@@ -5,7 +5,7 @@ import {
   IMAGES_PATH,
   IMAGES_PATH_SMALL,
   IMAGES_PER_ROUND,
-} from './consts';
+} from './constants';
 import Settings from './settings';
 import State from './state';
 

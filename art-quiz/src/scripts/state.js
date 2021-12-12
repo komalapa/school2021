@@ -1,4 +1,4 @@
-import { IMAGES_AMOUNT } from './consts';
+import { IMAGES_AMOUNT } from './constants';
 
 function StateSingleton() {
   let instance;

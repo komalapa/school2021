@@ -2,7 +2,7 @@ import {
   APP_CONTAINER,
   IMAGES_PATH_SMALL,
   IMAGES_PER_ROUND,
-} from './consts';
+} from './constants';
 
 export default function roundResultsRender(round, isAfterRound = true) {
   const resultContainer = document.createElement('div');

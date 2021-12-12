@@ -1,7 +1,7 @@
 import { roundsRender, roundQuestionsRender } from './roundsRender';
 
 import questionRender from './questionRender';
-import { IMAGES_PER_ROUND, SOUNDS_PATHS } from './consts';
+import { IMAGES_PER_ROUND, SOUNDS_PATHS } from './constants';
 import RoundList from './roundList';
 import Sounds from './sounds';
 import renderDataCard from './dataCardRender';

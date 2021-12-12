@@ -1,4 +1,4 @@
-import { APP_CONTAINER, IMAGES_PER_ROUND } from './consts';
+import { APP_CONTAINER, IMAGES_PER_ROUND } from './constants';
 import crumpsRender from './crumpsRender';
 
 export function roundsRender(roundList) {

@@ -1,7 +1,7 @@
 // import Question from "./question";
 import {
   APP_CONTAINER, IMAGES_PER_ROUND,
-} from './consts';
+} from './constants';
 import crumpsRender from './crumpsRender';
 import renderDataCard from './dataCardRender';
 import Settings from './settings';

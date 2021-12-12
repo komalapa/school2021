@@ -3,7 +3,7 @@ import {
   MAX_TIME,
   MIN_TIME,
   STEP_TIME,
-} from './consts';
+} from './constants';
 import Settings from './settings';
 import Sounds from './sounds';
 

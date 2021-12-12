@@ -1,4 +1,4 @@
-import { IMAGES_PER_ROUND } from './consts';
+import { IMAGES_PER_ROUND } from './constants';
 import Question from './question';
 
 export default class Round {

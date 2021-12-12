@@ -1,4 +1,4 @@
-import { APP_CONTAINER } from './consts';
+import { APP_CONTAINER } from './constants';
 
 import logo from '../images/rs_school_js.svg';
 

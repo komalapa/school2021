@@ -1,4 +1,4 @@
-import { APP_CONTAINER } from './consts';
+import { APP_CONTAINER } from './constants';
 
 export default function renderDataCard(question, isSolved = true, isNeedNext = true) {
   const cardContainer = document.createElement('div');

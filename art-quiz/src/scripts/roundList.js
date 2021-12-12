@@ -1,4 +1,4 @@
-import { IMAGES_PER_ROUND, IMAGES_AMOUNT } from './consts';
+import { IMAGES_PER_ROUND, IMAGES_AMOUNT } from './constants';
 import Round from './round';
 import Settings from './settings';
 
