@@ -81,6 +81,7 @@ export default function listener() {
         roundsRender(roundList);
         break;
       case GameActions.closeCard: {
+        sounds.playClick();
         const round = roundList.rounds[+evt.target.dataset.roundNumber];
 
         if (evt.target.dataset.number % IMAGES_PER_ROUND === IMAGES_PER_ROUND - 1) {
