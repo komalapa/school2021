@@ -13,13 +13,12 @@ export default function sourcesScroll() : void{
     slider.scrollLeft += step;
     const sliderScroll = slider.scrollLeft;
 
-    // console.log(sliderScroll)
     if (sliderScroll <= 0){
         buttonLeft.classList.add('disabled-arrow')
     } else {
         buttonLeft.classList.remove('disabled-arrow')
     }
-    // console.log(maxScroll)
+
     if (maxScroll !== 0 && sliderScroll >= maxScroll){
         buttonRight.classList.add('disabled-arrow')
     } else {
