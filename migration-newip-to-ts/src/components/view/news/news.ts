@@ -1,5 +1,5 @@
 import './news.css';
-import { INewsData } from '../../../interfaces/interfaces';
+import { NewsData } from '../../../interfaces/interfaces';
 
 enum ElementClasses {
   'Photo' = '.news__meta-photo',
@@ -12,8 +12,8 @@ enum ElementClasses {
 }
 
 class News {
-    draw(data:Array<INewsData>) :void {
-        const news: Array<INewsData> = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    draw(data:Array<NewsData>) :void {
+        const news: Array<NewsData> = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment : DocumentFragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;

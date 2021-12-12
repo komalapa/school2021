@@ -1,8 +1,8 @@
-import { INewsData } from '../../../interfaces/interfaces';
+import { NewsData } from '../../../interfaces/interfaces';
 import './sources.css';
 
 class Sources {
-    draw(data:Array<INewsData>) :void {
+    draw(data:Array<NewsData>) :void {
         const fragment : DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

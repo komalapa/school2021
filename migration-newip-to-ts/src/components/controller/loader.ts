@@ -1,4 +1,4 @@
-import { IRespData, IOptions, INewsData } from '../../interfaces/interfaces';
+import { RespData, Options, NewsData } from '../../interfaces/interfaces';
 
 class Loader {
   private baseLink: string;
@@ -10,7 +10,7 @@ class Loader {
     this.options = options;
   }
 
-  getResp({ endpoint, options = {} }: IRespData, callback = (data:INewsData) => console.error('No callback for GET response', data)) : void {
+  getResp({ endpoint, options = {} }: RespData, callback = (data:NewsData) => console.error('No callback for GET response', data)) : void {
     this.load('GET', endpoint, callback, options);
     
   }
@@ -25,7 +25,7 @@ class Loader {
     return res;
   }
 
-  makeUrl(options: IOptions, endpoint: string) : string {
+  makeUrl(options: Options, endpoint: string) : string {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -36,11 +36,11 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback: (data:INewsData) => void, options = {}) : void {
+  load(method: string, endpoint: string, callback: (data:NewsData) => void, options = {}) : void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then((res) => this.errorHandler(res))
       .then((res) => res.json())
-      .then((data: INewsData) => callback(data))
+      .then((data: NewsData) => callback(data))
       .catch((err) => console.error(err));
   }
 

@@ -1,13 +1,13 @@
-export interface IRespData{
+export interface RespData{
   endpoint:string;
   options:object
 }
 
-export interface IOptions { 
+export interface Options { 
   [key:string] : string; 
 }
 
-export interface INewsData{
+export interface NewsData{
   urlToImage:string;
   publishedAt:string;
   author:string;

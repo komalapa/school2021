@@ -1,4 +1,4 @@
-import { INewsData } from '../../interfaces/interfaces';
+import { NewsData } from '../../interfaces/interfaces';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
@@ -8,7 +8,7 @@ class AppController extends AppLoader {
         endpoint: 'sources',
         options: {},
       },
-      (data:INewsData) => {callback(data)},
+      (data:NewsData) => {callback(data)},
     );
   }
 
@@ -29,7 +29,7 @@ class AppController extends AppLoader {
                           sources: sourceId,
                       },
                   },
-                  (data:INewsData) => {callback(data)}
+                  (data:NewsData) => {callback(data)}
               );
           }
           return;
