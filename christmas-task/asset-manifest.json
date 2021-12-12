@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.19409e51.chunk.css",
+    "main.js": "/static/js/main.b25f1314.chunk.js",
+    "main.js.map": "/static/js/main.b25f1314.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3d0c6745.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3d0c6745.js.map",
+    "static/js/2.bdeec68c.chunk.js": "/static/js/2.bdeec68c.chunk.js",
+    "static/js/2.bdeec68c.chunk.js.map": "/static/js/2.bdeec68c.chunk.js.map",
+    "static/js/3.f030c36f.chunk.js": "/static/js/3.f030c36f.chunk.js",
+    "static/js/3.f030c36f.chunk.js.map": "/static/js/3.f030c36f.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.19409e51.chunk.css.map": "/static/css/main.19409e51.chunk.css.map",
+    "static/js/2.bdeec68c.chunk.js.LICENSE.txt": "/static/js/2.bdeec68c.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Steppe.b2e88961.woff",
+    "static/media/App.css": "/static/media/bg.22ad0824.jpg",
+    "static/media/heart-full.f8cc1a36.svg": "/static/media/heart-full.f8cc1a36.svg",
+    "static/media/heart.4e0846b5.svg": "/static/media/heart.4e0846b5.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3d0c6745.js",
+    "static/js/2.bdeec68c.chunk.js",
+    "static/css/main.19409e51.chunk.css",
+    "static/js/main.b25f1314.chunk.js"
+  ]
+}
