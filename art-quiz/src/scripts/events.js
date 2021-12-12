@@ -127,6 +127,7 @@ export default function listener() {
         roundResultsRender(roundList.rounds[+evt.target.dataset.roundNumber], false);
         break;
       case GameActions.goHome:
+        sounds.playClick();
         homeRender();
         state.stopTimer();
         break;
