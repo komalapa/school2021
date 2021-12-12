@@ -16,8 +16,13 @@ class Loader {
   }
 
   errorHandler(res: Response) : Response {
+    enum ResponseStatuses {
+      Ok = 200,
+      Unauthorized = 401,
+      NotFound = 404,
+    }
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404) {
+      if (res.status === ResponseStatuses.Unauthorized || res.status === ResponseStatuses.NotFound) {
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
         throw Error(res.statusText);
       }
