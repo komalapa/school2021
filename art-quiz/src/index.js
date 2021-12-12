@@ -22,9 +22,8 @@ async function getImageInfo(path) {
   const response = await fetch(path);
   if (response.ok) {
     images = await response.json();
-    return images;
   }
-  return [];
+  return images;
 }
 
 function startGame(imgs) {
