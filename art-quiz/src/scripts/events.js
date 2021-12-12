@@ -18,24 +18,25 @@ export default function listener() {
   let roundList = new RoundList('picture');
   document.addEventListener('click', (evt) => {
     switch (evt.target.dataset.action) {
-      case 'render':
+      case 'render': {
+        const round = roundList.rounds[+evt.target.dataset.roundNumber];
         sounds.playClick();
         state.stopTimer();
         if (evt.target.dataset.object === 'roundQuestions') {
-          roundQuestionsRender(roundList.rounds[+evt.target.dataset.roundNumber]);
+          roundQuestionsRender(round);
           break;
         }
         if (evt.target.dataset.object === 'questions') {
           if (evt.target.dataset.clear === 'true') {
-            roundList.rounds[+evt.target.dataset.roundNumber].questions.forEach((q) => {
+            round.questions.forEach((q) => {
               q.unSolve();
             });
           }
-          questionRender(roundList.rounds[+evt.target.dataset.roundNumber]
-            .questions[+evt.target.dataset.questionNumber]);
+          questionRender(round.questions[+evt.target.dataset.questionNumber]);
           break;
         }
         break;
+      }
       case 'answer': {
         state.stopTimer();
         const answers = document.getElementsByClassName('question-answers');
@@ -61,15 +62,17 @@ export default function listener() {
         }
         roundsRender(roundList);
         break;
-      case 'closeCard':
+      case 'closeCard': {
+        const round = roundList.rounds[+evt.target.dataset.roundNumber];
+
         if (evt.target.dataset.number % IMAGES_PER_ROUND === IMAGES_PER_ROUND - 1) {
-          roundResultsRender(roundList.rounds[+evt.target.dataset.roundNumber]);
+          roundResultsRender(round);
           state.saveState();
           break;
         }
-        questionRender(roundList.rounds[+evt.target.dataset.roundNumber]
-          .questions[(+evt.target.dataset.number + 1) % IMAGES_PER_ROUND]);
+        questionRender(round.questions[(+evt.target.dataset.number + 1) % IMAGES_PER_ROUND]);
         break;
+      }
       case 'removeCard':
         {
           const card = document.getElementsByClassName('card-wrp');
