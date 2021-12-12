@@ -1,4 +1,3 @@
-// import Question from "./question";
 import {
   APP_CONTAINER, IMAGES_PER_ROUND,
 } from './constants';

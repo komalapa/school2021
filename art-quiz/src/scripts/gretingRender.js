@@ -1,5 +1,3 @@
-// import { APP_CONTAINER } from './consts';
-
 export default function greetingRender() {
   const greetingContainer = document.createElement('div');
   greetingContainer.classList.add('greeting-wrp');

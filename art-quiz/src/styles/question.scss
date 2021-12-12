@@ -118,7 +118,6 @@
       max-width: 20vw;
       max-height: 20vh;
       text-align: center;
-      // margin: 0 auto;
       align-self: center;
     }
   }
@@ -180,9 +179,6 @@
   .question-answers-pictures {
     flex-direction: column;
     flex-wrap: nowrap;
-    // overflow-y: auto;
-    // overflow-x: initial;
-    // max-height: 100%;
   }
 
   .question-answers-picture {
