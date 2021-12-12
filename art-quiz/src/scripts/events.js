@@ -14,6 +14,8 @@ const sounds = new Sounds(SOUNDS_PATHS);
 const settings = new Settings();
 const state = new State();
 
+const renderObjects = { questions: 'questions', roundQuestions: 'roundQuestions' };
+
 export default function listener() {
   let roundList = new RoundList('picture');
   document.addEventListener('click', (evt) => {
@@ -22,11 +24,11 @@ export default function listener() {
         const round = roundList.rounds[+evt.target.dataset.roundNumber];
         sounds.playClick();
         state.stopTimer();
-        if (evt.target.dataset.object === 'roundQuestions') {
+        if (evt.target.dataset.object === renderObjects.roundQuestions) {
           roundQuestionsRender(round);
           break;
         }
-        if (evt.target.dataset.object === 'questions') {
+        if (evt.target.dataset.object === renderObjects.questions) {
           if (evt.target.dataset.clear === 'true') {
             round.questions.forEach((q) => {
               q.unSolve();
