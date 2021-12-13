@@ -2,7 +2,7 @@
   "name": "christmas-task",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/christmas-task/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
