@@ -3,6 +3,16 @@
   flex-direction: row;
   gap: 10px;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.shape-filter__header {
+  width: 100%;
+  text-align: left;
+  font-family: var(--header-font-family);
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
 }
 
 .shape-filter__lbl {
@@ -31,8 +41,5 @@
 }
 
 .shape-filter__check:checked ~ .shape-filter__icon {
-  /* border: 2px solid red; */
-  /* background: chartreuse; */
   fill: goldenrod;
-  /* color: goldenrod; */
 }

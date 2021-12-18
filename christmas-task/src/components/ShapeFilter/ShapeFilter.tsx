@@ -13,7 +13,7 @@ type ShapeFilterContainerProps = {
 export function ShapeFilter(props: ShapeFilterContainerProps) {
   return (
     <div className="shape-filter">
-      <span>Формы</span>
+      <span className="shape-filter__header">Формы</span>
       <label className="shape-filter__lbl">
         <input
           className="shape-filter__check"
