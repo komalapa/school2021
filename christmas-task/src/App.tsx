@@ -9,7 +9,8 @@ import { ToysContainter } from "./components/ToysContainer/ToysContainer";
 import { SpanInput } from "./components/SpanInput/SpanInput";
 import { useState } from "react";
 import { Colors, Shapes, Size } from "./types/types";
-
+import { FiltersContainter } from "./components/FiltersContainer/FiltersContainer";
+import { render } from "@testing-library/react";
 enum Direction {
   Up,
   Down,
@@ -42,9 +43,26 @@ function App() {
   const [curToysList, setCurToysList] = useState(toys);
 
   const filters = {
-    color: [],
-    shape: [],
-    size: [],
+    color: [
+      // Colors.Blue,
+      // Colors.Green,
+      // Colors.Red,
+      // Colors.White,
+      // Colors.White,
+      // Colors.Yellow,
+    ],
+    shape: [
+      Shapes.Ball,
+      Shapes.Bell,
+      Shapes.Figure,
+      Shapes.Pinecone,
+      Shapes.Snowflake,
+    ],
+    size: [
+      // Size.L,
+      // Size.M,
+      // Size.S
+    ],
   };
   const spanFilters = {
     year: { min: -1, max: 2200 },
@@ -52,28 +70,31 @@ function App() {
   };
   const [sort, setSort] = useState({ type: "name", direction: Direction.Up });
   const [isFiltred, setIsFiltred] = useState(false);
+
   function filterToys() {
     setCurToysList([]);
-    console.log("filter");
+    // console.log(filters);
     const tmpToysList: Set<Toy> = new Set();
+    // const tmpArr = toys;
     function filterToy(toy: Toy): void {
       for (let filter in filters) {
         // console.log(filter);
         if (filters[filter].indexOf(toy[filter]) >= 0) {
           tmpToysList.add(toy);
+          // console.log(toy, filters[filter]);
         }
       }
     }
     function spanFilterToy(toy: Toy): Boolean {
-      console.log("FILTER");
+      // console.log("FILTER");
       for (let filter in spanFilters) {
-        console.log(filter);
+        // console.log(filter);
 
         if (
           spanFilters[filter].min <= toy[filter] &&
           spanFilters[filter].max >= toy[filter]
         ) {
-          console.log("Year", toy);
+          // console.log("Year", toy);
           return true;
         }
       }
@@ -82,19 +103,26 @@ function App() {
     toys.forEach((toy) => filterToy(toy));
     let array = Array.from(tmpToysList);
     array = array.filter(spanFilterToy);
+    // console.log("array", array);
+    // console.log("render");
     setCurToysList(array);
 
     setIsFiltred(true);
   }
 
   function toggleFilter(type, value) {
+    console.log(type, value);
     const index = filters[type].indexOf(value);
     if (index >= 0) {
       filters[type].splice(index, index + 1);
+      console.log("??", filters);
     } else {
+      console.log("!!", filters);
       filters[type].push(value);
     }
+    // console.log(filters);
     setIsFiltred(false);
+    filterToys();
   }
 
   function toggleSpanFilter(type, min, max) {
@@ -102,22 +130,18 @@ function App() {
     spanFilters[type].max = max;
     setIsFiltred(false);
   }
-  filters.color.push(Colors.Green, Colors.Red);
-  // toggleFilter("color", Colors.Red);
-  // toggleFilter("color", Colors.Blue);
-  // console.log(filters);
-  // toggleSpanFilter("year", 1990, 2022);
-  // toggleSpanFilter("count", 2, 100);
-
-  // console.log(filters, spanFilters);
-
-  // if (!isFiltred) filterToys();
-
+  // filters.color.push(Colors.Green, Colors.Red);
+  console.log(isFiltred);
+  if (!isFiltred) filterToys();
+  console.log("app", curToysList);
   return (
     <div className="App">
       <ToysContainter toys={curToysList} />
-
-      <SpanInput max={10} min={0} step={1} />
+      <FiltersContainter
+        toggleFilter={toggleFilter}
+        toggleSpanFilter={toggleSpanFilter}
+      />
+      {/* <SpanInput max={10} min={0} step={1} /> */}
     </div>
   );
 }

@@ -1,0 +1,38 @@
+.shape-filter {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.shape-filter__lbl {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.shape-filter__check {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  width: 40px;
+  height: 40px;
+}
+
+.shape-filter__icon {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  fill: white;
+  transition: fill 0.3s;
+}
+
+.shape-filter__check:checked ~ .shape-filter__icon {
+  /* border: 2px solid red; */
+  /* background: chartreuse; */
+  fill: goldenrod;
+  /* color: goldenrod; */
+}
