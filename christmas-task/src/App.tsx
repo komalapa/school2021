@@ -40,14 +40,7 @@ import { render } from "@testing-library/react";
 const toys: Array<Toy> = data.map((item) => new Toy(item));
 
 const filters: Filters = {
-  color: [
-    Colors.Blue,
-    Colors.Green,
-    Colors.Red,
-    Colors.White,
-    Colors.White,
-    Colors.Yellow,
-  ],
+  color: [Colors.Blue, Colors.Green, Colors.Red, Colors.White, Colors.Yellow],
   shape: [
     Shapes.Ball,
     Shapes.Bell,
