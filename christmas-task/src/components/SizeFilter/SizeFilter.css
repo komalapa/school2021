@@ -19,6 +19,9 @@
   position: relative;
   width: 40px;
   height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .size-filter__check {
@@ -37,17 +40,18 @@
   display: block;
   margin: 0 auto;
   margin-top: 15px;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: white;
-  transition: background-color 0.3s;
+  fill: white;
+  /* background-color: white; */
+  transition: fill 0.3s;
 }
 
 .size-filter__icon-m {
   margin-top: 10px;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .size-filter__icon-l {
@@ -56,5 +60,5 @@
   height: 40px;
 }
 .size-filter__check:checked ~ .size-filter__icon {
-  background-color: goldenrod;
+  fill: goldenrod;
 }
