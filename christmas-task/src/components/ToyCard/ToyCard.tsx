@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
-// import '../../main.css'
 import './ToyCard.css'
 
 type ToyCardProps = {

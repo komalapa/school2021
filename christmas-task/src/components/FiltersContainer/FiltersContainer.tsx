@@ -4,7 +4,6 @@ import { CountFilter } from "../CountFilter/CountFilter";
 import { ShapeFilter } from "../ShapeFilter/ShapeFilter";
 import { SizeFilter } from "../SizeFilter/SizeFilter";
 import { YearFilter } from "../YearFilter/YearFilter";
-// import '../../main.css'
 import "./FiltersContainer.css";
 
 type FiltersContainerProps = {

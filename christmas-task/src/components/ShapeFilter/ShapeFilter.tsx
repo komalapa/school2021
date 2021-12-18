@@ -35,7 +35,7 @@ export function ShapeFilter(props: ShapeFilterContainerProps) {
             setIsBall(!isBall);
             props.toggleFilter("shape", Shapes.Ball);
           }}
-          checked={isBall}
+          defaultChecked={isBall}
         />
         <BallIcon className="shape-filter__icon" />
       </label>
@@ -47,7 +47,7 @@ export function ShapeFilter(props: ShapeFilterContainerProps) {
             setIsBell(!isBell);
             props.toggleFilter("shape", Shapes.Bell);
           }}
-          checked={isBell}
+          defaultChecked={isBell}
         />
         <BellIcon className="shape-filter__icon" />
       </label>
@@ -59,7 +59,7 @@ export function ShapeFilter(props: ShapeFilterContainerProps) {
             setIsFigure(!isFigure);
             props.toggleFilter("shape", Shapes.Figure);
           }}
-          checked={isFigure}
+          defaultChecked={isFigure}
         />
         <FigureIcon className="shape-filter__icon" />
       </label>
@@ -71,7 +71,7 @@ export function ShapeFilter(props: ShapeFilterContainerProps) {
             setIsPine(!isPine);
             props.toggleFilter("shape", Shapes.Pinecone);
           }}
-          checked={isPine}
+          defaultChecked={isPine}
         />
         <PineIcon className="shape-filter__icon" />
       </label>
@@ -83,7 +83,7 @@ export function ShapeFilter(props: ShapeFilterContainerProps) {
             setIsSnow(!isSnow);
             props.toggleFilter("shape", Shapes.Snowflake);
           }}
-          checked={isSnow}
+          defaultChecked={isSnow}
         />
         <SnowIcon className="shape-filter__icon" />
       </label>

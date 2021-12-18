@@ -19,7 +19,6 @@ export function ColorFilter(props: ColorFilterContainerProps) {
   const [isGreen, setIsGreen] = useState(
     props.checked.indexOf(Colors.Green) >= 0
   );
-  console.log("red", isRed);
   return (
     <div className="color-filter">
       <h3 className="color-filter__header">Цвет</h3>
@@ -31,7 +30,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
             setIsRed(!isRed);
             props.toggleFilter("color", Colors.Red);
           }}
-          checked={!isRed}
+          defaultChecked={!isRed}
         />
         <span className="color-filter__icon color-filter__icon-red" />
       </label>
@@ -43,7 +42,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
             setIsWhite(!isWhite);
             props.toggleFilter("color", Colors.White);
           }}
-          checked={!isWhite}
+          defaultChecked={!isWhite}
         />
         <span className="color-filter__icon color-filter__icon-white" />
       </label>
@@ -55,7 +54,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
             setIsYellow(!isYellow);
             props.toggleFilter("color", Colors.Yellow);
           }}
-          checked={!isYellow}
+          defaultChecked={!isYellow}
         />
         <span className="color-filter__icon color-filter__icon-yellow" />
       </label>
@@ -67,7 +66,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
             setIsBlue(!isBlue);
             props.toggleFilter("color", Colors.Blue);
           }}
-          checked={!isBlue}
+          defaultChecked={!isBlue}
         />
         <span className="color-filter__icon color-filter__icon-blue" />
       </label>
@@ -79,7 +78,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
             setIsGreen(!isGreen);
             props.toggleFilter("color", Colors.Green);
           }}
-          checked={!isGreen}
+          defaultChecked={!isGreen}
         />
         <span className="color-filter__icon color-filter__icon-green" />
       </label>
