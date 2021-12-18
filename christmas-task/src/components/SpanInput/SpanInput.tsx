@@ -15,19 +15,27 @@ export function SpanInput(props: SpanInputProps) {
   // let isFavorite = props.isFavorite;
   const [minValue, setMinValue] = useState(props.min);
   const [maxValue, setMaxValue] = useState(props.max);
+  const [isSended, setIsSended] = useState(false); //for send span value only on next render
 
   function handleMinInput(e: React.FormEvent<HTMLInputElement>): void {
     // console.log(e);
     const curValue: number = +e.currentTarget.value;
     if (curValue < maxValue) setMinValue(curValue);
-    props.toggleFilter(minValue, maxValue);
+    // props.toggleFilter(minValue, maxValue);
+    setIsSended(false);
   }
 
   function handleMaxInput(e: React.FormEvent<HTMLInputElement>): void {
-    // console.log(e);
     const curValue: number = +e.currentTarget.value;
     if (curValue > minValue) setMaxValue(curValue);
+    console.log(minValue, maxValue);
+    // props.toggleFilter(minValue, maxValue);
+    setIsSended(false);
+  }
+
+  if (!isSended) {
     props.toggleFilter(minValue, maxValue);
+    setIsSended(true);
   }
   // console.log(props);
   return (
