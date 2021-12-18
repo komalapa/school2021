@@ -13,7 +13,7 @@ export class Toy implements IToy {
   shape: Shapes;
   color: Colors;
   size: Size;
-  favorite: boolean;
+  isFavorite: boolean;
 
   constructor(data: ToyData) {
     this.id = +data.num;
@@ -27,6 +27,6 @@ export class Toy implements IToy {
     // this.shape = Shapes[data.shape]; //|| Shapes.Other,
     // this.color = Colors[Object.keys(Colors).find(key => Colors[key] === data.color.toLowerCase()) || Colors.Other]; //|| Colors.Other,
     // this.size = Size[Object.keys(Size).find(key => Size[key] === data.size.toLowerCase()) || Size.M]; //|| Colors.Other,
-    this.favorite = data.favorite;
+    this.isFavorite = data.favorite;
   }
 }

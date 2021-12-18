@@ -29,7 +29,7 @@ export interface IToy {
   shape: Shapes;
   color: Colors;
   size: Size;
-  favorite: Boolean;
+  isFavorite: Boolean;
 }
 
 export type ToyData = {

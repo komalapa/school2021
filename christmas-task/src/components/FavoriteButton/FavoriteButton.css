@@ -1,17 +1,17 @@
-.favorite-button{
+.favorite-button {
   background: none;
   border: none;
   outline: none;
   /* position: absolute;
   bottom: 15px */
-  opacity: 0.5;
 }
-.favorite-button svg{
+.favorite-button svg {
   width: 30px;
   height: 30px;
   fill: goldenrod;
+  opacity: 0.5;
 }
-.favorite-button:hover{
+.favorite-button:hover {
   transform: scale(1.1);
 }
 

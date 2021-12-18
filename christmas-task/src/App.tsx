@@ -16,7 +16,7 @@ const countsSet: Set<number> = new Set();
 toys.map((toy) => countsSet.add(toy.count));
 const counts: number[] = Array.from(countsSet).filter((a, b) => a > b);
 
-console.log(years);
+// console.log(years);
 
 const curYear = new Date().getFullYear();
 const filters: Filters = {
@@ -40,7 +40,9 @@ function App() {
 
   const [sort, setSort] = useState({ type: "name", direction: Direction.Up });
   const [isFiltred, setIsFiltred] = useState(false);
-
+  const [favorites, setFavorites] = useState(
+    toys.filter((toy: Toy) => toy.isFavorite)
+  );
   //=======================================================FilterToys
   function filterToys() {
     setCurToysList([]);
@@ -54,7 +56,7 @@ function App() {
         spanFilters[filter].min <= toy[filter] &&
         spanFilters[filter].max >= toy[filter]
       ) {
-        console.log("span", toy, spanFilters[filter]);
+        // console.log("span", toy, spanFilters[filter]);
         return true;
       }
       // }
@@ -75,12 +77,12 @@ function App() {
   //=======================================================END-FilterToys
   function toggleFilter(type, value) {
     const index = filters[type].indexOf(value);
-    console.log(index, filters[type], value);
+    // console.log(index, filters[type], value);
     if (index >= 0) {
       filters[type].splice(index, index + 1);
-      console.log("??", filters);
+      // console.log("??", filters);
     } else {
-      console.log("!!", filters);
+      // console.log("!!", filters);
       filters[type].push(value);
     }
     setIsFiltred(false);
@@ -95,6 +97,27 @@ function App() {
   }
   if (!isFiltred) filterToys();
 
+  function toggleFavorite(toy: Toy): boolean {
+    const index = favorites.indexOf(toy);
+    // console.log(index, filters[type], value);
+    if (index >= 0) {
+      setFavorites([...favorites.slice(0, index), ...favorites.slice(index)]);
+      // console.log("??", filters);
+      return false;
+    } else {
+      if (favorites.length < 20) {
+        // console.log("!!", filters);
+        // favorites.push(toy);
+        setFavorites([...favorites, toy]);
+        return true;
+      } else {
+        alert("Слишком много любимчиков!");
+        console.log(favorites);
+        return false;
+      }
+    }
+  }
+
   return (
     <div className="App">
       <FiltersContainter
@@ -103,7 +126,11 @@ function App() {
         filters={filters}
         spanFilters={spanFilters}
       />
-      <ToysContainter toys={curToysList} />
+      <ToysContainter
+        toys={curToysList}
+        toggleFavorite={toggleFavorite}
+        favoritesCount={favorites.length}
+      />
     </div>
   );
 }

@@ -4,9 +4,18 @@ import "./ToysContainer.css";
 
 type ToysContainerProps = {
   toys: Array<Toy>;
+  toggleFavorite: CallableFunction;
+  favoritesCount: number;
 };
 
 export function ToysContainter(props: ToysContainerProps) {
-  const cards = props.toys.map((toy, id) => <ToyCard key={id} toy={toy} />);
+  const cards = props.toys.map((toy, id) => (
+    <ToyCard
+      key={id}
+      toy={toy}
+      toggleFavorite={props.toggleFavorite}
+      favoritesCount={props.favoritesCount}
+    />
+  ));
   return <div className="toys-container">{cards}</div>;
 }

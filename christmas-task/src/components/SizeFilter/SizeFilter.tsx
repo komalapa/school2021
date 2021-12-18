@@ -12,7 +12,7 @@ export function SizeFilter(props: SizeFilterContainerProps) {
   const [isS, setIsS] = useState(props.checked.indexOf(Size.S) >= 0);
   const [isM, setIsM] = useState(props.checked.indexOf(Size.M) >= 0);
   const [isL, setIsL] = useState(props.checked.indexOf(Size.L) >= 0);
-  console.log("s>>>", isS);
+  // console.log("s>>>", isS);
   return (
     <div className="size-filter">
       <h3 className="size-filter__header">Размер</h3>
