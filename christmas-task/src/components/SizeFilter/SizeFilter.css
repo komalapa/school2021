@@ -22,6 +22,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.size-filter__lbl:hover {
+  transform: scale(1.1);
 }
 
 .size-filter__check {

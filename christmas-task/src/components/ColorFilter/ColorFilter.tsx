@@ -15,7 +15,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
           className="color-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("color", Colors.Red)}
-          checked={props.checked.indexOf(Colors.Red) >= 0}
+          // checked={props.checked.indexOf(Colors.Red) >= 0}
         />
         <span className="color-filter__icon color-filter__icon-red" />
       </label>
@@ -24,7 +24,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
           className="color-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("color", Colors.White)}
-          checked={props.checked.indexOf(Colors.White) >= 0}
+          // checked={props.checked.indexOf(Colors.White) >= 0}
         />
         <span className="color-filter__icon color-filter__icon-white" />
       </label>
@@ -33,7 +33,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
           className="color-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("color", Colors.Yellow)}
-          checked={props.checked.indexOf(Colors.Yellow) >= 0}
+          // checked={props.checked.indexOf(Colors.Yellow) >= 0}
         />
         <span className="color-filter__icon color-filter__icon-yellow" />
       </label>
@@ -42,7 +42,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
           className="color-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("color", Colors.Blue)}
-          checked={props.checked.indexOf(Colors.Blue) >= 0}
+          // checked={props.checked.indexOf(Colors.Blue) >= 0}
         />
         <span className="color-filter__icon color-filter__icon-blue" />
       </label>
@@ -51,7 +51,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
           className="color-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("color", Colors.Green)}
-          checked={props.checked.indexOf(Colors.Green) >= 0}
+          // checked={props.checked.indexOf(Colors.Green) >= 0}
         />
         <span className="color-filter__icon color-filter__icon-green" />
       </label>
