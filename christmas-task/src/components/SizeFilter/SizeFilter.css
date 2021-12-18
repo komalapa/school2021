@@ -1,0 +1,59 @@
+.size-filter {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.size-filter__header {
+  width: 100%;
+  text-align: left;
+  font-family: var(--header-font-family);
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+}
+
+.size-filter__lbl {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.size-filter__check {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  width: 40px;
+  height: 40px;
+}
+
+.size-filter__icon {
+  position: absolute;
+  display: block;
+  margin-top: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
+.size-filter__icon-m {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.size-filter__icon-l {
+  margin-top: 0;
+  width: 40px;
+  height: 40px;
+}
+.size-filter__check:checked ~ .size-filter__icon {
+  background-color: goldenrod;
+}
