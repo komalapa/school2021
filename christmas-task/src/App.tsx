@@ -136,11 +136,12 @@ function App() {
   console.log("app", curToysList);
   return (
     <div className="App">
-      <ToysContainter toys={curToysList} />
       <FiltersContainter
         toggleFilter={toggleFilter}
         toggleSpanFilter={toggleSpanFilter}
       />
+      <ToysContainter toys={curToysList} />
+
       {/* <SpanInput max={10} min={0} step={1} /> */}
     </div>
   );

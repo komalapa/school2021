@@ -33,8 +33,9 @@
 }
 
 .size-filter__icon {
-  position: absolute;
+  position: relative;
   display: block;
+  margin: 0 auto;
   margin-top: 15px;
   width: 10px;
   height: 10px;

@@ -1,0 +1,6 @@
+.filters-container {
+  width: 550px;
+  min-height: 100vh;
+  padding: 25px 40px;
+  box-sizing: border-box;
+}
