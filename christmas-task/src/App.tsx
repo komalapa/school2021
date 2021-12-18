@@ -111,13 +111,13 @@ function App() {
   }
 
   function toggleFilter(type, value) {
-    console.log(type, value);
+    // console.log(type, value);
     const index = filters[type].indexOf(value);
     if (index >= 0) {
       filters[type].splice(index, index + 1);
-      console.log("??", filters);
+      // console.log("??", filters);
     } else {
-      console.log("!!", filters);
+      // console.log("!!", filters);
       filters[type].push(value);
     }
     // console.log(filters);
@@ -129,11 +129,12 @@ function App() {
     spanFilters[type].min = min;
     spanFilters[type].max = max;
     setIsFiltred(false);
+    console.log("setSpan", spanFilters);
   }
   // filters.color.push(Colors.Green, Colors.Red);
-  console.log(isFiltred);
+  // console.log(isFiltred);
   if (!isFiltred) filterToys();
-  console.log("app", curToysList);
+  // console.log("app", curToysList);
   return (
     <div className="App">
       <FiltersContainter

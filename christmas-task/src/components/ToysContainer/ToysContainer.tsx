@@ -10,7 +10,7 @@ type ToysContainerProps = {
 };
 
 export function ToysContainter(props: ToysContainerProps) {
-  console.log("TC", props.toys);
+  // console.log("TC", props.toys);
   const cards = props.toys.map((toy) => <ToyCard toy={toy} />);
   return <div className="toys-container">{cards}</div>;
 }

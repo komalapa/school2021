@@ -1,0 +1,16 @@
+.Year-filter {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Year-filter__header {
+  width: 100%;
+  text-align: left;
+  font-family: var(--header-font-family);
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+}

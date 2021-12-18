@@ -5,6 +5,7 @@ import { FormEventHandler, useState } from "react";
 import "./SpanInput.css";
 
 type SpanInputProps = {
+  toggleFilter: CallableFunction;
   min: number;
   max: number;
   step: number;
@@ -16,15 +17,17 @@ export function SpanInput(props: SpanInputProps) {
   const [maxValue, setMaxValue] = useState(props.max);
 
   function handleMinInput(e: React.FormEvent<HTMLInputElement>): void {
-    console.log(e);
+    // console.log(e);
     const curValue: number = +e.currentTarget.value;
     if (curValue < maxValue) setMinValue(curValue);
+    props.toggleFilter(minValue, maxValue);
   }
 
   function handleMaxInput(e: React.FormEvent<HTMLInputElement>): void {
-    console.log(e);
+    // console.log(e);
     const curValue: number = +e.currentTarget.value;
     if (curValue > minValue) setMaxValue(curValue);
+    props.toggleFilter(minValue, maxValue);
   }
   // console.log(props);
   return (
@@ -37,7 +40,7 @@ export function SpanInput(props: SpanInputProps) {
         max={props.max}
         step={props.step}
         value={minValue}
-        onInput={handleMinInput}
+        onChange={handleMinInput}
       />
       <input
         className="span-input__max"
@@ -46,7 +49,7 @@ export function SpanInput(props: SpanInputProps) {
         max={props.max}
         step={props.step}
         value={maxValue}
-        onInput={handleMaxInput}
+        onChange={handleMaxInput}
       />
       <span className="span-input__max-text span-input__text">{maxValue}</span>
     </div>
