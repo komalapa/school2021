@@ -24,7 +24,7 @@ interface Filter {
   values: Colors[] | Shapes[] | Size[];
 }
 interface FilterSpan {
-  type: "year" | "number";
+  type: "year" | "count";
   values: spanObject;
 }
 
@@ -41,18 +41,22 @@ const toys: Array<Toy> = data.map((item) => new Toy(item));
 function App() {
   const [curToysList, setCurToysList] = useState(toys);
 
-  const filters = { color: [], shape: [], size: [] };
-  const spanFilters: FilterSpan[] = [
-    { type: "year", values: { min: -1, max: -1 } },
-    { type: "number", values: { max: -1, min: -1 } },
-  ];
+  const filters = {
+    color: [],
+    shape: [],
+    size: [],
+  };
+  const spanFilters = {
+    year: { min: -1, max: 2200 },
+    count: { max: -1, min: 100 },
+  };
   const [sort, setSort] = useState({ type: "name", direction: Direction.Up });
   const [isFiltred, setIsFiltred] = useState(false);
   function filterToys() {
     setCurToysList([]);
     console.log("filter");
     const tmpToysList: Set<Toy> = new Set();
-    function filterToy(toy: Toy) {
+    function filterToy(toy: Toy): void {
       for (let filter in filters) {
         // console.log(filter);
         if (filters[filter].indexOf(toy[filter]) >= 0) {
@@ -60,31 +64,55 @@ function App() {
         }
       }
     }
-    toys.forEach((toy) => filterToy(toy));
+    function spanFilterToy(toy: Toy): Boolean {
+      console.log("FILTER");
+      for (let filter in spanFilters) {
+        console.log(filter);
 
-    setCurToysList(Array.from(tmpToysList));
+        if (
+          spanFilters[filter].min <= toy[filter] &&
+          spanFilters[filter].max >= toy[filter]
+        ) {
+          console.log("Year", toy);
+          return true;
+        }
+      }
+      return false;
+    }
+    toys.forEach((toy) => filterToy(toy));
+    let array = Array.from(tmpToysList);
+    array = array.filter(spanFilterToy);
+    setCurToysList(array);
 
     setIsFiltred(true);
   }
 
   function toggleFilter(type, value) {
-    // console.log(filters[type], value);
     const index = filters[type].indexOf(value);
     if (index >= 0) {
-      // console.log(value);
       filters[type].splice(index, index + 1);
-      // console.log(filters);
     } else {
       filters[type].push(value);
     }
-    console.log(filters);
-    // setIsFiltred(false);
+    setIsFiltred(false);
   }
-  // filters.color.push(Colors.Green, Colors.Red);
+
+  function toggleSpanFilter(type, min, max) {
+    spanFilters[type].min = min;
+    spanFilters[type].max = max;
+    setIsFiltred(false);
+  }
+  filters.color.push(Colors.Green, Colors.Red);
   // toggleFilter("color", Colors.Red);
   // toggleFilter("color", Colors.Blue);
   // console.log(filters);
-  if (!isFiltred) filterToys();
+  // toggleSpanFilter("year", 1990, 2022);
+  // toggleSpanFilter("count", 2, 100);
+
+  // console.log(filters, spanFilters);
+
+  // if (!isFiltred) filterToys();
+
   return (
     <div className="App">
       <ToysContainter toys={curToysList} />

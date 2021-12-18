@@ -20,7 +20,7 @@ export class Toy implements IToy {
     this.name = data.name;
     this.count = +data.count;
     this.year = +data.year;
-    console.log((<any>Shapes)[keyInEnum(Shapes, data.shape)]);
+    // console.log((<any>Shapes)[keyInEnum(Shapes, data.shape)]);
     this.shape = (<any>Shapes)[keyInEnum(Shapes, data.shape)];
     this.color = (<any>Colors)[keyInEnum(Colors, data.color)];
     this.size = (<any>Size)[keyInEnum(Size, data.size)];
