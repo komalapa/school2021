@@ -28,7 +28,7 @@ export function SpanInput(props: SpanInputProps) {
   function handleMaxInput(e: React.FormEvent<HTMLInputElement>): void {
     const curValue: number = +e.currentTarget.value;
     if (curValue > minValue) setMaxValue(curValue);
-    console.log(minValue, maxValue);
+    // console.log(minValue, maxValue);
     // props.toggleFilter(minValue, maxValue);
     setIsSended(false);
   }

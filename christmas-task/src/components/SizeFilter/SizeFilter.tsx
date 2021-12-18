@@ -4,6 +4,7 @@ import "./SizeFilter.css";
 
 type SizeFilterContainerProps = {
   toggleFilter: CallableFunction;
+  checked: Size[];
 };
 
 export function SizeFilter(props: SizeFilterContainerProps) {
@@ -15,6 +16,7 @@ export function SizeFilter(props: SizeFilterContainerProps) {
           className="size-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("size", Size.L)}
+          checked={props.checked.indexOf(Size.L) >= 0}
         />
         <BallIcon className="size-filter__icon size-filter__icon-l" />
       </label>
@@ -23,6 +25,7 @@ export function SizeFilter(props: SizeFilterContainerProps) {
           className="size-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("size", Size.M)}
+          checked={props.checked.indexOf(Size.M) >= 0}
         />
         <BallIcon className="size-filter__icon size-filter__icon-m" />
       </label>
@@ -31,6 +34,7 @@ export function SizeFilter(props: SizeFilterContainerProps) {
           className="size-filter__check"
           type="checkbox"
           onInput={() => props.toggleFilter("size", Size.S)}
+          checked={props.checked.indexOf(Size.S) >= 0}
         />
         <BallIcon className="size-filter__icon size-filter__icon-s" />
       </label>
