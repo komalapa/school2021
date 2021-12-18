@@ -31,9 +31,10 @@ export function FiltersContainter(props: FiltersContainerProps) {
       />
       <YearFilter
         toggleFilter={props.toggleSpanFilter}
-        min={1940}
+        min={1960}
         max={curYear + 1}
         step={1}
+        values={props.spanFilters.year}
       />
       <CountFilter
         toggleFilter={props.toggleSpanFilter}

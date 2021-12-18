@@ -6,22 +6,24 @@ type SpanInputProps = {
   min: number;
   max: number;
   step: number;
+  maxVal?: number;
+  minVal?: number;
 };
 
 export function SpanInput(props: SpanInputProps) {
-  const [minValue, setMinValue] = useState(props.min);
-  const [maxValue, setMaxValue] = useState(props.max);
+  const [minValue, setMinValue] = useState(props.minVal || props.min);
+  const [maxValue, setMaxValue] = useState(props.maxVal || props.max);
   const [isSended, setIsSended] = useState(false); //for send span value only on next render
 
   function handleMinInput(e: React.FormEvent<HTMLInputElement>): void {
     const curValue: number = +e.currentTarget.value;
-    if (curValue < maxValue) setMinValue(curValue);
+    if (curValue <= maxValue) setMinValue(curValue);
     setIsSended(false);
   }
 
   function handleMaxInput(e: React.FormEvent<HTMLInputElement>): void {
     const curValue: number = +e.currentTarget.value;
-    if (curValue > minValue) setMaxValue(curValue);
+    if (curValue >= minValue) setMaxValue(curValue);
     setIsSended(false);
   }
 

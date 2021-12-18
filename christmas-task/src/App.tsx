@@ -8,6 +8,17 @@ import { FiltersContainter } from "./components/FiltersContainer/FiltersContaine
 
 const toys: Array<Toy> = data.map((item) => new Toy(item));
 
+const yearsSet: Set<number> = new Set();
+toys.map((toy) => yearsSet.add(toy.year));
+const years: number[] = Array.from(yearsSet).filter((a, b) => a > b);
+
+const countsSet: Set<number> = new Set();
+toys.map((toy) => countsSet.add(toy.count));
+const counts: number[] = Array.from(countsSet).filter((a, b) => a > b);
+
+console.log(years);
+
+const curYear = new Date().getFullYear();
 const filters: Filters = {
   color: [Colors.Blue, Colors.Green, Colors.Red, Colors.White, Colors.Yellow],
   shape: [
@@ -20,8 +31,8 @@ const filters: Filters = {
   size: [Size.L, Size.M, Size.S],
 };
 const spanFilters = {
-  year: { min: -1, max: 2200 },
-  count: { max: -1, min: 100 },
+  year: { min: years[0], max: curYear + 1 },
+  count: { max: counts[0], min: counts[counts.length - 1] },
 };
 
 function App() {
@@ -37,19 +48,23 @@ function App() {
       if (filters[filter].indexOf(toy[filter]) >= 0) return true;
       return false;
     }
-    function spanFilterToy(toy: Toy): Boolean {
-      for (let filter in spanFilters) {
-        if (
-          spanFilters[filter].min <= toy[filter] &&
-          spanFilters[filter].max >= toy[filter]
-        ) {
-          return true;
-        }
+    function spanFilterToy(toy: Toy, filter: string): Boolean {
+      // for (let filter in spanFilters) {
+      if (
+        spanFilters[filter].min <= toy[filter] &&
+        spanFilters[filter].max >= toy[filter]
+      ) {
+        console.log("span", toy, spanFilters[filter]);
+        return true;
       }
+      // }
       return false;
     }
     let array = toys;
-    array = array.filter(spanFilterToy);
+    for (let filter in spanFilters) {
+      array = array.filter((toy) => spanFilterToy(toy, filter));
+    }
+    // array = array.filter(spanFilterToy);
     for (let filter in filters) {
       array = array.filter((toy) => filterToy(filter, toy));
     }
@@ -76,6 +91,7 @@ function App() {
     spanFilters[type].min = min;
     spanFilters[type].max = max;
     setIsFiltred(false);
+    filterToys();
   }
   if (!isFiltred) filterToys();
 
