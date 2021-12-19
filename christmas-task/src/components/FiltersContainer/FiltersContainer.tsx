@@ -16,6 +16,7 @@ type FiltersContainerProps = {
   filters: Filters;
   spanFilters: SpanFilters;
   toggleOnlyFavorite: CallableFunction;
+  favoritesCount: number;
 };
 
 export function FiltersContainter(props: FiltersContainerProps) {
@@ -62,6 +63,7 @@ export function FiltersContainter(props: FiltersContainerProps) {
         onClick={toggleFavorite}
       >
         {isOnlyFavorite ? <HeartIconFull /> : <HeartIcon />}
+        <span className="favorite-button__text"> {props.favoritesCount}</span>
       </button>
     </div>
   );

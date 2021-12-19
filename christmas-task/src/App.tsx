@@ -133,6 +133,7 @@ function App() {
         filters={filters}
         spanFilters={spanFilters}
         toggleOnlyFavorite={toggleFavoritesFilter}
+        favoritesCount={favorites.length}
       />
       <ToysContainter
         toys={curToysList}

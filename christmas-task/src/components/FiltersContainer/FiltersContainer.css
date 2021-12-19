@@ -8,4 +8,16 @@
 
 .favorite-button {
   margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  width: 100%;
+  /* gap: 10px; */
+}
+
+.favorite-button__text {
+  font-family: var(--header-font-family);
+  font-size: 18px;
+  /* line-height: 20px; */
+  color: goldenrod;
 }
