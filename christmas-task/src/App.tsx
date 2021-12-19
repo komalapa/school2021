@@ -16,10 +16,10 @@ const countsSet: Set<number> = new Set();
 toys.map((toy) => countsSet.add(toy.count));
 const counts: number[] = Array.from(countsSet).sort((a, b) => a - b);
 
-console.log(years);
-
 const curYear = new Date().getFullYear();
-const filters: Filters = {
+const filters: Filters = JSON.parse(
+  localStorage.getItem("komalapaChristmasFilters")
+) || {
   color: [Colors.Blue, Colors.Green, Colors.Red, Colors.White, Colors.Yellow],
   shape: [
     Shapes.Ball,
@@ -30,20 +30,33 @@ const filters: Filters = {
   ],
   size: [Size.L, Size.M, Size.S],
 };
-const spanFilters = {
+const spanFilters = JSON.parse(
+  localStorage.getItem("komalapaChristmasSpanFilters")
+) || {
   year: { min: years[0], max: curYear + 1 },
   count: { min: counts[0], max: counts[counts.length - 1] },
 };
 
+const favoritesString = localStorage.getItem("komalapaChristmasFavorites");
+let lsFavorites;
+if (favoritesString) lsFavorites = JSON.parse(favoritesString);
+lsFavorites = lsFavorites
+  .filter((toy) => toy)
+  .map((fav) => toys.find((toy: Toy) => fav.id === toy.id));
+lsFavorites.forEach((toy: Toy) => {
+  toy.isFavorite = true;
+});
+// console.log(lsFavorites);
+
 let isOnlyFavorites = false;
+
 function App() {
   const [curToysList, setCurToysList] = useState(toys);
   const [sort, setSort] = useState({ type: "name", direction: Direction.Up });
   const [isFiltred, setIsFiltred] = useState(false);
   const [favorites, setFavorites] = useState(
-    toys.filter((toy: Toy) => toy.isFavorite)
+    lsFavorites || toys.filter((toy: Toy) => toy.isFavorite)
   );
-  // const [isOnlyFavorites, setIsOnlyFavorites] = useState(false);
   //=======================================================FilterToys
   function filterToys() {
     setCurToysList([]);
@@ -56,18 +69,16 @@ function App() {
       if (
         spanFilters[filter].min <= toy[filter] &&
         spanFilters[filter].max >= toy[filter]
-      ) {
-        // console.log("span");
+      )
         return true;
-      }
-      // }
+
       return false;
     }
     let array = toys;
     for (let filter in spanFilters) {
       array = array.filter((toy) => spanFilterToy(toy, filter));
     }
-    // array = array.filter(spanFilterToy);
+
     for (let filter in filters) {
       array = array.filter((toy) => filterToy(filter, toy));
     }
@@ -84,12 +95,9 @@ function App() {
   //=======================================================END-FilterToys
   function toggleFilter(type, value) {
     const index = filters[type].indexOf(value);
-    // console.log(index, filters[type], value);
     if (index >= 0) {
       filters[type].splice(index, index + 1);
-      // console.log("??", filters);
     } else {
-      // console.log("!!", filters);
       filters[type].push(value);
     }
     setIsFiltred(false);
@@ -117,8 +125,16 @@ function App() {
       setFavorites([...favorites, toy]);
       toy.isFavorite = true;
     }
+
     if (isOnlyFavorites) filterToys();
   }
+
+  localStorage.setItem("komalapaChristmasFavorites", JSON.stringify(favorites));
+  localStorage.setItem(
+    "komalapaChristmasSpanFilters",
+    JSON.stringify(spanFilters)
+  );
+  localStorage.setItem("komalapaChristmasFilters", JSON.stringify(filters));
 
   function toggleFavoritesFilter() {
     isOnlyFavorites = !isOnlyFavorites;
