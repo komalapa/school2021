@@ -15,7 +15,7 @@ export function FavoriteButton(props: FavoriteProps) {
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
   function toggleFavorite() {
     console.log(props.favoritesCount);
-    if (props.favoritesCount < 20) {
+    if (props.favoritesCount < 20 || props.isFavorite === true) {
       // setIsFavorite(!isFavorite);
       props.toggleFavorite();
     } else {
