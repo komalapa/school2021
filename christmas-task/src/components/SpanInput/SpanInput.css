@@ -4,7 +4,7 @@
   width: 440px;
 }
 
-.span-input:before {
+.span-input__track {
   position: absolute;
   content: "";
   display: block;
