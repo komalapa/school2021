@@ -1,0 +1,30 @@
+.sort {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sort__label {
+  color: white;
+  cursor: pointer;
+  font-family: var(--header-font-family);
+  font-size: 18px;
+  line-height: 20px;
+  text-align: left;
+}
+
+.sort__radio:checked ~ .sort__label {
+  visibility: initial;
+  color: goldenrod;
+}
+
+.sort__radio {
+  visibility: hidden;
+}
+
+.sort__header {
+  width: 100%;
+  text-align: left;
+  font-family: var(--header-font-family);
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+}

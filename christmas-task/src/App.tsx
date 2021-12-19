@@ -5,6 +5,7 @@ import { ToysContainter } from "./components/ToysContainer/ToysContainer";
 import { useState } from "react";
 import { Colors, Direction, Filters, Shapes, Size } from "./types/types";
 import { FiltersContainter } from "./components/FiltersContainer/FiltersContainer";
+import { type } from "os";
 
 const toys: Array<Toy> = data.map((item) => new Toy(item));
 
@@ -59,6 +60,7 @@ function App() {
   const [favorites, setFavorites] = useState(
     lsFavorites || toys.filter((toy: Toy) => toy.isFavorite)
   );
+
   //=======================================================FilterToys
   function filterToys() {
     setCurToysList([]);
@@ -90,11 +92,24 @@ function App() {
       array = array.filter((toy) => toy.isFavorite);
     }
 
-    setCurToysList(array);
-
+    if (sort.type === "name") {
+      if (sort.direction === Direction.Up) {
+        setCurToysList(array.sort((t1, t2) => t1.name.localeCompare(t2.name)));
+      } else {
+        setCurToysList(array.sort((t1, t2) => t2.name.localeCompare(t1.name)));
+      }
+    }
+    if (sort.type === "year") {
+      if (sort.direction === Direction.Up) {
+        setCurToysList(array.sort((t1, t2) => t1.year - t2.year));
+      } else {
+        setCurToysList(array.sort((t1, t2) => t2.year - t1.year));
+      }
+    }
     setIsFiltred(true);
   }
   //=======================================================END-FilterToys
+
   function toggleFilter(type, value) {
     const index = filters[type].indexOf(value);
     if (index >= 0) {
@@ -143,7 +158,13 @@ function App() {
     filterToys();
   }
 
-  function sorterNames(name1, name2) {}
+  function setupSort(type: string, direction: Direction) {
+    setSort({ type, direction });
+    // filterToys();
+    setIsFiltred(false);
+  }
+
+  // setSort({ type: "name", direction: Direction.Up });
 
   return (
     <div className="App">
@@ -154,6 +175,7 @@ function App() {
         spanFilters={spanFilters}
         toggleOnlyFavorite={toggleFavoritesFilter}
         favoritesCount={favorites.length}
+        setupSort={setupSort}
       />
       <ToysContainter
         toys={curToysList}

@@ -9,6 +9,7 @@ import { YearFilter } from "../YearFilter/YearFilter";
 import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
 import "./FiltersContainer.css";
+import { SelectSort } from "../SelectSort/SelectSort";
 
 type FiltersContainerProps = {
   toggleFilter: CallableFunction;
@@ -17,6 +18,7 @@ type FiltersContainerProps = {
   spanFilters: SpanFilters;
   toggleOnlyFavorite: CallableFunction;
   favoritesCount: number;
+  setupSort: CallableFunction;
 };
 
 export function FiltersContainter(props: FiltersContainerProps) {
@@ -65,6 +67,7 @@ export function FiltersContainter(props: FiltersContainerProps) {
         {isOnlyFavorite ? <HeartIconFull /> : <HeartIcon />}
         <span className="favorite-button__text"> {props.favoritesCount}</span>
       </button>
+      <SelectSort setupSort={props.setupSort} />
     </div>
   );
 }
