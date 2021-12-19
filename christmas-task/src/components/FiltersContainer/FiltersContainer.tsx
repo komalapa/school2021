@@ -78,6 +78,9 @@ export function FiltersContainter(props: FiltersContainerProps) {
       <span className="filters__reset" onClick={() => props.reset()}>
         Сбросить фильтры
       </span>
+      <span className="filters__reset" onClick={() => localStorage.clear()}>
+        Удалить сохраненные настройки
+      </span>
       <Footer />
     </div>
   );
