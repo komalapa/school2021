@@ -22,7 +22,6 @@ export function Search(props: SearchProps) {
           setLine(e.currentTarget.value);
           props.setupSearch(e.currentTarget.value);
         }}
-        // defaultValue={line}
         value={line}
         placeholder="Поиск"
       />

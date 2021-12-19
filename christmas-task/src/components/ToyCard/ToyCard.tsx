@@ -11,14 +11,8 @@ type ToyCardProps = {
 
 export function ToyCard(props: ToyCardProps) {
   const [isLoaded, setIsLoaded] = useState(false);
-  // const [isLiked, setIsLiked] = useState(props.toy.isFavorite);
-
-  // let isLiked: boolean = props.toy.isFavorite;
-  // console.log(props.toy);
   function handleToggleFavorite(): void {
-    // isLiked = !isLiked;
     props.toggleFavorite(props.toy);
-    // console.log(isLiked)
   }
   const path: string = `/assets/toys/${props.toy.id}.png`;
   const image: HTMLImageElement = new Image();

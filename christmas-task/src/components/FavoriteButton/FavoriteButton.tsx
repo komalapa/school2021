@@ -10,13 +10,11 @@ type FavoriteProps = {
 };
 
 export function FavoriteButton(props: FavoriteProps) {
-  // let isFavorite = props.isFavorite;
   const [showMsg, setShowMsg] = useState(false);
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
   function toggleFavorite() {
     console.log(props.favoritesCount);
     if (props.favoritesCount < 20 || props.isFavorite === true) {
-      // setIsFavorite(!isFavorite);
       props.toggleFavorite();
     } else {
       setShowMsg(true);

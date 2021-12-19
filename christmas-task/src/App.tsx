@@ -49,7 +49,6 @@ if (lsFavorites) {
     toy.isFavorite = true;
   });
 }
-// console.log(lsFavorites);
 
 let isOnlyFavorites = false;
 
@@ -73,7 +72,6 @@ function App() {
       return false;
     }
     function spanFilterToy(toy: Toy, filter: string): Boolean {
-      // for (let filter in spanFilters) {
       if (
         spanFilters[filter].min <= toy[filter] &&
         spanFilters[filter].max >= toy[filter]
@@ -169,11 +167,8 @@ function App() {
 
   function setupSort(type: string, direction: Direction) {
     setSort({ type, direction });
-    // filterToys();
     setIsFiltred(false);
   }
-
-  // setSort({ type: "name", direction: Direction.Up });
 
   function resetFilters() {
     filters.color = [
@@ -201,7 +196,6 @@ function App() {
   function setupSearch(searchString: string) {
     console.log(searchStr);
     setSearchStr(searchString);
-    // filterToys();
     setIsFiltred(false);
   }
   if (!isFiltred) filterToys();

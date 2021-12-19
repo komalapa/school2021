@@ -20,13 +20,9 @@ export class Toy implements IToy {
     this.name = data.name;
     this.count = +data.count;
     this.year = +data.year;
-    // console.log((<any>Shapes)[keyInEnum(Shapes, data.shape)]);
     this.shape = (<any>Shapes)[keyInEnum(Shapes, data.shape)];
     this.color = (<any>Colors)[keyInEnum(Colors, data.color)];
     this.size = (<any>Size)[keyInEnum(Size, data.size)];
-    // this.shape = Shapes[data.shape]; //|| Shapes.Other,
-    // this.color = Colors[Object.keys(Colors).find(key => Colors[key] === data.color.toLowerCase()) || Colors.Other]; //|| Colors.Other,
-    // this.size = Size[Object.keys(Size).find(key => Size[key] === data.size.toLowerCase()) || Size.M]; //|| Colors.Other,
     this.isFavorite = data.favorite;
   }
 }

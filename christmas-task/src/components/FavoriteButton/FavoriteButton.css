@@ -2,8 +2,6 @@
   background: none;
   border: none;
   outline: none;
-  /* position: absolute;
-  bottom: 15px */
 }
 .favorite-button svg {
   width: 30px;
@@ -14,7 +12,3 @@
 .favorite-button:hover {
   transform: scale(1.1);
 }
-
-/* .favorite-button__on svg{
-  fill:goldenrod;
-} */
