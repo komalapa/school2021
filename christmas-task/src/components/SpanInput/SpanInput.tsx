@@ -16,7 +16,7 @@ export function SpanInput(props: SpanInputProps) {
   const [isSended, setIsSended] = useState(false); //for send span value only on next render
 
   const [gradientValue, setGradientValue] = useState<string>(
-    "to right, white, white 0%, gold 0%, gold 100%, white 100%, white 100%"
+    "to right, white, white 0%, goldenrod 0%, goldenrod 100%, white 100%, white 100%"
   );
   function handleMinInput(e: React.FormEvent<HTMLInputElement>): void {
     const curValue: number = +e.currentTarget.value;
@@ -41,7 +41,7 @@ export function SpanInput(props: SpanInputProps) {
     let start = ((minValue - props.min) / props.step) * step;
     let end = ((maxValue - props.min) / props.step) * step;
     setGradientValue(
-      `to right, white, white ${start}%, gold ${start}%, gold ${end}%, white ${end}%, white 100%`
+      `to right, white, white ${start}%, goldenrod ${start}%, goldenrod ${end}%, white ${end}%, white 100%`
     );
     console.log(start, end, step);
   }
