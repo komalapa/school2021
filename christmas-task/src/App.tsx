@@ -166,6 +166,29 @@ function App() {
 
   // setSort({ type: "name", direction: Direction.Up });
 
+  function resetFilters() {
+    filters.color = [
+      Colors.Blue,
+      Colors.Green,
+      Colors.Red,
+      Colors.White,
+      Colors.Yellow,
+    ];
+
+    filters.shape = [
+      Shapes.Ball,
+      Shapes.Bell,
+      Shapes.Figure,
+      Shapes.Pinecone,
+      Shapes.Snowflake,
+    ];
+    filters.size = [Size.L, Size.M, Size.S];
+
+    spanFilters.year = { min: years[0], max: curYear + 1 };
+    spanFilters.count = { min: counts[0], max: counts[counts.length - 1] };
+    filterToys();
+  }
+
   return (
     <div className="App">
       <FiltersContainter
@@ -176,6 +199,7 @@ function App() {
         toggleOnlyFavorite={toggleFavoritesFilter}
         favoritesCount={favorites.length}
         setupSort={setupSort}
+        reset={resetFilters}
       />
       <ToysContainter
         toys={curToysList}

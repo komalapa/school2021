@@ -19,6 +19,7 @@ type FiltersContainerProps = {
   toggleOnlyFavorite: CallableFunction;
   favoritesCount: number;
   setupSort: CallableFunction;
+  reset: CallableFunction;
 };
 
 export function FiltersContainter(props: FiltersContainerProps) {
@@ -68,6 +69,9 @@ export function FiltersContainter(props: FiltersContainerProps) {
         <span className="favorite-button__text"> {props.favoritesCount}</span>
       </button>
       <SelectSort setupSort={props.setupSort} />
+      <span className="filters__reset" onClick={() => props.reset()}>
+        Сбросить фильтры
+      </span>
     </div>
   );
 }

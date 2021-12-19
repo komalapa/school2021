@@ -15,9 +15,23 @@
   /* gap: 10px; */
 }
 
-.favorite-button__text {
+.favorite-button__text,
+.filters__reset {
   font-family: var(--header-font-family);
   font-size: 18px;
   /* line-height: 20px; */
   color: goldenrod;
+  cursor: pointer;
+}
+
+.filters__reset {
+  display: block;
+  margin-top: 40px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.filters__reset:hover {
+  transform: scale(1.1);
 }
