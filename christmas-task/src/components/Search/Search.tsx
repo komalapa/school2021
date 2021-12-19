@@ -12,6 +12,8 @@ export function Search(props: SearchProps) {
   return (
     <div className="search">
       <input
+        autoFocus
+        autoComplete="off"
         type="text"
         name="toys-name-search"
         id="toys-name-search"

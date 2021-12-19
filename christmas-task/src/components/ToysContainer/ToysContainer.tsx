@@ -18,5 +18,14 @@ export function ToysContainter(props: ToysContainerProps) {
       favoritesCount={props.favoritesCount}
     />
   ));
-  return <div className="toys-container">{cards}</div>;
+  return (
+    <div className="toys-container">
+      {cards}
+      {props.toys.length <= 0 && (
+        <span className="toys-container__text">
+          Извините, совпадений не обнаружено
+        </span>
+      )}
+    </div>
+  );
 }
