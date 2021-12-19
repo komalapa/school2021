@@ -40,12 +40,14 @@ const spanFilters = JSON.parse(
 const favoritesString = localStorage.getItem("komalapaChristmasFavorites");
 let lsFavorites;
 if (favoritesString) lsFavorites = JSON.parse(favoritesString);
-lsFavorites = lsFavorites
-  .filter((toy) => toy)
-  .map((fav) => toys.find((toy: Toy) => fav.id === toy.id));
-lsFavorites.forEach((toy: Toy) => {
-  toy.isFavorite = true;
-});
+if (lsFavorites) {
+  lsFavorites = lsFavorites
+    .filter((toy) => toy)
+    .map((fav) => toys.find((toy: Toy) => fav.id === toy.id));
+  lsFavorites.forEach((toy: Toy) => {
+    toy.isFavorite = true;
+  });
+}
 // console.log(lsFavorites);
 
 let isOnlyFavorites = false;
@@ -140,6 +142,8 @@ function App() {
     isOnlyFavorites = !isOnlyFavorites;
     filterToys();
   }
+
+  function sorterNames(name1, name2) {}
 
   return (
     <div className="App">
