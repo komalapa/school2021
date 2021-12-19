@@ -54,7 +54,7 @@ export enum Direction {
   Down,
 }
 export interface Sort {
-  type: "name" | "year" | "number";
+  type: string; //"name" | "year" | "number";
   direction: Direction;
 }
 export interface SpanObject {

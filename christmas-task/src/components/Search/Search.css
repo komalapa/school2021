@@ -1,0 +1,33 @@
+.search {
+  position: relative;
+  width: 200px;
+  margin: 20px auto;
+}
+.search__clear {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: none;
+  border: none;
+  color: goldenrod;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+.search__clear:hover {
+  transform: scale(1.1);
+}
+.search__clear:active {
+  transform: translateY(2px);
+}
+
+.search__text {
+  width: 100%;
+  box-sizing: border-box;
+  outline: goldenrod;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  font-size: 20px;
+}

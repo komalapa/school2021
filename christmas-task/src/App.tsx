@@ -3,7 +3,7 @@ import { Toy } from "./types/toys/toy";
 import { data } from "./data";
 import { ToysContainter } from "./components/ToysContainer/ToysContainer";
 import { useState } from "react";
-import { Colors, Direction, Filters, Shapes, Size } from "./types/types";
+import { Colors, Direction, Filters, Shapes, Size, Sort } from "./types/types";
 import { FiltersContainter } from "./components/FiltersContainer/FiltersContainer";
 import { type } from "os";
 
@@ -54,12 +54,16 @@ if (lsFavorites) {
 let isOnlyFavorites = false;
 
 function App() {
-  const [curToysList, setCurToysList] = useState(toys);
-  const [sort, setSort] = useState({ type: "name", direction: Direction.Up });
-  const [isFiltred, setIsFiltred] = useState(false);
-  const [favorites, setFavorites] = useState(
+  const [curToysList, setCurToysList] = useState<Toy[]>(toys);
+  const [sort, setSort] = useState<Sort>({
+    type: "name",
+    direction: Direction.Up,
+  });
+  const [isFiltred, setIsFiltred] = useState<boolean>(false);
+  const [favorites, setFavorites] = useState<Toy[]>(
     lsFavorites || toys.filter((toy: Toy) => toy.isFavorite)
   );
+  const [searchStr, setSearchStr] = useState<string>("");
 
   //=======================================================FilterToys
   function filterToys() {
@@ -92,6 +96,11 @@ function App() {
       array = array.filter((toy) => toy.isFavorite);
     }
 
+    if (searchStr !== "")
+      array = array.filter(
+        (toy) => toy.name.toLowerCase().indexOf(searchStr.toLowerCase()) >= 0
+      );
+
     if (sort.type === "name") {
       if (sort.direction === Direction.Up) {
         setCurToysList(array.sort((t1, t2) => t1.name.localeCompare(t2.name)));
@@ -99,6 +108,7 @@ function App() {
         setCurToysList(array.sort((t1, t2) => t2.name.localeCompare(t1.name)));
       }
     }
+
     if (sort.type === "year") {
       if (sort.direction === Direction.Up) {
         setCurToysList(array.sort((t1, t2) => t1.year - t2.year));
@@ -127,7 +137,6 @@ function App() {
     setIsFiltred(false);
     filterToys();
   }
-  if (!isFiltred) filterToys();
 
   function toggleFavorite(toy: Toy): void {
     const index = favorites.indexOf(toy);
@@ -189,6 +198,13 @@ function App() {
     filterToys();
   }
 
+  function setupSearch(searchString: string) {
+    console.log(searchStr);
+    setSearchStr(searchString);
+    // filterToys();
+    setIsFiltred(false);
+  }
+  if (!isFiltred) filterToys();
   return (
     <div className="App">
       <FiltersContainter
@@ -200,6 +216,8 @@ function App() {
         favoritesCount={favorites.length}
         setupSort={setupSort}
         reset={resetFilters}
+        setupSearch={setupSearch}
+        searchLine={searchStr}
       />
       <ToysContainter
         toys={curToysList}

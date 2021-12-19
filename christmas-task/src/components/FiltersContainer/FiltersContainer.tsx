@@ -10,6 +10,7 @@ import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
 import "./FiltersContainer.css";
 import { SelectSort } from "../SelectSort/SelectSort";
+import { Search } from "../Search/Search";
 
 type FiltersContainerProps = {
   toggleFilter: CallableFunction;
@@ -20,6 +21,8 @@ type FiltersContainerProps = {
   favoritesCount: number;
   setupSort: CallableFunction;
   reset: CallableFunction;
+  setupSearch: CallableFunction;
+  searchLine: string;
 };
 
 export function FiltersContainter(props: FiltersContainerProps) {
@@ -32,6 +35,8 @@ export function FiltersContainter(props: FiltersContainerProps) {
   }
   return (
     <div className="filters-container">
+      <Search setupSearch={props.setupSearch} searchLine={props.searchLine} />
+
       <ShapeFilter
         toggleFilter={props.toggleFilter}
         checked={props.filters.shape}
