@@ -8,15 +8,15 @@ import { FiltersContainter } from "./components/FiltersContainer/FiltersContaine
 
 const toys: Array<Toy> = data.map((item) => new Toy(item));
 
-const yearsSet: Set<number> = new Set();
-toys.map((toy) => yearsSet.add(toy.year));
-const years: number[] = Array.from(yearsSet).filter((a, b) => a > b);
+const yearsSet: Array<number> = [];
+toys.map((toy) => yearsSet.push(toy.year));
+const years: number[] = yearsSet.sort((a, b) => a - b);
 
 const countsSet: Set<number> = new Set();
 toys.map((toy) => countsSet.add(toy.count));
-const counts: number[] = Array.from(countsSet).filter((a, b) => a > b);
+const counts: number[] = Array.from(countsSet).sort((a, b) => a - b);
 
-// console.log(years);
+console.log(years);
 
 const curYear = new Date().getFullYear();
 const filters: Filters = {
@@ -32,17 +32,18 @@ const filters: Filters = {
 };
 const spanFilters = {
   year: { min: years[0], max: curYear + 1 },
-  count: { max: counts[0], min: counts[counts.length - 1] },
+  count: { min: counts[0], max: counts[counts.length - 1] },
 };
 
+let isOnlyFavorites = false;
 function App() {
   const [curToysList, setCurToysList] = useState(toys);
-
   const [sort, setSort] = useState({ type: "name", direction: Direction.Up });
   const [isFiltred, setIsFiltred] = useState(false);
   const [favorites, setFavorites] = useState(
     toys.filter((toy: Toy) => toy.isFavorite)
   );
+  // const [isOnlyFavorites, setIsOnlyFavorites] = useState(false);
   //=======================================================FilterToys
   function filterToys() {
     setCurToysList([]);
@@ -56,7 +57,7 @@ function App() {
         spanFilters[filter].min <= toy[filter] &&
         spanFilters[filter].max >= toy[filter]
       ) {
-        // console.log("span", toy, spanFilters[filter]);
+        // console.log("span");
         return true;
       }
       // }
@@ -70,6 +71,12 @@ function App() {
     for (let filter in filters) {
       array = array.filter((toy) => filterToy(filter, toy));
     }
+
+    if (isOnlyFavorites) {
+      console.log("only favs", favorites);
+      array = array.filter((toy) => toy.isFavorite);
+    }
+
     setCurToysList(array);
 
     setIsFiltred(true);
@@ -99,23 +106,26 @@ function App() {
 
   function toggleFavorite(toy: Toy): boolean {
     const index = favorites.indexOf(toy);
-    // console.log(index, filters[type], value);
+    console.log("FAV", index);
     if (index >= 0) {
-      setFavorites([...favorites.slice(0, index), ...favorites.slice(index)]);
+      setFavorites([
+        ...favorites.slice(0, index),
+        ...favorites.slice(index + 1),
+      ]);
+      toy.isFavorite = false;
       // console.log("??", filters);
       return false;
     } else {
-      if (favorites.length < 20) {
-        // console.log("!!", filters);
-        // favorites.push(toy);
-        setFavorites([...favorites, toy]);
-        return true;
-      } else {
-        alert("Слишком много любимчиков!");
-        console.log(favorites);
-        return false;
-      }
+      setFavorites([...favorites, toy]);
+      toy.isFavorite = true;
     }
+  }
+
+  function toggleFavoritesFilter() {
+    console.log("favs", isOnlyFavorites);
+    isOnlyFavorites = !isOnlyFavorites;
+    console.log("favs", isOnlyFavorites);
+    filterToys();
   }
 
   return (
@@ -125,6 +135,7 @@ function App() {
         toggleSpanFilter={toggleSpanFilter}
         filters={filters}
         spanFilters={spanFilters}
+        toggleOnlyFavorite={toggleFavoritesFilter}
       />
       <ToysContainter
         toys={curToysList}

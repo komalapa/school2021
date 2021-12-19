@@ -23,7 +23,6 @@ export function FavoriteButton(props: FavoriteProps) {
       setTimeout(() => setShowMsg(false), 3000);
     }
   }
-  console.log("**********", isFavorite);
   return (
     <button
       className={

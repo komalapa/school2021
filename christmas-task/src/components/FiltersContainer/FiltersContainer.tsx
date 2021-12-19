@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Filters, SpanFilters } from "../../types/types";
 import { ColorFilter } from "../ColorFilter/ColorFilter";
 import { CountFilter } from "../CountFilter/CountFilter";
 import { ShapeFilter } from "../ShapeFilter/ShapeFilter";
 import { SizeFilter } from "../SizeFilter/SizeFilter";
 import { YearFilter } from "../YearFilter/YearFilter";
+
+import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
+import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
 import "./FiltersContainer.css";
 
 type FiltersContainerProps = {
@@ -11,10 +15,17 @@ type FiltersContainerProps = {
   toggleSpanFilter: CallableFunction;
   filters: Filters;
   spanFilters: SpanFilters;
+  toggleOnlyFavorite: CallableFunction;
 };
 
 export function FiltersContainter(props: FiltersContainerProps) {
   const curYear = new Date().getFullYear();
+  const [isOnlyFavorite, setIsOnlyFavorite] = useState(false);
+
+  function toggleFavorite() {
+    setIsOnlyFavorite(!isOnlyFavorite);
+    props.toggleOnlyFavorite();
+  }
   return (
     <div className="filters-container">
       <ShapeFilter
@@ -31,7 +42,7 @@ export function FiltersContainter(props: FiltersContainerProps) {
       />
       <YearFilter
         toggleFilter={props.toggleSpanFilter}
-        min={1960}
+        min={1940}
         max={curYear + 1}
         step={1}
         values={props.spanFilters.year}
@@ -42,6 +53,16 @@ export function FiltersContainter(props: FiltersContainerProps) {
         max={20}
         step={1}
       />
+      <button
+        className={
+          isOnlyFavorite
+            ? "favorite-button favorite-button__on"
+            : "favorite-button"
+        }
+        onClick={toggleFavorite}
+      >
+        {isOnlyFavorite ? <HeartIconFull /> : <HeartIcon />}
+      </button>
     </div>
   );
 }

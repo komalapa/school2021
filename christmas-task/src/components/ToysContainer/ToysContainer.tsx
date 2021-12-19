@@ -9,6 +9,7 @@ type ToysContainerProps = {
 };
 
 export function ToysContainter(props: ToysContainerProps) {
+  console.log("ITEMS_SHOWED", props.toys.length);
   const cards = props.toys.map((toy, id) => (
     <ToyCard
       key={id}
