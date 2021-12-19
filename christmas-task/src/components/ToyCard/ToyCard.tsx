@@ -24,6 +24,7 @@ export function ToyCard(props: ToyCardProps) {
   const image: HTMLImageElement = new Image();
   image.src = path;
   image.onload = () => setIsLoaded(true);
+
   return (
     <div className="toy-card">
       <h3 className="toy-card__header">{props.toy.name}</h3>

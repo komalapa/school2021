@@ -104,7 +104,7 @@ function App() {
   }
   if (!isFiltred) filterToys();
 
-  function toggleFavorite(toy: Toy): boolean {
+  function toggleFavorite(toy: Toy): void {
     const index = favorites.indexOf(toy);
     console.log("FAV", index);
     if (index >= 0) {
@@ -113,18 +113,15 @@ function App() {
         ...favorites.slice(index + 1),
       ]);
       toy.isFavorite = false;
-      // console.log("??", filters);
-      return false;
     } else {
       setFavorites([...favorites, toy]);
       toy.isFavorite = true;
     }
+    if (isOnlyFavorites) filterToys();
   }
 
   function toggleFavoritesFilter() {
-    console.log("favs", isOnlyFavorites);
     isOnlyFavorites = !isOnlyFavorites;
-    console.log("favs", isOnlyFavorites);
     filterToys();
   }
 

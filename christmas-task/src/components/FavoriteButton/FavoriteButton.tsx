@@ -16,7 +16,7 @@ export function FavoriteButton(props: FavoriteProps) {
   function toggleFavorite() {
     console.log(props.favoritesCount);
     if (props.favoritesCount < 20) {
-      setIsFavorite(!isFavorite);
+      // setIsFavorite(!isFavorite);
       props.toggleFavorite();
     } else {
       setShowMsg(true);
@@ -30,7 +30,7 @@ export function FavoriteButton(props: FavoriteProps) {
       }
       onClick={() => toggleFavorite()}
     >
-      {isFavorite ? <HeartIconFull /> : <HeartIcon />}
+      {props.isFavorite ? <HeartIconFull /> : <HeartIcon />}
       {showMsg && <Message message="Извините, все слоты заполнены" />}
     </button>
   );

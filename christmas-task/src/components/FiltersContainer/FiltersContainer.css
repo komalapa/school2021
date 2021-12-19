@@ -5,3 +5,7 @@
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.favorite-button {
+  margin-top: 20px;
+}
