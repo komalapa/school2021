@@ -1,0 +1,53 @@
+footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 540px;
+  box-sizing: border-box;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  opacity: 0.9;
+  transition: bottom 0.3s ease-in;
+  margin-top: 0;
+  border-top: 2px solid white;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.github-link {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text-color);
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+  outline: var(--text-color);
+}
+
+.course-link {
+  display: block;
+  width: 50px;
+}
+
+.course-link svg {
+  width: 100%;
+}
+
+.course-link:hover svg,
+.course-link:active svg {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.course-link:active {
+  -webkit-transform: translate(2px, 1px);
+  transform: translate(2px, 1px);
+}
+
+.github-link:active,
+.github-link:hover {
+  transform: scale(1.1);
+}

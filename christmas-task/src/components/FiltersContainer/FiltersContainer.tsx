@@ -11,6 +11,7 @@ import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg
 import "./FiltersContainer.css";
 import { SelectSort } from "../SelectSort/SelectSort";
 import { Search } from "../Search/Search";
+import { Footer } from "../Footer/Footer";
 
 type FiltersContainerProps = {
   toggleFilter: CallableFunction;
@@ -77,6 +78,7 @@ export function FiltersContainter(props: FiltersContainerProps) {
       <span className="filters__reset" onClick={() => props.reset()}>
         Сбросить фильтры
       </span>
+      <Footer />
     </div>
   );
 }
