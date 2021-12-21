@@ -48,3 +48,8 @@
 .shape-filter__check:checked ~ .shape-filter__icon {
   fill: goldenrod;
 }
+@media (max-width: 1200px) {
+  .shape-filter__header {
+    text-align: center;
+  }
+}

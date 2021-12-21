@@ -51,3 +51,9 @@ footer {
 .github-link:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 1200px) {
+  footer {
+    width: 100%;
+  }
+}

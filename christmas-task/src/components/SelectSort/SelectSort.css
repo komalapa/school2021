@@ -28,3 +28,11 @@
   line-height: 20px;
   color: white;
 }
+@media (max-width: 1200px) {
+  .sort__header {
+    text-align: center;
+  }
+  .sort {
+    justify-content: center;
+  }
+}

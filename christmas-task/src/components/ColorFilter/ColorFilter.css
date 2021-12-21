@@ -73,3 +73,8 @@
 .color-filter__check:checked ~ .color-filter__icon {
   box-shadow: inset 0 0 10px black;
 }
+@media (max-width: 1200px) {
+  .color-filter__header {
+    text-align: center;
+  }
+}

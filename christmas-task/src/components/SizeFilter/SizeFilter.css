@@ -66,3 +66,8 @@
 .size-filter__check:checked ~ .size-filter__icon {
   fill: goldenrod;
 }
+@media (max-width: 1200px) {
+  .size-filter__header {
+    text-align: center;
+  }
+}

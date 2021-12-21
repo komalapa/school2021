@@ -34,3 +34,9 @@
 .filters__reset:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 1200px) {
+  .filters-container {
+    width: 100%;
+  }
+}
