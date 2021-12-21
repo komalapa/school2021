@@ -3,7 +3,7 @@ import { ToyCard } from "../ToyCard/ToyCard";
 import "./ToysContainer.css";
 
 type ToysContainerProps = {
-  toys: Array<Toy>;
+  toys: Toy[];
   toggleFavorite: CallableFunction;
   favoritesCount: number;
 };

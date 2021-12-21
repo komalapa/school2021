@@ -7,9 +7,9 @@ import { Colors, Direction, Filters, Shapes, Size, Sort } from "./types/types";
 import { FiltersContainter } from "./components/FiltersContainer/FiltersContainer";
 import { type } from "os";
 
-const toys: Array<Toy> = data.map((item) => new Toy(item));
+const toys: Toy[] = data.map((item) => new Toy(item));
 
-const yearsSet: Array<number> = [];
+const yearsSet: number[] = [];
 toys.map((toy) => yearsSet.push(toy.year));
 const years: number[] = yearsSet.sort((a, b) => a - b);
 
