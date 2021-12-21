@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./SpanInput.css";
 
 type SpanInputProps = {

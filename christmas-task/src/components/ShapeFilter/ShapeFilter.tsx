@@ -4,8 +4,10 @@ import { ReactComponent as BellIcon } from "../../assets/svg/bell.svg";
 import { ReactComponent as FigureIcon } from "../../assets/svg/toy.svg";
 import { ReactComponent as PineIcon } from "../../assets/svg/pine.svg";
 import { ReactComponent as SnowIcon } from "../../assets/svg/snowflake.svg";
-import "./ShapeFilter.css";
+
 import { useState } from "react";
+
+import "./ShapeFilter.css";
 
 type ShapeFilterContainerProps = {
   toggleFilter: CallableFunction;

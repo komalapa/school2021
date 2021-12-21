@@ -1,5 +1,6 @@
 import { Toy } from "../../types/toys/toy";
 import { ToyCard } from "../ToyCard/ToyCard";
+
 import "./ToysContainer.css";
 
 type ToysContainerProps = {

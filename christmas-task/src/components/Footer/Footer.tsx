@@ -1,5 +1,6 @@
-import "./Footer.css";
 import { ReactComponent as RSLogo } from "../../assets/svg/rss.svg";
+
+import "./Footer.css";
 
 export function Footer() {
   return (

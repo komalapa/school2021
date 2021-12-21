@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SpanObject } from "../../types/types";
 import { SpanInput } from "../SpanInput/SpanInput";
+
 import "./YearFilter.css";
 
 type YearFilterContainerProps = {

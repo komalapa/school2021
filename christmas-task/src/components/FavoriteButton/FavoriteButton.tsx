@@ -1,8 +1,11 @@
-import "./FavoriteButton.css";
+
 import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
 import { useState } from "react";
+
 import { Message } from "../Message/Message";
+
+import "./FavoriteButton.css";
 type FavoriteProps = {
   isFavorite: boolean;
   toggleFavorite: CallableFunction;

@@ -1,11 +1,12 @@
-import "./App.css";
+
 import { Toy } from "./types/toys/toy";
 import { data } from "./data";
 import { ToysContainter } from "./components/ToysContainer/ToysContainer";
 import { useState } from "react";
 import { Colors, Direction, Filters, Shapes, Size, Sort } from "./types/types";
 import { FiltersContainter } from "./components/FiltersContainer/FiltersContainer";
-import { type } from "os";
+
+import "./App.css";
 
 const toys: Toy[] = data.map((item) => new Toy(item));
 
