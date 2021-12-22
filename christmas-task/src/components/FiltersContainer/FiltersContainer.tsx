@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Filters, SpanFilters } from "../../types/types";
 import { ColorFilter } from "../ColorFilter/ColorFilter";
 import { CountFilter } from "../CountFilter/CountFilter";
@@ -12,6 +12,7 @@ import "./FiltersContainer.css";
 import { SelectSort } from "../SelectSort/SelectSort";
 import { Search } from "../Search/Search";
 import { Footer } from "../Footer/Footer";
+import { useToggle } from "../shared/hooks/useToggle";
 
 type FiltersContainerProps = {
   toggleFilter: CallableFunction;
@@ -26,43 +27,48 @@ type FiltersContainerProps = {
   searchLine: string;
 };
 
-export function FiltersContainter(props: FiltersContainerProps) {
+export const FiltersContainter: FC<FiltersContainerProps> = (props) => {
+  const {
+    toggleFilter,
+    toggleSpanFilter,
+    filters,
+    spanFilters,
+    toggleOnlyFavorite,
+    favoritesCount,
+    setupSort,
+    reset,
+    setupSearch,
+    searchLine,
+  } = props;
   const curYear = new Date().getFullYear();
-  const [isOnlyFavorite, setIsOnlyFavorite] = useState(false);
+  const [isOnlyFavorite, setIsOnlyFavorite] = useToggle(false);
 
   function toggleFavorite() {
-    setIsOnlyFavorite(!isOnlyFavorite);
-    props.toggleOnlyFavorite();
+    setIsOnlyFavorite();
+    toggleOnlyFavorite();
   }
+  function handleReset() {
+    reset();
+  }
+  function handleClear() {
+    localStorage.clear();
+  }
+
   return (
     <div className="filters-container">
-      <Search setupSearch={props.setupSearch} searchLine={props.searchLine} />
+      <Search setupSearch={setupSearch} searchLine={searchLine} />
 
-      <ShapeFilter
-        toggleFilter={props.toggleFilter}
-        checked={props.filters.shape}
-      />
-      <SizeFilter
-        toggleFilter={props.toggleFilter}
-        checked={props.filters.size}
-      />
-      <ColorFilter
-        toggleFilter={props.toggleFilter}
-        checked={props.filters.color}
-      />
+      <ShapeFilter toggleFilter={toggleFilter} checked={filters.shape} />
+      <SizeFilter toggleFilter={toggleFilter} checked={filters.size} />
+      <ColorFilter toggleFilter={toggleFilter} checked={filters.color} />
       <YearFilter
-        toggleFilter={props.toggleSpanFilter}
+        toggleFilter={toggleSpanFilter}
         min={1940}
         max={curYear + 1}
         step={1}
-        values={props.spanFilters.year}
+        values={spanFilters.year}
       />
-      <CountFilter
-        toggleFilter={props.toggleSpanFilter}
-        min={1}
-        max={20}
-        step={1}
-      />
+      <CountFilter toggleFilter={toggleSpanFilter} min={1} max={20} step={1} />
       <button
         className={
           isOnlyFavorite
@@ -72,16 +78,16 @@ export function FiltersContainter(props: FiltersContainerProps) {
         onClick={toggleFavorite}
       >
         {isOnlyFavorite ? <HeartIconFull /> : <HeartIcon />}
-        <span className="favorite-button__text"> {props.favoritesCount}</span>
+        <span className="favorite-button__text"> {favoritesCount}</span>
       </button>
-      <SelectSort setupSort={props.setupSort} />
-      <span className="filters__reset" onClick={() => props.reset()}>
+      <SelectSort setupSort={setupSort} />
+      <span className="filters__reset" onClick={handleReset}>
         Сбросить фильтры
       </span>
-      <span className="filters__reset" onClick={() => localStorage.clear()}>
+      <span className="filters__reset" onClick={handleClear}>
         Удалить сохраненные настройки
       </span>
       <Footer />
     </div>
   );
-}
+};
