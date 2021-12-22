@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import "./SpanInput.css";
 
@@ -11,9 +11,10 @@ type SpanInputProps = {
   minVal?: number;
 };
 
-export function SpanInput(props: SpanInputProps) {
-  const [minValue, setMinValue] = useState(props.minVal || props.min);
-  const [maxValue, setMaxValue] = useState(props.maxVal || props.max);
+export const SpanInput: FC<SpanInputProps> = (props) => {
+  const { toggleFilter, min, max, step, maxVal, minVal } = props;
+  const [minValue, setMinValue] = useState(minVal || min);
+  const [maxValue, setMaxValue] = useState(maxVal || max);
   const [isSended, setIsSended] = useState(false); //for send span value only on next render
 
   const [gradientValue, setGradientValue] = useState<string>(
@@ -32,19 +33,18 @@ export function SpanInput(props: SpanInputProps) {
   }
 
   if (!isSended) {
-    props.toggleFilter(minValue, maxValue);
+    toggleFilter(minValue, maxValue);
     setIsSended(true);
     gradient();
   }
 
   function gradient() {
-    let step = (props.step * 100) / (props.max - props.min);
-    let start = ((minValue - props.min) / props.step) * step;
-    let end = ((maxValue - props.min) / props.step) * step;
+    let inputStep = (step * 100) / (max - min);
+    let start = ((minValue - min) / step) * inputStep;
+    let end = ((maxValue - min) / step) * inputStep;
     setGradientValue(
       `to right, white, white ${start}%, goldenrod ${start}%, goldenrod ${end}%, white ${end}%, white 100%`
     );
-    console.log(start, end, step);
   }
 
   return (
@@ -58,22 +58,22 @@ export function SpanInput(props: SpanInputProps) {
       <input
         className="span-input__min"
         type="range"
-        min={props.min}
-        max={props.max}
-        step={props.step}
+        min={min}
+        max={max}
+        step={step}
         value={minValue}
         onChange={handleMinInput}
       />
       <input
         className="span-input__max"
         type="range"
-        min={props.min}
-        max={props.max}
-        step={props.step}
+        min={min}
+        max={max}
+        step={step}
         value={maxValue}
         onChange={handleMaxInput}
       />
       <span className="span-input__max-text span-input__text">{maxValue}</span>
     </div>
   );
-}
+};
