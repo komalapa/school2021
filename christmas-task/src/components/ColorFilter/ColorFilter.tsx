@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC } from "react";
 import { Colors } from "../../types/types";
 import { FilterCheckInput } from "../FilterCheckInput/FilterCheckInput";
 import "./ColorFilter.css";
@@ -8,22 +8,11 @@ type ColorFilterContainerProps = {
   checked: Colors[];
 };
 
-export function ColorFilter(props: ColorFilterContainerProps) {
-  const [isRed, setIsRed] = useState(props.checked.indexOf(Colors.Red) >= 0);
-  const [isWhite, setIsWhite] = useState(
-    props.checked.indexOf(Colors.White) >= 0
-  );
-  const [isBlue, setIsBlue] = useState(props.checked.indexOf(Colors.Blue) >= 0);
-  const [isYellow, setIsYellow] = useState(
-    props.checked.indexOf(Colors.Yellow) >= 0
-  );
-  const [isGreen, setIsGreen] = useState(
-    props.checked.indexOf(Colors.Green) >= 0
-  );
+export const ColorFilter: FC<ColorFilterContainerProps> = (props) => {
+  const { toggleFilter, checked } = props;
 
   const handleFilter = (filterName, filterValue) => {
-    // setIsRed(!isRed);
-    props.toggleFilter(filterName, filterValue);
+    toggleFilter(filterName, filterValue);
   };
 
   return (
@@ -34,7 +23,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
         onToggleFilter={handleFilter}
         filterName="color"
         filterValue={Colors.Red}
-        checked={props.checked.indexOf(Colors.Red) >= 0}
+        checked={checked.indexOf(Colors.Red) >= 0}
       >
         <span className="color-filter__icon color-filter__icon-red" />
       </FilterCheckInput>
@@ -44,7 +33,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
         onToggleFilter={handleFilter}
         filterName="color"
         filterValue={Colors.White}
-        checked={props.checked.indexOf(Colors.White) >= 0}
+        checked={checked.indexOf(Colors.White) >= 0}
       >
         <span className="color-filter__icon color-filter__icon-white" />
       </FilterCheckInput>
@@ -53,7 +42,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
         onToggleFilter={handleFilter}
         filterName="color"
         filterValue={Colors.Yellow}
-        checked={props.checked.indexOf(Colors.Yellow) >= 0}
+        checked={checked.indexOf(Colors.Yellow) >= 0}
       >
         <span className="color-filter__icon color-filter__icon-yellow" />
       </FilterCheckInput>
@@ -62,7 +51,7 @@ export function ColorFilter(props: ColorFilterContainerProps) {
         onToggleFilter={handleFilter}
         filterName="color"
         filterValue={Colors.Blue}
-        checked={props.checked.indexOf(Colors.Blue) >= 0}
+        checked={checked.indexOf(Colors.Blue) >= 0}
       >
         <span className="color-filter__icon color-filter__icon-blue" />
       </FilterCheckInput>
@@ -71,10 +60,10 @@ export function ColorFilter(props: ColorFilterContainerProps) {
         onToggleFilter={handleFilter}
         filterName="color"
         filterValue={Colors.Green}
-        checked={props.checked.indexOf(Colors.Green) >= 0}
+        checked={checked.indexOf(Colors.Green) >= 0}
       >
         <span className="color-filter__icon color-filter__icon-green" />
       </FilterCheckInput>
     </div>
   );
-}
+};
