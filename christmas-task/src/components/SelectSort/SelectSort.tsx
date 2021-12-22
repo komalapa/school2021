@@ -1,4 +1,6 @@
+import { FC } from "react";
 import { Direction } from "../../types/types";
+// import { SortRadioInput } from "../SortRadioInput/SortRadioInput";
 
 import "./SelectSort.css";
 
@@ -6,10 +8,25 @@ type SelectSortProps = {
   setupSort: CallableFunction;
 };
 
-export function SelectSort(props: SelectSortProps) {
+export const SelectSort: FC<SelectSortProps> = (props) => {
+  const { setupSort } = props;
+
+  function handleSort(type, direction) {
+    setupSort(type, direction);
+  }
   return (
     <div className="sort">
       <h3 className="sort__header">Сортировка</h3>
+      {/* <SortRadioInput
+        name="sort"
+        id="sort-name-up"
+        className="sort__radio"
+        type="name"
+        direction={Direction.Up}
+        onSort={handleSort}
+      >
+        Название ↑
+      </SortRadioInput> */}
 
       <div>
         <input
@@ -17,7 +34,7 @@ export function SelectSort(props: SelectSortProps) {
           name="sort"
           id="sort-name-up"
           className="sort__radio"
-          onClick={() => props.setupSort("name", Direction.Up)}
+          onClick={() => handleSort("name", Direction.Up)}
           defaultChecked
         />
         <label className="sort__label" defaultChecked htmlFor="sort-name-up">
@@ -30,7 +47,7 @@ export function SelectSort(props: SelectSortProps) {
           name="sort"
           id="sort-name-down"
           className="sort__radio"
-          onClick={() => props.setupSort("name", Direction.Down)}
+          onClick={() => handleSort("name", Direction.Down)}
         />
         <label className="sort__label" htmlFor="sort-name-down">
           Название ↓
@@ -42,7 +59,7 @@ export function SelectSort(props: SelectSortProps) {
           name="sort"
           id="sort-year-up"
           className="sort__radio"
-          onClick={() => props.setupSort("year", Direction.Up)}
+          onClick={() => handleSort("year", Direction.Up)}
         />
         <label className="sort__label" htmlFor="sort-year-up">
           Год покупки ↑
@@ -54,7 +71,7 @@ export function SelectSort(props: SelectSortProps) {
           name="sort"
           id="sort-year-down"
           className="sort__radio"
-          onClick={() => props.setupSort("year", Direction.Down)}
+          onClick={() => handleSort("year", Direction.Down)}
         />
         <label className="sort__label" htmlFor="sort-year-down">
           Год покупки ↓
@@ -62,4 +79,4 @@ export function SelectSort(props: SelectSortProps) {
       </div>
     </div>
   );
-}
+};
