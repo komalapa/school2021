@@ -1,4 +1,3 @@
-
 import { Toy } from "./types/toys/toy";
 import { data } from "./data";
 import { ToysContainter } from "./components/ToysContainer/ToysContainer";
@@ -7,6 +6,10 @@ import { Colors, Direction, Filters, Shapes, Size, Sort } from "./types/types";
 import { FiltersContainter } from "./components/FiltersContainer/FiltersContainer";
 
 import "./App.css";
+// import { initStore } from "./redux/store";
+
+// const store = initStore();
+// console.log(store);
 
 const toys: Toy[] = data.map((item) => new Toy(item));
 
