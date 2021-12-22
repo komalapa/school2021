@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import "./Search.css";
 
@@ -7,9 +7,17 @@ type SearchProps = {
   setupSearch: CallableFunction;
 };
 
-export function Search(props: SearchProps) {
-  console.log(props.searchLine);
-  const [line, setLine] = useState<string>(props.searchLine);
+export const Search: FC<SearchProps> = (props) => {
+  const { searchLine, setupSearch } = props;
+  const [line, setLine] = useState<string>(searchLine);
+  function handleSearch(e) {
+    setLine(e.currentTarget.value);
+    setupSearch(e.currentTarget.value);
+  }
+  function handleReset() {
+    setLine("");
+    setupSearch("");
+  }
   return (
     <div className="search">
       <input
@@ -19,22 +27,13 @@ export function Search(props: SearchProps) {
         name="toys-name-search"
         id="toys-name-search"
         className="search__text"
-        onInput={(e) => {
-          setLine(e.currentTarget.value);
-          props.setupSearch(e.currentTarget.value);
-        }}
+        onInput={handleSearch}
         value={line}
         placeholder="Поиск"
       />
-      <button
-        className="search__clear"
-        onClick={() => {
-          setLine("");
-          props.setupSearch("");
-        }}
-      >
+      <button className="search__clear" onClick={handleReset}>
         🞫
       </button>
     </div>
   );
-}
+};
