@@ -20,9 +20,9 @@ export class Toy implements IToy {
     this.name = data.name;
     this.count = +data.count;
     this.year = +data.year;
-    this.shape = (<any>Shapes)[keyInEnum(Shapes, data.shape)];
-    this.color = (<any>Colors)[keyInEnum(Colors, data.color)];
-    this.size = (<any>Size)[keyInEnum(Size, data.size)];
+    this.shape = Shapes[keyInEnum(Shapes, data.shape)];
+    this.color = Colors[keyInEnum(Colors, data.color)];
+    this.size = Size[keyInEnum(Size, data.size)];
     this.isFavorite = data.favorite;
   }
 }
