@@ -1,6 +1,6 @@
 import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import { Message } from "../Message/Message";
 
@@ -11,12 +11,13 @@ type FavoriteProps = {
   favoritesCount: number;
 };
 
-export function FavoriteButton(props: FavoriteProps) {
+export const FavoriteButton: FC<FavoriteProps> = (props) => {
+  const { isFavorite, toggleFavorite, favoritesCount } = props;
   const [showMsg, setShowMsg] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(props.isFavorite);
-  function toggleFavorite() {
-    if (props.favoritesCount < 20 || props.isFavorite === true) {
-      props.toggleFavorite();
+  // const [isFavorite, setIsFavorite] = useState(isFavorite);
+  function handleFavorite() {
+    if (favoritesCount < 20 || isFavorite === true) {
+      toggleFavorite();
     } else {
       setShowMsg(true);
       setTimeout(() => setShowMsg(false), 3000);
@@ -27,10 +28,10 @@ export function FavoriteButton(props: FavoriteProps) {
       className={
         isFavorite ? "favorite-button favorite-button__on" : "favorite-button"
       }
-      onClick={() => toggleFavorite()}
+      onClick={() => handleFavorite()}
     >
-      {props.isFavorite ? <HeartIconFull /> : <HeartIcon />}
+      {isFavorite ? <HeartIconFull /> : <HeartIcon />}
       {showMsg && <Message message="Извините, все слоты заполнены" />}
     </button>
   );
-}
+};

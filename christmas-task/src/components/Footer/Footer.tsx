@@ -8,6 +8,7 @@ export function Footer() {
       <a
         className="course-link"
         href="https://rs.school/js/"
+        rel="noreferrer"
         target="_blank"
         title="Курс «JavaScript/Front-end»"
       >
@@ -17,6 +18,7 @@ export function Footer() {
         className="github-link"
         href="https://github.com/komalapa"
         target="_blank"
+        rel="noreferrer"
       >
         github: komalapa
       </a>
