@@ -63,12 +63,20 @@ export const FiltersContainter: FC<FiltersContainerProps> = (props) => {
       <ColorFilter toggleFilter={toggleFilter} checked={filters.color} />
       <YearFilter
         toggleFilter={toggleSpanFilter}
-        min={1940}
-        max={curYear + 1}
+        min={spanFilters.year.min}
+        max={spanFilters.year.max}
+        minVal={spanFilters.year.minVal}
+        maxVal={spanFilters.year.maxVal}
         step={1}
-        values={spanFilters.year}
       />
-      <CountFilter toggleFilter={toggleSpanFilter} min={1} max={20} step={1} />
+      <CountFilter
+        toggleFilter={toggleSpanFilter}
+        min={spanFilters.count.min}
+        max={spanFilters.count.max}
+        step={1}
+        minVal={spanFilters.count.minVal}
+        maxVal={spanFilters.count.maxVal}
+      />
       <button
         className={
           isOnlyFavorite

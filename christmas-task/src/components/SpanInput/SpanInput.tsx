@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import "./SpanInput.css";
 
@@ -16,7 +16,7 @@ export const SpanInput: FC<SpanInputProps> = (props) => {
   const [minValue, setMinValue] = useState(minVal || min);
   const [maxValue, setMaxValue] = useState(maxVal || max);
   const [isSended, setIsSended] = useState(false); //for send span value only on next render
-
+  const [reGradient, setReGradient] = useState(true); // for re calculate Gradient after state changes
   const [gradientValue, setGradientValue] = useState<string>(
     "to right, white, white 0%, goldenrod 0%, goldenrod 100%, white 100%, white 100%"
   );
@@ -37,14 +37,28 @@ export const SpanInput: FC<SpanInputProps> = (props) => {
     setIsSended(true);
     gradient();
   }
-
+  // console.log(props);
   function gradient() {
+    // console.log(gradient);
     let inputStep = (step * 100) / (max - min);
     let start = ((minValue - min) / step) * inputStep;
     let end = ((maxValue - min) / step) * inputStep;
     setGradientValue(
       `to right, white, white ${start}%, goldenrod ${start}%, goldenrod ${end}%, white ${end}%, white 100%`
     );
+  }
+
+  if (minVal !== minValue && min !== minValue) {
+    setMinValue(minVal || min);
+    setReGradient(true);
+  }
+  if (maxVal !== maxValue && max !== maxValue) {
+    setMaxValue(maxVal || max);
+    setReGradient(true);
+  }
+  if (reGradient) {
+    gradient();
+    setReGradient(false);
   }
 
   return (

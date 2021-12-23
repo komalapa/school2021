@@ -46,8 +46,18 @@ const defaultFilters: Filters = {
 };
 
 const defaultSpanFilters: SpanFilters = {
-  year: { min: years[0], max: curYear + 1 },
-  count: { min: counts[0], max: counts[counts.length - 1] },
+  year: {
+    min: years[0],
+    max: curYear + 1,
+    minVal: years[0],
+    maxVal: curYear + 1,
+  },
+  count: {
+    min: counts[0],
+    max: counts[counts.length - 1],
+    minVal: counts[0],
+    maxVal: counts[counts.length - 1],
+  },
 };
 
 const initialFilters = () =>
@@ -100,8 +110,8 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     }
     function spanFilterToy(toy: Toy, filter: string): Boolean {
       if (
-        spanFilters[filter].min <= toy[filter] &&
-        spanFilters[filter].max >= toy[filter]
+        spanFilters[filter].minVal <= toy[filter] &&
+        spanFilters[filter].maxVal >= toy[filter]
       )
         return true;
 
@@ -160,7 +170,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   function toggleSpanFilter(type, min, max) {
     setSpanFilters({
       ...spanFilters,
-      [type]: { min, max },
+      [type]: { ...spanFilters[type], minVal: min, maxVal: max },
     });
     setIsFiltered(false);
   }
@@ -194,7 +204,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     setSpanFilters({ ...defaultSpanFilters });
     setIsFiltered(false);
   }
-
+  console.log("app", spanFilters);
   function handleSearch(searchString: string) {
     setSearchStr(searchString);
     setIsFiltered(false);

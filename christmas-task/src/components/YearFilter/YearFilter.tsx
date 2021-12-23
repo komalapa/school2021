@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { SpanObject } from "../../types/types";
 import { SpanInput } from "../SpanInput/SpanInput";
 
@@ -8,19 +8,25 @@ type YearFilterContainerProps = {
   toggleFilter: CallableFunction;
   min: number;
   max: number;
+  minVal: number;
+  maxVal: number;
   step: number;
-  values: SpanObject;
+  // values: SpanObject;
 };
 
 export const YearFilter: FC<YearFilterContainerProps> = (props) => {
-  const { toggleFilter, min, max, values } = props;
+  const { toggleFilter, min, max, minVal, maxVal } = props;
 
-  const [minVal, setMinVal] = useState(values.min);
-  const [maxVal, setMaxVal] = useState(values.max);
-  function handleFilter(min, max) {
-    setMaxVal(max);
-    setMinVal(min);
-    toggleFilter("year", min, max);
+  const [minValue, setMinValue] = useState(minVal);
+  const [maxValue, setMaxValue] = useState(maxVal);
+
+  if (minValue !== minVal) setMinValue(minVal);
+  if (maxValue !== maxVal) setMaxValue(maxVal);
+
+  function handleFilter(minFilter, maxFilter) {
+    setMaxValue(maxFilter);
+    setMinValue(minFilter);
+    toggleFilter("year", minFilter, maxFilter);
   }
   return (
     <div className="Year-filter">
@@ -28,8 +34,8 @@ export const YearFilter: FC<YearFilterContainerProps> = (props) => {
       <SpanInput
         min={min}
         max={max}
-        maxVal={maxVal}
-        minVal={minVal}
+        maxVal={maxValue}
+        minVal={minValue}
         step={1}
         toggleFilter={handleFilter}
       />

@@ -60,6 +60,8 @@ export interface Sort {
 export interface SpanObject {
   min: number;
   max: number;
+  minVal: number;
+  maxVal: number;
 }
 
 export interface SpanFilters {
