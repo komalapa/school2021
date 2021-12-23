@@ -14,7 +14,6 @@ type FavoriteProps = {
 export const FavoriteButton: FC<FavoriteProps> = (props) => {
   const { isFavorite, toggleFavorite, favoritesCount } = props;
   const [showMsg, setShowMsg] = useState(false);
-  // const [isFavorite, setIsFavorite] = useState(isFavorite);
   function handleFavorite() {
     if (favoritesCount < 20 || isFavorite === true) {
       toggleFavorite();
