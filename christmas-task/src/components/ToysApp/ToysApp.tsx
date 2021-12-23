@@ -51,12 +51,14 @@ const defaultSpanFilters: SpanFilters = {
 };
 
 const initialFilters = () =>
-  JSON.parse(localStorage.getItem("komalapaChristmasFilters")) ||
-  defaultFilters;
+  JSON.parse(localStorage.getItem("komalapaChristmasFilters")) || {
+    ...defaultFilters,
+  };
 
 const initialSpanFilters = () =>
-  JSON.parse(localStorage.getItem("komalapaChristmasSpanFilters")) ||
-  defaultSpanFilters;
+  JSON.parse(localStorage.getItem("komalapaChristmasSpanFilters")) || {
+    ...defaultSpanFilters,
+  };
 
 const initialFavorites = () => {
   const favoritesString = localStorage.getItem("komalapaChristmasFavorites");
@@ -144,7 +146,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     const index = filters[type].indexOf(value);
     if (index >= 0) {
       let curFilters = { ...filters };
-      curFilters[type].splice(index, index + 1);
+      curFilters[type].splice(index, 1);
       setFilters(curFilters);
       setIsFiltered(false);
     } else {
@@ -185,12 +187,11 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   }
 
   function handleResetFilters() {
-    console.log("reset", filters);
-    setFilters(defaultFilters);
+    //TODO fix reset. Works only once
+    setFilters({ ...defaultFilters });
     setIsFiltered(false);
-    setSpanFilters(defaultSpanFilters);
+    setSpanFilters({ ...defaultSpanFilters });
     setIsFiltered(false);
-    console.log("reseted", filters);
   }
 
   function handleSearch(searchString: string) {
