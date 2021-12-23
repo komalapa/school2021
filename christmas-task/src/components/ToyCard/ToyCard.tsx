@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
@@ -10,19 +10,20 @@ type ToyCardProps = {
   favoritesCount: number;
 };
 
-export function ToyCard(props: ToyCardProps) {
+export const ToyCard: FC<ToyCardProps> = (props) => {
+  const { toy, toggleFavorite, favoritesCount } = props;
   const [isLoaded, setIsLoaded] = useState(false);
   function handleToggleFavorite(): void {
-    props.toggleFavorite(props.toy);
+    toggleFavorite(toy);
   }
-  const path: string = `/assets/toys/${props.toy.id}.png`;
+  const path: string = `/assets/toys/${toy.id}.png`;
   const image: HTMLImageElement = new Image();
   image.src = path;
   image.onload = () => setIsLoaded(true);
 
   return (
     <div className="toy-card">
-      <h3 className="toy-card__header">{props.toy.name}</h3>
+      <h3 className="toy-card__header">{toy.name}</h3>
       {isLoaded ? (
         <img className="toy-card__image" alt="игрушка" src={image.src} />
       ) : (
@@ -31,30 +32,29 @@ export function ToyCard(props: ToyCardProps) {
       <ul className="toy-card__properties-list">
         <li className="toy-card__properties-list-item">
           <span className="toy-card__properties-name">Количество:</span>{" "}
-          {props.toy.count}шт.
+          {toy.count}шт.
         </li>
         <li className="toy-card__properties-list-item">
           <span className="toy-card__properties-name">Год покупки:</span>{" "}
-          {props.toy.year}год
+          {toy.year}год
         </li>
         <li className="toy-card__properties-list-item">
           <span className="toy-card__properties-name">Форма игрушки:</span>{" "}
-          {props.toy.shape}
+          {toy.shape}
         </li>
         <li className="toy-card__properties-list-item">
-          <span className="toy-card__properties-name">Цвет:</span>{" "}
-          {props.toy.color}
+          <span className="toy-card__properties-name">Цвет:</span> {toy.color}
         </li>
         <li className="toy-card__properties-list-item">
           <span className="toy-card__properties-name">Размер игрушки:</span>{" "}
-          {props.toy.size}
+          {toy.size}
         </li>
       </ul>
       <FavoriteButton
-        isFavorite={props.toy.isFavorite}
+        isFavorite={toy.isFavorite}
         toggleFavorite={handleToggleFavorite}
-        favoritesCount={props.favoritesCount}
+        favoritesCount={favoritesCount}
       />
     </div>
   );
-}
+};
