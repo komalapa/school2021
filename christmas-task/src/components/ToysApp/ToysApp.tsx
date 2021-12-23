@@ -114,7 +114,6 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     }
 
     if (isOnlyFavorites) {
-      console.log("only favs", favorites);
       array = array.filter((toy) => toy.isFavorite);
     }
 
@@ -142,7 +141,6 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   }
   //Handlers
   function toggleFilter(type, value) {
-    console.log("filter", type, value);
     const index = filters[type].indexOf(value);
     if (index >= 0) {
       let curFilters = { ...filters };
@@ -187,10 +185,12 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   }
 
   function handleResetFilters() {
+    console.log("reset", filters);
     setFilters(defaultFilters);
     setIsFiltered(false);
     setSpanFilters(defaultSpanFilters);
     setIsFiltered(false);
+    console.log("reseted", filters);
   }
 
   function handleSearch(searchString: string) {

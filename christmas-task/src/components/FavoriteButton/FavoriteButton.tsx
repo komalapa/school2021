@@ -1,4 +1,3 @@
-
 import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
 import { useState } from "react";
@@ -16,7 +15,6 @@ export function FavoriteButton(props: FavoriteProps) {
   const [showMsg, setShowMsg] = useState(false);
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
   function toggleFavorite() {
-    console.log(props.favoritesCount);
     if (props.favoritesCount < 20 || props.isFavorite === true) {
       props.toggleFavorite();
     } else {
