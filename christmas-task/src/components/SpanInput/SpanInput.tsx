@@ -37,9 +37,7 @@ export const SpanInput: FC<SpanInputProps> = (props) => {
     setIsSended(true);
     gradient();
   }
-  // console.log(props);
   function gradient() {
-    // console.log(gradient);
     let inputStep = (step * 100) / (max - min);
     let start = ((minValue - min) / step) * inputStep;
     let end = ((maxValue - min) / step) * inputStep;

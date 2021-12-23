@@ -10,7 +10,6 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     setToys(favorites);
   });
   const { favorites } = props;
-  // console.log(favorites);
   return <></>;
 };
 export default TreeApp;
