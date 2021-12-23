@@ -14,6 +14,7 @@ export const ColorFilter: FC<ColorFilterContainerProps> = (props) => {
   const handleFilter = (filterName, filterValue) => {
     toggleFilter(filterName, filterValue);
   };
+  console.log("colors", checked);
 
   return (
     <div className="color-filter">

@@ -11,7 +11,7 @@ const App: FC = () => {
   }
   return (
     <>
-      <ToysApp favorites={favorites} setFavorites={handleFavorites} />
+      <ToysApp favorites={favorites} sendFavorites={handleFavorites} />
       <TreeApp favorites={favorites} />
     </>
   );

@@ -22,17 +22,21 @@ export const FilterCheckInput: FC<FilterCheckInputProps> = (props) => {
 
   const [isChecked, toggleChecked] = useToggle(checked);
 
+  console.log(isChecked, filterValue, checked);
+
+  if (isChecked !== checked) toggleChecked();
+
   function handleInput() {
     toggleChecked(isChecked);
     onToggleFilter(filterName, filterValue);
   }
   return (
-    <label className={`${className}__lbl`}>
+    <label key={filterName + filterValue} className={`${className}__lbl`}>
       <input
         className={`${className}__check`}
         type="checkbox"
-        onInput={handleInput}
-        defaultChecked={isChecked}
+        onChange={handleInput}
+        checked={isChecked}
       />
       {children}
     </label>

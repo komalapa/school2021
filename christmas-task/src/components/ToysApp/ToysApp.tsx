@@ -17,7 +17,7 @@ import "./ToysApp.css";
 
 interface ToysAppProps {
   favorites: Toy[];
-  setFavorites: CallableFunction;
+  sendFavorites: CallableFunction;
 }
 
 const toys: Toy[] = data.map((item) => new Toy(item));
@@ -77,6 +77,7 @@ const initialFavorites = () => {
 };
 
 export const ToysApp: FC<ToysAppProps> = (props) => {
+  const { sendFavorites } = props;
   const [curToysList, setCurToysList] = useState<Toy[]>(toys);
   const [filters, setFilters] = useState<Filters>(initialFilters());
   const [spanFilters, setSpanFilters] = useState<SpanFilters>(
@@ -217,7 +218,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   }
   if (!isFiltred) filterToys();
   handleLS();
-
+  sendFavorites(favorites);
   //render
   return (
     <div className="toys-app">
