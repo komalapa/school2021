@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from "react";
-import { SpanObject } from "../../types/types";
+import { FC, useState } from "react";
 import { SpanInput } from "../SpanInput/SpanInput";
 
 import "./YearFilter.css";
@@ -11,7 +10,6 @@ type YearFilterContainerProps = {
   minVal: number;
   maxVal: number;
   step: number;
-  // values: SpanObject;
 };
 
 export const YearFilter: FC<YearFilterContainerProps> = (props) => {

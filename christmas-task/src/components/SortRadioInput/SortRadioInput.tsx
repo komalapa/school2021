@@ -17,7 +17,7 @@ export const SortRadioInput: FC<SortRadioInputProps> = (props) => {
     onSort(hType, hDirection);
   }
 
-  // Can't use name for input         name={name}
+  // Can't use name for input name={name}
   return (
     <div>
       <input

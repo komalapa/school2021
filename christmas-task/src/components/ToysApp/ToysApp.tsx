@@ -194,14 +194,11 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   }
 
   function handleResetFilters() {
-    //TODO fix reset. Works only once
-    console.log("reset", defaultFilters);
     setFilters(JSON.parse(JSON.stringify(defaultFilters)));
     setIsFiltered(false);
     setSpanFilters(JSON.parse(JSON.stringify(defaultSpanFilters)));
     setIsFiltered(false);
   }
-  console.log("app", filters, spanFilters);
   function handleSearch(searchString: string) {
     setSearchStr(searchString);
     setIsFiltered(false);

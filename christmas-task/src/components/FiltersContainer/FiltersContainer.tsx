@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Filters, SpanFilters } from "../../types/types";
 import { ColorFilter } from "../ColorFilter/ColorFilter";
 import { CountFilter } from "../CountFilter/CountFilter";
@@ -40,7 +40,6 @@ export const FiltersContainter: FC<FiltersContainerProps> = (props) => {
     setupSearch,
     searchLine,
   } = props;
-  const curYear = new Date().getFullYear();
   const [isOnlyFavorite, setIsOnlyFavorite] = useToggle(false);
 
   function toggleFavorite() {

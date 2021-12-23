@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Direction } from "../../types/types";
-// import { SortRadioInput } from "../SortRadioInput/SortRadioInput";
 
 import "./SelectSort.css";
 

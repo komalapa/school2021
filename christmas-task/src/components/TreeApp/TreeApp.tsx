@@ -5,11 +5,12 @@ interface TreeAppProps {
   favorites: Toy[];
 }
 const TreeApp: FC<TreeAppProps> = (props) => {
+  const { favorites } = props;
   const [toys, setToys] = useState([]);
   useEffect(() => {
     setToys(favorites);
-  });
-  const { favorites } = props;
-  return <></>;
+  },[favorites]);
+  
+  return <>{toys.toString()}</>;
 };
 export default TreeApp;
