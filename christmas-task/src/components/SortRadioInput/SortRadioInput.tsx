@@ -4,14 +4,14 @@ import { Direction } from "../../types/types";
 interface SortRadioInputProps {
   className: string;
   id: string;
-  name: string;
+  radioName: string;
   type: string;
   direction: Direction;
   onSort: CallableFunction;
 }
 
 export const SortRadioInput: FC<SortRadioInputProps> = (props) => {
-  const { className, id, type, direction, onSort, children } = props;
+  const { className, id, type, direction, onSort, children, radioName } = props;
 
   function handleSort(hType, hDirection) {
     onSort(hType, hDirection);
@@ -23,6 +23,7 @@ export const SortRadioInput: FC<SortRadioInputProps> = (props) => {
       <input
         type="radio"
         id={id}
+        name={radioName}
         className={className}
         onClick={() => handleSort(type, direction)}
         defaultChecked
