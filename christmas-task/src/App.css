@@ -17,7 +17,10 @@
   }
 }
 
-.App-header {
+.root {
+  background-image: var(--background);
+}
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -44,4 +47,4 @@
   .App {
     flex-direction: column;
   }
-}
+} */

@@ -19,7 +19,7 @@ export const BackgroundSelector: FC<BackgroundSelectorProps> = (props) => {
   return (
     //TODO cycle for gen radio
     <div className="background-selector">
-      <h3 className="background-selector__header">Сортировка</h3>
+      <h3 className="background-selector__header">Фоны</h3>
       <div className="background-selector__wrp">
         <RadioInput
           radioName="background-selector"
