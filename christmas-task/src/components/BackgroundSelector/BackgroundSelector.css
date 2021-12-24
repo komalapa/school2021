@@ -29,3 +29,7 @@
   .background-selector__miniature {
   box-shadow: 0 0 10px goldenrod, inset 0 0 10px goldenrod;
 }
+
+.background-selector__miniature:hover {
+  transform: scale(1.1);
+}
