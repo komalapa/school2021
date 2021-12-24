@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import { BackgroundSelector } from "../BackgroundSelector/BackgroundSelector";
+import { MainTreeContainer } from "../MainTreeContainer/MainTreeContainer";
 import { TreeSelector } from "../TreeSelector/TreeSelector";
 
 interface TreeAppProps {
@@ -42,7 +43,10 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         setupTree={handleTree}
         selected={backgroundNumber}
       ></TreeSelector>
-      ;<div></div>
+      <MainTreeContainer
+        backgroundUrl={getBackgroundUrl(backgroundNumber)}
+        treeUrl={getTreeUrl(treeNumber)}
+      ></MainTreeContainer>
     </>
   );
 };

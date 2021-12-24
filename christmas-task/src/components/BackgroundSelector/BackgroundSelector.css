@@ -1,4 +1,11 @@
+.background-selector {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  align-items: center;
+}
 .background-selector__wrp {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px;
@@ -21,6 +28,7 @@
   background-repeat: no-repeat;
 }
 .background-selector__radio {
+  position: absolute;
   visibility: hidden;
 }
 
