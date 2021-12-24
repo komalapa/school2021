@@ -1,7 +1,9 @@
 .favorite-button {
+  position: relative;
   background: none;
   border: none;
   outline: none;
+  margin-top: 10px;
 }
 .favorite-button svg {
   width: 30px;

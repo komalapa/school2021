@@ -1,4 +1,4 @@
-.toy-card{
+.toy-card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -7,33 +7,37 @@
   height: 340px;
   padding: 15px;
   box-sizing: border-box;
-  background: radial-gradient(109.56% 109.56% at 0% -2.94%, rgba(255, 255, 255, 0.5) 0%, rgba(179, 246, 255, 0.5) 100%);
+  background: radial-gradient(
+    109.56% 109.56% at 0% -2.94%,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(179, 246, 255, 0.5) 100%
+  );
   backdrop-filter: blur(4px);
   border-radius: 10px;
   font-family: var(--text-font-family);
-  color:var(--white-text);
+  color: var(--white-text);
   text-align: left;
 }
-.toy-card__header{
+.toy-card__header {
   font-family: var(--header-font-family);
   font-size: 18px;
   line-height: 20px;
   text-align: left;
 }
 
-.toy-card__image{
+.toy-card__image {
   max-width: 85px;
   max-height: 105px;
 }
 
-.toy-card__properties-list{
+.toy-card__properties-list {
   list-style: none;
   padding: 0;
   width: 100%;
   margin-bottom: 5px;
 }
 
-.toy-card__properties-list-item{
-  font-size: 10px;
+.toy-card__properties-list-item {
+  font-size: 12px;
   margin: 6px 0;
 }

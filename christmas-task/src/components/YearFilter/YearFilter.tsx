@@ -7,14 +7,13 @@ type YearFilterContainerProps = {
   toggleFilter: CallableFunction;
   min: number;
   max: number;
-  minVal: number;
-  maxVal: number;
-  step: number;
+  minVal?: number;
+  maxVal?: number;
+  step?: number;
 };
 
 export const YearFilter: FC<YearFilterContainerProps> = (props) => {
   const { toggleFilter, min, max, minVal, maxVal } = props;
-
   const [minValue, setMinValue] = useState(minVal);
   const [maxValue, setMaxValue] = useState(maxVal);
 

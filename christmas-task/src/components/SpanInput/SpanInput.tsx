@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FC, useState } from "react";
 
 import "./SpanInput.css";
@@ -46,14 +47,17 @@ export const SpanInput: FC<SpanInputProps> = (props) => {
     );
   }
 
-  if (minVal !== minValue && min !== minValue) {
-    setMinValue(minVal || min);
-    setReGradient(true);
-  }
-  if (maxVal !== maxValue && max !== maxValue) {
-    setMaxValue(maxVal || max);
-    setReGradient(true);
-  }
+  useEffect(() => {
+    if (minVal !== minValue && min !== minValue) {
+      setMinValue(minVal || min);
+      setReGradient(true);
+    }
+    if (maxVal !== maxValue && max !== maxValue) {
+      setMaxValue(maxVal || max);
+      setReGradient(true);
+    }
+  }, [minVal, min, minValue, maxVal, max, maxValue, reGradient]);
+
   if (reGradient) {
     gradient();
     setReGradient(false);
