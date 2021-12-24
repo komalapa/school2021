@@ -1,0 +1,31 @@
+.background-selector__wrp {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+.background-selector__header {
+  width: 100%;
+  text-align: center;
+  font-family: var(--header-font-family);
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+}
+.background-selector__miniature {
+  display: block;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ffffff, inset 0 0 10px #ffffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.background-selector__radio {
+  visibility: hidden;
+}
+
+.background-selector__radio:checked
+  ~ .background-selector__label
+  .background-selector__miniature {
+  box-shadow: 0 0 10px goldenrod, inset 0 0 10px goldenrod;
+}

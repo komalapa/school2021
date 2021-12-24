@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Direction } from "../../types/types";
-import { SortRadioInput } from "../SortRadioInput/SortRadioInput";
+import { RadioInput } from "../RadioInput/RadioInput";
 
 import "./SelectSort.css";
 
@@ -17,49 +17,53 @@ export const SelectSort: FC<SelectSortProps> = (props) => {
   return (
     <div className="sort">
       <h3 className="sort__header">Сортировка</h3>
-      <SortRadioInput
+      <RadioInput
         radioName="sort"
         id="sort-name-up"
-        className="sort__radio"
+        className="sort"
         type="name"
-        direction={Direction.Up}
-        onSort={handleSort}
+        value={Direction.Up}
+        onChoose={handleSort}
+        selected={true}
       >
         Название ↑
-      </SortRadioInput>
+      </RadioInput>
 
-      <SortRadioInput
+      <RadioInput
         radioName="sort"
         id="sort-name-down"
-        className="sort__radio"
+        className="sort"
         type="name"
-        direction={Direction.Down}
-        onSort={handleSort}
+        value={Direction.Down}
+        onChoose={handleSort}
+        selected={false}
       >
         Название ↓
-      </SortRadioInput>
+      </RadioInput>
 
-      <SortRadioInput
+      <RadioInput
         radioName="sort"
         id="sort-year-up"
-        className="sort__radio"
+        className="sort"
         type="year"
-        direction={Direction.Up}
-        onSort={handleSort}
+        value={Direction.Up}
+        onChoose={handleSort}
+        selected={false}
       >
         Год покупки ↑
-      </SortRadioInput>
+      </RadioInput>
 
-      <SortRadioInput
+      <RadioInput
         radioName="sort"
         id="sort-year-down"
-        className="sort__radio"
+        className="sort"
         type="year"
-        direction={Direction.Down}
-        onSort={handleSort}
+        value={Direction.Down}
+        onChoose={handleSort}
+        selected={false}
       >
         Год покупки ↓
-      </SortRadioInput>
+      </RadioInput>
     </div>
   );
 };
