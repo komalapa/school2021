@@ -1,0 +1,123 @@
+.lights {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.lights__top {
+  position: relative;
+  top: calc(-5% - 20px);
+  left: calc(50% - 20px);
+}
+
+.lights__center {
+  position: relative;
+  top: calc(-15% - 50px);
+  left: calc(50% - 30px);
+}
+
+.lights__down {
+  position: relative;
+  top: calc(-25% - 70px);
+  left: calc(50% - 40px);
+}
+.lights__lamp {
+  display: block;
+  width: 5px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.lights__top .lights__lamp {
+  position: absolute;
+  transform-origin: 20px 50px;
+}
+.lights__center .lights__lamp {
+  position: absolute;
+  transform-origin: 30px 70px;
+}
+
+.lights__down .lights__lamp {
+  position: absolute;
+  transform-origin: 40px 90px;
+}
+.lights__lamp-white {
+  animation: flash-white 2s infinite;
+}
+
+.lights__lamp-red {
+  animation: flash-red 1.2s infinite;
+}
+
+.lights__lamp-green {
+  animation: flash-green 1.4s infinite;
+}
+.lights__lamp-blue {
+  animation: flash-blue 1.6s infinite;
+}
+.lights__lamp-yellow {
+  animation: flash-yellow 1.8s infinite;
+}
+
+@keyframes flash-red {
+  0%,
+  100% {
+    background: rgba(255, 0, 0, 1);
+    box-shadow: 0 0 15px red;
+  }
+  50% {
+    background: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 1px red;
+  }
+}
+
+@keyframes flash-green {
+  0%,
+  100% {
+    background: rgba(173, 255, 47, 1);
+    box-shadow: 0 0 15px greenyellow;
+  }
+  50% {
+    background: rgba(173, 255, 47, 0.3);
+    box-shadow: 0 0 1px greenyellow;
+  }
+}
+
+@keyframes flash-blue {
+  0%,
+  100% {
+    background: rgba(0, 0, 255, 1);
+    box-shadow: 0 0 15px blue;
+  }
+  50% {
+    background: rgba(0, 0, 255, 0.3);
+    box-shadow: 0 0 1px blue;
+  }
+}
+
+@keyframes flash-white {
+  0%,
+  100% {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 15px white;
+  }
+  50% {
+    background: rgba(173, 255, 47, 0.3);
+    box-shadow: 0 0 1px white;
+  }
+}
+
+@keyframes flash-yellow {
+  0%,
+  100% {
+    background: rgba(218, 165, 32, 1);
+    box-shadow: 0 0 15px goldenrod;
+  }
+  50% {
+    background: rgba(218, 165, 32, 0.3);
+    box-shadow: 0 0 1px goldenrod;
+  }
+}

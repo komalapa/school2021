@@ -6,10 +6,11 @@ import "./ColorFilter.css";
 type ColorFilterContainerProps = {
   toggleFilter: CallableFunction;
   checked: Colors[];
+  header?: string;
 };
 
 export const ColorFilter: FC<ColorFilterContainerProps> = (props) => {
-  const { toggleFilter, checked } = props;
+  const { toggleFilter, checked, header } = props;
 
   const handleFilter = (filterName, filterValue) => {
     toggleFilter(filterName, filterValue);
@@ -17,7 +18,7 @@ export const ColorFilter: FC<ColorFilterContainerProps> = (props) => {
 
   return (
     <div className="color-filter">
-      <h3 className="color-filter__header">Цвет</h3>
+      <h3 className="color-filter__header">{header || "Цвет"}</h3>
       <FilterCheckInput
         className="color-filter"
         onToggleFilter={handleFilter}

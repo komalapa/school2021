@@ -1,8 +1,12 @@
 .main-tree__container {
-  width: 1100px;
-  height: 980px;
+  width: 50vw;
+  height: 45vw;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 20px;
   box-shadow: 0 0 10px #ffffff, inset 0 0 10px #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: background-image 0.3s;
 }
