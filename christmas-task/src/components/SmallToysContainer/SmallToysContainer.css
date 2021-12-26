@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  height: 350px;
+  min-height: 350px;
   gap: 10px;
   justify-content: flex-start;
   padding: 10px;

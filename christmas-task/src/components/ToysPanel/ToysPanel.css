@@ -30,3 +30,15 @@
 .snow-button__off {
   opacity: 0.7;
 }
+.ls__clear {
+  display: block;
+  margin-top: 40px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: var(--text-font-family);
+}
+
+.ls__clear:hover {
+  transform: scale(1.1);
+}

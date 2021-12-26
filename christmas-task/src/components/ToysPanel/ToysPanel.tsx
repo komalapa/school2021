@@ -17,6 +17,9 @@ interface ToysPanelProps {
 }
 export const ToysPanel: FC<ToysPanelProps> = (props) => {
   const { toys, onTakeToy, isSnow, toggleSnow, isMusic, toggleMusic } = props;
+  function handleClear() {
+    localStorage.clear();
+  }
   return (
     <div className="toys-panel">
       <SnowIcon
@@ -35,6 +38,9 @@ export const ToysPanel: FC<ToysPanelProps> = (props) => {
         toys={toys}
         onTakeToy={onTakeToy}
       ></SmallToysContainer>
+      <span className="ls__clear" onClick={handleClear}>
+        Удалить сохраненные настройки
+      </span>
     </div>
   );
 };
