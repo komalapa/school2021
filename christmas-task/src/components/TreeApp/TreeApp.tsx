@@ -5,6 +5,8 @@ import { MainTreeContainer } from "../MainTreeContainer/MainTreeContainer";
 import { SmallToysContainer } from "../SmallToysContainer/SmallToysContainer";
 import { TreePanel } from "../TreePanel/TreePannel";
 
+import { data } from "../../data";
+
 import "./TreeApp.css";
 
 interface TreeAppProps {
@@ -13,6 +15,12 @@ interface TreeAppProps {
 const TreeApp: FC<TreeAppProps> = (props) => {
   const { favorites } = props;
 
+  if (favorites.length === 0) {
+    for (let i = 0; i < 20; i++) {
+      const toy = new Toy(data[i]);
+      favorites.push(toy);
+    }
+  }
   const [toys, setToys] = useState<Toy[]>([]);
 
   useEffect(() => {
@@ -45,12 +53,9 @@ const TreeApp: FC<TreeAppProps> = (props) => {
       let curLights = [...lights];
       curLights.splice(index, 1);
       setLights(curLights);
-      // setIsFiltered(false);
     } else {
       setLights([...lights, value]);
-      // setIsFiltered(false);
     }
-    // setIsFiltered(false);
   }
   function handleTake(toy) {
     // toy.count--;
