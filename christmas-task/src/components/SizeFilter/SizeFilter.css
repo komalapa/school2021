@@ -8,7 +8,7 @@
 
 .size-filter__header {
   width: 100%;
-  text-align: left;
+  text-align: center;
   font-family: var(--header-font-family);
   font-size: 18px;
   line-height: 20px;

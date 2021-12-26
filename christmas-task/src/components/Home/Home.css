@@ -10,7 +10,13 @@
   font-weight: bold;
   color: white;
   text-align: center;
-  margin: 40px;
+  padding: 20px 0;
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    rgba(0, 0, 0, 0.7),
+    transparent
+  );
 }
 .home__button {
   display: block;
@@ -25,4 +31,9 @@
   border-radius: 20px;
   box-shadow: 0 0 15px white, inset 0 0 5px white;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.home__button:hover {
+  transform: scale(1.1);
 }
