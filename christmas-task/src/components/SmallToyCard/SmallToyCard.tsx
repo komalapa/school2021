@@ -26,6 +26,7 @@ export const SmallToyCard: FC<SmallToyCardProps> = (props) => {
       alt="игрушка"
       src={image.src}
       onDragStart={handleDragStart}
+      data-id={toy.id}
     />
   );
 
@@ -35,10 +36,10 @@ export const SmallToyCard: FC<SmallToyCardProps> = (props) => {
       return;
     }
     console.log(e);
+    e.dataTransfer.setData("id", `${toy.id}`);
     e.dataTransfer.setData("toyId", `toy-${toy.id}`);
     e.dataTransfer.setData("toySrc", e.target.src);
     e.dataTransfer.setData("count", toy.count);
-    onTake(toy);
   }
 
   return (

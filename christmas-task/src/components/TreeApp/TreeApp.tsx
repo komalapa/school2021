@@ -41,9 +41,12 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   const [isMusic, setIsMusic] = useToggle(
     JSON.parse(localStorage.getItem("komalapa-christmas-music"))
   );
-
   useEffect(() => {
     setToys(favorites);
+    // window.addEventListener("dragover", (e) => {
+    //   const target = e.target as HTMLElement;
+    //   target.parentNode?.removeChild(target);
+    // });
   }, [favorites]);
 
   const [backgroundNumber, setBackgoundNumber] = useState<number>(
@@ -87,6 +90,13 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     setToys(curToys);
   }
 
+  function handleTakeById(id, success = true) {
+    const index = toys.indexOf(toys.find((toy) => toy.id === id));
+    const curToys = [...toys];
+    success ? curToys[index].count-- : curToys[index].count++;
+    setToys(curToys);
+  }
+
   function handleLS() {
     localStorage.setItem("komalapa-christmas-snow", isSnow);
     localStorage.setItem("komalapa-christmas-music", isMusic);
@@ -102,6 +112,7 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   console.log(isMusic);
   const audio = document.querySelector(".audio") as HTMLAudioElement;
   if (isMusic && audio) audio.play();
+
   return (
     <div className="tree-app">
       <TreePanel
@@ -117,11 +128,12 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         treeUrl={getTreeUrl(treeNumber)}
         lights={lights}
         isSnow={isSnow}
+        onTakeToy={handleTakeById}
       />
       {/* <SmallToysContainer toys={favorites} onTakeToy={handleTake} /> */}
       <ToysPanel
         toys={favorites}
-        onTakeToy={handleTake}
+        onTakeToy={handleTakeById}
         isSnow={isSnow}
         toggleSnow={setIsSnow}
         isMusic={isMusic}

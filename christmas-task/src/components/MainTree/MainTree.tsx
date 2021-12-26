@@ -5,18 +5,27 @@ import "./MainTree.css";
 interface MainTreeProps {
   treeUrl: string;
   lights: Colors[];
+  onTakeToy: CallableFunction;
 }
 export const MainTree: FC<MainTreeProps> = (props) => {
-  const { treeUrl, lights } = props;
+  const { treeUrl, lights, onTakeToy } = props;
 
   function handleDragStart(e) {
     console.log(e);
     e.dataTransfer.setData("toyId", e.target.id);
     e.dataTransfer.setData("toySrc", e.target.src);
+    console.log(e.target.getAttribute("data-id"));
+    e.dataTransfer.setData("id", e.target.getAttribute("data-id"));
+    onTakeToy(+e.target.getAttribute("data-id"), false);
+    // e.target.onDragEnd = (e) => {
+    //   const target = e.target as HTMLElement;
+    //   target.parentNode.removeChild(target);
+    // };
   }
 
   function handleOverDrop(e) {
     e.preventDefault();
+    e.stopPropagation();
     if (e.type !== "drop") {
       return;
     }
@@ -31,10 +40,14 @@ export const MainTree: FC<MainTreeProps> = (props) => {
     toy.style.position = "absolute";
     toy.style.top = e.nativeEvent.layerY + "px";
     toy.style.left = e.nativeEvent.layerX - 25 + "px";
+    toy.setAttribute("data-id", e.dataTransfer.getData("id"));
     if (toyImg.parentNode === e.target) toyImg.parentNode.removeChild(toyImg);
     e.target.appendChild(toy);
     // toy.draggable = false;
     toy.ondragstart = handleDragStart;
+    console.log(e);
+    if (e.dataTransfer.getData("id"))
+      onTakeToy(+e.dataTransfer.getData("id"), true);
   }
 
   return (

@@ -10,9 +10,10 @@ interface MainTreeContainerProps {
   treeUrl: string;
   lights: Colors[];
   isSnow: boolean;
+  onTakeToy: CallableFunction;
 }
 export const MainTreeContainer: FC<MainTreeContainerProps> = (props) => {
-  const { backgroundUrl, treeUrl, lights, isSnow } = props;
+  const { backgroundUrl, treeUrl, lights, isSnow, onTakeToy } = props;
   // console.log(backgroundUrl);
   const flakesCount = 30;
   const snow = [];
@@ -27,21 +28,17 @@ export const MainTreeContainer: FC<MainTreeContainerProps> = (props) => {
       />
     );
   }
-  // const snow = Array(30).fill(
-
-  // );
-  // snow.forEach((el) => {
-  //   console.log(el);
-  //   el.
-  // });
-  console.log(snow);
   return (
     <div
       className="main-tree__container"
       style={{ backgroundImage: `url(${backgroundUrl}` }}
     >
       {isSnow && <div className="snowflakes-container">{snow}</div>}
-      <MainTree treeUrl={treeUrl} lights={lights}></MainTree>
+      <MainTree
+        treeUrl={treeUrl}
+        lights={lights}
+        onTakeToy={onTakeToy}
+      ></MainTree>
     </div>
   );
 };
