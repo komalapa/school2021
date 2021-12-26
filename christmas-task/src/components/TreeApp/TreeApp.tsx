@@ -109,12 +109,32 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   }
   // console.log(getBackgroundUrl(backgroundNumber));
   handleLS();
-  console.log(isMusic);
+  // console.log(isMusic);
   const audio = document.querySelector(".audio") as HTMLAudioElement;
   if (isMusic && audio) audio.play();
 
+  function handleOverDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type !== "drop") {
+      return;
+    }
+    console.log(e);
+    const toyId = e.dataTransfer.getData("toyId");
+    const toyImg = document.getElementById(toyId);
+    const parent = toyImg.parentNode as HTMLElement;
+    // console.log("parent", parent.className);
+    //if (toyImg.parentNode === e.target) toyImg.parentNode.removeChild(toyImg);
+    if (parent.className === "lights") toyImg.parentNode.removeChild(toyImg);
+    // handleTakeById(+e.dataTransfer.getData("id"), false);
+  }
+
   return (
-    <div className="tree-app">
+    <div
+      className="tree-app"
+      onDragOver={handleOverDrop}
+      onDrop={handleOverDrop}
+    >
       <TreePanel
         setBackground={handleBackground}
         setTree={handleTree}

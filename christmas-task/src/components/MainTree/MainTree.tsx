@@ -41,7 +41,11 @@ export const MainTree: FC<MainTreeProps> = (props) => {
     toy.style.top = e.nativeEvent.layerY + "px";
     toy.style.left = e.nativeEvent.layerX - 25 + "px";
     toy.setAttribute("data-id", e.dataTransfer.getData("id"));
-    if (toyImg.parentNode === e.target) toyImg.parentNode.removeChild(toyImg);
+    const parent = toyImg.parentNode as HTMLElement;
+    console.log("parent", parent.className);
+    //if (toyImg.parentNode === e.target) toyImg.parentNode.removeChild(toyImg);
+    if (parent.className === "lights") toyImg.parentNode.removeChild(toyImg);
+
     e.target.appendChild(toy);
     // toy.draggable = false;
     toy.ondragstart = handleDragStart;
