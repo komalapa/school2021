@@ -1,0 +1,41 @@
+.small-toy-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+  background: radial-gradient(
+    109.56% 109.56% at 0% -2.94%,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(179, 246, 255, 0.5) 100%
+  );
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  font-family: var(--text-font-family);
+  color: var(--white-text);
+  text-align: left;
+}
+.small-toy-card__image {
+  max-width: 60px;
+  max-height: 60px;
+}
+.small-toy-card__count {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  line-height: 20px;
+  text-align: center;
+  color: white;
+  background-color: #24c5db;
+}
+
+.small-toy-card__image:hover {
+  transform: scale(1.1);
+}

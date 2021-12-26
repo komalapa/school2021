@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import { Colors } from "../../types/types";
 import { MainTreeContainer } from "../MainTreeContainer/MainTreeContainer";
+import { SmallToysContainer } from "../SmallToysContainer/SmallToysContainer";
 import { TreePanel } from "../TreePanel/TreePannel";
 
 import "./TreeApp.css";
@@ -51,7 +52,9 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     }
     // setIsFiltered(false);
   }
-
+  function handleTake(toy) {
+    console.log(toy);
+  }
   console.log(getBackgroundUrl(backgroundNumber));
 
   return (
@@ -69,6 +72,7 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         treeUrl={getTreeUrl(treeNumber)}
         lights={lights}
       />
+      <SmallToysContainer toys={favorites} onTakeToy={handleTake} />
     </div>
   );
 };
