@@ -14,6 +14,17 @@ import { ToysPanel } from "../ToysPanel/ToysPanel";
 interface TreeAppProps {
   favorites: Toy[];
 }
+function keyInEnum(e: any, value: string): string {
+  let keys = Object.keys(e).filter((x) => e[x] === value);
+  return keys.length > 0 ? keys[0] : "";
+}
+function getColorsFromLS(): Colors[] | false {
+  const colorsLS = JSON.parse(
+    localStorage.getItem("komalapa-christmas-lights")
+  );
+  if (!colorsLS) return false;
+  return colorsLS.map((color) => Colors[keyInEnum(Colors, color)]);
+}
 const TreeApp: FC<TreeAppProps> = (props) => {
   const { favorites } = props;
 
@@ -24,20 +35,26 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     }
   }
   const [toys, setToys] = useState<Toy[]>([]);
-  const [isSnow, setIsSnow] = useToggle(false);
-  const [isMusic, setIsMusic] = useToggle(false);
+  const [isSnow, setIsSnow] = useToggle(
+    JSON.parse(localStorage.getItem("komalapa-christmas-snow"))
+  );
+  const [isMusic, setIsMusic] = useToggle(
+    JSON.parse(localStorage.getItem("komalapa-christmas-music"))
+  );
 
   useEffect(() => {
     setToys(favorites);
   }, [favorites]);
 
-  const [backgroundNumber, setBackgoundNumber] = useState<number>(1);
-  const [treeNumber, setTreeNumber] = useState<number>(1);
-  const [lights, setLights] = useState<Colors[]>([
-    Colors.White,
-    Colors.Red,
-    Colors.Blue,
-  ]);
+  const [backgroundNumber, setBackgoundNumber] = useState<number>(
+    +localStorage.getItem("komalapa-christmas-background") || 1
+  );
+  const [treeNumber, setTreeNumber] = useState<number>(
+    +localStorage.getItem("komalapa-christmas-tree") || 1
+  );
+  const [lights, setLights] = useState<Colors[]>(
+    getColorsFromLS() || [Colors.White, Colors.Red, Colors.Blue]
+  );
 
   const getBackgroundUrl = (number: number): string =>
     `../../assets/bg/${number}.jpg`;
@@ -69,8 +86,22 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     curToys[index].count--;
     setToys(curToys);
   }
-  // console.log(getBackgroundUrl(backgroundNumber));
 
+  function handleLS() {
+    localStorage.setItem("komalapa-christmas-snow", isSnow);
+    localStorage.setItem("komalapa-christmas-music", isMusic);
+    localStorage.setItem("komalapa-christmas-lights", JSON.stringify(lights));
+    localStorage.setItem(
+      "komalapa-christmas-background",
+      backgroundNumber.toFixed(0)
+    );
+    localStorage.setItem("komalapa-christmas-tree", treeNumber.toFixed(0));
+  }
+  // console.log(getBackgroundUrl(backgroundNumber));
+  handleLS();
+  console.log(isMusic);
+  const audio = document.querySelector(".audio") as HTMLAudioElement;
+  if (isMusic && audio) audio.play();
   return (
     <div className="tree-app">
       <TreePanel
@@ -96,6 +127,12 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         isMusic={isMusic}
         toggleMusic={setIsMusic}
       />
+      <audio
+        className="audio"
+        src="assets/audio/audio.mp3"
+        muted={!isMusic}
+        autoPlay={true}
+      ></audio>
     </div>
   );
 };
