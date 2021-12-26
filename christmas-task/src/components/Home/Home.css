@@ -1,0 +1,28 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+}
+.home__title {
+  font-family: var(--header-font-family);
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin: 40px;
+}
+.home__button {
+  display: block;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: var(--text-font-family);
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  padding: 20px 40px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 0 15px white, inset 0 0 5px white;
+  text-decoration: none;
+}

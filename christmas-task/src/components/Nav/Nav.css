@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 40px;
+}
+
+.nav__link {
+  font-family: var(--header-font-family);
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  fill: white;
+  text-decoration: none;
+}
+
+.nav__icon {
+  height: 30px;
+  width: 30px;
+}
+
+.nav__link,
+.nav__icon {
+  transition: color 0.3s, fill 0.3s;
+}
+
+.nav__icon:hover,
+.nav__link:hover {
+  color: goldenrod;
+  fill: goldenrod;
+}
