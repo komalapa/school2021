@@ -1,4 +1,5 @@
 .main-tree__container {
+  position: relative;
   width: 50vw;
   height: 45vw;
   background-size: cover;
@@ -9,4 +10,57 @@
   justify-content: center;
   align-items: flex-end;
   transition: background-image 0.3s;
+}
+
+.snowflakes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+.snowflake {
+  position: absolute;
+  z-index: 5;
+  top: -20px;
+  pointer-events: none;
+  width: 10px;
+  height: 10px;
+  fill: white;
+  transform-origin: 50px 50px;
+  transform: rotate(90);
+}
+
+.snowflake:nth-child(1n) {
+  animation: falling 3s ease-out infinite;
+}
+
+.snowflake:nth-child(2n) {
+  animation: falling 5s ease-out infinite, rotate 5s linear infinite;
+}
+
+.snowflake:nth-child(3n) {
+  animation: falling 4s ease-out infinite;
+}
+.snowflake:nth-child(7n) {
+  width: 20px;
+  height: 20px;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes falling {
+  0% {
+    top: -10px;
+  }
+  100% {
+    top: 100%;
+  }
 }

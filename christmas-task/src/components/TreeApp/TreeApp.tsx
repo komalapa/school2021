@@ -8,6 +8,8 @@ import { TreePanel } from "../TreePanel/TreePannel";
 import { data } from "../../data";
 
 import "./TreeApp.css";
+import { useToggle } from "../shared/hooks/useToggle";
+import { ToysPanel } from "../ToysPanel/ToysPanel";
 
 interface TreeAppProps {
   favorites: Toy[];
@@ -22,6 +24,8 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     }
   }
   const [toys, setToys] = useState<Toy[]>([]);
+  const [isSnow, setIsSnow] = useToggle(false);
+  const [isMusic, setIsMusic] = useToggle(false);
 
   useEffect(() => {
     setToys(favorites);
@@ -81,8 +85,17 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         backgroundUrl={getBackgroundUrl(backgroundNumber)}
         treeUrl={getTreeUrl(treeNumber)}
         lights={lights}
+        isSnow={isSnow}
       />
-      <SmallToysContainer toys={favorites} onTakeToy={handleTake} />
+      {/* <SmallToysContainer toys={favorites} onTakeToy={handleTake} /> */}
+      <ToysPanel
+        toys={favorites}
+        onTakeToy={handleTake}
+        isSnow={isSnow}
+        toggleSnow={setIsSnow}
+        isMusic={isMusic}
+        toggleMusic={setIsMusic}
+      />
     </div>
   );
 };

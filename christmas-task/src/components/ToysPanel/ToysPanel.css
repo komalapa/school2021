@@ -1,0 +1,32 @@
+.toys-panel {
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.snow-button,
+.music-button {
+  width: 50px;
+  height: 50px;
+  fill: white;
+  margin: 10px;
+}
+.snow-button:hover,
+.music-button:hover {
+  transform: scale(1.1);
+}
+.snow-button__on {
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.music-button__off,
+.snow-button__off {
+  opacity: 0.7;
+}
