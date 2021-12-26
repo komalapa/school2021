@@ -9,7 +9,7 @@ interface MainTreeContainerProps {
 }
 export const MainTreeContainer: FC<MainTreeContainerProps> = (props) => {
   const { backgroundUrl, treeUrl, lights } = props;
-  console.log(backgroundUrl);
+  // console.log(backgroundUrl);
   return (
     <div
       className="main-tree__container"

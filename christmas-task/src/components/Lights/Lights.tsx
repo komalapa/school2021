@@ -14,7 +14,7 @@ export const Lights: FC<LightsProps> = (props) => {
   const { colors } = props;
   if (colors !== null) {
     const lightsSection = colors.map((color, id) => {
-      console.log(keyInEnum(Colors, color));
+      // console.log(keyInEnum(Colors, color));
       return (
         <span
           key={id}
@@ -51,7 +51,7 @@ export const Lights: FC<LightsProps> = (props) => {
           colors[i % colors.length],
           `${key}-lamp-`
         );
-        console.log(lamp);
+        // console.log(lamp);
         line.push(lamp);
       }
       return line;

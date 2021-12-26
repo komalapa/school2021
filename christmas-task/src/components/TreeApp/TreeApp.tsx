@@ -53,9 +53,14 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     // setIsFiltered(false);
   }
   function handleTake(toy) {
-    console.log(toy);
+    // toy.count--;
+    // console.log(toy);
+    const index = toys.indexOf(toy);
+    const curToys = [...toys];
+    curToys[index].count--;
+    setToys(curToys);
   }
-  console.log(getBackgroundUrl(backgroundNumber));
+  // console.log(getBackgroundUrl(backgroundNumber));
 
   return (
     <div className="tree-app">
