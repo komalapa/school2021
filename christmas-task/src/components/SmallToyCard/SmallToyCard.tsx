@@ -21,7 +21,9 @@ export const SmallToyCard: FC<SmallToyCardProps> = (props) => {
 
   const toyImg = (
     <img
-      className="small-toy-card__image"
+      className={`small-toy-card__image ${
+        toy.count === 0 ? "small-toy-card__image-empty" : ""
+      }`}
       id={`toy-${toy.id}`}
       alt="игрушка"
       src={image.src}

@@ -39,3 +39,8 @@
 .small-toy-card__image:hover {
   transform: scale(1.1);
 }
+
+.small-toy-card__image-empty {
+  opacity: 0.3;
+  pointer-events: none;
+}
