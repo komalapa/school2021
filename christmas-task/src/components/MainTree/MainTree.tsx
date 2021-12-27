@@ -26,6 +26,7 @@ export const MainTree: FC<MainTreeProps> = (props) => {
   function handleOverDrop(e) {
     e.preventDefault();
     e.stopPropagation();
+    console.log(e);
     if (e.type !== "drop") {
       return;
     }
@@ -33,7 +34,7 @@ export const MainTree: FC<MainTreeProps> = (props) => {
     const toyId = e.dataTransfer.getData("toyId");
     const toyImg = document.getElementById(toyId);
     const toy = document.createElement("img");
-    console.log(toyId);
+    // console.log(e);
     toy.className = toyImg.className;
     toy.id = toyId + "-" + e.dataTransfer.getData("count");
     toy.src = e.dataTransfer.getData("toySrc");
@@ -44,9 +45,9 @@ export const MainTree: FC<MainTreeProps> = (props) => {
     const parent = toyImg.parentNode as HTMLElement;
     console.log("parent", parent.className);
     //if (toyImg.parentNode === e.target) toyImg.parentNode.removeChild(toyImg);
-    if (parent.className === "lights") toyImg.parentNode.removeChild(toyImg);
-
-    e.target.appendChild(toy);
+    if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
+    document.querySelector(".toys-area").appendChild(toy);
+    // e.target.appendChild(toy);
     // toy.draggable = false;
     toy.ondragstart = handleDragStart;
     console.log(e);
@@ -55,12 +56,19 @@ export const MainTree: FC<MainTreeProps> = (props) => {
   }
 
   return (
-    <div
-      className="main-tree__wrp"
-      onDrop={handleOverDrop}
-      onDragOver={handleOverDrop}
-    >
-      <img className="main-tree" src={treeUrl} alt="main tree" />
+    <div className="main-tree__wrp">
+      <map name="map" onDrop={handleOverDrop} onDragOver={handleOverDrop}>
+        <area
+          target="_self"
+          alt="map"
+          title="map"
+          href=""
+          coords="247,2,5,568,9,662,472,668,494,581"
+          shape="poly"
+          className="toys-area"
+        />
+      </map>
+      <img className="main-tree" src={treeUrl} alt="main tree" useMap="#map" />
       <Lights colors={lights}></Lights>
     </div>
   );

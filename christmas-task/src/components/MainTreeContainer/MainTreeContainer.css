@@ -1,7 +1,7 @@
 .main-tree__container {
   position: relative;
-  width: 50vw;
-  height: 45vw;
+  min-width: 50vw;
+  min-height: 45vw;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 20px;

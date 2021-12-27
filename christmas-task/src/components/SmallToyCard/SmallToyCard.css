@@ -21,6 +21,7 @@
 .small-toy-card__image {
   max-width: 60px;
   max-height: 60px;
+  z-index: 20;
 }
 .small-toy-card__count {
   position: absolute;

@@ -125,7 +125,9 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     const parent = toyImg.parentNode as HTMLElement;
     // console.log("parent", parent.className);
     //if (toyImg.parentNode === e.target) toyImg.parentNode.removeChild(toyImg);
-    if (parent.className === "lights") toyImg.parentNode.removeChild(toyImg);
+    if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
+    // if (parent.className === "main-tree__wrp")
+    //   toyImg.parentNode.removeChild(toyImg);
     // handleTakeById(+e.dataTransfer.getData("id"), false);
   }
 
