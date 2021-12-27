@@ -8,8 +8,28 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import "./App.css";
 import { Nav } from "./components/Nav/Nav";
+import data from "./data";
+
+const toys: Toy[] = data.map((item) => new Toy(item));
+
+const initialFavorites = () => {
+  const favoritesString = localStorage.getItem("komalapaChristmasFavorites");
+  let lsFavorites;
+  if (favoritesString) lsFavorites = JSON.parse(favoritesString);
+  if (lsFavorites) {
+    lsFavorites = lsFavorites
+      .filter((toy) => toy)
+      .map((fav) => toys.find((toy: Toy) => fav.id === toy.id));
+    lsFavorites.forEach((toy: Toy) => {
+      toy.isFavorite = true;
+    });
+    return lsFavorites;
+  }
+  return [];
+};
+
 const App: FC = () => {
-  const [favorites, setFavorites] = useState<Toy[]>([]);
+  const [favorites, setFavorites] = useState<Toy[]>(initialFavorites);
   function handleFavorites(favs: Toy[]) {
     setFavorites(favs);
   }
