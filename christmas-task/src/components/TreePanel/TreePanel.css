@@ -2,7 +2,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 50px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
   .tree-panel {
     width: 100%;
     display: flex;
