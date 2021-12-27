@@ -14,7 +14,6 @@ interface MainTreeContainerProps {
 }
 export const MainTreeContainer: FC<MainTreeContainerProps> = (props) => {
   const { backgroundUrl, treeUrl, lights, isSnow, onTakeToy } = props;
-  // console.log(backgroundUrl);
   const flakesCount = 30;
   const snow = [];
   for (let i = 0; i < flakesCount; i++) {

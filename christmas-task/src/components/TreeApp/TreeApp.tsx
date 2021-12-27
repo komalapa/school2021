@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import { Colors } from "../../types/types";
 import { MainTreeContainer } from "../MainTreeContainer/MainTreeContainer";
-import { SmallToysContainer } from "../SmallToysContainer/SmallToysContainer";
 import { TreePanel } from "../TreePanel/TreePannel";
 
 import { data } from "../../data";
@@ -43,10 +42,6 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   );
   useEffect(() => {
     setToys(favorites);
-    // window.addEventListener("dragover", (e) => {
-    //   const target = e.target as HTMLElement;
-    //   target.parentNode?.removeChild(target);
-    // });
   }, [favorites]);
 
   const [backgroundNumber, setBackgoundNumber] = useState<number>(
@@ -81,14 +76,6 @@ const TreeApp: FC<TreeAppProps> = (props) => {
       setLights([...lights, value]);
     }
   }
-  function handleTake(toy) {
-    // toy.count--;
-    // console.log(toy);
-    const index = toys.indexOf(toy);
-    const curToys = [...toys];
-    curToys[index].count--;
-    setToys(curToys);
-  }
 
   function handleTakeById(id, success = true) {
     const index = toys.indexOf(toys.find((toy) => toy.id === id));
@@ -107,9 +94,7 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     );
     localStorage.setItem("komalapa-christmas-tree", treeNumber.toFixed(0));
   }
-  // console.log(getBackgroundUrl(backgroundNumber));
   handleLS();
-  // console.log(isMusic);
   const audio = document.querySelector(".audio") as HTMLAudioElement;
   if (isMusic && audio) audio.play();
 
@@ -119,16 +104,10 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     if (e.type !== "drop") {
       return;
     }
-    console.log(e);
     const toyId = e.dataTransfer.getData("toyId");
     const toyImg = document.getElementById(toyId);
     const parent = toyImg.parentNode as HTMLElement;
-    // console.log("parent", parent.className);
-    //if (toyImg.parentNode === e.target) toyImg.parentNode.removeChild(toyImg);
     if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
-    // if (parent.className === "main-tree__wrp")
-    //   toyImg.parentNode.removeChild(toyImg);
-    // handleTakeById(+e.dataTransfer.getData("id"), false);
   }
 
   return (

@@ -27,7 +27,6 @@ export const RadioInput: FC<RadioInputProps> = (props) => {
     onChoose(hType, hDirection);
   }
 
-  // Can't use name for input name={name}
   return (
     <div>
       <input

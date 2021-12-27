@@ -11,7 +11,6 @@ import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg
 import "./FiltersContainer.css";
 import { SelectSort } from "../SelectSort/SelectSort";
 import { Search } from "../Search/Search";
-import { Footer } from "../Footer/Footer";
 import { useToggle } from "../shared/hooks/useToggle";
 
 type FiltersContainerProps = {

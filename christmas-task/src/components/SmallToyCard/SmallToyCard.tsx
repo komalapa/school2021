@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { Toy } from "../../types/toys/toy";
-import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
 import "./SmallToyCard.css";
 import "../../main.css";
@@ -11,7 +10,7 @@ type SmallToyCardProps = {
 };
 
 export const SmallToyCard: FC<SmallToyCardProps> = (props) => {
-  const { toy, onTake } = props;
+  const { toy } = props;
   const [isLoaded, setIsLoaded] = useState(false);
 
   const path: string = `/assets/toys/${toy.id}.png`;
@@ -37,7 +36,6 @@ export const SmallToyCard: FC<SmallToyCardProps> = (props) => {
       e.preventDefault();
       return;
     }
-    console.log(e);
     e.dataTransfer.setData("id", `${toy.id}`);
     e.dataTransfer.setData("toyId", `toy-${toy.id}`);
     e.dataTransfer.setData("toySrc", e.target.src);

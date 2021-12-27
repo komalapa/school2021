@@ -13,19 +13,6 @@ interface LightsProps {
 export const Lights: FC<LightsProps> = (props) => {
   const { colors } = props;
   if (colors !== null) {
-    const lightsSection = colors.map((color, id) => {
-      // console.log(keyInEnum(Colors, color));
-      return (
-        <span
-          key={id}
-          className={`lights__lamp lights__lamp-${keyInEnum(
-            Colors,
-            color
-          ).toLowerCase()}`}
-        />
-      );
-    });
-
     const getLamp = (i: number, length: number, color: Colors, key: string) => {
       const angle = (i * 145) / length + 145;
       return (
@@ -51,7 +38,6 @@ export const Lights: FC<LightsProps> = (props) => {
           colors[i % colors.length],
           `${key}-lamp-`
         );
-        // console.log(lamp);
         line.push(lamp);
       }
       return line;

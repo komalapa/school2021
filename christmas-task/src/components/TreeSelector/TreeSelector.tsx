@@ -1,5 +1,4 @@
 import { FC } from "react";
-// import { Direction } from "../../types/types";
 import { RadioInput } from "../RadioInput/RadioInput";
 
 import "../../main.css";
@@ -17,7 +16,6 @@ export const TreeSelector: FC<TreeSelectorProps> = (props) => {
     setupTree(value);
   }
   return (
-    //TODO cycle for gen radio
     <div className="tree-selector">
       <h3 className="tree-selector__header">Ёлочки</h3>
       <div className="tree-selector__wrp">
