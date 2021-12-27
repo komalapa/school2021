@@ -37,13 +37,35 @@ export const MainTree: FC<MainTreeProps> = (props) => {
     if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
     document.querySelector(".toys-area").appendChild(toy);
     toy.ondragstart = handleDragStart;
+    toy.ondrop = handleDenyOverDrop;
+    toy.ondragover = handleDenyOverDrop;
     if (e.dataTransfer.getData("id"))
       onTakeToy(+e.dataTransfer.getData("id"), true);
   }
 
+  function handleDenyOverDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type !== "drop") {
+      return;
+    }
+    console.log("drop");
+    const toyId = e.dataTransfer.getData("toyId");
+    const toyImg = document.getElementById(toyId);
+    const parent = toyImg.parentNode as HTMLElement;
+    if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
+  }
+
   return (
     <div className="main-tree__wrp">
-      <map name="map" onDrop={handleOverDrop} onDragOver={handleOverDrop}>
+      <map
+        name="map"
+        onDrop={handleOverDrop}
+        onDragOver={handleOverDrop}
+        onClick={(e) => {
+          e.preventDefault();
+        }}
+      >
         <area
           target="_self"
           alt="map"
