@@ -23,7 +23,7 @@ export const Lights: FC<LightsProps> = (props) => {
             color
           ).toLowerCase()}`}
           style={{
-            transform: `rotate(${angle}deg)`,
+            transform: `rotate(${angle}deg)`
           }}
         />
       );
@@ -53,7 +53,7 @@ export const Lights: FC<LightsProps> = (props) => {
     const lineDown = getLine(colors, downLineLength, "down");
 
     return (
-      <div className="lights">
+      <div className={`lights ${colors.length === 1 && "lights__monocolor"}`}>
         <div className="lights__top">{lineTop}</div>
         <div className="lights__top-center">{lineTopCenter}</div>
         <div className="lights__center">{lineCenter}</div>

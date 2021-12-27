@@ -29,6 +29,9 @@
   top: calc(-25% - 160px);
   left: calc(50% - 110px);
 }
+.lights__monocolor .lights__lamp:nth-child(2n) {
+  animation-delay: 0.5s;
+}
 .lights__lamp {
   display: block;
   width: 5px;
