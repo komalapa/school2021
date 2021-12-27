@@ -9,6 +9,7 @@ import { data } from "../../data";
 import "./TreeApp.css";
 import { useToggle } from "../shared/hooks/useToggle";
 import { ToysPanel } from "../ToysPanel/ToysPanel";
+import { Footer } from "../Footer/Footer";
 
 interface TreeAppProps {
   favorites: Toy[];
@@ -145,7 +146,9 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         src="assets/audio/audio.mp3"
         muted={!isMusic}
         autoPlay={true}
+        loop={true}
       ></audio>
+      <Footer />
     </div>
   );
 };

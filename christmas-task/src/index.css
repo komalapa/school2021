@@ -20,6 +20,9 @@ body {
   min-height: 100vh;
   background-color: indigo;
   background-image: var(--background);
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 #root {

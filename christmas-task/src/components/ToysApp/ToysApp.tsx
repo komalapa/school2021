@@ -7,13 +7,14 @@ import {
   Shapes,
   Size,
   Sort,
-  SpanFilters,
+  SpanFilters
 } from "../../types/types";
 import { data } from "../../data";
 import { FiltersContainter } from "../FiltersContainer/FiltersContainer";
 import { ToysContainter } from "../ToysContainer/ToysContainer";
 
 import "./ToysApp.css";
+import { Footer } from "../Footer/Footer";
 
 interface ToysAppProps {
   favorites: Toy[];
@@ -40,9 +41,9 @@ const defaultFilters: Filters = {
     Shapes.Bell,
     Shapes.Figure,
     Shapes.Pinecone,
-    Shapes.Snowflake,
+    Shapes.Snowflake
   ],
-  size: [Size.L, Size.M, Size.S],
+  size: [Size.L, Size.M, Size.S]
 };
 
 const defaultSpanFilters: SpanFilters = {
@@ -50,14 +51,14 @@ const defaultSpanFilters: SpanFilters = {
     min: years[0],
     max: curYear + 1,
     minVal: years[0],
-    maxVal: curYear + 1,
+    maxVal: curYear + 1
   },
   count: {
     min: counts[0],
     max: counts[counts.length - 1],
     minVal: counts[0],
-    maxVal: counts[counts.length - 1],
-  },
+    maxVal: counts[counts.length - 1]
+  }
 };
 
 const initialFilters = () =>
@@ -92,7 +93,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   const [favorites, setFavorites] = useState<Toy[]>(initialFavorites);
   const [sort, setSort] = useState<Sort>({
     type: "name",
-    direction: Direction.Up,
+    direction: Direction.Up
   });
   const [searchStr, setSearchStr] = useState<string>("");
   const [isOnlyFavorites, setIsOnlyFavorites] = useState<boolean>(false);
@@ -166,7 +167,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   function toggleSpanFilter(type, min, max) {
     setSpanFilters({
       ...spanFilters,
-      [type]: { ...spanFilters[type], minVal: min, maxVal: max },
+      [type]: { ...spanFilters[type], minVal: min, maxVal: max }
     });
     setIsFiltered(false);
   }
@@ -177,7 +178,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     if (index >= 0) {
       setFavorites([
         ...favorites.slice(0, index),
-        ...favorites.slice(index + 1),
+        ...favorites.slice(index + 1)
       ]);
       toy.isFavorite = false;
     } else {
@@ -243,6 +244,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
         toggleFavorite={toggleFavorite}
         favoritesCount={favorites.length}
       />
+      <Footer />
     </div>
   );
 };

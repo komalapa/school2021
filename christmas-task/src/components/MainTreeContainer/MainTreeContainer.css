@@ -64,3 +64,9 @@
     top: 100%;
   }
 }
+@media (max-width: 900px) {
+  .main-tree__container {
+    order: 3;
+    align-self: normal;
+  }
+}

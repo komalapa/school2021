@@ -1,11 +1,19 @@
 .tree-app {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 70px;
 }
 
 @media (max-width: 1440px) {
   .tree-app {
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+}
+@media (max-width: 900px) {
+  .tree-app {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
 }
