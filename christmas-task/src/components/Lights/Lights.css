@@ -13,17 +13,21 @@
   top: calc(-5% - 20px);
   left: calc(50% - 20px);
 }
-
+.lights__top-center {
+  position: relative;
+  top: calc(-15% - 10px);
+  left: calc(50% - 50px);
+}
 .lights__center {
   position: relative;
-  top: calc(-15% - 50px);
-  left: calc(50% - 30px);
+  top: calc(-20% - 85px);
+  left: calc(50% - 70px);
 }
 
 .lights__down {
   position: relative;
-  top: calc(-25% - 70px);
-  left: calc(50% - 40px);
+  top: calc(-25% - 160px);
+  left: calc(50% - 110px);
 }
 .lights__lamp {
   display: block;
@@ -34,16 +38,20 @@
 }
 .lights__top .lights__lamp {
   position: absolute;
-  transform-origin: 20px 50px;
+  transform-origin: 30px 60px;
+}
+.lights__top-center .lights__lamp {
+  position: absolute;
+  transform-origin: 50px 80px;
 }
 .lights__center .lights__lamp {
   position: absolute;
-  transform-origin: 30px 70px;
+  transform-origin: 80px 130px;
 }
 
 .lights__down .lights__lamp {
   position: absolute;
-  transform-origin: 40px 90px;
+  transform-origin: 120px 180px;
 }
 .lights__lamp-white {
   animation: flash-white 2s infinite;

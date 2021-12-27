@@ -56,17 +56,20 @@ export const Lights: FC<LightsProps> = (props) => {
       }
       return line;
     };
-    const topLineLength = 5;
+    const topLineLength = 10;
     const lineTop = getLine(colors, topLineLength, "top");
 
-    const centerLineLength = 10;
+    const topCenterLineLength = 15;
+    const lineTopCenter = getLine(colors, topCenterLineLength, "top-center");
+    const centerLineLength = 20;
     const lineCenter = getLine(colors, centerLineLength, "center");
-    const downLineLength = 15;
+    const downLineLength = 35;
     const lineDown = getLine(colors, downLineLength, "down");
 
     return (
       <div className="lights">
         <div className="lights__top">{lineTop}</div>
+        <div className="lights__top-center">{lineTopCenter}</div>
         <div className="lights__center">{lineCenter}</div>
         <div className="lights__down">{lineDown}</div>
       </div>
