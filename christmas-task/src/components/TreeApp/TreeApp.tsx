@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import { Colors } from "../../types/types";
 import { MainTreeContainer } from "../MainTreeContainer/MainTreeContainer";
@@ -86,8 +86,8 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   }
 
   function handleLS() {
-    localStorage.setItem("komalapa-christmas-snow", isSnow);
-    localStorage.setItem("komalapa-christmas-music", isMusic);
+    localStorage.setItem("komalapa-christmas-snow", `${isSnow}`);
+    localStorage.setItem("komalapa-christmas-music", `${isMusic}`);
     localStorage.setItem("komalapa-christmas-lights", JSON.stringify(lights));
     localStorage.setItem(
       "komalapa-christmas-background",
@@ -99,16 +99,16 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   const audio = document.querySelector(".audio") as HTMLAudioElement;
   if (isMusic && audio) audio.play();
 
-  function handleOverDrop(e) {
+  function handleOverDrop(e: React.DragEvent) {
     e.preventDefault();
     e.stopPropagation();
     if (e.type !== "drop") {
       return;
     }
     const toyId = e.dataTransfer.getData("toyId");
-    const toyImg = document.getElementById(toyId);
+    const toyImg = document.getElementById(toyId) as HTMLImageElement;
     const parent = toyImg.parentNode as HTMLElement;
-    if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
+    if (parent.className === "toys-area") parent.removeChild(toyImg);
   }
 
   return (

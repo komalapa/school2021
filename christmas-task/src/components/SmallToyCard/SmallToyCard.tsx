@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 
 import "./SmallToyCard.css";
@@ -31,15 +31,16 @@ export const SmallToyCard: FC<SmallToyCardProps> = (props) => {
     />
   );
 
-  function handleDragStart(e) {
+  function handleDragStart(e: React.DragEvent) {
     if (toy.count <= 0) {
       e.preventDefault();
       return;
     }
+    const target = e.target as HTMLImageElement;
     e.dataTransfer.setData("id", `${toy.id}`);
     e.dataTransfer.setData("toyId", `toy-${toy.id}`);
-    e.dataTransfer.setData("toySrc", e.target.src);
-    e.dataTransfer.setData("count", toy.count);
+    e.dataTransfer.setData("toySrc", target.src);
+    e.dataTransfer.setData("count", toy.count.toFixed(0));
   }
 
   return (

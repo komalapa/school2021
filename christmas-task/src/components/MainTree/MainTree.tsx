@@ -10,50 +10,56 @@ interface MainTreeProps {
 export const MainTree: FC<MainTreeProps> = (props) => {
   const { treeUrl, lights, onTakeToy } = props;
 
-  function handleDragStart(e) {
-    e.dataTransfer.setData("toyId", e.target.id);
-    e.dataTransfer.setData("toySrc", e.target.src);
-    e.dataTransfer.setData("id", e.target.getAttribute("data-id"));
-    onTakeToy(+e.target.getAttribute("data-id"), false);
+  function handleDragStart(e: DragEvent) {
+    const data = e.dataTransfer as DataTransfer;
+    const target = e.target as HTMLImageElement;
+    data.setData("toyId", target.id);
+    data.setData("toySrc", target.src);
+    const imgId = target.getAttribute("data-id") as string;
+    data.setData("id", imgId);
+    onTakeToy(+imgId, false);
   }
 
-  function handleOverDrop(e) {
+  function handleOverDrop(e: React.DragEvent) {
     e.preventDefault();
     e.stopPropagation();
     if (e.type !== "drop") {
       return;
     }
-    const toyId = e.dataTransfer.getData("toyId");
-    const toyImg = document.getElementById(toyId);
+    const data = e.dataTransfer as DataTransfer;
+    const toyId = data.getData("toyId");
+    const toyImg = document.getElementById(toyId) as HTMLElement;
     const toy = document.createElement("img");
     toy.className = toyImg.className;
-    toy.id = toyId + "-" + e.dataTransfer.getData("count");
-    toy.src = e.dataTransfer.getData("toySrc");
+    toy.id = toyId + "-" + data.getData("count");
+    toy.src = data.getData("toySrc");
     toy.style.position = "absolute";
-    toy.style.top = e.nativeEvent.layerY + "px";
-    toy.style.left = e.nativeEvent.layerX - 25 + "px";
-    toy.setAttribute("data-id", e.dataTransfer.getData("id"));
+
+    toy.style.top = e.nativeEvent.offsetY + "px"; //need layerX
+    toy.style.left = e.nativeEvent.offsetX - 25 + "px";
+    toy.setAttribute("data-id", data.getData("id"));
     const parent = toyImg.parentNode as HTMLElement;
-    if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
-    document.querySelector(".toys-area").appendChild(toy);
+    if (parent.className === "toys-area") parent.removeChild(toyImg);
+    const newParent = document.querySelector(".toys-area") as HTMLElement;
+    newParent.appendChild(toy);
     toy.ondragstart = handleDragStart;
     toy.ondrop = handleDenyOverDrop;
     toy.ondragover = handleDenyOverDrop;
-    if (e.dataTransfer.getData("id"))
-      onTakeToy(+e.dataTransfer.getData("id"), true);
+    if (data.getData("id")) onTakeToy(+data.getData("id"), true);
   }
 
-  function handleDenyOverDrop(e) {
+  function handleDenyOverDrop(e: DragEvent) {
     e.preventDefault();
     e.stopPropagation();
     if (e.type !== "drop") {
       return;
     }
     console.log("drop");
-    const toyId = e.dataTransfer.getData("toyId");
-    const toyImg = document.getElementById(toyId);
+    const data = e.dataTransfer as DataTransfer;
+    const toyId = data.getData("toyId");
+    const toyImg = document.getElementById(toyId) as HTMLElement;
     const parent = toyImg.parentNode as HTMLElement;
-    if (parent.className === "toys-area") toyImg.parentNode.removeChild(toyImg);
+    if (parent.className === "toys-area") parent.removeChild(toyImg);
   }
 
   return (

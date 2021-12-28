@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 
 import "./Search.css";
 
@@ -10,9 +10,10 @@ type SearchProps = {
 export const Search: FC<SearchProps> = (props) => {
   const { searchLine, setupSearch } = props;
   const [line, setLine] = useState<string>(searchLine);
-  function handleSearch(e) {
-    setLine(e.currentTarget.value);
-    setupSearch(e.currentTarget.value);
+  function handleSearch(e: React.ChangeEvent) {
+    const target = e.currentTarget as HTMLInputElement;
+    setLine(target.value);
+    setupSearch(target.value);
   }
   function handleReset() {
     setLine("");
@@ -27,7 +28,7 @@ export const Search: FC<SearchProps> = (props) => {
         name="toys-name-search"
         id="toys-name-search"
         className="search__text"
-        onInput={handleSearch}
+        onInput={(e) => handleSearch}
         value={line}
         placeholder="Поиск"
       />

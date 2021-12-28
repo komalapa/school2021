@@ -17,7 +17,7 @@ type ShapeFilterContainerProps = {
 
 export const ShapeFilter: FC<ShapeFilterContainerProps> = (props) => {
   const { toggleFilter, checked } = props;
-  function handleFilter(filterName, filterValue) {
+  function handleFilter(filterName: string, filterValue: Shapes) {
     toggleFilter(filterName, filterValue);
   }
   return (

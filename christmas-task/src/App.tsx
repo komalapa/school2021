@@ -18,8 +18,8 @@ const initialFavorites = () => {
   if (favoritesString) lsFavorites = JSON.parse(favoritesString);
   if (lsFavorites) {
     lsFavorites = lsFavorites
-      .filter((toy) => toy)
-      .map((fav) => toys.find((toy: Toy) => fav.id === toy.id));
+      .filter((toy: Toy) => toy)
+      .map((fav: Toy) => toys.find((toy: Toy) => fav.id === toy.id));
     lsFavorites.forEach((toy: Toy) => {
       toy.isFavorite = true;
     });

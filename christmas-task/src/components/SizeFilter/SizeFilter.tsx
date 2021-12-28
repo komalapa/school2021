@@ -12,7 +12,7 @@ type SizeFilterContainerProps = {
 export const SizeFilter: FC<SizeFilterContainerProps> = (props) => {
   const { toggleFilter, checked } = props;
 
-  function handleFilter(filterName, filterValue) {
+  function handleFilter(filterName: string, filterValue: Size) {
     toggleFilter(filterName, filterValue);
   }
 

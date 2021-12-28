@@ -20,10 +20,10 @@ export const RadioInput: FC<RadioInputProps> = (props) => {
     onChoose,
     children,
     radioName,
-    selected,
+    selected
   } = props;
 
-  function handleSort(hType, hDirection) {
+  function handleSort(hType: string, hDirection: Direction) {
     onChoose(hType, hDirection);
   }
 

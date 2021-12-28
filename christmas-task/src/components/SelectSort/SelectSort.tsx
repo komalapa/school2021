@@ -11,7 +11,7 @@ type SelectSortProps = {
 export const SelectSort: FC<SelectSortProps> = (props) => {
   const { setupSort } = props;
 
-  function handleSort(type, direction) {
+  function handleSort(type: string, direction: Direction) {
     setupSort(type, direction);
   }
   return (

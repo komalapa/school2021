@@ -13,13 +13,13 @@ type CountFilterContainerProps = {
 
 export const CountFilter: FC<CountFilterContainerProps> = (props) => {
   const { toggleFilter, min, max, minVal, maxVal } = props;
-  const [minValue, setMinValue] = useState(minVal);
-  const [maxValue, setMaxValue] = useState(maxVal);
+  const [minValue, setMinValue] = useState<number | undefined>(minVal);
+  const [maxValue, setMaxValue] = useState<number | undefined>(maxVal);
 
   if (minValue !== minVal) setMinValue(minVal);
   if (maxValue !== maxVal) setMaxValue(maxVal);
 
-  function handleFilter(minFilter, maxFilter) {
+  function handleFilter(minFilter: number, maxFilter: number) {
     setMaxValue(maxFilter);
     setMinValue(minFilter);
     toggleFilter("count", minFilter, maxFilter);

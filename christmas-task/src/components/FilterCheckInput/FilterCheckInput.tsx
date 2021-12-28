@@ -17,7 +17,7 @@ export const FilterCheckInput: FC<FilterCheckInputProps> = (props) => {
     checked,
     filterName,
     filterValue,
-    children,
+    children
   } = props;
 
   const [isChecked, toggleChecked] = useToggle(checked);
@@ -25,7 +25,7 @@ export const FilterCheckInput: FC<FilterCheckInputProps> = (props) => {
   if (isChecked !== checked) toggleChecked();
 
   function handleInput() {
-    toggleChecked(isChecked);
+    toggleChecked();
     onToggleFilter(filterName, filterValue);
   }
   return (

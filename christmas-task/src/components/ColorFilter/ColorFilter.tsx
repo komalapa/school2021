@@ -12,7 +12,7 @@ type ColorFilterContainerProps = {
 export const ColorFilter: FC<ColorFilterContainerProps> = (props) => {
   const { toggleFilter, checked, header } = props;
 
-  const handleFilter = (filterName, filterValue) => {
+  const handleFilter = (filterName: string, filterValue: Colors) => {
     toggleFilter(filterName, filterValue);
   };
 

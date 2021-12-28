@@ -13,7 +13,7 @@ type BackgroundSelectorProps = {
 export const BackgroundSelector: FC<BackgroundSelectorProps> = (props) => {
   const { setupBackground, selected } = props;
 
-  function handleBackground(value) {
+  function handleBackground(value: number) {
     setupBackground(value);
   }
   return (

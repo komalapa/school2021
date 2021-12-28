@@ -29,7 +29,7 @@ export const Lights: FC<LightsProps> = (props) => {
       );
     };
 
-    const getLine = (colors: Colors[], length, key) => {
+    const getLine = (colors: Colors[], length: number, key: string) => {
       const line = [];
       for (let i = 0; i < length; i++) {
         const lamp = getLamp(
