@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
@@ -17,7 +17,7 @@ export const ToyCard: FC<ToyCardProps> = (props) => {
   function handleToggleFavorite(): void {
     toggleFavorite(toy);
   }
-  const path: string = `/assets/toys/${toy.id}.png`;
+  const path = `/assets/toys/${toy.id}.png`;
   const image: HTMLImageElement = new Image();
   image.src = path;
   image.onload = () => setIsLoaded(true);

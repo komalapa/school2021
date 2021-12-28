@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Colors } from "../../types/types";
 import { FilterCheckInput } from "../FilterCheckInput/FilterCheckInput";
 import "./ColorFilter.css";

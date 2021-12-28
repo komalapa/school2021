@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { RadioInput } from "../RadioInput/RadioInput";
 
 import "../../main.css";

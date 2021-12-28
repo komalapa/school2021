@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { SpanInput } from "../SpanInput/SpanInput";
 
 import "./YearFilter.css";

@@ -15,7 +15,7 @@ interface TreeAppProps {
   favorites: Toy[];
 }
 function keyInEnum(e: any, value: string): string {
-  let keys = Object.keys(e).filter((x) => e[x] === value);
+  const keys = Object.keys(e).filter((x) => e[x] === value);
   return keys.length > 0 ? keys[0] : "";
 }
 function getColorsFromLS(): Colors[] | false {
@@ -23,6 +23,7 @@ function getColorsFromLS(): Colors[] | false {
     localStorage.getItem("komalapa-christmas-lights") as string
   );
   if (!colorsLS) return false;
+  // eslint-disable-next-line
   //@ts-ignore
   return colorsLS.map((color: Colors) => Colors[keyInEnum(Colors, color)]);
 }
@@ -75,7 +76,7 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   function handleLights(value: Colors) {
     const index = lights.indexOf(value);
     if (index >= 0) {
-      let curLights = [...lights];
+      const curLights = [...lights];
       curLights.splice(index, 1);
       setLights(curLights);
     } else {

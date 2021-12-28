@@ -4,7 +4,7 @@ export enum Shapes {
   Bell = "колокольчик",
   Pinecone = "шишка",
   Snowflake = "снежинка",
-  Other = "",
+  Other = ""
 }
 
 export enum Colors {
@@ -13,13 +13,13 @@ export enum Colors {
   Red = "красный",
   White = "белый",
   Blue = "синий",
-  Other = "другой",
+  Other = "другой"
 }
 
 export enum Size {
   L = "большой",
   M = "средний",
-  S = "малый",
+  S = "малый"
 }
 export interface IToy {
   id: number;
@@ -29,7 +29,7 @@ export interface IToy {
   shape: Shapes;
   color: Colors;
   size: Size;
-  isFavorite: Boolean;
+  isFavorite: boolean;
 }
 
 export type ToyData = {
@@ -51,7 +51,7 @@ export interface Filters {
 
 export enum Direction {
   Up,
-  Down,
+  Down
 }
 export interface Sort {
   type: string; //"name" or "year" for now

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 import {
   Colors,
@@ -102,11 +102,12 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   function filterToys() {
     setCurToysList([]);
     function filterToy(filter: keyof Filters, toy: Toy) {
+      // eslint-disable-next-line
       //@ts-ignore: Unreachable code error
       if (filters[filter].indexOf(toy[filter]) >= 0) return true;
       return false;
     }
-    function spanFilterToy(toy: Toy, filter: keyof SpanFilters): Boolean {
+    function spanFilterToy(toy: Toy, filter: keyof SpanFilters): boolean {
       if (
         spanFilters[filter].minVal <= toy[filter] &&
         spanFilters[filter].maxVal >= toy[filter]
@@ -116,13 +117,13 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
       return false;
     }
     let array = toys;
-    for (let filter in spanFilters) {
+    for (const filter in spanFilters) {
       array = array.filter((toy) =>
         spanFilterToy(toy, filter as keyof SpanFilters)
       );
     }
 
-    for (let filter in filters) {
+    for (const filter in filters) {
       array = array.filter((toy) => filterToy(filter as keyof Filters, toy));
     }
 
@@ -155,10 +156,11 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   //Handlers
   function toggleFilter(type: keyof Filters, value: Colors | Shapes | Size) {
     const filtersByType = filters[type] as Colors[] | Shapes[] | Size[];
+    // eslint-disable-next-line
     //@ts-ignore
     const index = filtersByType.indexOf(value);
     if (index >= 0) {
-      let curFilters = { ...filters };
+      const curFilters = { ...filters };
       curFilters[type].splice(index, 1);
       setFilters(curFilters);
       setIsFiltered(false);

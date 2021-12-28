@@ -1,8 +1,9 @@
-import { ReactComponent as RSLogo } from "../../assets/svg/rss.svg";
+import { FC } from "react";
+import React, { ReactComponent as RSLogo } from "../../assets/svg/rss.svg";
 
 import "./Footer.css";
 
-export function Footer() {
+export const Footer: FC = () => {
   return (
     <footer>
       <a
@@ -25,4 +26,4 @@ export function Footer() {
       <span>2021</span>
     </footer>
   );
-}
+};

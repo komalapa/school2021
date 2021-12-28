@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Toy } from "../../types/toys/toy";
 import { SmallToyCard } from "../SmallToyCard/SmallToyCard";
 

@@ -1,4 +1,4 @@
-export const addLog = () => {
+export const addLog = (): void => {
   console.log(`
   205/200
   Если перейти к ёлке до игрушек то выбраны либо игрушки из localStorage либо первые 20.

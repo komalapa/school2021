@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Colors } from "../../types/types";
 import { MainTree } from "../MainTree/MainTree";
 
@@ -21,7 +21,7 @@ export const MainTreeContainer: FC<MainTreeContainerProps> = (props) => {
       <SnowIcon
         style={{
           left: Math.random() * 100 + "%",
-          animationDelay: Math.random() * 5 + "s",
+          animationDelay: Math.random() * 5 + "s"
         }}
         className="snowflake"
       />

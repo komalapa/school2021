@@ -1,8 +1,9 @@
+import React, { FC } from "react";
 import "./Messages.css";
 type MessageProps = {
   message: string;
 };
 
-export function Message(props: MessageProps) {
-  return <span className="message">{props.message}</span>;
-}
+export const Message: FC<MessageProps> = (props) => (
+  <span className="message">{props.message}</span>
+);

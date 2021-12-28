@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 
 import "./SpanInput.css";
 
@@ -39,9 +39,9 @@ export const SpanInput: FC<SpanInputProps> = (props) => {
     gradient();
   }
   function gradient() {
-    let inputStep = (step * 100) / (max - min);
-    let start = ((minValue - min) / step) * inputStep;
-    let end = ((maxValue - min) / step) * inputStep;
+    const inputStep = (step * 100) / (max - min);
+    const start = ((minValue - min) / step) * inputStep;
+    const end = ((maxValue - min) / step) * inputStep;
     setGradientValue(
       `to right, white, white ${start}%, goldenrod ${start}%, goldenrod ${end}%, white ${end}%, white 100%`
     );

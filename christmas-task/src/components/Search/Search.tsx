@@ -28,7 +28,7 @@ export const Search: FC<SearchProps> = (props) => {
         name="toys-name-search"
         id="toys-name-search"
         className="search__text"
-        onInput={(e) => handleSearch}
+        onInput={() => handleSearch}
         value={line}
         placeholder="Поиск"
       />

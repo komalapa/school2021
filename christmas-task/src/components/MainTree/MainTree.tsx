@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Colors } from "../../types/types";
 import { Lights } from "../Lights/Lights";
 import "./MainTree.css";

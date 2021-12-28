@@ -5,7 +5,7 @@ import { ReactComponent as FigureIcon } from "../../assets/svg/toy.svg";
 import { ReactComponent as PineIcon } from "../../assets/svg/pine.svg";
 import { ReactComponent as SnowIcon } from "../../assets/svg/snowflake.svg";
 
-import { FC } from "react";
+import React, { FC } from "react";
 
 import "./ShapeFilter.css";
 import { FilterCheckInput } from "../FilterCheckInput/FilterCheckInput";

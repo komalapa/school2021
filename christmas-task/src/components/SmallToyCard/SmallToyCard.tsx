@@ -13,7 +13,7 @@ export const SmallToyCard: FC<SmallToyCardProps> = (props) => {
   const { toy } = props;
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const path: string = `/assets/toys/${toy.id}.png`;
+  const path = `/assets/toys/${toy.id}.png`;
   const image: HTMLImageElement = new Image();
   image.src = path;
   image.onload = () => setIsLoaded(true);

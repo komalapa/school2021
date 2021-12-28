@@ -1,9 +1,9 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Colors } from "../../types/types";
 import "./Lights.css";
 
 function keyInEnum(e: any, value: string): string {
-  let keys = Object.keys(e).filter((x) => e[x] === value);
+  const keys = Object.keys(e).filter((x) => e[x] === value);
   return keys.length > 0 ? keys[0] : "";
 }
 

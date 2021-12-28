@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Direction } from "../../types/types";
 import { RadioInput } from "../RadioInput/RadioInput";
 

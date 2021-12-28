@@ -1,7 +1,7 @@
 import { Size } from "../../types/types";
 import { ReactComponent as BallIcon } from "../../assets/svg/ball-2.svg";
 import "./SizeFilter.css";
-import { FC } from "react";
+import React, { FC } from "react";
 import { FilterCheckInput } from "../FilterCheckInput/FilterCheckInput";
 
 type SizeFilterContainerProps = {

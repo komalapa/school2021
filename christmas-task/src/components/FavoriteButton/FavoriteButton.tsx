@@ -1,6 +1,6 @@
 import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 
 import { Message } from "../Message/Message";
 

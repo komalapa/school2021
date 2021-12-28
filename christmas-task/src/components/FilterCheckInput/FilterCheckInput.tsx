@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Colors, Shapes, Size } from "../../types/types";
 import { useToggle } from "../shared/hooks/useToggle";
 
