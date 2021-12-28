@@ -20,10 +20,11 @@ function keyInEnum(e: any, value: string): string {
 }
 function getColorsFromLS(): Colors[] | false {
   const colorsLS = JSON.parse(
-    localStorage.getItem("komalapa-christmas-lights")
+    localStorage.getItem("komalapa-christmas-lights") as string
   );
   if (!colorsLS) return false;
-  return colorsLS.map((color) => Colors[keyInEnum(Colors, color)]);
+  //@ts-ignore
+  return colorsLS.map((color: Colors) => Colors[keyInEnum(Colors, color)]);
 }
 const TreeApp: FC<TreeAppProps> = (props) => {
   const { favorites } = props;
@@ -36,20 +37,24 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   }
   const [toys, setToys] = useState<Toy[]>([]);
   const [isSnow, setIsSnow] = useToggle(
-    JSON.parse(localStorage.getItem("komalapa-christmas-snow"))
+    JSON.parse(localStorage.getItem("komalapa-christmas-snow") as string)
   );
   const [isMusic, setIsMusic] = useToggle(
-    JSON.parse(localStorage.getItem("komalapa-christmas-music"))
+    JSON.parse(localStorage.getItem("komalapa-christmas-music") as string)
   );
   useEffect(() => {
     setToys(favorites);
   }, [favorites]);
 
   const [backgroundNumber, setBackgoundNumber] = useState<number>(
-    +localStorage.getItem("komalapa-christmas-background") || 1
+    localStorage.getItem("komalapa-christmas-background")
+      ? Number(localStorage.getItem("komalapa-christmas-background"))
+      : 1
   );
   const [treeNumber, setTreeNumber] = useState<number>(
-    +localStorage.getItem("komalapa-christmas-tree") || 1
+    localStorage.getItem("komalapa-christmas-tree")
+      ? Number(localStorage.getItem("komalapa-christmas-tree"))
+      : 1
   );
   const [lights, setLights] = useState<Colors[]>(
     getColorsFromLS() || [Colors.White, Colors.Red, Colors.Blue]
@@ -60,10 +65,10 @@ const TreeApp: FC<TreeAppProps> = (props) => {
   const getTreeUrl = (number: number): string =>
     `../../assets/tree/${number}.png`;
   //handler
-  function handleBackground(number) {
+  function handleBackground(number: number) {
     setBackgoundNumber(number);
   }
-  function handleTree(number) {
+  function handleTree(number: number) {
     setTreeNumber(number);
   }
 
@@ -78,8 +83,8 @@ const TreeApp: FC<TreeAppProps> = (props) => {
     }
   }
 
-  function handleTakeById(id, success = true) {
-    const index = toys.indexOf(toys.find((toy) => toy.id === id));
+  function handleTakeById(id: number, success = true) {
+    const index = toys.indexOf(toys.find((toy) => toy.id === id) as Toy);
     const curToys = [...toys];
     success ? curToys[index].count-- : curToys[index].count++;
     setToys(curToys);

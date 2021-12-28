@@ -62,10 +62,10 @@ const defaultSpanFilters: SpanFilters = {
 };
 
 const initialFilters = () =>
-  JSON.parse(localStorage.getItem("komalapaChristmasFilters")) ||
+  JSON.parse(localStorage.getItem("komalapaChristmasFilters") as string) ||
   JSON.parse(JSON.stringify(defaultFilters));
 const initialSpanFilters = () =>
-  JSON.parse(localStorage.getItem("komalapaChristmasSpanFilters")) ||
+  JSON.parse(localStorage.getItem("komalapaChristmasSpanFilters") as string) ||
   JSON.parse(JSON.stringify(defaultSpanFilters));
 const initialFavorites = () => {
   const favoritesString = localStorage.getItem("komalapaChristmasFavorites");
@@ -73,8 +73,8 @@ const initialFavorites = () => {
   if (favoritesString) lsFavorites = JSON.parse(favoritesString);
   if (lsFavorites) {
     lsFavorites = lsFavorites
-      .filter((toy) => toy)
-      .map((fav) => toys.find((toy: Toy) => fav.id === toy.id));
+      .filter((toy: Toy) => toy)
+      .map((fav: Toy) => toys.find((toy: Toy) => fav.id === toy.id));
     lsFavorites.forEach((toy: Toy) => {
       toy.isFavorite = true;
     });
@@ -101,11 +101,12 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
   // filter
   function filterToys() {
     setCurToysList([]);
-    function filterToy(filter: string, toy: Toy) {
+    function filterToy(filter: keyof Filters, toy: Toy) {
+      //@ts-ignore: Unreachable code error
       if (filters[filter].indexOf(toy[filter]) >= 0) return true;
       return false;
     }
-    function spanFilterToy(toy: Toy, filter: string): Boolean {
+    function spanFilterToy(toy: Toy, filter: keyof SpanFilters): Boolean {
       if (
         spanFilters[filter].minVal <= toy[filter] &&
         spanFilters[filter].maxVal >= toy[filter]
@@ -116,11 +117,13 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     }
     let array = toys;
     for (let filter in spanFilters) {
-      array = array.filter((toy) => spanFilterToy(toy, filter));
+      array = array.filter((toy) =>
+        spanFilterToy(toy, filter as keyof SpanFilters)
+      );
     }
 
     for (let filter in filters) {
-      array = array.filter((toy) => filterToy(filter, toy));
+      array = array.filter((toy) => filterToy(filter as keyof Filters, toy));
     }
 
     if (isOnlyFavorites) {
@@ -150,8 +153,10 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     setIsFiltered(true);
   }
   //Handlers
-  function toggleFilter(type, value) {
-    const index = filters[type].indexOf(value);
+  function toggleFilter(type: keyof Filters, value: Colors | Shapes | Size) {
+    const filtersByType = filters[type] as Colors[] | Shapes[] | Size[];
+    //@ts-ignore
+    const index = filtersByType.indexOf(value);
     if (index >= 0) {
       let curFilters = { ...filters };
       curFilters[type].splice(index, 1);
@@ -164,7 +169,7 @@ export const ToysApp: FC<ToysAppProps> = (props) => {
     setIsFiltered(false);
   }
 
-  function toggleSpanFilter(type, min, max) {
+  function toggleSpanFilter(type: keyof SpanFilters, min: number, max: number) {
     setSpanFilters({
       ...spanFilters,
       [type]: { ...spanFilters[type], minVal: min, maxVal: max }

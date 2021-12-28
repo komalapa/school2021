@@ -20,7 +20,7 @@ export const YearFilter: FC<YearFilterContainerProps> = (props) => {
   if (minValue !== minVal) setMinValue(minVal);
   if (maxValue !== maxVal) setMaxValue(maxVal);
 
-  function handleFilter(minFilter, maxFilter) {
+  function handleFilter(minFilter: number, maxFilter: number) {
     setMaxValue(maxFilter);
     setMinValue(minFilter);
     toggleFilter("year", minFilter, maxFilter);

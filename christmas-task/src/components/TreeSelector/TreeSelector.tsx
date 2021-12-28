@@ -12,7 +12,7 @@ type TreeSelectorProps = {
 export const TreeSelector: FC<TreeSelectorProps> = (props) => {
   const { setupTree, selected } = props;
 
-  function handleTree(value) {
+  function handleTree(value: number) {
     setupTree(value);
   }
   return (

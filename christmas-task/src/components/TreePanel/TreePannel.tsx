@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Colors } from "../../types/types";
+import { Colors, Filters } from "../../types/types";
 import { BackgroundSelector } from "../BackgroundSelector/BackgroundSelector";
 import { ColorFilter } from "../ColorFilter/ColorFilter";
 import { TreeSelector } from "../TreeSelector/TreeSelector";
@@ -19,17 +19,17 @@ export const TreePanel: FC<TreePanelProps> = (props) => {
     backgroundNumber,
     treeNumber,
     setLights,
-    lights,
+    lights
   } = props;
 
-  function handleBackground(value) {
+  function handleBackground(value: number) {
     setBackground(value);
   }
 
-  function handleTree(value) {
+  function handleTree(value: number) {
     setTree(value);
   }
-  function handleLights(_, value) {
+  function handleLights(_: keyof Filters, value: Colors) {
     setLights(value);
   }
   return (

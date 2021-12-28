@@ -20,8 +20,11 @@ export class Toy implements IToy {
     this.name = data.name;
     this.count = +data.count;
     this.year = +data.year;
+    //@ts-ignore
     this.shape = Shapes[keyInEnum(Shapes, data.shape)];
+    //@ts-ignore
     this.color = Colors[keyInEnum(Colors, data.color)];
+    //@ts-ignore
     this.size = Size[keyInEnum(Size, data.size)];
     this.isFavorite = data.favorite;
   }
