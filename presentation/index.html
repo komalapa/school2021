@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <style>
+      h3 {
+        text-transform: none !important;
+      }
+    </style>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>
+            Brouser Routing<br />
+            & <br />History API
+          </h1>
+          <ol>
+            <li>History</li>
+            <li>Location</li>
+          </ol>
+          <aside class="notes">
+            Hello. I'll try to tell you about the main features of the History
+            API and routing in the browser. And also take a look at the most
+            frequent cases of using these technologies
+          </aside>
+        </section>
+        <section>
+          <h2>window.history</h2>
+          <section>
+            <h3>HistoryAPI</h3>
+            <ul>
+              <li>history.back()</li>
+              <li>history.forward()</li>
+              <li>history.go(-1)</li>
+              <li>history.go(1)</li>
+              <hr />
+              <li>history.length</li>
+              <li>history.pushState(state, title, url)</li>
+              <li>history.replaceState()</li>
+            </ul>
+            <aside class="notes">
+              Let's start with History API. The browser knows everything about
+              the user's movements history and could tell us, but will not do it
+              for security reasons All that is available to us is moving forward
+              and backward along the history stack (similar to clicking the back
+              and forward arrows in the browser) and moving a few steps forwards
+              or backwards. Without any information, which pages are hidden by
+              these movements About the history itself, you can only find out
+              its length. We can only change the current state in the history
+              (replace) or add another one: push We can push entry to the
+              history or replace current but lets speak about it later.
+            </aside>
+          </section>
+          <section>
+            <pre><code>
+history.length
+> 2
+history.go(-5) // do nothing
+> undefined
+history.go(-1) // works!
+              </code></pre>
+            <aside class="notes">
+              What happens if we try to move beyond the length of the history?
+              The answer is nothing, There will be no error so we need to check
+              history length only to be sure that we can move. But we can't get
+              the current index in the history. So if it is not the last index
+              the check for history length will not help. There're some ways to
+              get this information about current index, but all of them based on
+              saving current history length onload in the query params and
+              analyse them, And they are not native. It is a kind of hacks
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h2>window.location</h2>
+          <section>
+            <ul>
+              <li>location.ancestorOrigins</li>
+              <li>
+                location.href
+                <ul>
+                  <li>location.protocol</li>
+                  <li>location.host</li>
+                  <li>location.hostname</li>
+                  <li>location.port</li>
+                  <li>location.pathname</li>
+                  <li>location.search / Location.hash</li>
+                </ul>
+              </li>
+              <li>Location.origin</li>
+            </ul>
+            <aside class="notes">
+              Well, we won't get any information from history. To find out
+              something about the current location, we can use the location
+              object there are several properties that can answer most of our
+              questions ancestorOrigins is a specific property, It allows you to
+              find out the address of the parent from the iframe, frequently
+              people ask how to block this property because it used by
+              advertisment iframes, but we can't block it. But our theme is
+              routing so More interesting property is href and its clarifying
+              properties. So we can find out the whole address or any part of
+              it. the 'hash' and 'search' properties give access to values after
+              # and ? accordingly. With their help, you can implement functions
+              whish store some parameters and get ig from address
+            </aside>
+          </section>
+
+          <section>
+            <img data-src="./town.png" />
+            <aside class="notes">
+              For example, in the game about building a city (Townscaper), the
+              city itself is stored like this after #
+            </aside>
+          </section>
+           
+          <section>
+            <ul>
+              <li>location.assign()</li>
+              <li>location.reload()</li>
+              <li>location.replace()</li>
+              <li>location.toString()</li>
+            </ul>
+            <aside class="notes">
+              What can we do with location? We can assign that means follow the
+              link, or replace follow the link and replace history entry Reload,
+              and get location string which is returns the same result as
+              location.href
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h2>Exit guard</h2>
+          <code>
+            window.addEventListener('beforeunload', function (e) {
+            e.preventDefault(); e.returnValue = ''; });</code
+          >
+          <aside class="notes">
+            There are several standard situations when we need to interact with
+            page navigation. Not really about routing, but still important The
+            page "knows" when we start the transition. There is a beforeunload
+            event thanks to which we can still do something before exit. For
+            example, to warn about data loss. This is a default variant which
+            will create standard browser leave prompt. Before June 2020 we could
+            change message in returnValue but now it is blocked in all popular
+            browsers. Why? I hadn't found any reasons. And you can't add any
+            prompt or alert in this event. It is done for security purposes too.
+            You can't forbid exit, only ask for confirmation.
+          </aside>
+        </section>
+        <section>
+          <h2>Page reload</h2>
+          <ul>
+            <li>window.history.go(0)</li>
+            <li>window.history.go()</li>
+            <li>location.reload()</li>
+          </ul>
+          <aside class="notes">
+            Not the best practice, but sometimes you need to reload the page.
+            There are several ways using history and location
+          </aside>
+        </section>
+        <section>
+          <h2>Go to the link</h2>
+          <ul>
+            <li>window.location.href = 'https://www.ya.ru';</li>
+            <li>window.location.assign('https://ya.ru');</li>
+            <li>window.location = 'https://ya.ru';</li>
+            <li>window.location.replace('https://ya.ru');</li>
+          </ul>
+          <aside class="notes">
+            Following a link using location and using History. And the last
+            option will erase the current value from the history. You can use
+            absolute and relative paths. I've found no difference between all
+            this methods because location object will be corrected after
+            redirect. But replace change current history entry.
+          </aside>
+        </section>
+        <section>
+          <h2>Save data to the address line</h2>
+          <ul>
+            <li>window.history.replaceState(null, null, "?arg=123");</li>
+            <li>
+              window.history.pushState("", "Google",
+              "https://www.google.com/?arg=123")
+            </li>
+          </ul>
+          <aside class="notes">
+            Saving data in the address bar. We can add any information to the
+            address and access it. Like in Townscaper. Be careful adding or
+            replacing of query parameter will remove hash parameters. That is
+            all/ Thank you for you time. I hope it was interesting!
+          </aside>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+      });
+    </script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="node_modules/reveal-notes-server/client.js"></script>
+  </body>
+</html>
