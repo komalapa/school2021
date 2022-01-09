@@ -12,3 +12,7 @@ Private repository for @komalapa
 [ArtQuiz](https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/art-quiz/)
 
 [Migration NewsAPI](https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/migration-newip-to-ts/)
+
+[Christmas Task](https://musing-cori-450741.netlify.app/)
+
+[Presentation HistoriAPI & Routing](https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/presentation/presentation)
