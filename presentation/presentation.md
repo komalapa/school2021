@@ -1,6 +1,6 @@
 # Presentation
 
-[link to YouTube video](https://youtu.be/KWPwXx5kDXU)
+[link to YouTube video](https://youtu.be/DUX676ADaKY)
 
 [link to Reveal presentation's deploy](https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/presentation)
 
