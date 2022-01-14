@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-// import { Direction } from "../../types/types";
 import { RadioInput } from "../RadioInput/RadioInput";
 
 import "./BackgroundSelector.css";
@@ -16,7 +15,6 @@ export const BackgroundSelector: FC<BackgroundSelectorProps> = (props) => {
     setupBackground(value);
   }
   return (
-    //TODO cycle for gen radio
     <div className="background-selector">
       <h3 className="background-selector__header">Фоны</h3>
       <div className="background-selector__wrp">
