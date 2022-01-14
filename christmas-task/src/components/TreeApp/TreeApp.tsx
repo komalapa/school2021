@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { Toy } from "../../types/toys/toy";
-import { Colors } from "../../types/types";
+import { Colors, keyInEnum } from "../../types/types";
 import { MainTreeContainer } from "../MainTreeContainer/MainTreeContainer";
 import { TreePanel } from "../TreePanel/TreePannel";
 
@@ -13,11 +13,6 @@ import type { TreeAppProps } from "../../types/props";
 
 import "./TreeApp.css";
 
-
-function keyInEnum(e: any, value: string): string {
-  const keys = Object.keys(e).filter((x) => e[x] === value);
-  return keys.length > 0 ? keys[0] : "";
-}
 function getColorsFromLS(): Colors[] | false {
   const colorsLS = JSON.parse(
     localStorage.getItem("komalapa-christmas-lights") as string

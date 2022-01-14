@@ -1,9 +1,5 @@
 import { Colors, IToy, Shapes, Size, ToyData } from "../types";
-
-function keyInEnum(e: any, value: string): string {
-  const keys = Object.keys(e).filter((x) => e[x] === value);
-  return keys.length > 0 ? keys[0] : "";
-}
+import { keyInEnum } from "../types";
 
 export class Toy implements IToy {
   id: number;

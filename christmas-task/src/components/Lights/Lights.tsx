@@ -1,12 +1,9 @@
 import React, { FC } from "react";
 import type { LightsProps } from "../../types/props";
-import { Colors } from "../../types/types";
+import { Colors, keyInEnum } from "../../types/types";
 import "./Lights.css";
 
-function keyInEnum(e: any, value: string): string {
-  const keys = Object.keys(e).filter((x) => e[x] === value);
-  return keys.length > 0 ? keys[0] : "";
-}
+
 
 export const Lights: FC<LightsProps> = (props) => {
   const { colors } = props;

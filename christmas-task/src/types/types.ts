@@ -1,3 +1,10 @@
+export function keyInEnum(enumInstance: any, value: string): string {
+  const keys = Object.keys(enumInstance).filter(
+    (enumItem) => enumInstance[enumItem] === value
+  );
+  return keys.length > 0 ? keys[0] : "";
+}
+
 export enum Shapes {
   Ball = "шар",
   Figure = "фигурка",
