@@ -152,7 +152,7 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         muted={!isMusic}
         autoPlay={true}
         loop={true}
-      ></audio>
+      />
       <Footer />
     </div>
   );

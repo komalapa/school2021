@@ -37,13 +37,13 @@ export const TreePanel: FC<TreePanelProps> = (props) => {
       <BackgroundSelector
         setupBackground={handleBackground}
         selected={backgroundNumber}
-      ></BackgroundSelector>
-      <TreeSelector setupTree={handleTree} selected={treeNumber}></TreeSelector>
+      />
+      <TreeSelector setupTree={handleTree} selected={treeNumber} />
       <ColorFilter
         toggleFilter={handleLights}
         checked={lights}
         header={"Гирлянда"}
-      ></ColorFilter>
+      />
     </div>
   );
 };
