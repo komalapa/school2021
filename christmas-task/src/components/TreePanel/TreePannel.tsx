@@ -16,25 +16,15 @@ export const TreePanel: FC<TreePanelProps> = (props) => {
     lights
   } = props;
 
-  function handleBackground(value: number) {
-    setBackground(value);
-  }
-
-  function handleTree(value: number) {
-    setTree(value);
-  }
-  function handleLights(_: keyof Filters, value: Colors) {
-    setLights(value);
-  }
   return (
     <div className="tree-panel">
       <BackgroundSelector
-        setupBackground={handleBackground}
+        setupBackground={(value:number)=>setBackground(value)}
         selected={backgroundNumber}
       />
-      <TreeSelector setupTree={handleTree} selected={treeNumber} />
+      <TreeSelector setupTree={(value: number) => setTree(value)} selected={treeNumber} />
       <ColorFilter
-        toggleFilter={handleLights}
+        toggleFilter={(_: keyof Filters, value: Colors) => setLights(value)}
         checked={lights}
         header={"Гирлянда"}
       />
