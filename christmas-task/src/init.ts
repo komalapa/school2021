@@ -3,7 +3,7 @@ import { Toy } from "./types/toys/toy";
 
 const toys: Toy[] = data.map((item) => new Toy(item));
 
-const initialFavorites = () => {
+const initialFavorites = (): Toy[] => {
   const favoritesString = localStorage.getItem("komalapaChristmasFavorites");
   let lsFavorites;
   if (favoritesString) lsFavorites = JSON.parse(favoritesString);
