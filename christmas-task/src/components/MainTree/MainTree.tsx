@@ -54,7 +54,6 @@ export const MainTree: FC<MainTreeProps> = (props) => {
     if (e.type !== "drop") {
       return;
     }
-    console.log("drop");
     const data = e.dataTransfer as DataTransfer;
     const toyId = data.getData("toyId");
     const toyImg = document.getElementById(toyId) as HTMLElement;
