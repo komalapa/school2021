@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 import { Toy } from "../../types/toys/toy";
 
 import "./SmallToyCard.css";
-import "../../main.css";
 
 type SmallToyCardProps = {
   toy: Toy;

@@ -3,7 +3,6 @@ import { Toy } from "../../types/toys/toy";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
 import "./ToyCard.css";
-import "../../main.css";
 
 type ToyCardProps = {
   toy: Toy;

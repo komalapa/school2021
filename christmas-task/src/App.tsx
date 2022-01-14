@@ -3,7 +3,6 @@ import { FC } from "react";
 import { ToysApp } from "./components/ToysApp/ToysApp";
 import TreeApp from "./components/TreeApp/TreeApp";
 import { Toy } from "./types/toys/toy";
-import "./main.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import "./App.css";
