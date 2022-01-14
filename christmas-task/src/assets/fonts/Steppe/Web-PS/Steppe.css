@@ -1,9 +1,8 @@
-/* Webfont: Steppe-Regular */@font-face {
-    font-family: 'Steppe';
-    src: url('Steppe.woff2') format('woff2'), /* Modern Browsers */
-         url('Steppe.otf') format('opentype'); /* Safari, Android, iOS */
-             font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
+/* Webfont: Steppe-Regular */
+@font-face {
+  font-family: "Steppe";
+  src: url("Steppe.woff2") format("woff2"), url("Steppe.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
 }
-

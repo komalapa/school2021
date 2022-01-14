@@ -93,7 +93,6 @@ export const FiltersContainter: FC<FiltersContainerProps> = (props) => {
       <span className="filters__reset" onClick={handleClear}>
         Удалить сохраненные настройки
       </span>
-      {/* <Footer /> */}
     </div>
   );
 };

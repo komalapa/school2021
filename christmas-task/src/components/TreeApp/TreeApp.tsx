@@ -138,7 +138,6 @@ const TreeApp: FC<TreeAppProps> = (props) => {
         isSnow={isSnow}
         onTakeToy={handleTakeById}
       />
-      {/* <SmallToysContainer toys={favorites} onTakeToy={handleTake} /> */}
       <ToysPanel
         toys={favorites}
         onTakeToy={handleTakeById}
