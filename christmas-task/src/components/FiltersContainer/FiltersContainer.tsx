@@ -1,30 +1,19 @@
 import React, { FC } from "react";
-import { Filters, SpanFilters } from "../../types/types";
 import { ColorFilter } from "../ColorFilter/ColorFilter";
 import { CountFilter } from "../CountFilter/CountFilter";
 import { ShapeFilter } from "../ShapeFilter/ShapeFilter";
 import { SizeFilter } from "../SizeFilter/SizeFilter";
 import { YearFilter } from "../YearFilter/YearFilter";
-
+import type { FiltersContainerProps } from "../../types/props";
 import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
-import "./FiltersContainer.css";
+
 import { SelectSort } from "../SelectSort/SelectSort";
 import { Search } from "../Search/Search";
 import { useToggle } from "../shared/hooks/useToggle";
 
-type FiltersContainerProps = {
-  toggleFilter: CallableFunction;
-  toggleSpanFilter: CallableFunction;
-  filters: Filters;
-  spanFilters: SpanFilters;
-  toggleOnlyFavorite: CallableFunction;
-  favoritesCount: number;
-  setupSort: CallableFunction;
-  reset: CallableFunction;
-  setupSearch: CallableFunction;
-  searchLine: string;
-};
+import "./FiltersContainer.css";
+
 
 export const FiltersContainter: FC<FiltersContainerProps> = (props) => {
   const {

@@ -1,8 +1,8 @@
 import { Size } from "../../types/types";
 import { ReactComponent as BallIcon } from "../../assets/svg/ball-2.svg";
-import "./SizeFilter.css";
 import React, { FC } from "react";
 import { FilterCheckInput } from "../FilterCheckInput/FilterCheckInput";
+import "./SizeFilter.css";
 
 type SizeFilterContainerProps = {
   toggleFilter: CallableFunction;

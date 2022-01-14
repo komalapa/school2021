@@ -1,12 +1,8 @@
 import React, { FC } from "react";
-import { Colors } from "../../types/types";
+import type { MainTreeProps } from "../../types/props";
 import { Lights } from "../Lights/Lights";
 import "./MainTree.css";
-interface MainTreeProps {
-  treeUrl: string;
-  lights: Colors[];
-  onTakeToy: CallableFunction;
-}
+
 export const MainTree: FC<MainTreeProps> = (props) => {
   const { treeUrl, lights, onTakeToy } = props;
 

@@ -1,14 +1,8 @@
-import React,{ FC } from "react";
-import { Toy } from "../../types/toys/toy";
+import React, { FC } from "react";
+import type { ToysContainerProps } from "../../types/props";
 import { ToyCard } from "../ToyCard/ToyCard";
 
 import "./ToysContainer.css";
-
-type ToysContainerProps = {
-  toys: Toy[];
-  toggleFavorite: CallableFunction;
-  favoritesCount: number;
-};
 
 export const ToysContainter: FC<ToysContainerProps> = (props) => {
   const { toys, toggleFavorite, favoritesCount } = props;

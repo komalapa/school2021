@@ -1,13 +1,8 @@
 import React, { FC } from "react";
+import type { ColorFilterContainerProps } from "../../types/props";
 import { Colors } from "../../types/types";
 import { FilterCheckInput } from "../FilterCheckInput/FilterCheckInput";
 import "./ColorFilter.css";
-
-type ColorFilterContainerProps = {
-  toggleFilter: CallableFunction;
-  checked: Colors[];
-  header?: string;
-};
 
 export const ColorFilter: FC<ColorFilterContainerProps> = (props) => {
   const { toggleFilter, checked, header } = props;

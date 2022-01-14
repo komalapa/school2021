@@ -1,17 +1,11 @@
 import React, { FC } from "react";
+import type { TreePanelProps } from "../../types/props";
 import { Colors, Filters } from "../../types/types";
 import { BackgroundSelector } from "../BackgroundSelector/BackgroundSelector";
 import { ColorFilter } from "../ColorFilter/ColorFilter";
 import { TreeSelector } from "../TreeSelector/TreeSelector";
 import "./TreePanel.css";
-interface TreePanelProps {
-  setBackground: CallableFunction;
-  setTree: CallableFunction;
-  backgroundNumber: number;
-  treeNumber: number;
-  setLights: CallableFunction;
-  lights: Colors[];
-}
+
 export const TreePanel: FC<TreePanelProps> = (props) => {
   const {
     setBackground,

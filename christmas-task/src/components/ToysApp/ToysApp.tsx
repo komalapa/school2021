@@ -12,14 +12,10 @@ import {
 import { data } from "../../data";
 import { FiltersContainter } from "../FiltersContainer/FiltersContainer";
 import { ToysContainter } from "../ToysContainer/ToysContainer";
+import { Footer } from "../Footer/Footer";
+import type { ToysAppProps } from "../../types/props";
 
 import "./ToysApp.css";
-import { Footer } from "../Footer/Footer";
-
-interface ToysAppProps {
-  favorites: Toy[];
-  sendFavorites: CallableFunction;
-}
 
 const toys: Toy[] = data.map((item) => new Toy(item));
 

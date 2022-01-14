@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import "./Messages.css";
+
 type MessageProps = {
   message: string;
 };

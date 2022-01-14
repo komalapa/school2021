@@ -1,15 +1,7 @@
 import React, { FC, useState } from "react";
+import type { CountFilterContainerProps } from "../../types/props";
 import { SpanInput } from "../SpanInput/SpanInput";
 import "./CountFilter.css";
-
-type CountFilterContainerProps = {
-  toggleFilter: CallableFunction;
-  min: number;
-  max: number;
-  minVal?: number;
-  maxVal?: number;
-  step?: number;
-};
 
 export const CountFilter: FC<CountFilterContainerProps> = (props) => {
   const { toggleFilter, min, max, minVal, maxVal } = props;

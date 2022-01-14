@@ -1,16 +1,8 @@
 import React, { FC, useState } from "react";
+import type { YearFilterContainerProps } from "../../types/props";
 import { SpanInput } from "../SpanInput/SpanInput";
 
 import "./YearFilter.css";
-
-type YearFilterContainerProps = {
-  toggleFilter: CallableFunction;
-  min: number;
-  max: number;
-  minVal?: number;
-  maxVal?: number;
-  step?: number;
-};
 
 export const YearFilter: FC<YearFilterContainerProps> = (props) => {
   const { toggleFilter, min, max, minVal, maxVal } = props;

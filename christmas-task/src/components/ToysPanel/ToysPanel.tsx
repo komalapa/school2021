@@ -1,20 +1,12 @@
 import React, { FC } from "react";
-import { Toy } from "../../types/toys/toy";
 import { SmallToysContainer } from "../SmallToysContainer/SmallToysContainer";
 
 import { ReactComponent as SnowIcon } from "../../assets/svg/snow.svg";
 import { ReactComponent as MusicIcon } from "../../assets/svg/audio.svg";
+import type { ToysPanelProps } from "../../types/props";
 
 import "./ToysPanel.css";
 
-interface ToysPanelProps {
-  toys: Toy[];
-  onTakeToy: CallableFunction;
-  isSnow: boolean;
-  toggleSnow: CallableFunction;
-  isMusic: boolean;
-  toggleMusic: CallableFunction;
-}
 export const ToysPanel: FC<ToysPanelProps> = (props) => {
   const { toys, onTakeToy, isSnow, toggleSnow, isMusic, toggleMusic } = props;
   function handleClear() {

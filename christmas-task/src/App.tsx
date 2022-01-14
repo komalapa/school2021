@@ -5,9 +5,10 @@ import TreeApp from "./components/TreeApp/TreeApp";
 import { Toy } from "./types/toys/toy";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
-import "./App.css";
 import { Nav } from "./components/Nav/Nav";
 import { initialFavorites } from "./init";
+
+import "./App.css";
 
 const App: FC = () => {
   const [favorites, setFavorites] = useState<Toy[]>(initialFavorites);

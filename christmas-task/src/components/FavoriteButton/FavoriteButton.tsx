@@ -1,15 +1,11 @@
 import { ReactComponent as HeartIcon } from "../../assets/svg/heart.svg";
 import { ReactComponent as HeartIconFull } from "../../assets/svg/heart-full.svg";
 import React, { FC, useState } from "react";
-
+import type { FavoriteProps } from "../../types/props";
 import { Message } from "../Message/Message";
 
 import "./FavoriteButton.css";
-type FavoriteProps = {
-  isFavorite: boolean;
-  toggleFavorite: CallableFunction;
-  favoritesCount: number;
-};
+
 
 export const FavoriteButton: FC<FavoriteProps> = (props) => {
   const { isFavorite, toggleFavorite, favoritesCount } = props;

@@ -1,12 +1,8 @@
 import React, { FC } from "react";
+import type { TreeSelectorProps } from "../../types/props";
 import { RadioInput } from "../RadioInput/RadioInput";
 
 import "./TreeSelector.css";
-
-type TreeSelectorProps = {
-  setupTree: CallableFunction;
-  selected: number;
-};
 
 export const TreeSelector: FC<TreeSelectorProps> = (props) => {
   const { setupTree, selected } = props;

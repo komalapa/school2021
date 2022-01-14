@@ -6,14 +6,14 @@ import { TreePanel } from "../TreePanel/TreePannel";
 
 import { data } from "../../data";
 
-import "./TreeApp.css";
 import { useToggle } from "../shared/hooks/useToggle";
 import { ToysPanel } from "../ToysPanel/ToysPanel";
 import { Footer } from "../Footer/Footer";
+import type { TreeAppProps } from "../../types/props";
 
-interface TreeAppProps {
-  favorites: Toy[];
-}
+import "./TreeApp.css";
+
+
 function keyInEnum(e: any, value: string): string {
   const keys = Object.keys(e).filter((x) => e[x] === value);
   return keys.length > 0 ? keys[0] : "";

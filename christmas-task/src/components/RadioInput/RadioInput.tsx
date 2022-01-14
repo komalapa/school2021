@@ -1,15 +1,6 @@
 import React, { FC } from "react";
+import type { RadioInputProps } from "../../types/props";
 import { Direction } from "../../types/types";
-
-interface RadioInputProps {
-  className: string;
-  id: string;
-  radioName: string;
-  type: string;
-  value: Direction;
-  onChoose: CallableFunction;
-  selected: boolean;
-}
 
 export const RadioInput: FC<RadioInputProps> = (props) => {
   const {

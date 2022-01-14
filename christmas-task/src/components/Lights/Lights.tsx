@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import type { LightsProps } from "../../types/props";
 import { Colors } from "../../types/types";
 import "./Lights.css";
 
@@ -7,9 +8,6 @@ function keyInEnum(e: any, value: string): string {
   return keys.length > 0 ? keys[0] : "";
 }
 
-interface LightsProps {
-  colors: Colors[] | null;
-}
 export const Lights: FC<LightsProps> = (props) => {
   const { colors } = props;
   if (colors !== null) {

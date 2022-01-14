@@ -1,14 +1,6 @@
 import React, { FC } from "react";
-import { Colors, Shapes, Size } from "../../types/types";
+import type { FilterCheckInputProps } from "../../types/props";
 import { useToggle } from "../shared/hooks/useToggle";
-
-interface FilterCheckInputProps {
-  className: string;
-  onToggleFilter: CallableFunction;
-  checked: boolean;
-  filterName: string;
-  filterValue: Colors | Shapes | Size;
-}
 
 export const FilterCheckInput: FC<FilterCheckInputProps> = (props) => {
   const {

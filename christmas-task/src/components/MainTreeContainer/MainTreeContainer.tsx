@@ -5,6 +5,7 @@ import { MainTree } from "../MainTree/MainTree";
 import { ReactComponent as SnowIcon } from "../../assets/svg/snow.svg";
 
 import "./MainTreeContainer.css";
+
 interface MainTreeContainerProps {
   backgroundUrl: string;
   treeUrl: string;
