@@ -5,18 +5,17 @@ const toys: Toy[] = data.map((item) => new Toy(item));
 
 const initialFavorites = (): Toy[] => {
   const favoritesString = localStorage.getItem("komalapaChristmasFavorites");
-  let lsFavorites;
+  let lsFavorites: Toy[] = [];
   if (favoritesString) lsFavorites = JSON.parse(favoritesString);
   if (lsFavorites) {
     lsFavorites = lsFavorites
-      .filter((toy: Toy) => toy)
-      .map((fav: Toy) => toys.find((toy: Toy) => fav.id === toy.id));
+      .map((fav: Toy) => toys.find((toy: Toy) => fav.id === toy.id))
+      .filter((fav: Toy | undefined) => fav) as Toy[];
     lsFavorites.forEach((toy: Toy) => {
       toy.isFavorite = true;
     });
-    return lsFavorites;
   }
-  return [];
+  return lsFavorites;
 };
 
 export { toys, initialFavorites };
