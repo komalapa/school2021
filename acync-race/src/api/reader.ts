@@ -1,6 +1,9 @@
-const reader = (url) => {
+const API_URL = "http://localhost:3000/";
+
+const reader = (url: string, method: string = "GET") => {
+  console.log(url);
   return new Promise((resolve) => {
-    fetch(url)
+    fetch(url, { method })
       .then((response) => response.body)
       .then((rb) => {
         const reader = rb?.getReader();
@@ -32,4 +35,6 @@ const reader = (url) => {
       });
   });
 };
+
+export { API_URL };
 export default reader;

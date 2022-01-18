@@ -1,7 +1,5 @@
 import { Car } from "../types/api-response";
-import reader from "./reader";
-
-const API_URL = "http://localhost:3000/";
+import reader, { API_URL } from "./reader";
 
 const getCars = async (page: number): Promise<Car[]> => {
   const data = (await reader(`${API_URL}garage/?_page=${page}`)) as string;
