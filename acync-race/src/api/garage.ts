@@ -1,3 +1,5 @@
+import getBrand from "../data/brands-cars";
+import getModel from "../data/models-cars";
 import { Car } from "../types/api-response";
 import reader, { API_URL } from "./reader";
 
@@ -13,7 +15,10 @@ const getCar = async (id: number): Promise<Car> => {
   return car;
 };
 
-const addCar = async (name: string, color: string): Promise<boolean> => {
+const addCar = async (
+  name: string = `${getBrand()} ${getModel()}`,
+  color: string = `#${Math.floor(Math.random() * 16777215).toString(16)}`
+): Promise<boolean> => {
   let response: Response = await fetch(`${API_URL}garage`, {
     method: "POST",
     headers: {
@@ -32,4 +37,15 @@ const deleteCar = async (id: number): Promise<boolean> => {
   if (response.status !== 200) return false;
   return true;
 };
-export { getCars, getCar, addCar, deleteCar };
+
+const add100Cars = async (): Promise<boolean> => {
+  const promises: Promise<boolean>[] = [];
+  for (let i = 0; i < 100; i += 1) {
+    promises.push(addCar());
+  }
+  return promises.reduce((acc, pr) =>
+    acc.then(() => pr).catch(() => acc.then(() => pr))
+  );
+};
+
+export { getCars, getCar, addCar, deleteCar, add100Cars };

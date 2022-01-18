@@ -1,5 +1,5 @@
 import image from "./images/lazy.png";
-import { addCar, deleteCar, getCar, getCars } from "./api/garage";
+import { add100Cars, addCar, deleteCar, getCar, getCars } from "./api/garage";
 import { carDrive, carStart } from "./api/car";
 
 const createImage = (src: string) =>
@@ -21,12 +21,13 @@ async function render() {
   // console.log(await addCar("lada", "#ffffff"));
   // console.log(await getCars(1));
   // console.log(await deleteCar(6));
-  console.log(await carStart(2));
+  // console.log(await carStart(2));
   // console.log(
-  carDrive(2)
-    .then(() => console.log("OK"))
-    .catch((e) => console.log("Ooops", e));
+  // carDrive(2)
+  //   .then(() => console.log("OK"))
+  //   .catch((e) => console.log("Ooops", e));
   // console.log(await getCars(1));
+  add100Cars().then(async () => console.log(await getCars(1)));
 }
 
 render();
