@@ -1,0 +1,7 @@
+.car {
+  display: flex;
+}
+.car-icon {
+  width: 100px;
+  height: 50px;
+}
