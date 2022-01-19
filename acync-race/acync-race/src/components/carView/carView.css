@@ -1,7 +1,54 @@
 .car {
-  display: flex;
-}
-.car-icon {
   width: 100px;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  color: #aaaaaa;
+}
+
+.car-controls {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  margin: 10px;
+}
+
+.car-icon {
+  width: 100%;
   height: 50px;
+}
+
+.car-edit-checkbox {
+  visibility: hidden;
+}
+.car-edit-button {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.car-edit-button-icon,
+.car-delete-button-icon {
+  fill: currentColor;
+}
+
+.car-edit-button-icon:hover,
+.car-delete-button-icon:hover {
+  fill: #000000;
+}
+
+.car-edit-form {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+}
+
+.car-delete-button {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
 }

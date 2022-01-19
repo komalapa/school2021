@@ -1,7 +1,9 @@
 import React, { FC, FormEvent, useState } from "react";
 import { addCar, updateCar } from "../../api/garage";
+
 import getBrand from "../../data/brands-cars";
 import getModel from "../../data/models-cars";
+
 import "./editCarForm.css";
 
 interface EditCarProps {
@@ -9,9 +11,16 @@ interface EditCarProps {
   name?: string;
   color?: string;
   onCarInput: CallableFunction;
+  className?: string;
 }
 
-const EditCarForm: FC<EditCarProps> = ({ id, name, color, onCarInput }) => {
+const EditCarForm: FC<EditCarProps> = ({
+  id,
+  name,
+  color,
+  onCarInput,
+  className
+}) => {
   const initColor =
     color || `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   const initName = name || `${getBrand()} ${getModel()}`;
@@ -37,7 +46,7 @@ const EditCarForm: FC<EditCarProps> = ({ id, name, color, onCarInput }) => {
   console.log(curColor, curName, id);
   return (
     <form
-      className="edit-car"
+      className={`edit-car ${className}`}
       onSubmit={(e) => handleSubmit(e)}
       onReset={() => onCarInput(false)}
     >
