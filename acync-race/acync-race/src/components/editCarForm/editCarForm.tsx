@@ -1,51 +1,72 @@
-import React, {
-  FC,
-  FormEventHandler,
-  MouseEventHandler,
-  useState
-} from "react";
-// import "./carView.css";
+import React, { FC, FormEvent, useState } from "react";
+import { addCar, updateCar } from "../../api/garage";
+import getBrand from "../../data/brands-cars";
+import getModel from "../../data/models-cars";
+import "./editCarForm.css";
 
-interface CarViewProps {
-  id: number;
-  name: string;
-  color: string;
+interface EditCarProps {
+  id?: number;
+  name?: string;
+  color?: string;
+  onCarInput: CallableFunction;
 }
 
-const EditCarForm: FC<CarViewProps> = ({ id, name, color }) => {
-  const [curColor, setCurColor] = useState<string>(color || "#333333");
-  const [curName, setCurName] = useState<string>(name || "Lada Niva");
-  function handleSubmit() {
+const EditCarForm: FC<EditCarProps> = ({ id, name, color, onCarInput }) => {
+  const initColor =
+    color || `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  const initName = name || `${getBrand()} ${getModel()}`;
+  console.log(initColor);
+  const [curColor, setCurColor] = useState<string>(initColor);
+  const [curName, setCurName] = useState<string>(initName);
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     console.log(curColor, curName, id);
+    id ? updateCar(id, curName, curColor) : addCar(curName, curColor);
+    onCarInput(true);
   }
 
-  function handleReset() {
-    setCurColor(color || "#333333");
-    setCurName(name || "Lada Niva");
+  function handleName(e: React.FormEvent<HTMLInputElement>) {
+    setCurName(e.currentTarget.value);
   }
+
+  function handleColor(e: React.FormEvent<HTMLInputElement>) {
+    setCurColor(e.currentTarget.value);
+  }
+
   console.log(curColor, curName, id);
   return (
-    <div className="edit-car">
-      <input
-        type="text"
-        name="car-name"
-        id="edit-car-name"
-        defaultValue={curName}
-      />
-      <input
-        type="color"
-        name="car-color"
-        id="edit-car-color"
-        defaultValue={curColor}
-      />
-
-      <button type="submit" onClick={handleSubmit}>
-        Save
-      </button>
-      <button type="reset" onClick={handleReset}>
-        Cancel
-      </button>
-    </div>
+    <form
+      className="edit-car"
+      onSubmit={(e) => handleSubmit(e)}
+      onReset={() => onCarInput(false)}
+    >
+      <div className="edit-car-inputs">
+        <input
+          type="text"
+          name="car-name"
+          id="edit-car-name"
+          defaultValue={initName}
+          onInput={(e) => {
+            handleName(e);
+          }}
+        />
+        <input
+          type="color"
+          name="car-color"
+          id="edit-car-color"
+          className="edit-car-color"
+          defaultValue={initColor}
+          onInput={(e) => {
+            handleColor(e);
+          }}
+        />
+      </div>
+      <div className="edit-car-buttons">
+        <button type="submit">Save</button>
+        <button type="reset">Cancel</button>
+      </div>
+    </form>
   );
 };
 

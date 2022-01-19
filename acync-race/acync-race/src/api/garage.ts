@@ -40,6 +40,22 @@ const deleteCar = async (id: number): Promise<boolean> => {
   return true;
 };
 
+const updateCar = async (
+  id: number,
+  name: string,
+  color: string
+): Promise<boolean> => {
+  let response: Response = await fetch(`${API_URL}garage/${id}/?${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, color })
+  });
+  if (response.status !== 200) return false;
+  return true;
+};
+
 const add100Cars = async (): Promise<boolean> => {
   const promises: Promise<boolean>[] = [];
   for (let i = 0; i < 100; i += 1) {
@@ -50,4 +66,4 @@ const add100Cars = async (): Promise<boolean> => {
   );
 };
 
-export { getCars, getCar, addCar, deleteCar, add100Cars };
+export { getCars, getCar, addCar, updateCar, deleteCar, add100Cars };
