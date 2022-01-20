@@ -7,8 +7,13 @@ import EditCarForm from "../editCarForm/editCarForm";
 const Garage: FC = () => {
   const [isGarageChanged, setIsGarageChanged] = useState<boolean>(true);
   const [cars, setCars] = useState<Car[]>([]);
+  const [carsCount, setCarsCount] = useState<number>(0);
+
   if (isGarageChanged) {
-    getCars(1).then((data) => setCars(data));
+    getCars(1).then((data) => {
+      setCars(data.cars);
+      setCarsCount(data.count);
+    });
     setIsGarageChanged(false);
   }
   const carEls = cars.map((car) => (

@@ -1,19 +1,24 @@
+import { API_URL, carsPerPage } from "../constants";
 import getBrand from "../data/brands-cars";
 import getModel from "../data/models-cars";
 import { Car } from "../types/api-response";
-import reader, { API_URL } from "./reader";
 
-const getCars = async (page: number): Promise<Car[]> => {
-  const data = (await reader(
-    `${API_URL}garage/?_page=${page}&_limit=7`
-  )) as string;
-  const cars = JSON.parse(data);
-  return cars;
+interface garageInfo {
+  cars: Car[];
+  count: number;
+}
+const getCars = async (page: number): Promise<garageInfo> => {
+  const resp = await fetch(
+    `${API_URL}garage/?_page=${page}&_limit=${carsPerPage}`
+  );
+  const cars = await resp.json();
+  const count = resp.headers.get("X-Total-Count") as string;
+  return { cars, count: +count };
 };
 
 const getCar = async (id: number): Promise<Car> => {
-  const data = (await reader(`${API_URL}garage/${id}`)) as string;
-  const car = JSON.parse(data);
+  const resp = await fetch(`${API_URL}garage/${id}`);
+  const car = await resp.json();
   return car;
 };
 

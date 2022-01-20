@@ -1,43 +1,30 @@
-import { Car } from "../types/api-response";
-import reader, { API_URL } from "./reader";
+import { API_URL } from "../constants";
 
 interface carStartResponse {
   velocity: number;
   distance: number;
 }
-const carStart = async (
+
+const carDriver = async (
   id: number,
   status: string = "started"
 ): Promise<carStartResponse> => {
-  const data = (await reader(
-    `${API_URL}engine?id=${id}&status=${status}`,
-    "PATCH"
-  )) as string;
-  const resStatus: carStartResponse = await JSON.parse(data);
+  const resp = await fetch(`${API_URL}engine?id=${id}&status=${status}`, {
+    method: "PATCH"
+  });
+  const resStatus: carStartResponse = await resp.json();
   return resStatus;
 };
 
-const carDrive = async (
-  id: number,
-  status: string = "drive"
-): Promise<carStartResponse> => {
-  const data = (await reader(
-    `${API_URL}engine?id=${id}&status=${status}`,
-    "PATCH"
-  )) as string;
-  const resStatus: carStartResponse = await JSON.parse(data);
-  return resStatus;
+const carStart = async (id: number): Promise<carStartResponse> => {
+  return carDriver(id, "started");
 };
 
-const carStop = async (
-  id: number,
-  status: string = "stopped"
-): Promise<carStartResponse> => {
-  const data = (await reader(
-    `${API_URL}engine?id=${id}&status=${status}`,
-    "PATCH"
-  )) as string;
-  const resStatus: carStartResponse = await JSON.parse(data);
-  return resStatus;
+const carDrive = async (id: number): Promise<carStartResponse> => {
+  return carDriver(id, "drive");
+};
+
+const carStop = async (id: number): Promise<carStartResponse> => {
+  return carDriver(id, "stopped");
 };
 export { carStart, carDrive, carStop };
