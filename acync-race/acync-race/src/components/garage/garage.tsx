@@ -21,7 +21,12 @@ const Garage: FC = () => {
     setIsGarageChanged(false);
   }
   const carEls = cars.map((car) => (
-    <CarView key={car.id} {...car} onCarInput={handleCarInput} />
+    <CarView
+      key={car.id}
+      {...car}
+      onCarInput={handleCarInput}
+      isRaceStarted={true}
+    />
   ));
 
   function handleCarInput(isGarageChanged: boolean): void {

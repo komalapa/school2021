@@ -7,38 +7,40 @@ import EditCarForm from "../editCarForm/editCarForm";
 
 import "./carView.css";
 import { deleteCar } from "../../api/garage";
-import { carDrive, carRace, carStart, carStop } from "../../api/car";
+import { carDrive, carStart, carStop } from "../../api/car";
 
 interface CarViewProps {
   id: number;
   name: string;
   color: string;
   onCarInput: CallableFunction;
+  isRaceStarted: boolean;
 }
 
 let time = 0;
-const CarView: FC<CarViewProps> = ({ id, name, color, onCarInput }) => {
+const CarView: FC<CarViewProps> = ({
+  id,
+  name,
+  color,
+  onCarInput,
+  isRaceStarted
+}) => {
   const [inEdit, setInEdit] = useState<boolean>(false);
   const [inDrive, setInDrive] = useState<boolean>(false);
-  // const [time, setTime] = useState<number>(0);
-  // const [left, setLeft] = useState<number>(0);
 
-  // const requestRef: any = React.useRef();
+  let [race, setRace] = useState<boolean>(isRaceStarted);
+
   const left = React.useRef(0);
   let interval: NodeJS.Timer;
   const animate = () => {
     const carEl = document.querySelector<HTMLElement>(`#car-${id}`);
     if (carEl) {
-      console.log("!!", (time / 100) * 1000);
-
-      console.log(left.current);
       if (left.current < 90) {
-        console.log("animation", time, left);
         left.current = left.current + 1;
       }
       carEl.style.left = `${left.current}%`;
     }
-    interval = setTimeout(animate, time / 100); // requestRef.current = requestAnimationFrame(animate);
+    interval = setTimeout(animate, time / 100);
   };
 
   function handleEdit(isEdited: boolean) {
@@ -51,36 +53,38 @@ const CarView: FC<CarViewProps> = ({ id, name, color, onCarInput }) => {
   }
 
   function handleStart() {
-    carStart(id)
-      .then((data) => {
-        time = data.distance / data.velocity;
+    carStart(id).then((data) => {
+      time = data.distance / data.velocity;
 
-        carDrive(id)
-          .then(() => clearTimeout(interval))
-          .catch(() => {
-            clearTimeout(interval);
-          });
-        animate();
-      })
-      .catch((err) => {
-        console.log("STOPPED", err);
-      });
+      carDrive(id)
+        .then(() => console.log("try to win"))
+        .catch(() => {
+          clearTimeout(interval);
+        });
+      animate();
+    });
     setInDrive(true);
   }
 
   function handleStop() {
     clearTimeout(interval);
     setInDrive(false);
-    carStop(id); // .then((data) => console.log("reset", data));
+    carStop(id);
     const carEl = document.querySelector<HTMLElement>(`#car-${id}`);
     if (carEl) {
-      console.log("reset");
       left.current = 0;
       carEl.classList.add("no-transition");
       carEl.style.left = `${left.current}%`;
       setTimeout(() => carEl.classList.remove("no-transition"));
     }
   }
+
+  useEffect(() => {
+    if (race) {
+      handleStart();
+      setRace(false);
+    }
+  }, [race]);
 
   return (
     <div className="track">
