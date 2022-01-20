@@ -12,6 +12,7 @@ const Garage: FC = () => {
   const [cars, setCars] = useState<Car[]>([]);
   const [carsCount, setCarsCount] = useState<number>(0);
   const [curPage, setCurPage] = useState<number>(1);
+  const [isRaceStarted, setIsRaceStarted] = useState<boolean>(false);
 
   if (isGarageChanged) {
     getCars(curPage).then((data) => {
@@ -25,7 +26,8 @@ const Garage: FC = () => {
       key={car.id}
       {...car}
       onCarInput={handleCarInput}
-      isRaceStarted={true}
+      isRaceStarted={isRaceStarted}
+      onFinish={handleFinished}
     />
   ));
 
@@ -45,10 +47,21 @@ const Garage: FC = () => {
     setIsGarageChanged(true);
   }
 
+  function handleStartRace() {
+    setIsRaceStarted(true);
+  }
+
+  function handleStopRace() {
+    setIsRaceStarted(false);
+  }
+
+  function handleFinished(id: number) {}
+
   return (
     <div className="garage">
       <EditCarForm onCarInput={handleCarInput} />
       <button onClick={handleAdd100}>Add 100 cars</button>
+      <button onClick={handleStartRace}>Start Race</button>
       {carEls}
       <Pagination
         page={curPage}

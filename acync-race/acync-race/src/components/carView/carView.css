@@ -11,7 +11,7 @@
   flex-direction: column-reverse;
   flex-wrap: wrap;
   color: #aaaaaa;
-  transition: left 2s linear;
+  transition: left 0.2s linear;
   left: 0;
 }
 

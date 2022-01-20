@@ -15,6 +15,7 @@ interface CarViewProps {
   color: string;
   onCarInput: CallableFunction;
   isRaceStarted: boolean;
+  onFinish: CallableFunction;
 }
 
 let time = 0;
@@ -23,24 +24,24 @@ const CarView: FC<CarViewProps> = ({
   name,
   color,
   onCarInput,
-  isRaceStarted
+  isRaceStarted,
+  onFinish
 }) => {
   const [inEdit, setInEdit] = useState<boolean>(false);
   const [inDrive, setInDrive] = useState<boolean>(false);
 
   let [race, setRace] = useState<boolean>(isRaceStarted);
-
   const left = React.useRef(0);
   let interval: NodeJS.Timer;
   const animate = () => {
     const carEl = document.querySelector<HTMLElement>(`#car-${id}`);
     if (carEl) {
       if (left.current < 90) {
-        left.current = left.current + 1;
+        left.current = left.current + 0.1;
       }
       carEl.style.left = `${left.current}%`;
     }
-    interval = setTimeout(animate, time / 100);
+    interval = setTimeout(animate, time / 1000);
   };
 
   function handleEdit(isEdited: boolean) {
@@ -80,11 +81,11 @@ const CarView: FC<CarViewProps> = ({
   }
 
   useEffect(() => {
-    if (race) {
+    if (isRaceStarted) {
       handleStart();
       setRace(false);
     }
-  }, [race]);
+  }, [isRaceStarted]);
 
   return (
     <div className="track">
