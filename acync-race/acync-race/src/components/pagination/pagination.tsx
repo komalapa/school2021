@@ -22,7 +22,7 @@ const Pagination: FC<PaginationProps> = ({ page, count, onChange }) => {
     if (direction === "prev") setCurPage(curPage - 1);
   }
 
-  if (curPage > pagesCount) changePage("prev");
+  if (curPage > pagesCount && curPage !== 1) changePage("prev");
 
   return (
     <div className="pagination">

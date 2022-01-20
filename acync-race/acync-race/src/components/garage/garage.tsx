@@ -5,6 +5,8 @@ import CarView from "../carView/carView";
 import EditCarForm from "../editCarForm/editCarForm";
 import Pagination from "../pagination/pagination";
 
+import "./garage.css";
+
 const Garage: FC = () => {
   const [isGarageChanged, setIsGarageChanged] = useState<boolean>(true);
   const [cars, setCars] = useState<Car[]>([]);

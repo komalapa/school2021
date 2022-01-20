@@ -1,16 +1,30 @@
+.track {
+  position: relative;
+  width: 80%;
+  border-bottom: 4px dashed #bbbbbb;
+}
+
 .car {
+  position: relative;
   width: 100px;
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap;
   color: #aaaaaa;
+  transition: left 2s linear;
+  left: 0;
 }
 
 .car-controls {
   display: flex;
   justify-content: flex-start;
-  gap: 5px;
+  align-items: center;
   margin: 10px;
+  visibility: hidden;
+}
+
+.car:hover .car-controls {
+  visibility: visible;
 }
 
 .car-icon {
@@ -25,16 +39,21 @@
   position: relative;
   width: 20px;
   height: 20px;
+  margin-right: 10px;
 }
 
 .car-edit-button-icon,
 .car-delete-button-icon {
   fill: currentColor;
+  width: 20px;
+  height: 20px;
 }
 
 .car-edit-button-icon:hover,
-.car-delete-button-icon:hover {
-  fill: #000000;
+.car-delete-button-icon:hover,
+.car-start-button-icon:hover,
+.car-stop-button-icon:hover {
+  color: #ffffff;
 }
 
 .car-edit-form {
@@ -51,4 +70,27 @@
   border: none;
   outline: none;
   color: inherit;
+  padding: 0;
+}
+
+.car-start-button-icon {
+  display: block;
+  width: 0px;
+  height: 0px;
+
+  border: 10px solid transparent;
+  border-left: 20px solid currentColor;
+  box-sizing: border-box;
+}
+
+.car-stop-button-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: currentColor;
+}
+
+.no-transition {
+  transition: none;
 }

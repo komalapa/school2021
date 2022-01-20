@@ -27,4 +27,9 @@ const carDrive = async (id: number): Promise<carStartResponse> => {
 const carStop = async (id: number): Promise<carStartResponse> => {
   return carDriver(id, "stopped");
 };
-export { carStart, carDrive, carStop };
+
+const carRace = (id: number): Promise<carStartResponse> => {
+  return carStart(id).then((data) => carDrive(id));
+};
+
+export { carStart, carDrive, carStop, carRace };
