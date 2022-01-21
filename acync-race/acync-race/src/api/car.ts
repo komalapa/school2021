@@ -13,6 +13,7 @@ const carDriver = async (
     method: "PATCH"
   });
   const resStatus: carStartResponse = await resp.json();
+  if (resp.status !== 200) throw new Error("Car is broken");
   return resStatus;
 };
 

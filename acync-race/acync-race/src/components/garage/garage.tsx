@@ -7,12 +7,14 @@ import Pagination from "../pagination/pagination";
 
 import "./garage.css";
 
+let haveWinner = false;
 const Garage: FC = () => {
   const [isGarageChanged, setIsGarageChanged] = useState<boolean>(true);
   const [cars, setCars] = useState<Car[]>([]);
   const [carsCount, setCarsCount] = useState<number>(0);
   const [curPage, setCurPage] = useState<number>(1);
   const [isRaceStarted, setIsRaceStarted] = useState<boolean>(false);
+  const [winner, setWinner] = useState<Car | null>(null);
 
   if (isGarageChanged) {
     getCars(curPage).then((data) => {
@@ -49,19 +51,31 @@ const Garage: FC = () => {
 
   function handleStartRace() {
     setIsRaceStarted(true);
+    setWinner(null);
+    haveWinner = false;
   }
 
   function handleStopRace() {
     setIsRaceStarted(false);
+    setWinner(null);
+    haveWinner = false;
   }
 
-  function handleFinished(id: number) {}
-
+  function handleFinished(car: Car) {
+    if (!haveWinner && isRaceStarted) {
+      haveWinner = true;
+      setWinner(car);
+    }
+    // debugger;
+  }
+  // console.log("win", winners);
   return (
     <div className="garage">
+      <span>{winner?.name}</span>
       <EditCarForm onCarInput={handleCarInput} />
       <button onClick={handleAdd100}>Add 100 cars</button>
       <button onClick={handleStartRace}>Start Race</button>
+      <button onClick={handleStopRace}>Stop Race</button>
       {carEls}
       <Pagination
         page={curPage}

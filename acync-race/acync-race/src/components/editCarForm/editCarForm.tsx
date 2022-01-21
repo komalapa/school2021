@@ -24,13 +24,11 @@ const EditCarForm: FC<EditCarProps> = ({
   const initColor =
     color || `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   const initName = name || `${getBrand()} ${getModel()}`;
-  console.log(initColor);
   const [curColor, setCurColor] = useState<string>(initColor);
   const [curName, setCurName] = useState<string>(initName);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(curColor, curName, id);
     id ? updateCar(id, curName, curColor) : addCar(curName, curColor);
     onCarInput(true);
   }
@@ -43,7 +41,6 @@ const EditCarForm: FC<EditCarProps> = ({
     setCurColor(e.currentTarget.value);
   }
 
-  console.log(curColor, curName, id);
   return (
     <form
       className={`edit-car ${className}`}
