@@ -3,7 +3,27 @@
   width: 80%;
   border-bottom: 4px dashed #bbbbbb;
 }
+.track:before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 2px;
+  height: 50px;
+  background-color: #aaaaaa;
+  bottom: 0px;
+  left: 90%;
+}
 
+.track::after {
+  position: absolute;
+  content: "";
+  display: block;
+  bottom: 30px;
+  left: 90%;
+  border: 10px solid transparent;
+  border-left: 30px solid red;
+  box-sizing: border-box;
+}
 .car {
   position: relative;
   width: 100px;
@@ -13,6 +33,7 @@
   color: #aaaaaa;
   transition: left 0.2s linear;
   left: 0;
+  z-index: 2;
 }
 
 .car-controls {

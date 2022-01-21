@@ -4,4 +4,9 @@ interface Car {
   color: string;
 }
 
-export type { Car };
+interface Winner {
+  car: Car;
+  time: number;
+}
+
+export type { Car, Winner };

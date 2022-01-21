@@ -17,7 +17,7 @@ interface CarViewProps {
   isRaceStarted: boolean;
   onFinish: CallableFunction;
 }
-
+let GOAL = 90;
 const CarView: FC<CarViewProps> = ({
   id,
   name,
@@ -28,11 +28,8 @@ const CarView: FC<CarViewProps> = ({
 }) => {
   const [inEdit, setInEdit] = useState<boolean>(false);
   const [inDrive, setInDrive] = useState<boolean>(false);
-
-  // let [race, setRace] = useState<boolean>(isRaceStarted);
   const left = React.useRef(0);
-
-  // let interval: NodeJS.Timer;
+  const time = React.useRef(0);
 
   const carEl = document.querySelector<HTMLElement>(`#car-${id}`);
 
@@ -40,12 +37,12 @@ const CarView: FC<CarViewProps> = ({
 
   const driveAnimation = (time: number): void => {
     if (carEl) {
-      if (left.current < 90) {
+      if (left.current < GOAL) {
         left.current = left.current + 1000 / time;
         carEl.style.left = `${left.current}%`;
         animation = requestAnimationFrame(driveAnimation);
       } else {
-        onFinish({ id, name, color });
+        onFinish({ id, name, color }, time);
       }
     }
   };
@@ -60,16 +57,15 @@ const CarView: FC<CarViewProps> = ({
   }
 
   function handleStart() {
+    GOAL = 90;
     carStart(id).then((data) => {
-      const time = data.distance / data.velocity;
-      if (time > 0) {
-        console.log(id, time);
-        driveAnimation(time);
+      time.current = data.distance / data.velocity;
+      if (time.current > 0) {
+        driveAnimation(time.current);
+        setInDrive(true);
       }
       carDrive(id)
-        .then(() => {
-          console.log(name);
-        })
+        .then(() => {})
         .catch(() => {
           cancelAnimationFrame(animation);
         });
@@ -77,29 +73,23 @@ const CarView: FC<CarViewProps> = ({
   }
 
   function handleStop() {
-    // clearTimeout(interval);
+    GOAL = 0;
     setInDrive(false);
     carStop(id);
-    const carEl = document.querySelector<HTMLElement>(`#car-${id}`);
+    cancelAnimationFrame(animation);
+    left.current = 0;
     if (carEl) {
-      left.current = 0;
-      carEl.classList.add("no-transition");
       carEl.style.left = `${left.current}%`;
-      setTimeout(() => carEl.classList.remove("no-transition"));
+      cancelAnimationFrame(animation);
     }
   }
-  console.log(isRaceStarted);
   useEffect(() => {
     if (isRaceStarted) {
       handleStart();
-      // setRace(false);
-    }
+    } else handleStop();
   }, [isRaceStarted]);
 
-  if (!isRaceStarted) {
-    cancelAnimationFrame(animation);
-    left.current = 0;
-  }
+  useEffect(() => () => cancelAnimationFrame(animation), []);
 
   return (
     <div className="track">
