@@ -1,9 +1,10 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { add100Cars, getCars } from "../../api/garage";
 import { Car, Winner } from "../../types/api-response";
 import CarView from "../carView/carView";
 import EditCarForm from "../editCarForm/editCarForm";
 import Pagination from "../pagination/pagination";
+import WinnerAlert from "../winner/winner";
 
 import "./garage.css";
 
@@ -45,6 +46,7 @@ const Garage: FC = () => {
   }
 
   function handleChangePage(direction: string) {
+    if (isRaceStarted) handleStopRace();
     if (direction === "next") setCurPage(curPage + 1);
     if (direction === "prev") setCurPage(curPage - 1);
     setIsGarageChanged(true);
@@ -72,7 +74,9 @@ const Garage: FC = () => {
   }
   return (
     <div className="garage">
-      <span>{winner?.car?.name}</span>
+      {isRaceStarted && winner && (
+        <WinnerAlert car={winner.car} time={winner.time} />
+      )}
       <EditCarForm onCarInput={handleCarInput} />
       <button onClick={handleAdd100}>Add 100 cars</button>
       {isRaceStarted ? (

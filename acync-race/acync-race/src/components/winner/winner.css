@@ -1,0 +1,31 @@
+.winner-alert {
+  position: absolute;
+  color: #bbbbbb;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 150px;
+  height: 150px;
+  top: calc(50% - 75px);
+  left: calc (50% - 75px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 10px solid;
+  z-index: 3;
+}
+
+@keyframes flashing {
+  0% {
+    opacity: 0;
+  }
+  50% {
+  }
+}
+
+.winner-alert-header {
+  font-weight: bold;
+}
+.winner-alert-name {
+  font-size: 1.5em;
+}
