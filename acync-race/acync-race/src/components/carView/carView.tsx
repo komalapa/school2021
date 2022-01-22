@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { ReactComponent as CarIcon } from "../../assets/iconmonstr-car-1.svg";
 import { ReactComponent as EditIcon } from "../../assets/edit.svg";
 import { ReactComponent as CloseIcon } from "../../assets/close.svg";
@@ -8,6 +8,8 @@ import EditCarForm from "../editCarForm/editCarForm";
 import "./carView.css";
 import { deleteCar } from "../../api/garage";
 import { carDrive, carStart, carStop } from "../../api/car";
+import { WinnersContext } from "../../context/winners-context";
+import { getWinner } from "../../api/winners";
 
 interface CarViewProps {
   id: number;
@@ -28,6 +30,7 @@ const CarView: FC<CarViewProps> = ({
 }) => {
   const [inEdit, setInEdit] = useState<boolean>(false);
   const [inDrive, setInDrive] = useState<boolean>(false);
+  const [wins, setWins] = useState<number>(0);
   const left = React.useRef(0);
   const time = React.useRef(0);
 
@@ -84,12 +87,16 @@ const CarView: FC<CarViewProps> = ({
     }
   }
   useEffect(() => {
+    // getWinner(id).then(winner => setWins(winner.wins)).catch(() => setWins(0))
     if (isRaceStarted) {
       handleStart();
     } else handleStop();
   }, [isRaceStarted]);
 
   useEffect(() => () => cancelAnimationFrame(animation), []);
+
+  // const { winners } = useContext(WinnersContext);
+  // console.log(winners);
 
   return (
     <div className="track">

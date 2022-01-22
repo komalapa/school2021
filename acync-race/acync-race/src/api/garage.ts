@@ -7,7 +7,18 @@ interface garageInfo {
   cars: Car[];
   count: number;
 }
-const getCars = async (page: number): Promise<garageInfo> => {
+const getCars = async (page?: number): Promise<garageInfo> => {
+  if (!page) {
+    const resp = await fetch(`${API_URL}garage/?_page=1&_limit=10`);
+    const count = resp.headers.get("X-Total-Count") as string;
+    if (+count > 10) {
+      const resp = await fetch(`${API_URL}garage/?_page=1&_limit=${count}`);
+      const cars: Car[] = await resp.json();
+      return { cars, count: +count };
+    }
+    const cars: Car[] = await resp.json();
+    return { cars, count: +count };
+  }
   const resp = await fetch(
     `${API_URL}garage/?_page=${page}&_limit=${carsPerPage}`
   );

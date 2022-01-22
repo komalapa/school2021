@@ -1,5 +1,7 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import { add100Cars, getCars } from "../../api/garage";
+import { addWinner } from "../../api/winners";
+import { WinnersContext } from "../../context/winners-context";
 import { Car, Winner } from "../../types/api-response";
 import CarView from "../carView/carView";
 import EditCarForm from "../editCarForm/editCarForm";
@@ -69,9 +71,10 @@ const Garage: FC = () => {
     if (!haveWinner && isRaceStarted) {
       haveWinner = true;
       setWinner({ car, time });
+      addWinner(car.id, time);
     }
-    // debugger;
   }
+
   return (
     <div className="garage">
       {isRaceStarted && winner && (
