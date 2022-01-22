@@ -10,19 +10,29 @@ interface WinnersList {
   count: number;
 }
 
-const getWinnersList = async (page?: number): Promise<WinnersList> => {
+const getWinnersList = async (
+  page?: number,
+  sort = "id", // "time" "wins"
+  order = "ASC" //  "DESC"
+): Promise<WinnersList> => {
   if (!page) {
-    const resp = await fetch(`${API_URL}winners/?_page=1&_limit=10`);
+    const resp = await fetch(
+      `${API_URL}winners/?_page=1&_limit=10&_order=${order}&_sort=${sort}`
+    );
     const count = resp.headers.get("X-Total-Count") as string;
     if (+count > 10) {
-      const resp = await fetch(`${API_URL}winners/?_page=1&_limit=${count}`);
+      const resp = await fetch(
+        `${API_URL}winners/?_page=1&_limit=${count}&_order=${order}&_sort=${sort}`
+      );
       const winners: RespWinner[] = await resp.json();
       return { winners, count: +count };
     }
     const winners: RespWinner[] = await resp.json();
     return { winners, count: +count };
   }
-  const resp = await fetch(`${API_URL}winners/?_page=${page}&_limit=10`);
+  const resp = await fetch(
+    `${API_URL}winners/?_page=${page}&_limit=10&_order=${order}&_sort=${sort}`
+  );
   const winners: RespWinner[] = await resp.json();
   const count = resp.headers.get("X-Total-Count") as string;
   return { winners, count: +count };
@@ -45,7 +55,12 @@ const addWinner = async (id: number, time: number): Promise<boolean> => {
   if (response.status === 201) return true;
   const winners = await getWinnersList();
   const prevRecord = winners?.winners?.find((w) => w.id === id);
-  if (prevRecord) updateWinner(id, prevRecord.wins + 1, time);
+  if (prevRecord)
+    updateWinner(
+      id,
+      prevRecord.wins + 1,
+      time < prevRecord.time ? time : prevRecord.time
+    );
   return false;
 };
 
@@ -62,7 +77,6 @@ const updateWinner = async (
   wins: number,
   time: number
 ): Promise<boolean> => {
-  console.log("upd", id);
   let response: Response = await fetch(`${API_URL}winners/${id}`, {
     method: "PUT",
     headers: {

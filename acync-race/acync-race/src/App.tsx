@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Garage from "./components/garage/garage";
-import { WinnersContext } from "./context/winners-context";
 import Winners from "./components/winners/winners";
 function App() {
   const [showWinners, setShowWinners] = useState<boolean>(false);
@@ -19,7 +17,7 @@ function App() {
         />
       </label>
       <Garage />
-      <Winners visible={showWinners} />
+      {showWinners && <Winners visible={showWinners} />}
     </div>
   );
 }

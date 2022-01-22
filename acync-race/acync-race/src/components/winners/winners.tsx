@@ -1,13 +1,8 @@
-import { resolve } from "path";
-import React, { FC, useContext, useState } from "react";
-import { add100Cars, getCar, getCars } from "../../api/garage";
-import { addWinner, getWinnersList, RespWinner } from "../../api/winners";
-import { WinnersContext } from "../../context/winners-context";
-import { Car, Winner } from "../../types/api-response";
-import CarView from "../carView/carView";
-import EditCarForm from "../editCarForm/editCarForm";
+import React, { FC, useState } from "react";
+import { getCar } from "../../api/garage";
+import { getWinnersList, RespWinner } from "../../api/winners";
 import Pagination from "../pagination/pagination";
-import WinnerAlert from "../winner/winner";
+
 import { ReactComponent as CarIcon } from "../../assets/iconmonstr-car-1.svg";
 
 import "./winners.css";
@@ -18,7 +13,6 @@ interface WinnersProps {
 
 const Winners: FC<WinnersProps> = ({ visible }) => {
   const [isWinnersChanged, setIsWinnersChanged] = useState<boolean>(true);
-  // const [winners, setWinners] = useState<RespWinner[]>([]);
   const [carsCount, setCarsCount] = useState<number>(0);
   const [curPage, setCurPage] = useState<number>(1);
   const [tableInfo, setTableInfo] = useState<tableLine[]>([]);
@@ -32,7 +26,6 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
     wins: number;
     id: number;
   }
-  console.log(isWinnersChanged, isLoading);
   if (isWinnersChanged) {
     getWinnersList(curPage).then((data) => {
       setCarsCount(data.count);
@@ -44,12 +37,10 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
     });
     setIsWinnersChanged(false);
   }
-  console.log(tableInfo);
   const getTableInfo = (winners: RespWinner[]): Promise<any>[] => {
     const promises = winners.map((winner) => {
       return new Promise((resolve) => {
         getCar(winner.id).then((car) => {
-          console.log("car", car);
           resolve({
             name: car.name,
             color: car.color,
@@ -81,7 +72,8 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
     setIsWinnersChanged(true);
   }
 
-  if (isLoading) return <div>LOADING</div>;
+  if (isLoading) return <div>LOADING...</div>;
+  // if (!visible) return <></>;
   return (
     <div className={`winners ${visible && "winners-visible"}`}>
       <table className="winners-table">
