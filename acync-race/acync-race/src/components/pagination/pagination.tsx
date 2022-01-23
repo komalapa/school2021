@@ -1,13 +1,8 @@
 import React, { FC, useState } from "react";
 import { carsPerPage } from "../../constants";
+import { PaginationProps } from "../../types/props";
 
 import "./pagination.css";
-
-interface PaginationProps {
-  page?: number;
-  count: number;
-  onChange: CallableFunction;
-}
 
 const Pagination: FC<PaginationProps> = ({ page, count, onChange }) => {
   const pagesCount = Math.ceil(count / carsPerPage);
@@ -16,7 +11,7 @@ const Pagination: FC<PaginationProps> = ({ page, count, onChange }) => {
     page ? (page < 0 ? pagesCount : page) : 1
   );
 
-  function changePage(direction: string, page?: number) {
+  function changePage(direction: string, page?: number): void {
     if (page) {
       onChange("", page);
       setCurPage(page);

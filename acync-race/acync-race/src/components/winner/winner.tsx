@@ -1,16 +1,7 @@
-import React, { FC, FormEvent, useState } from "react";
-import { addCar, updateCar } from "../../api/garage";
-
-import getBrand from "../../data/brands-cars";
-import getModel from "../../data/models-cars";
-import { Car } from "../../types/api-response";
+import React, { FC } from "react";
+import { WinnerAlertProps } from "../../types/props";
 
 import "./winner.css";
-
-interface WinnerAlertProps {
-  car: Car;
-  time: number;
-}
 
 const WinnerAlert: FC<WinnerAlertProps> = ({ car, time }) => (
   <div className="winner-alert" style={{ borderColor: car.color }}>

@@ -4,16 +4,9 @@ import { addCar, updateCar } from "../../api/garage";
 import getBrand from "../../data/brands-cars";
 import { getRandomColor } from "../../data/colors";
 import getModel from "../../data/models-cars";
+import { EditCarProps } from "../../types/props";
 
 import "./editCarForm.css";
-
-interface EditCarProps {
-  id?: number;
-  name?: string;
-  color?: string;
-  onCarInput: CallableFunction;
-  className?: string;
-}
 
 const EditCarForm: FC<EditCarProps> = ({
   id,
@@ -27,17 +20,17 @@ const EditCarForm: FC<EditCarProps> = ({
   const [curColor, setCurColor] = useState<string>(initColor);
   const [curName, setCurName] = useState<string>(initName);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     id ? updateCar(id, curName, curColor) : addCar(curName, curColor);
     onCarInput(true);
   }
 
-  function handleName(e: React.FormEvent<HTMLInputElement>) {
+  function handleName(e: React.FormEvent<HTMLInputElement>): void {
     setCurName(e.currentTarget.value);
   }
 
-  function handleColor(e: React.FormEvent<HTMLInputElement>) {
+  function handleColor(e: React.FormEvent<HTMLInputElement>): void {
     setCurColor(e.currentTarget.value);
   }
 

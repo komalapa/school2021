@@ -2,7 +2,7 @@ import { API_URL, carsPerPage } from "../constants";
 import getBrand from "../data/brands-cars";
 import { getRandomColor } from "../data/colors";
 import getModel from "../data/models-cars";
-import { Car } from "../types/api-response";
+import { Car } from "../types/api";
 
 interface garageInfo {
   cars: Car[];

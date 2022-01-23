@@ -1,16 +1,15 @@
 import React, { FC, useState } from "react";
 import { add100Cars, getCars } from "../../api/garage";
 import { addWinner } from "../../api/winners";
-import { Car, Winner } from "../../types/api-response";
+import { Car, Winner } from "../../types/api";
+import { GarageProps } from "../../types/props";
 import CarView from "../carView/carView";
 import EditCarForm from "../editCarForm/editCarForm";
 import Pagination from "../pagination/pagination";
 import WinnerAlert from "../winner/winner";
 
 import "./garage.css";
-interface GarageProps {
-  hidden: boolean;
-}
+
 let haveWinner = false;
 const Garage: FC<GarageProps> = ({ hidden }) => {
   const [isGarageChanged, setIsGarageChanged] = useState<boolean>(true);
@@ -42,13 +41,13 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
     setIsGarageChanged(isGarageChanged);
   }
 
-  function handleAdd100() {
+  function handleAdd100(): void {
     add100Cars().then(() => {
       setIsGarageChanged(true);
     });
   }
 
-  function handleChangePage(direction: string, page?: number) {
+  function handleChangePage(direction: string, page?: number): void {
     if (isRaceStarted) handleStopRace();
     if (page) {
       setCurPage(page);
@@ -59,20 +58,20 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
     setIsGarageChanged(true);
   }
 
-  function handleStartRace() {
+  function handleStartRace(): void {
     setIsRaceStarted(true);
     setWinner(null);
     haveWinner = false;
   }
 
-  function handleStopRace() {
+  function handleStopRace(): void {
     setIsRaceStarted(false);
 
     setWinner(null);
     haveWinner = false;
   }
 
-  function handleFinished(car: Car, time: number) {
+  function handleFinished(car: Car, time: number): void {
     if (!haveWinner && isRaceStarted) {
       haveWinner = true;
       setWinner({ car, time: time / 1000 });

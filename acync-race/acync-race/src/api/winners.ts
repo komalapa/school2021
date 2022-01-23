@@ -1,14 +1,5 @@
 import { API_URL } from "../constants";
-interface RespWinner {
-  id: number;
-  time: number;
-  wins: number;
-}
-
-interface WinnersList {
-  winners: RespWinner[];
-  count: number;
-}
+import type { RespWinner, WinnersList } from "../types/api";
 
 const getWinnersList = async (
   sort = "id", // | "time" | "wins"
@@ -60,7 +51,7 @@ const addWinner = async (id: number, time: number): Promise<boolean> => {
       id,
       prevRecord.wins + 1,
       time < prevRecord.time ? time : prevRecord.time
-    );
+    ).then(() => true);
   return false;
 };
 

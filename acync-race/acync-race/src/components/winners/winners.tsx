@@ -6,6 +6,7 @@ import Pagination from "../pagination/pagination";
 import { ReactComponent as CarIcon } from "../../assets/iconmonstr-car-1.svg";
 
 import "./winners.css";
+import { WinnersTableLine } from "../../types/props";
 
 let sortMemory = "id";
 let orderMemory = true;
@@ -14,20 +15,13 @@ const Winners: FC = () => {
   const [isWinnersChanged, setIsWinnersChanged] = useState<boolean>(true);
   const [carsCount, setCarsCount] = useState<number>(0);
   const [curPage, setCurPage] = useState<number>(curPageMemory);
-  const [tableInfo, setTableInfo] = useState<tableLine[]>([]);
+  const [tableInfo, setTableInfo] = useState<WinnersTableLine[]>([]);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [sort, setSort] = useState<string>(sortMemory);
   const [order, setOrder] = useState<boolean>(orderMemory); // true - ASC ; false -DESC
 
-  interface tableLine {
-    name: string;
-    color: string;
-    time: number;
-    wins: number;
-    id: number;
-  }
   if (isWinnersChanged) {
     getWinnersList(sort, order ? "ASC" : "DESC", curPage).then((data) => {
       setCarsCount(data.count);
@@ -40,9 +34,9 @@ const Winners: FC = () => {
     setIsWinnersChanged(false);
   }
 
-  const getTableInfo = (winners: RespWinner[]): Promise<any>[] => {
+  const getTableInfo = (winners: RespWinner[]): Promise<WinnersTableLine>[] => {
     const promises = winners.map((winner) => {
-      return new Promise((resolve) => {
+      return new Promise<WinnersTableLine>((resolve) => {
         getCar(winner.id).then((car) => {
           resolve({
             name: car.name,
@@ -69,7 +63,7 @@ const Winners: FC = () => {
     </tr>
   ));
 
-  function handleChangePage(direction: string, page?: number) {
+  function handleChangePage(direction: string, page?: number): void {
     if (page) {
       curPageMemory = page;
       setCurPage(page);

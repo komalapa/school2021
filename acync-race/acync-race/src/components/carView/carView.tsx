@@ -9,15 +9,8 @@ import "./carView.css";
 import { deleteCar } from "../../api/garage";
 import { carDrive, carStart, carStop } from "../../api/car";
 import { deleteWinner } from "../../api/winners";
+import { CarViewProps } from "../../types/props";
 
-interface CarViewProps {
-  id: number;
-  name: string;
-  color: string;
-  onCarInput: CallableFunction;
-  isRaceStarted: boolean;
-  onFinish: CallableFunction;
-}
 let GOAL = 90;
 const CarView: FC<CarViewProps> = ({
   id,
@@ -48,17 +41,17 @@ const CarView: FC<CarViewProps> = ({
     }
   };
 
-  function handleEdit(isEdited: boolean) {
+  function handleEdit(isEdited: boolean): void {
     onCarInput(isEdited);
     setInEdit(false);
   }
 
-  function handleDelete() {
+  function handleDelete(): void {
     deleteCar(id).then(() => onCarInput(true));
     deleteWinner(id);
   }
 
-  function handleStart() {
+  function handleStart(): void {
     GOAL = 90;
     carStart(id).then((data) => {
       time.current = data.distance / data.velocity;
@@ -74,7 +67,7 @@ const CarView: FC<CarViewProps> = ({
     });
   }
 
-  function handleStop() {
+  function handleStop(): void {
     if (!isRaceStarted) GOAL = 0;
     setInDrive(false);
     carStop(id);
