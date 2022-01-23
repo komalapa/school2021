@@ -7,16 +7,19 @@ import { ReactComponent as CarIcon } from "../../assets/iconmonstr-car-1.svg";
 
 import "./winners.css";
 
+let sortMemory = "id";
+let orderMemory = true;
+let curPageMemory = 1;
 const Winners: FC = () => {
   const [isWinnersChanged, setIsWinnersChanged] = useState<boolean>(true);
   const [carsCount, setCarsCount] = useState<number>(0);
-  const [curPage, setCurPage] = useState<number>(1);
+  const [curPage, setCurPage] = useState<number>(curPageMemory);
   const [tableInfo, setTableInfo] = useState<tableLine[]>([]);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const [sort, setSort] = useState<string>("id");
-  const [order, setOrder] = useState<boolean>(true); // true - ASC ; false -DESC
+  const [sort, setSort] = useState<string>(sortMemory);
+  const [order, setOrder] = useState<boolean>(orderMemory); // true - ASC ; false -DESC
 
   interface tableLine {
     name: string;
@@ -66,16 +69,30 @@ const Winners: FC = () => {
     </tr>
   ));
 
-  function handleChangePage(direction: string) {
-    if (direction === "next") setCurPage(curPage + 1);
-    if (direction === "prev") setCurPage(curPage - 1);
+  function handleChangePage(direction: string, page?: number) {
+    if (page) {
+      curPageMemory = page;
+      setCurPage(page);
+    } else {
+      if (direction === "next") {
+        curPageMemory = curPage + 1;
+        setCurPage(curPage + 1);
+      }
+      if (direction === "prev") {
+        curPageMemory = curPage - 1;
+        setCurPage(curPage - 1);
+      }
+    }
     setIsWinnersChanged(true);
   }
 
   function handleSort(sortValue = "id"): void {
     if (sort === sortValue) {
+      orderMemory = !order;
       setOrder(!order);
     } else {
+      sortMemory = sortValue;
+      orderMemory = true;
       setSort(sortValue);
       setOrder(true);
     }
@@ -86,6 +103,7 @@ const Winners: FC = () => {
   if (isLoading) return <div>LOADING...</div>;
   return (
     <div className={`winners`}>
+      <h2>Winners ({carsCount})</h2>
       <table className="winners-table">
         <thead>
           <tr>

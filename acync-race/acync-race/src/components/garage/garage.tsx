@@ -48,10 +48,14 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
     });
   }
 
-  function handleChangePage(direction: string) {
+  function handleChangePage(direction: string, page?: number) {
     if (isRaceStarted) handleStopRace();
-    if (direction === "next") setCurPage(curPage + 1);
-    if (direction === "prev") setCurPage(curPage - 1);
+    if (page) {
+      setCurPage(page);
+    } else {
+      if (direction === "next") setCurPage(curPage + 1);
+      if (direction === "prev") setCurPage(curPage - 1);
+    }
     setIsGarageChanged(true);
   }
 
@@ -78,6 +82,7 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
 
   return (
     <div className={`garage ${!hidden && "hidden"}`}>
+      <h2>Garage</h2>
       {isRaceStarted && winner && (
         <WinnerAlert car={winner.car} time={winner.time} />
       )}
@@ -90,7 +95,12 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
           <button onClick={handleStartRace}>Start Race</button>
         )}
       </div>
-
+      <span className="garage-count">
+        {carsCount}{" "}
+        {carsCount > 1 || carsCount === 0
+          ? "cars in the collection"
+          : "cars in the collection"}
+      </span>
       {carEls}
       <Pagination
         page={curPage}

@@ -2,6 +2,7 @@ import React, { FC, FormEvent, useState } from "react";
 import { addCar, updateCar } from "../../api/garage";
 
 import getBrand from "../../data/brands-cars";
+import { getRandomColor } from "../../data/colors";
 import getModel from "../../data/models-cars";
 
 import "./editCarForm.css";
@@ -21,8 +22,7 @@ const EditCarForm: FC<EditCarProps> = ({
   onCarInput,
   className
 }) => {
-  const initColor =
-    color || `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  const initColor = color || `#${getRandomColor()}`;
   const initName = name || `${getBrand()} ${getModel()}`;
   const [curColor, setCurColor] = useState<string>(initColor);
   const [curName, setCurName] = useState<string>(initName);

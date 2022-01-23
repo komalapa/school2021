@@ -1,5 +1,6 @@
 import { API_URL, carsPerPage } from "../constants";
 import getBrand from "../data/brands-cars";
+import { getRandomColor } from "../data/colors";
 import getModel from "../data/models-cars";
 import { Car } from "../types/api-response";
 
@@ -35,7 +36,7 @@ const getCar = async (id: number): Promise<Car> => {
 
 const addCar = async (
   name: string = `${getBrand()} ${getModel()}`,
-  color: string = `#${Math.floor(Math.random() * 16777215).toString(16)}`
+  color: string = `#${getRandomColor()}`
 ): Promise<boolean> => {
   let response: Response = await fetch(`${API_URL}garage`, {
     method: "POST",

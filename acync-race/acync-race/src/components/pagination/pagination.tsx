@@ -16,7 +16,12 @@ const Pagination: FC<PaginationProps> = ({ page, count, onChange }) => {
     page ? (page < 0 ? pagesCount : page) : 1
   );
 
-  function changePage(direction: string) {
+  function changePage(direction: string, page?: number) {
+    if (page) {
+      onChange("", page);
+      setCurPage(page);
+      return;
+    }
     onChange(direction);
     if (direction === "next") setCurPage(curPage + 1);
     if (direction === "prev") setCurPage(curPage - 1);
@@ -26,6 +31,11 @@ const Pagination: FC<PaginationProps> = ({ page, count, onChange }) => {
 
   return (
     <div className="pagination">
+      {curPage > 1 && (
+        <button className="pagination-button" onClick={() => changePage("", 1)}>
+          first
+        </button>
+      )}
       <button
         className="pagination-button"
         onClick={() => changePage("prev")}
@@ -43,6 +53,14 @@ const Pagination: FC<PaginationProps> = ({ page, count, onChange }) => {
       >
         next
       </button>
+      {curPage < pagesCount && (
+        <button
+          className="pagination-button"
+          onClick={() => changePage("", pagesCount)}
+        >
+          last
+        </button>
+      )}
     </div>
   );
 };

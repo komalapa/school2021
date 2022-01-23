@@ -11,11 +11,10 @@ interface WinnersList {
 }
 
 const getWinnersList = async (
-  sort = "id", // "time" "wins"
-  order = "ASC", //  "DESC"
+  sort = "id", // | "time" | "wins"
+  order = "ASC", // | "DESC"
   page?: number
 ): Promise<WinnersList> => {
-  console.log(page, sort, order);
   if (!page) {
     const resp = await fetch(
       `${API_URL}winners/?_page=1&_limit=10&_order=${order}&_sort=${sort}`

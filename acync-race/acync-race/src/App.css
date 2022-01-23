@@ -23,3 +23,7 @@ header {
 .winners-btn input {
   visibility: hidden;
 }
+
+h2 {
+  color: #aaaaaa;
+}
