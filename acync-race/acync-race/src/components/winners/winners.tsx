@@ -7,11 +7,7 @@ import { ReactComponent as CarIcon } from "../../assets/iconmonstr-car-1.svg";
 
 import "./winners.css";
 
-interface WinnersProps {
-  visible: boolean;
-}
-
-const Winners: FC<WinnersProps> = ({ visible }) => {
+const Winners: FC = () => {
   const [isWinnersChanged, setIsWinnersChanged] = useState<boolean>(true);
   const [carsCount, setCarsCount] = useState<number>(0);
   const [curPage, setCurPage] = useState<number>(1);
@@ -30,7 +26,6 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
     id: number;
   }
   if (isWinnersChanged) {
-    console.log("table", curPage, sort, order);
     getWinnersList(sort, order ? "ASC" : "DESC", curPage).then((data) => {
       setCarsCount(data.count);
       Promise.all(getTableInfo(data.winners)).then((data) => {
@@ -78,11 +73,9 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
   }
 
   function handleSort(sortValue = "id"): void {
-    console.log("sort", sortValue);
     if (sort === sortValue) {
       setOrder(!order);
     } else {
-      console.log(sortValue);
       setSort(sortValue);
       setOrder(true);
     }
@@ -91,9 +84,8 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
   }
 
   if (isLoading) return <div>LOADING...</div>;
-  // if (!visible) return <></>;
   return (
-    <div className={`winners ${visible && "winners-visible"}`}>
+    <div className={`winners`}>
       <table className="winners-table">
         <thead>
           <tr>

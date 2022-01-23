@@ -8,9 +8,11 @@ import Pagination from "../pagination/pagination";
 import WinnerAlert from "../winner/winner";
 
 import "./garage.css";
-
+interface GarageProps {
+  hidden: boolean;
+}
 let haveWinner = false;
-const Garage: FC = () => {
+const Garage: FC<GarageProps> = ({ hidden }) => {
   const [isGarageChanged, setIsGarageChanged] = useState<boolean>(true);
   const [cars, setCars] = useState<Car[]>([]);
   const [carsCount, setCarsCount] = useState<number>(0);
@@ -69,23 +71,26 @@ const Garage: FC = () => {
   function handleFinished(car: Car, time: number) {
     if (!haveWinner && isRaceStarted) {
       haveWinner = true;
-      setWinner({ car, time });
-      addWinner(car.id, time);
+      setWinner({ car, time: time / 1000 });
+      addWinner(car.id, time / 1000);
     }
   }
 
   return (
-    <div className="garage">
+    <div className={`garage ${!hidden && "hidden"}`}>
       {isRaceStarted && winner && (
         <WinnerAlert car={winner.car} time={winner.time} />
       )}
       <EditCarForm onCarInput={handleCarInput} />
-      <button onClick={handleAdd100}>Add 100 cars</button>
-      {isRaceStarted ? (
-        <button onClick={handleStopRace}>Stop Race</button>
-      ) : (
-        <button onClick={handleStartRace}>Start Race</button>
-      )}
+      <div className="garage-controls">
+        <button onClick={handleAdd100}>Add 100 cars</button>
+        {isRaceStarted ? (
+          <button onClick={handleStopRace}>Stop Race</button>
+        ) : (
+          <button onClick={handleStartRace}>Start Race</button>
+        )}
+      </div>
+
       {carEls}
       <Pagination
         page={curPage}

@@ -42,7 +42,7 @@ const CarView: FC<CarViewProps> = ({
         carEl.style.left = `${left.current}%`;
         animation = requestAnimationFrame(driveAnimation);
       } else {
-        onFinish({ id, name, color }, time);
+        if (isRaceStarted) onFinish({ id, name, color }, time);
       }
     }
   };
@@ -73,7 +73,7 @@ const CarView: FC<CarViewProps> = ({
   }
 
   function handleStop() {
-    GOAL = 0;
+    if (!isRaceStarted) GOAL = 0;
     setInDrive(false);
     carStop(id);
     cancelAnimationFrame(animation);
@@ -94,6 +94,39 @@ const CarView: FC<CarViewProps> = ({
 
   return (
     <div className="track">
+      <div className="car-controls">
+        <div className="car-edit-button">
+          <label>
+            {inEdit ? (
+              <CloseIcon className="car-edit-button-icon" />
+            ) : (
+              <EditIcon className="car-edit-button-icon" />
+            )}
+            <input
+              type="checkbox"
+              checked={inEdit}
+              onChange={() => setInEdit(!inEdit)}
+              className="car-edit-checkbox"
+            />
+          </label>
+          {inEdit && (
+            <EditCarForm
+              className="car-edit-form"
+              {...{ id, name, color }}
+              onCarInput={handleEdit}
+            />
+          )}
+        </div>
+        {!isRaceStarted &&
+          (inDrive ? (
+            <span className="car-stop-button-icon" onClick={handleStop} />
+          ) : (
+            <span className="car-start-button-icon" onClick={handleStart} />
+          ))}
+        <button className="car-delete-button" onClick={handleDelete}>
+          <DeleteIcon className="car-delete-button-icon" />
+        </button>
+      </div>
       <div
         className="car"
         id={`car-${id}`}
@@ -101,38 +134,6 @@ const CarView: FC<CarViewProps> = ({
       >
         <CarIcon className="car-icon" style={{ fill: color }} />
         <span className="car-name">{name}</span>
-        <div className="car-controls">
-          <div className="car-edit-button">
-            <label>
-              {inEdit ? (
-                <CloseIcon className="car-edit-button-icon" />
-              ) : (
-                <EditIcon className="car-edit-button-icon" />
-              )}
-              <input
-                type="checkbox"
-                checked={inEdit}
-                onChange={() => setInEdit(!inEdit)}
-                className="car-edit-checkbox"
-              />
-            </label>
-            {inEdit && (
-              <EditCarForm
-                className="car-edit-form"
-                {...{ id, name, color }}
-                onCarInput={handleEdit}
-              />
-            )}
-          </div>
-          {inDrive ? (
-            <span className="car-stop-button-icon" onClick={handleStop} />
-          ) : (
-            <span className="car-start-button-icon" onClick={handleStart} />
-          )}
-          <button className="car-delete-button" onClick={handleDelete}>
-            <DeleteIcon className="car-delete-button-icon" />
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -6,18 +6,22 @@ function App() {
   const [showWinners, setShowWinners] = useState<boolean>(false);
   return (
     <div className="App">
-      <label>
-        {" "}
-        Show winners list
-        <input
-          type="checkbox"
-          name="show-winners"
-          id="show-winners"
-          onInput={(e) => setShowWinners(e.currentTarget.checked)}
-        />
-      </label>
-      <Garage />
-      {showWinners && <Winners visible={showWinners} />}
+      <header>
+        <h1>AsyncRace</h1>
+        <label className="winners-btn">
+          {showWinners ? "Garage" : "Winners"}
+
+          <input
+            type="checkbox"
+            name="show-winners"
+            id="show-winners"
+            onInput={(e) => setShowWinners(e.currentTarget.checked)}
+          />
+        </label>
+      </header>
+
+      <Garage hidden={!showWinners} />
+      {showWinners && <Winners />}
     </div>
   );
 }

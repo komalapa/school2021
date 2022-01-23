@@ -4,4 +4,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #aaaaaa;
+  width: 100%;
+}
+
+.winners-btn {
+  font-weight: bold;
+  cursor: pointer;
+}
+.winners-btn input {
+  visibility: hidden;
 }

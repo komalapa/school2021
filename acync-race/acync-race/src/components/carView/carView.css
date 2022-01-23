@@ -2,6 +2,7 @@
   position: relative;
   width: 80%;
   border-bottom: 4px dashed #bbbbbb;
+  color: #aaaaaa;
 }
 .track:before {
   position: absolute;
@@ -37,14 +38,17 @@
 }
 
 .car-controls {
+  position: absolute;
+  bottom: 0px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: 10px;
   visibility: hidden;
+  z-index: 5;
 }
 
-.car:hover .car-controls {
+.track:hover .car-controls {
   visibility: visible;
 }
 

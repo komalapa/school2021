@@ -1,6 +1,6 @@
 .winners {
   position: absolute;
-  top: 40px;
+  top: 70px;
 
   display: flex;
   justify-content: space-between;
@@ -8,7 +8,7 @@
   flex-direction: column;
 
   width: 100vw;
-  height: calc(100% - 40px);
+  height: calc(100% - 70px);
   background-color: #222222;
   color: #aaaaaa;
 
@@ -16,7 +16,6 @@
   box-sizing: border-box;
 
   z-index: 10;
-  display: none;
 }
 
 .winners-table thead {
@@ -26,10 +25,6 @@
 
 .winners-table td {
   padding: 0 20px;
-}
-
-.winners-visible {
-  display: flex;
 }
 
 .sort-asc,
