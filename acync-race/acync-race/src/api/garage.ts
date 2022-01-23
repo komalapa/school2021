@@ -6,9 +6,9 @@ import { Car, GarageInfo } from '../types/api';
 
 const getCars = async (page?: number): Promise<GarageInfo> => {
   if (!page) {
-    const resp = await fetch(`${API_URL}garage/?_page=1&_limit=10`);
+    const resp = await fetch(`${API_URL}garage/?_page=1&_limit=${carsPerPage}`);
     const count = resp.headers.get('X-Total-Count') as string;
-    if (+count > 10) {
+    if (+count > carsPerPage) {
       const resp2 = await fetch(`${API_URL}garage/?_page=1&_limit=${count}`);
       const cars: Car[] = await resp2.json();
       return { cars, count: +count };

@@ -1,17 +1,19 @@
-import { API_URL } from '../constants';
+import {
+  API_URL, carsPerWinnerPage, SortKeys, SortOrders,
+} from '../constants';
 import type { RespWinner, WinnersList } from '../types/api';
 
 const getWinnersList = async (
-  sort = 'id', // | 'time' | 'wins'
-  order = 'ASC', // | 'DESC'
+  sort = SortKeys.id, // | 'time' | 'wins'
+  order = SortOrders.asc, // | 'DESC'
   page?: number,
 ): Promise<WinnersList> => {
   if (!page) {
     const resp = await fetch(
-      `${API_URL}winners/?_page=1&_limit=10&_order=${order}&_sort=${sort}`,
+      `${API_URL}winners/?_page=1&_limit=${carsPerWinnerPage}&_order=${order}&_sort=${sort}`,
     );
     const count = resp.headers.get('X-Total-Count') as string;
-    if (+count > 10) {
+    if (+count > carsPerWinnerPage) {
       const resp2 = await fetch(
         `${API_URL}winners/?_page=1&_limit=${count}&_order=${order}&_sort=${sort}`,
       );
@@ -22,7 +24,7 @@ const getWinnersList = async (
     return { winners, count: +count };
   }
   const resp = await fetch(
-    `${API_URL}winners/?_page=${page}&_limit=10&_order=${order}&_sort=${sort}`,
+    `${API_URL}winners/?_page=${page}&_limit=${carsPerWinnerPage}&_order=${order}&_sort=${sort}`,
   );
   const winners: RespWinner[] = await resp.json();
   const count = resp.headers.get('X-Total-Count') as string;

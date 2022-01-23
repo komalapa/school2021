@@ -9,8 +9,9 @@ import { ReactComponent as CarIcon } from '../../assets/iconmonstr-car-1.svg';
 
 import './winners.css';
 import { WinnersTableLine } from '../../types/props';
+import { carsPerWinnerPage, SortKeys, SortOrders } from '../../constants';
 
-let sortMemory = 'id';
+let sortMemory = SortKeys.id;
 let orderMemory = true;
 let curPageMemory = 1;
 
@@ -23,7 +24,7 @@ const Winners: FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const [sort, setSort] = useState<string>(sortMemory);
+  const [sort, setSort] = useState<SortKeys>(sortMemory);
   const [order, setOrder] = useState<boolean>(orderMemory); // true - ASC ; false -DESC
 
   const getTableInfo = (winners: RespWinner[]): Promise<WinnersTableLine>[] => {
@@ -44,7 +45,7 @@ const Winners: FC = () => {
   };
 
   if (isWinnersChanged) {
-    getWinnersList(sort, order ? 'ASC' : 'DESC', curPage).then((data) => {
+    getWinnersList(sort, order ? SortOrders.asc : SortOrders.desc, curPage).then((data) => {
       setCarsCount(data.count);
       Promise.all(getTableInfo(data.winners)).then((tableData) => {
         setTableInfo(tableData);
@@ -57,7 +58,7 @@ const Winners: FC = () => {
 
   const winnersEls = tableInfo.map((winner, ind) => (
     <tr className="winners-line" key={winner.id}>
-      <td>{(curPage - 1) * 10 + ind + 1}</td>
+      <td>{(curPage - 1) * carsPerWinnerPage + ind + 1}</td>
       <td>
         <CarIcon className="car-icon" style={{ fill: winner.color }} />
       </td>
@@ -84,7 +85,7 @@ const Winners: FC = () => {
     setIsWinnersChanged(true);
   }
 
-  function handleSort(sortValue = 'id'): void {
+  function handleSort(sortValue = SortKeys.id): void {
     if (sort === sortValue) {
       orderMemory = !order;
       setOrder(!order);
@@ -115,11 +116,11 @@ const Winners: FC = () => {
 
             <td
               onClick={() => {
-                handleSort('time');
+                handleSort(SortKeys.time);
               }}
               className={
                 // eslint-disable-next-line no-nested-ternary
-                sort === 'time'
+                sort === SortKeys.time
                   ? order
                     ? 'sort-asc'
                     : 'sort-desc'
@@ -131,14 +132,14 @@ const Winners: FC = () => {
             <td
               className={
                 // eslint-disable-next-line no-nested-ternary
-                sort === 'wins'
+                sort === SortKeys.wins
                   ? order
                     ? 'sort-asc'
                     : 'sort-desc'
                   : 'sort-none'
               }
               onClick={() => {
-                handleSort('wins');
+                handleSort(SortKeys.wins);
               }}
             >
               Wins
