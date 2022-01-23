@@ -10,7 +10,7 @@
   width: 100vw;
   height: calc(100% - 40px);
   background-color: #222222;
-  color: azure;
+  color: #aaaaaa;
 
   padding: 20px 0;
   box-sizing: border-box;
@@ -30,4 +30,43 @@
 
 .winners-visible {
   display: flex;
+}
+
+.sort-asc,
+.sort-desc,
+.sort-none {
+  position: relative;
+  cursor: pointer;
+}
+
+.sort-desc::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50%;
+  right: 0px;
+  border: 5px solid transparent;
+  border-top: 5px solid #aaaaaa;
+  box-sizing: border-box;
+}
+
+.sort-asc::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: calc(50% - 5px);
+  right: 0px;
+  border: 5px solid transparent;
+  border-bottom: 5px solid #aaaaaa;
+  box-sizing: border-box;
+}
+
+.sort-none::after {
+  position: absolute;
+  content: "sort";
+  display: block;
+  font-size: 0.3em;
+  font-weight: normal;
+  top: 0;
+  right: 0;
 }

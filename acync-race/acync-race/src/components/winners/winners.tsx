@@ -19,6 +19,9 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const [sort, setSort] = useState<string>("id");
+  const [order, setOrder] = useState<boolean>(true); // true - ASC ; false -DESC
+
   interface tableLine {
     name: string;
     color: string;
@@ -27,7 +30,8 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
     id: number;
   }
   if (isWinnersChanged) {
-    getWinnersList(curPage).then((data) => {
+    console.log("table", curPage, sort, order);
+    getWinnersList(sort, order ? "ASC" : "DESC", curPage).then((data) => {
       setCarsCount(data.count);
       Promise.all(getTableInfo(data.winners)).then((data) => {
         setTableInfo(data);
@@ -37,6 +41,7 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
     });
     setIsWinnersChanged(false);
   }
+
   const getTableInfo = (winners: RespWinner[]): Promise<any>[] => {
     const promises = winners.map((winner) => {
       return new Promise((resolve) => {
@@ -72,6 +77,19 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
     setIsWinnersChanged(true);
   }
 
+  function handleSort(sortValue = "id"): void {
+    console.log("sort", sortValue);
+    if (sort === sortValue) {
+      setOrder(!order);
+    } else {
+      console.log(sortValue);
+      setSort(sortValue);
+      setOrder(true);
+    }
+    setIsWinnersChanged(true);
+    setIsWinnersChanged(true);
+  }
+
   if (isLoading) return <div>LOADING...</div>;
   // if (!visible) return <></>;
   return (
@@ -82,8 +100,34 @@ const Winners: FC<WinnersProps> = ({ visible }) => {
             <td>№</td>
             <td>Color</td>
             <td>Name</td>
-            <td>Time</td>
-            <td>Wins</td>
+            <td
+              className={
+                sort === "time"
+                  ? order
+                    ? "sort-asc"
+                    : "sort-desc"
+                  : "sort-none"
+              }
+              onClick={() => {
+                handleSort("time");
+              }}
+            >
+              Time
+            </td>
+            <td
+              className={
+                sort === "wins"
+                  ? order
+                    ? "sort-asc"
+                    : "sort-desc"
+                  : "sort-none"
+              }
+              onClick={() => {
+                handleSort("wins");
+              }}
+            >
+              Wins
+            </td>
           </tr>
         </thead>
         <tbody>{winnersEls}</tbody>
