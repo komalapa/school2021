@@ -8,6 +8,7 @@ import EditCarForm from "../editCarForm/editCarForm";
 import "./carView.css";
 import { deleteCar } from "../../api/garage";
 import { carDrive, carStart, carStop } from "../../api/car";
+import { deleteWinner } from "../../api/winners";
 
 interface CarViewProps {
   id: number;
@@ -54,6 +55,7 @@ const CarView: FC<CarViewProps> = ({
 
   function handleDelete() {
     deleteCar(id).then(() => onCarInput(true));
+    deleteWinner(id);
   }
 
   function handleStart() {
