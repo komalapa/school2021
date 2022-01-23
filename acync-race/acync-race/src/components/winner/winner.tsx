@@ -1,8 +1,9 @@
-import React, { FC } from "react";
-import { WinnerAlertProps } from "../../types/props";
+import React, { FC } from 'react';
+import { WinnerAlertProps } from '../../types/props';
 
-import "./winner.css";
+import './winner.css';
 
+// eslint-disable-next-line react/function-component-definition
 const WinnerAlert: FC<WinnerAlertProps> = ({ car, time }) => (
   <div className="winner-alert" style={{ borderColor: car.color }}>
     <span className="winner-alert-header">WIN!</span>

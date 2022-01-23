@@ -1,16 +1,20 @@
-import React, { FC, useState } from "react";
-import { getCar } from "../../api/garage";
-import { getWinnersList, RespWinner } from "../../api/winners";
-import Pagination from "../pagination/pagination";
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { FC, useState } from 'react';
+import { getCar } from '../../api/garage';
+import { getWinnersList, RespWinner } from '../../api/winners';
+import Pagination from '../pagination/pagination';
 
-import { ReactComponent as CarIcon } from "../../assets/iconmonstr-car-1.svg";
+import { ReactComponent as CarIcon } from '../../assets/iconmonstr-car-1.svg';
 
-import "./winners.css";
-import { WinnersTableLine } from "../../types/props";
+import './winners.css';
+import { WinnersTableLine } from '../../types/props';
 
-let sortMemory = "id";
+let sortMemory = 'id';
 let orderMemory = true;
 let curPageMemory = 1;
+
+// eslint-disable-next-line react/function-component-definition
 const Winners: FC = () => {
   const [isWinnersChanged, setIsWinnersChanged] = useState<boolean>(true);
   const [carsCount, setCarsCount] = useState<number>(0);
@@ -22,34 +26,34 @@ const Winners: FC = () => {
   const [sort, setSort] = useState<string>(sortMemory);
   const [order, setOrder] = useState<boolean>(orderMemory); // true - ASC ; false -DESC
 
-  if (isWinnersChanged) {
-    getWinnersList(sort, order ? "ASC" : "DESC", curPage).then((data) => {
-      setCarsCount(data.count);
-      Promise.all(getTableInfo(data.winners)).then((data) => {
-        setTableInfo(data);
-
-        setIsLoading(false);
-      });
-    });
-    setIsWinnersChanged(false);
-  }
-
   const getTableInfo = (winners: RespWinner[]): Promise<WinnersTableLine>[] => {
-    const promises = winners.map((winner) => {
-      return new Promise<WinnersTableLine>((resolve) => {
+    const promises = winners.map(
+      (winner) => new Promise<WinnersTableLine>((resolve) => {
         getCar(winner.id).then((car) => {
           resolve({
             name: car.name,
             color: car.color,
             time: winner.time,
             wins: winner.wins,
-            id: winner.id
+            id: winner.id,
           });
         });
-      });
-    });
+      }),
+    );
     return promises;
   };
+
+  if (isWinnersChanged) {
+    getWinnersList(sort, order ? 'ASC' : 'DESC', curPage).then((data) => {
+      setCarsCount(data.count);
+      Promise.all(getTableInfo(data.winners)).then((tableData) => {
+        setTableInfo(tableData);
+
+        setIsLoading(false);
+      });
+    });
+    setIsWinnersChanged(false);
+  }
 
   const winnersEls = tableInfo.map((winner, ind) => (
     <tr className="winners-line" key={winner.id}>
@@ -68,11 +72,11 @@ const Winners: FC = () => {
       curPageMemory = page;
       setCurPage(page);
     } else {
-      if (direction === "next") {
+      if (direction === 'next') {
         curPageMemory = curPage + 1;
         setCurPage(curPage + 1);
       }
-      if (direction === "prev") {
+      if (direction === 'prev') {
         curPageMemory = curPage - 1;
         setCurPage(curPage - 1);
       }
@@ -80,7 +84,7 @@ const Winners: FC = () => {
     setIsWinnersChanged(true);
   }
 
-  function handleSort(sortValue = "id"): void {
+  function handleSort(sortValue = 'id'): void {
     if (sort === sortValue) {
       orderMemory = !order;
       setOrder(!order);
@@ -96,38 +100,45 @@ const Winners: FC = () => {
 
   if (isLoading) return <div>LOADING...</div>;
   return (
-    <div className={`winners`}>
-      <h2>Winners ({carsCount})</h2>
+    <div className="winners">
+      <h2>
+        Winners (
+        {carsCount}
+        )
+      </h2>
       <table className="winners-table">
         <thead>
           <tr>
             <td>№</td>
             <td>Color</td>
             <td>Name</td>
+
             <td
-              className={
-                sort === "time"
-                  ? order
-                    ? "sort-asc"
-                    : "sort-desc"
-                  : "sort-none"
-              }
               onClick={() => {
-                handleSort("time");
+                handleSort('time');
               }}
+              className={
+                // eslint-disable-next-line no-nested-ternary
+                sort === 'time'
+                  ? order
+                    ? 'sort-asc'
+                    : 'sort-desc'
+                  : 'sort-none'
+              }
             >
               Time
             </td>
             <td
               className={
-                sort === "wins"
+                // eslint-disable-next-line no-nested-ternary
+                sort === 'wins'
                   ? order
-                    ? "sort-asc"
-                    : "sort-desc"
-                  : "sort-none"
+                    ? 'sort-asc'
+                    : 'sort-desc'
+                  : 'sort-none'
               }
               onClick={() => {
-                handleSort("wins");
+                handleSort('wins');
               }}
             >
               Wins
@@ -138,7 +149,7 @@ const Winners: FC = () => {
       </table>
       <Pagination
         page={curPage}
-        onChange={handleChangePage}
+        onChange={(direct: string, page?: number) => handleChangePage(direct, page)}
         count={carsCount}
       />
     </div>

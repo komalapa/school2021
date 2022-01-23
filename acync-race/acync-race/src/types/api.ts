@@ -21,4 +21,22 @@ interface WinnersList {
   winners: RespWinner[];
   count: number;
 }
-export type { Car, Winner, RespWinner, WinnersList };
+
+interface CarStartResponse {
+  velocity: number;
+  distance: number;
+}
+
+interface GarageInfo {
+  cars: Car[];
+  count: number;
+}
+
+export type {
+  Car,
+  Winner,
+  RespWinner,
+  WinnersList,
+  CarStartResponse,
+  GarageInfo,
+};

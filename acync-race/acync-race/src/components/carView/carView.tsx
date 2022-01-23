@@ -1,24 +1,25 @@
-import React, { FC, useEffect, useState } from "react";
-import { ReactComponent as CarIcon } from "../../assets/iconmonstr-car-1.svg";
-import { ReactComponent as EditIcon } from "../../assets/edit.svg";
-import { ReactComponent as CloseIcon } from "../../assets/close.svg";
-import { ReactComponent as DeleteIcon } from "../../assets/delete.svg";
-import EditCarForm from "../editCarForm/editCarForm";
+import React, { FC, useEffect, useState } from 'react';
+import { ReactComponent as CarIcon } from '../../assets/iconmonstr-car-1.svg';
+import { ReactComponent as EditIcon } from '../../assets/edit.svg';
+import { ReactComponent as CloseIcon } from '../../assets/close.svg';
+import { ReactComponent as DeleteIcon } from '../../assets/delete.svg';
+import EditCarForm from '../editCarForm/editCarForm';
 
-import "./carView.css";
-import { deleteCar } from "../../api/garage";
-import { carDrive, carStart, carStop } from "../../api/car";
-import { deleteWinner } from "../../api/winners";
-import { CarViewProps } from "../../types/props";
+import './carView.css';
+import { deleteCar } from '../../api/garage';
+import { carDrive, carStart, carStop } from '../../api/car';
+import { deleteWinner } from '../../api/winners';
+import { CarViewProps } from '../../types/props';
 
 let GOAL = 90;
+// eslint-disable-next-line react/function-component-definition
 const CarView: FC<CarViewProps> = ({
   id,
   name,
   color,
   onCarInput,
   isRaceStarted,
-  onFinish
+  onFinish,
 }) => {
   const [inEdit, setInEdit] = useState<boolean>(false);
   const [inDrive, setInDrive] = useState<boolean>(false);
@@ -29,15 +30,13 @@ const CarView: FC<CarViewProps> = ({
 
   let animation = 0;
 
-  const driveAnimation = (time: number): void => {
+  const driveAnimation = (animationTime: number): void => {
     if (carEl) {
       if (left.current < GOAL) {
-        left.current = left.current + 1000 / time;
+        left.current += 1000 / animationTime;
         carEl.style.left = `${left.current}%`;
         animation = requestAnimationFrame(driveAnimation);
-      } else {
-        if (isRaceStarted) onFinish({ id, name, color }, time);
-      }
+      } else if (isRaceStarted) onFinish({ id, name, color }, animationTime);
     }
   };
 
@@ -82,7 +81,6 @@ const CarView: FC<CarViewProps> = ({
     if (isRaceStarted) {
       handleStart();
     } else handleStop();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRaceStarted]);
 
   useEffect(() => () => cancelAnimationFrame(animation), [animation]);
@@ -91,7 +89,7 @@ const CarView: FC<CarViewProps> = ({
     <div className="track">
       <div className="car-controls">
         <div className="car-edit-button">
-          <label>
+          <label htmlFor="car-edit-checkbox">
             {inEdit ? (
               <CloseIcon className="car-edit-button-icon" />
             ) : (
@@ -102,23 +100,36 @@ const CarView: FC<CarViewProps> = ({
               checked={inEdit}
               onChange={() => setInEdit(!inEdit)}
               className="car-edit-checkbox"
+              id="car-edit-checkbox"
             />
           </label>
           {inEdit && (
             <EditCarForm
               className="car-edit-form"
               {...{ id, name, color }}
-              onCarInput={handleEdit}
+              onCarInput={() => handleEdit(inEdit)} // TODO check after refactor
             />
           )}
         </div>
-        {!isRaceStarted &&
-          (inDrive ? (
-            <span className="car-stop-button-icon" onClick={handleStop} />
+        {!isRaceStarted
+          && (inDrive ? (
+            // eslint-disable-next-line
+            <span //TODO replace with btn
+              className="car-stop-button-icon"
+              onClick={() => handleStop()}
+            />
           ) : (
-            <span className="car-start-button-icon" onClick={handleStart} />
+            // eslint-disable-next-line
+            <span //TODO replace with btn
+              className="car-start-button-icon"
+              onClick={() => handleStart()}
+            />
           ))}
-        <button className="car-delete-button" onClick={handleDelete}>
+        <button
+          type="button"
+          className="car-delete-button"
+          onClick={() => handleDelete()}
+        >
           <DeleteIcon className="car-delete-button-icon" />
         </button>
       </div>

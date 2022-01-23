@@ -1,16 +1,17 @@
-import React, { FC, useState } from "react";
-import { add100Cars, getCars } from "../../api/garage";
-import { addWinner } from "../../api/winners";
-import { Car, Winner } from "../../types/api";
-import { GarageProps } from "../../types/props";
-import CarView from "../carView/carView";
-import EditCarForm from "../editCarForm/editCarForm";
-import Pagination from "../pagination/pagination";
-import WinnerAlert from "../winner/winner";
+import React, { FC, useState } from 'react';
+import { add100Cars, getCars } from '../../api/garage';
+import { addWinner } from '../../api/winners';
+import { Car, Winner } from '../../types/api';
+import { GarageProps } from '../../types/props';
+import CarView from '../carView/carView';
+import EditCarForm from '../editCarForm/editCarForm';
+import Pagination from '../pagination/pagination';
+import WinnerAlert from '../winner/winner';
 
-import "./garage.css";
+import './garage.css';
 
 let haveWinner = false;
+// eslint-disable-next-line react/function-component-definition
 const Garage: FC<GarageProps> = ({ hidden }) => {
   const [isGarageChanged, setIsGarageChanged] = useState<boolean>(true);
   const [cars, setCars] = useState<Car[]>([]);
@@ -27,18 +28,9 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
     });
     setIsGarageChanged(false);
   }
-  const carEls = cars.map((car) => (
-    <CarView
-      key={car.id}
-      {...car}
-      onCarInput={handleCarInput}
-      isRaceStarted={isRaceStarted}
-      onFinish={handleFinished}
-    />
-  ));
 
-  function handleCarInput(isGarageChanged: boolean): void {
-    setIsGarageChanged(isGarageChanged);
+  function handleCarInput(isGarageChangedProp: boolean): void {
+    setIsGarageChanged(isGarageChangedProp);
   }
 
   function handleAdd100(): void {
@@ -47,26 +39,26 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
     });
   }
 
+  function handleStopRace(): void {
+    setIsRaceStarted(false);
+
+    setWinner(null);
+    haveWinner = false;
+  }
+
   function handleChangePage(direction: string, page?: number): void {
     if (isRaceStarted) handleStopRace();
     if (page) {
       setCurPage(page);
     } else {
-      if (direction === "next") setCurPage(curPage + 1);
-      if (direction === "prev") setCurPage(curPage - 1);
+      if (direction === 'next') setCurPage(curPage + 1);
+      if (direction === 'prev') setCurPage(curPage - 1);
     }
     setIsGarageChanged(true);
   }
 
   function handleStartRace(): void {
     setIsRaceStarted(true);
-    setWinner(null);
-    haveWinner = false;
-  }
-
-  function handleStopRace(): void {
-    setIsRaceStarted(false);
-
     setWinner(null);
     haveWinner = false;
   }
@@ -79,31 +71,51 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
     }
   }
 
+  const carEls = cars.map((car) => (
+    <CarView
+      key={car.id}
+      id={car.id}
+      name={car.name}
+      color={car.color}
+      onCarInput={() => handleCarInput}
+      isRaceStarted={isRaceStarted}
+      onFinish={(finishedCar: Car, time: number) => handleFinished(finishedCar, time)}
+    />
+  ));
+
   return (
-    <div className={`garage ${!hidden && "hidden"}`}>
+    <div className={`garage ${!hidden && 'hidden'}`}>
       <h2>Garage</h2>
       {isRaceStarted && winner && (
         <WinnerAlert car={winner.car} time={winner.time} />
       )}
-      <EditCarForm onCarInput={handleCarInput} />
+      <EditCarForm
+        onCarInput={(isChanged: boolean) => handleCarInput(isChanged)}
+      />
       <div className="garage-controls">
-        <button onClick={handleAdd100}>Add 100 cars</button>
+        <button type="button" onClick={handleAdd100}>
+          Add 100 cars
+        </button>
         {isRaceStarted ? (
-          <button onClick={handleStopRace}>Stop Race</button>
+          <button type="button" onClick={handleStopRace}>
+            Stop Race
+          </button>
         ) : (
-          <button onClick={handleStartRace}>Start Race</button>
+          <button type="button" onClick={handleStartRace}>
+            Start Race
+          </button>
         )}
       </div>
       <span className="garage-count">
-        {carsCount}{" "}
-        {carsCount > 1 || carsCount === 0
-          ? "cars in the collection"
-          : "cars in the collection"}
+        {`${carsCount}
+        ${carsCount > 1 || carsCount === 0
+          ? 'cars in the collection'
+          : 'cars in the collection'}`}
       </span>
       {carEls}
       <Pagination
         page={curPage}
-        onChange={handleChangePage}
+        onChange={(direct: string, pg?: number) => handleChangePage(direct, pg)}
         count={carsCount}
       />
     </div>

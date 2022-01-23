@@ -1,4 +1,4 @@
-import { Car } from "./api";
+import { Car } from './api';
 
 interface CarViewProps {
   id: number;
@@ -46,5 +46,5 @@ export type {
   GarageProps,
   PaginationProps,
   WinnerAlertProps,
-  WinnersTableLine
+  WinnersTableLine,
 };

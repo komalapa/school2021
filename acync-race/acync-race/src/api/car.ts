@@ -1,36 +1,26 @@
-import { API_URL } from "../constants";
-
-interface carStartResponse {
-  velocity: number;
-  distance: number;
-}
+import { API_URL } from '../constants';
+import { CarStartResponse } from '../types/api';
 
 const carDriver = async (
   id: number,
-  status: string = "started"
-): Promise<carStartResponse> => {
+  status: string = 'started',
+): Promise<CarStartResponse> => {
   const resp = await fetch(`${API_URL}engine?id=${id}&status=${status}`, {
-    method: "PATCH"
+    method: 'PATCH',
   });
-  const resStatus: carStartResponse = await resp.json();
-  if (resp.status !== 200) throw new Error("Car is broken");
+  const resStatus: CarStartResponse = await resp.json();
+  if (resp.status !== 200) throw new Error('Car is broken');
   return resStatus;
 };
 
-const carStart = async (id: number): Promise<carStartResponse> => {
-  return carDriver(id, "started");
-};
+const carStart = async (id: number): Promise<CarStartResponse> => carDriver(id, 'started');
 
-const carDrive = async (id: number): Promise<carStartResponse> => {
-  return carDriver(id, "drive");
-};
+const carDrive = async (id: number): Promise<CarStartResponse> => carDriver(id, 'drive');
 
-const carStop = async (id: number): Promise<carStartResponse> => {
-  return carDriver(id, "stopped");
-};
+const carStop = async (id: number): Promise<CarStartResponse> => carDriver(id, 'stopped');
 
-const carRace = (id: number): Promise<carStartResponse> => {
-  return carStart(id).then((data) => carDrive(id));
-};
+const carRace = (id: number): Promise<CarStartResponse> => carStart(id).then(() => carDrive(id));
 
-export { carStart, carDrive, carStop, carRace };
+export {
+  carStart, carDrive, carStop, carRace,
+};

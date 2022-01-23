@@ -1,19 +1,19 @@
-import React, { FC, FormEvent, useState } from "react";
-import { addCar, updateCar } from "../../api/garage";
+import React, { FC, FormEvent, useState } from 'react';
+import { addCar, updateCar } from '../../api/garage';
 
-import getBrand from "../../data/brands-cars";
-import { getRandomColor } from "../../data/colors";
-import getModel from "../../data/models-cars";
-import { EditCarProps } from "../../types/props";
+import getBrand from '../../data/brands-cars';
+import getRandomColor from '../../data/colors';
+import getModel from '../../data/models-cars';
+import { EditCarProps } from '../../types/props';
 
-import "./editCarForm.css";
-
+import './editCarForm.css';
+// eslint-disable-next-line react/function-component-definition
 const EditCarForm: FC<EditCarProps> = ({
   id,
   name,
   color,
   onCarInput,
-  className
+  className,
 }) => {
   const initColor = color || `#${getRandomColor()}`;
   const initName = name || `${getBrand()} ${getModel()}`;
@@ -22,7 +22,11 @@ const EditCarForm: FC<EditCarProps> = ({
 
   function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    id ? updateCar(id, curName, curColor) : addCar(curName, curColor);
+    if (id) {
+      updateCar(id, curName, curColor);
+    } else {
+      addCar(curName, curColor);
+    }
     onCarInput(true);
   }
 
@@ -63,6 +67,7 @@ const EditCarForm: FC<EditCarProps> = ({
       </div>
       <div className="edit-car-buttons">
         <button type="submit">Save</button>
+        {/* eslint-disable-next-line react/button-has-type */}
         <button type="reset">Cancel</button>
       </div>
     </form>

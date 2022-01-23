@@ -30,5 +30,6 @@ const msg = `
 
 `;
 export default function printLog(): void {
+  // eslint-disable-next-line no-console
   console.log(msg);
 }
