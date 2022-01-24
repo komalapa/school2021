@@ -11,9 +11,8 @@ import { carDrive, carStart, carStop } from '../../api/car';
 import { deleteWinner } from '../../api/winners';
 import { CarViewProps } from '../../types/props';
 
-const animations :number[] = [];
-const goals :number[] = [];
-
+const animations: number[] = [];
+const goals: number[] = [];
 // eslint-disable-next-line react/function-component-definition
 const CarView: FC<CarViewProps> = ({
   id,
@@ -32,7 +31,7 @@ const CarView: FC<CarViewProps> = ({
 
   const driveAnimation = (duration: number): void => {
     let startTime: number | null = null;
-
+    animations[id] = 0;
     function animate(timestamp: number): void {
       if (!startTime) {
         startTime = timestamp;
@@ -43,7 +42,7 @@ const CarView: FC<CarViewProps> = ({
       const left = goals[id] * relativeProgress;
       if (carEl) carEl.style.left = `${left}%`;
 
-      if (runtime < duration) {
+      if (runtime < duration && goals[id] > 0) {
         animations[id] = requestAnimationFrame(animate);
       } else {
         onFinish({ id, name, color }, duration);
@@ -87,19 +86,25 @@ const CarView: FC<CarViewProps> = ({
       carEl.style.left = '0%';
       cancelAnimationFrame(animations[id]);
     }
-    animations[id] = 0;
+    goals[id] = 0;
     setInDrive(false);
   }
   useEffect(() => {
     if (isRaceStarted) {
       handleStart();
-    } else handleStop();
+    } else {
+      handleStop();
+    }
   }, [isRaceStarted]);
 
-  useEffect(() => () => {
-    cancelAnimationFrame(animations[id]);
-    animations[id] = 0;
-  }, [animations[id]]);
+  useEffect(
+    () => () => {
+      cancelAnimationFrame(animations[id]);
+      handleStop();
+    },
+    [animations[id]],
+  );
+  if (!isRaceStarted) cancelAnimationFrame(animations[id]);
 
   return (
     <div className="track">
@@ -119,27 +124,30 @@ const CarView: FC<CarViewProps> = ({
               id="car-edit-checkbox"
             />
           </label>
-          {inEdit && (
-            <EditCarForm
-              className="car-edit-form"
-              {...{ id, name, color }}
-              onCarInput={() => handleEdit(inEdit)} // TODO check after refactor
-            />
+          {inEdit
+          && (
+          <EditCarForm
+            className="car-edit-form"
+            {...{ id, name, color }}
+            onCarInput={(isEdited:boolean) => handleEdit(isEdited)}
+          />
           )}
         </div>
         {!isRaceStarted
         && (inDrive ? (
-            // eslint-disable-next-line
-            <span //TODO replace with btn
-              className="car-stop-button-icon"
-              onClick={() => handleStop()}
-            />
+          // eslint-disable-next-line jsx-a11y/control-has-associated-label
+          <button
+            type="button"
+            className="car-stop-button-icon"
+            onClick={() => handleStop()}
+          />
         ) : (
-            // eslint-disable-next-line
-            <span //TODO replace with btn
-              className="car-start-button-icon"
-              onClick={() => handleStart()}
-            />
+          // eslint-disable-next-line jsx-a11y/control-has-associated-label
+          <button
+            type="button"
+            className="car-start-button-icon"
+            onClick={() => handleStart()}
+          />
         ))}
         <button
           type="button"
@@ -149,10 +157,7 @@ const CarView: FC<CarViewProps> = ({
           <DeleteIcon className="car-delete-button-icon" />
         </button>
       </div>
-      <div
-        className="car"
-        id={`car-${id}`}
-      >
+      <div className="car" id={`car-${id}`}>
         <CarIcon className="car-icon" style={{ fill: color }} />
         <span className="car-name">{name}</span>
       </div>

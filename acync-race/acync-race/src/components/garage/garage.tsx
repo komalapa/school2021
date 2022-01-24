@@ -77,7 +77,7 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
       id={car.id}
       name={car.name}
       color={car.color}
-      onCarInput={() => handleCarInput}
+      onCarInput={(isEdited:boolean) => handleCarInput(isEdited)}
       isRaceStarted={isRaceStarted}
       onFinish={(finishedCar: Car, time: number) => handleFinished(finishedCar, time)}
     />

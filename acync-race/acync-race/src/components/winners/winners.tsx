@@ -63,7 +63,7 @@ const Winners: FC = () => {
         <CarIcon className="car-icon" style={{ fill: winner.color }} />
       </td>
       <td>{winner.name}</td>
-      <td>{winner.time.toFixed(0)}</td>
+      <td>{winner.time.toFixed(2)}</td>
       <td>{winner.wins}</td>
     </tr>
   ));

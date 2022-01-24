@@ -106,6 +106,9 @@
   width: 0px;
   height: 0px;
 
+  background: none;
+  border: none;
+  color: #aaaaaa;
   border: 10px solid transparent;
   border-left: 20px solid currentColor;
   box-sizing: border-box;
@@ -113,9 +116,13 @@
 
 .car-stop-button-icon {
   display: block;
+  
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  background: none;
+  border: none;
+  color: #aaaaaa;
   background-color: currentColor;
 }
 
