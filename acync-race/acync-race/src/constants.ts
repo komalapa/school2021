@@ -1,6 +1,6 @@
 const API_URL = 'http://localhost:3000/';
 const carsPerPage = 7;
-const carsPerWinnerPage = 7;
+const carsPerWinnerPage = 10;
 
 enum SortOrders {
   asc = 'ASC',

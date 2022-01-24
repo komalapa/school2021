@@ -11,6 +11,7 @@ import { carDrive, carStart, carStop } from '../../api/car';
 import { deleteWinner } from '../../api/winners';
 import { CarViewProps } from '../../types/props';
 
+const animations :number[] = [];
 let GOAL = 90;
 // eslint-disable-next-line react/function-component-definition
 const CarView: FC<CarViewProps> = ({
@@ -23,21 +24,30 @@ const CarView: FC<CarViewProps> = ({
 }) => {
   const [inEdit, setInEdit] = useState<boolean>(false);
   const [inDrive, setInDrive] = useState<boolean>(false);
-  const left = React.useRef(0);
-  const time = React.useRef(0);
 
   const carEl = document.querySelector<HTMLElement>(`#car-${id}`);
 
-  let animation = 0;
+  animations[id] = 0;
 
-  const driveAnimation = (animationTime: number): void => {
-    if (carEl) {
-      if (left.current < GOAL) {
-        left.current += 1000 / animationTime;
-        carEl.style.left = `${left.current}%`;
-        animation = requestAnimationFrame(driveAnimation);
-      } else if (isRaceStarted) onFinish({ id, name, color }, animationTime);
+  const driveAnimation = (duration: number): void => {
+    let startTime: number | null = null;
+    function animate(timestamp: number): void {
+      if (!startTime) {
+        startTime = timestamp;
+      }
+      const runtime = timestamp - startTime;
+      const relativeProgress = runtime / duration;
+
+      const left = GOAL * relativeProgress;
+      if (carEl) carEl.style.left = `${left}%`;
+
+      if (runtime < duration) {
+        animations[id] = requestAnimationFrame(animate);
+      } else {
+        onFinish({ id, name, color }, duration);
+      }
     }
+    animations[id] = requestAnimationFrame(animate);
   };
 
   function handleEdit(isEdited: boolean): void {
@@ -53,15 +63,15 @@ const CarView: FC<CarViewProps> = ({
   function handleStart(): void {
     GOAL = 90;
     carStart(id).then((data) => {
-      time.current = data.distance / data.velocity;
-      if (time.current > 0) {
-        driveAnimation(time.current);
+      const time = data.distance / data.velocity;
+      if (time > 0) {
+        driveAnimation(time);
         setInDrive(true);
       }
       carDrive(id)
         .then(() => {})
         .catch(() => {
-          cancelAnimationFrame(animation);
+          cancelAnimationFrame(animations[id]);
         });
     });
   }
@@ -70,12 +80,12 @@ const CarView: FC<CarViewProps> = ({
     if (!isRaceStarted) GOAL = 0;
     setInDrive(false);
     carStop(id);
-    cancelAnimationFrame(animation);
-    left.current = 0;
+    cancelAnimationFrame(animations[id]);
     if (carEl) {
-      carEl.style.left = `${left.current}%`;
-      cancelAnimationFrame(animation);
+      carEl.style.left = '0%';
+      cancelAnimationFrame(animations[id]);
     }
+    animations[id] = 0;
   }
   useEffect(() => {
     if (isRaceStarted) {
@@ -83,7 +93,10 @@ const CarView: FC<CarViewProps> = ({
     } else handleStop();
   }, [isRaceStarted]);
 
-  useEffect(() => () => cancelAnimationFrame(animation), [animation]);
+  useEffect(() => () => {
+    cancelAnimationFrame(animations[id]);
+    animations[id] = 0;
+  }, [animations[id]]);
 
   return (
     <div className="track">
@@ -112,19 +125,19 @@ const CarView: FC<CarViewProps> = ({
           )}
         </div>
         {!isRaceStarted
-          && (inDrive ? (
+        && (inDrive ? (
             // eslint-disable-next-line
             <span //TODO replace with btn
               className="car-stop-button-icon"
               onClick={() => handleStop()}
             />
-          ) : (
+        ) : (
             // eslint-disable-next-line
             <span //TODO replace with btn
               className="car-start-button-icon"
               onClick={() => handleStart()}
             />
-          ))}
+        ))}
         <button
           type="button"
           className="car-delete-button"
@@ -136,7 +149,6 @@ const CarView: FC<CarViewProps> = ({
       <div
         className="car"
         id={`car-${id}`}
-        style={{ left: `${left.current}%` }}
       >
         <CarIcon className="car-icon" style={{ fill: color }} />
         <span className="car-name">{name}</span>
