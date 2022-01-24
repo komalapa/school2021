@@ -12,7 +12,8 @@ import { deleteWinner } from '../../api/winners';
 import { CarViewProps } from '../../types/props';
 
 const animations :number[] = [];
-let GOAL = 90;
+const goals :number[] = [];
+
 // eslint-disable-next-line react/function-component-definition
 const CarView: FC<CarViewProps> = ({
   id,
@@ -31,6 +32,7 @@ const CarView: FC<CarViewProps> = ({
 
   const driveAnimation = (duration: number): void => {
     let startTime: number | null = null;
+
     function animate(timestamp: number): void {
       if (!startTime) {
         startTime = timestamp;
@@ -38,7 +40,7 @@ const CarView: FC<CarViewProps> = ({
       const runtime = timestamp - startTime;
       const relativeProgress = runtime / duration;
 
-      const left = GOAL * relativeProgress;
+      const left = goals[id] * relativeProgress;
       if (carEl) carEl.style.left = `${left}%`;
 
       if (runtime < duration) {
@@ -61,7 +63,7 @@ const CarView: FC<CarViewProps> = ({
   }
 
   function handleStart(): void {
-    GOAL = 90;
+    goals[id] = 90;
     carStart(id).then((data) => {
       const time = data.distance / data.velocity;
       if (time > 0) {
@@ -77,8 +79,8 @@ const CarView: FC<CarViewProps> = ({
   }
 
   function handleStop(): void {
-    if (!isRaceStarted) GOAL = 0;
-    setInDrive(false);
+    if (!isRaceStarted) goals[id] = 0;
+
     carStop(id);
     cancelAnimationFrame(animations[id]);
     if (carEl) {
@@ -86,6 +88,7 @@ const CarView: FC<CarViewProps> = ({
       cancelAnimationFrame(animations[id]);
     }
     animations[id] = 0;
+    setInDrive(false);
   }
   useEffect(() => {
     if (isRaceStarted) {
