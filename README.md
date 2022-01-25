@@ -16,3 +16,5 @@ Private repository for @komalapa
 [Christmas Task](https://musing-cori-450741.netlify.app/)
 
 [Presentation HistoriAPI & Routing](https://rolling-scopes-school.github.io/komalapa-JSFE2021Q3/presentation/presentation)
+
+[Async Race](https://stoic-ramanujan-a2e477.netlify.app/)
