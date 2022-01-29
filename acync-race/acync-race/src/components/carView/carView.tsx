@@ -51,11 +51,6 @@ const CarView: FC<CarViewProps> = ({
     animations[id] = requestAnimationFrame(animate);
   };
 
-  function handleEdit(isEdited: boolean): void {
-    onCarInput(isEdited);
-    setInEdit(false);
-  }
-
   function handleDelete(): void {
     deleteCar(id).then(() => onCarInput(true));
     deleteWinner(id);
@@ -128,7 +123,10 @@ const CarView: FC<CarViewProps> = ({
             <EditCarForm
               className="car-edit-form"
               {...{ id, name, color }}
-              onCarInput={(isEdited: boolean) => handleEdit(isEdited)}
+              onCarInput={(isEdited: boolean) => {
+                onCarInput(isEdited);
+                setInEdit(false);
+              }}
             />
           )}
         </div>
