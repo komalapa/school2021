@@ -2,7 +2,7 @@ import { API_URL, carsPerPage } from '../constants';
 import getBrand from '../data/brands-cars';
 import getRandomColor from '../data/colors';
 import getModel from '../data/models-cars';
-import { Car, GarageInfo } from '../types/api';
+import { Car, GarageInfo, HTTPStatuses } from '../types/api';
 
 const getCars = async (page?: number): Promise<GarageInfo> => {
   if (!page) {
@@ -41,7 +41,7 @@ const addCar = async (
     },
     body: JSON.stringify({ name, color }),
   });
-  if (response.status === 201) return true;
+  if (response.status === HTTPStatuses.Created) return true;
   return false;
 };
 
@@ -49,7 +49,7 @@ const deleteCar = async (id: number): Promise<boolean> => {
   const response: Response = await fetch(`${API_URL}garage/${id}/?${id}`, {
     method: 'DELETE',
   });
-  if (response.status !== 200) return false;
+  if (response.status !== HTTPStatuses.OK) return false;
   return true;
 };
 
@@ -65,7 +65,7 @@ const updateCar = async (
     },
     body: JSON.stringify({ name, color }),
   });
-  if (response.status !== 200) return false;
+  if (response.status !== HTTPStatuses.OK) return false;
   return true;
 };
 

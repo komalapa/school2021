@@ -110,7 +110,7 @@ const CarView: FC<CarViewProps> = ({
     <div className="track">
       <div className="car-controls">
         <div className="car-edit-button">
-          <label htmlFor="car-edit-checkbox">
+          <label htmlFor={`car-edit-checkbox-${id}`}>
             {inEdit ? (
               <CloseIcon className="car-edit-button-icon" />
             ) : (
@@ -121,21 +121,20 @@ const CarView: FC<CarViewProps> = ({
               checked={inEdit}
               onChange={() => setInEdit(!inEdit)}
               className="car-edit-checkbox"
-              id="car-edit-checkbox"
+              id={`car-edit-checkbox-${id}`}
             />
           </label>
-          {inEdit
-          && (
-          <EditCarForm
-            className="car-edit-form"
-            {...{ id, name, color }}
-            onCarInput={(isEdited:boolean) => handleEdit(isEdited)}
-          />
+          {inEdit && (
+            <EditCarForm
+              className="car-edit-form"
+              {...{ id, name, color }}
+              onCarInput={(isEdited: boolean) => handleEdit(isEdited)}
+            />
           )}
         </div>
         {!isRaceStarted
         && (inDrive ? (
-          // eslint-disable-next-line jsx-a11y/control-has-associated-label
+        // eslint-disable-next-line jsx-a11y/control-has-associated-label
           <button
             type="button"
             className="car-stop-button-icon"

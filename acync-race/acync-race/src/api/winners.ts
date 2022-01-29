@@ -1,7 +1,7 @@
 import {
   API_URL, carsPerWinnerPage, SortKeys, SortOrders,
 } from '../constants';
-import type { RespWinner, WinnersList } from '../types/api';
+import { HTTPStatuses, RespWinner, WinnersList } from '../types/api';
 
 const getWinnersList = async (
   sort = SortKeys.id, // | 'time' | 'wins'
@@ -49,7 +49,7 @@ const updateWinner = async (
     },
     body: JSON.stringify({ id, wins, time }),
   });
-  if (response.status !== 200) return false;
+  if (response.status !== HTTPStatuses.OK) return false;
   return true;
 };
 
@@ -61,7 +61,7 @@ const addWinner = async (id: number, time: number): Promise<boolean> => {
     },
     body: JSON.stringify({ id, wins: 1, time }),
   });
-  if (response.status === 201) return true;
+  if (response.status === HTTPStatuses.Created) return true;
   const winners = await getWinnersList();
   const prevRecord = winners?.winners?.find((w) => w.id === id);
   if (prevRecord) {
@@ -78,7 +78,7 @@ const deleteWinner = async (id: number): Promise<boolean> => {
   const response: Response = await fetch(`${API_URL}winners/${id}/?${id}`, {
     method: 'DELETE',
   });
-  if (response.status !== 200) return false;
+  if (response.status !== HTTPStatuses.OK) return false;
   return true;
 };
 

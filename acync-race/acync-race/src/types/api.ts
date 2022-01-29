@@ -32,6 +32,15 @@ interface GarageInfo {
   count: number;
 }
 
+enum HTTPStatuses {
+  OK = 200,
+  Created = 201,
+  BadRequest = 400,
+  Forbidden = 403,
+  NotFound = 404,
+  InternalServerError = 500,
+}
+
 export type {
   Car,
   Winner,
@@ -40,3 +49,5 @@ export type {
   CarStartResponse,
   GarageInfo,
 };
+
+export { HTTPStatuses };

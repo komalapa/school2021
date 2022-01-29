@@ -1,5 +1,5 @@
 import { API_URL } from '../constants';
-import { CarStartResponse } from '../types/api';
+import { CarStartResponse, HTTPStatuses } from '../types/api';
 
 const carDriver = async (
   id: number,
@@ -8,8 +8,10 @@ const carDriver = async (
   const resp = await fetch(`${API_URL}engine?id=${id}&status=${status}`, {
     method: 'PATCH',
   });
-  const resStatus: CarStartResponse = await resp.json();
-  if (resp.status !== 200) throw new Error('Car is broken');
+  let resStatus: CarStartResponse = { velocity: 0, distance: 0 };
+  if (resp.status === HTTPStatuses.OK) resStatus = await resp.json();
+
+  if (resp.status === HTTPStatuses.InternalServerError) throw new Error('Car is broken');
   return resStatus;
 };
 
