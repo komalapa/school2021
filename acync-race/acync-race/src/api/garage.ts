@@ -74,7 +74,8 @@ const add100Cars = async (): Promise<boolean> => {
   for (let i = 0; i < 100; i += 1) {
     promises.push(addCar());
   }
-  return promises.reduce((acc, pr) => acc.then(() => pr).catch(() => acc.then(() => pr)));
+  return promises.reduce((acc, promise) => acc.then(() => promise)
+    .catch(() => acc.then(() => promise)));
 };
 
 export {
