@@ -69,9 +69,9 @@ const updateCar = async (
   return true;
 };
 
-const add100Cars = async (): Promise<boolean> => {
+const addNCars = async (n:number): Promise<boolean> => {
   const promises: Promise<boolean>[] = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < n; i += 1) {
     promises.push(addCar());
   }
   return promises.reduce((acc, promise) => acc.then(() => promise)
@@ -79,5 +79,5 @@ const add100Cars = async (): Promise<boolean> => {
 };
 
 export {
-  getCars, getCar, addCar, updateCar, deleteCar, add100Cars,
+  getCars, getCar, addCar, updateCar, deleteCar, addNCars,
 };

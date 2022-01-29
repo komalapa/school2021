@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
-import { add100Cars, getCars } from '../../api/garage';
+import { addNCars, getCars } from '../../api/garage';
 import { addWinner } from '../../api/winners';
+import { ADD_CARS_AMOUNT } from '../../constants';
 import { Car, Winner } from '../../types/api';
 import { GarageProps } from '../../types/props';
 import CarView from '../carView/carView';
@@ -34,7 +35,7 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
   }
 
   function handleAdd100(): void {
-    add100Cars().then(() => {
+    addNCars(ADD_CARS_AMOUNT).then(() => {
       setIsGarageChanged(true);
     });
   }
@@ -94,7 +95,9 @@ const Garage: FC<GarageProps> = ({ hidden }) => {
       />
       <div className="garage-controls">
         <button type="button" onClick={handleAdd100}>
-          Add 100 cars
+          Add
+          {ADD_CARS_AMOUNT}
+          cars
         </button>
         {isRaceStarted ? (
           <button type="button" onClick={handleStopRace}>
